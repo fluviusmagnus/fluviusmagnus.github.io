@@ -83,7 +83,7 @@
 <time datetime="2011-06-29T00:00:00+08:00" pubdate data-updated="true">Jun 29th, 2011</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="#comments">评论</a>
         
       </p>
     
@@ -102,20 +102,20 @@
 <p>int cchkdig(char *r)<br />
 {
 int i=0;<br />
-while(r[i]!=&#8217;\0&#8217;)<br />
+while(r[i]!='\0')<br />
 {
 if(isdigit(r[i++])==0)<br />
 return (0);<br />
 }
 return (1);<br />
 }
-//去掉整数串表示前面多余的零，最后结果为空串时置为&#8221;0&#8221;<br />
+//去掉整数串表示前面多余的零，最后结果为空串时置为"0"<br />
 void cdel0(char *r)<br />
 {
 unsigned int lr;<br />
 int i=0, j;<br />
 lr=strlen(r);<br />
-while(r[i]==&#8217;0&#8217;)<br />
+while(r[i]=='0')<br />
 ++i;<br />
 if(i&gt;0)<br />
 {
@@ -123,13 +123,13 @@ for(j=0; j&lt;(lr-i); ++j)<br />
 r[j]=r[j+i];<br />
 for(j=lr-i; j&lt;lr; ++j)<br />
 {
-r[j]=&#8217;\0&#8217;;<br />
+r[j]='\0';<br />
 }
 }</p>
 
-<p>if(r[0]==&#8217;\0&#8217;)<br />
+<p>if(r[0]=='\0')<br />
 {
-r[0]=&#8217;0&#8217;;<br />
+r[0]='0';<br />
 }
 }</p>
 
@@ -175,12 +175,12 @@ h=h+10;<br />
 }
 else<br />
 c=0;<br />
-p[i]=h+&#8217;0&#8217;;<br />
-hc=h+&#8217;0&#8217;;<br />
+p[i]=h+'0';<br />
+hc=h+'0';<br />
 }
 for (i=lu; i&lt;lr; ++i)<br />
 {
-h=r[lr-i-1]-&#8216;0&#8217;-c;<br />
+h=r[lr-i-1]-'0'-c;<br />
 if(h&lt;0)<br />
 {
 c=1;<br />
@@ -188,16 +188,16 @@ h=h+10;<br />
 }
 else<br />
 c=0;<br />
-p[i]=&#8217;0&#8217;+h;<br />
-hc=&#8217;0&#8217;+h;<br />
+p[i]='0'+h;<br />
+hc='0'+h;<br />
 }
-p[i]=&#8217;\0&#8217;;<br />
+p[i]='\0';<br />
 lp=i-1;</p>
 
-<p>while(p[lp]==&#8217;0&#8217;&amp;&amp;lp!=0)<br />
+<p>while(p[lp]=='0'&amp;&amp;lp!=0)<br />
 {
-p[lp]=&#8217;\0&#8217;;<br />
-lp&#8211;;<br />
+p[lp]='\0';<br />
+lp--;<br />
 }</p>
 
 <p>for(i=0; i&lt;(lp+1)/2; ++i)<br />
@@ -229,7 +229,7 @@ lu=h;<br />
 p=(char *)malloc((unsigned int)(lr+2)*sizeof(char));<br />
 for(i=0; i&lt;lu; ++i)<br />
 {
-h=r[lr-i-1]-&#8216;0&#8217;+u[lu-i-1]-&#8216;0&#8217;+c;<br />
+h=r[lr-i-1]-'0'+u[lu-i-1]-'0'+c;<br />
 if(h&gt;9)<br />
 {
 c=1;<br />
@@ -237,11 +237,11 @@ h=h-10;<br />
 }
 else<br />
 c=0;<br />
-p[i]=h+&#8217;0&#8217;;<br />
+p[i]=h+'0';<br />
 }
 for(i=lu; i&lt;lr; ++i)<br />
 {
-h=r[lr-i-1]-&#8216;0&#8217;+c;<br />
+h=r[lr-i-1]-'0'+c;<br />
 if(h&gt;9)<br />
 {
 c=1;<br />
@@ -249,17 +249,17 @@ h=h-10;<br />
 }
 else<br />
 c=0;<br />
-p[i]=&#8217;0&#8217;+h;<br />
+p[i]='0'+h;<br />
 }
 if(c&gt;0)<br />
 {
-p[i]=c+&#8217;0&#8217;;<br />
+p[i]=c+'0';<br />
 lp=i;<br />
 }
 else<br />
 lp=i-1;<br />
 for(i=lp+1; i&lt;lr+2; ++i)<br />
-p[i]=&#8217;\0&#8217;;<br />
+p[i]='\0';<br />
 for(i=0; i&lt;(lp+1)/2; ++i)<br />
 {
 hc=p[i];<br />
@@ -279,20 +279,20 @@ lr=strlen(r);<br />
 lu=strlen(u);<br />
 p=(char *)malloc((unsigned int)(lr+lu+1)*sizeof(char));<br />
 for(i=0; i&lt;lr+lu; ++i)<br />
-p[i]=&#8217;0&#8217;;<br />
-p[lr+lu]=&#8217;\0&#8217;;<br />
-for(i=lr-1; i&gt;=0; &#8211;i)<br />
+p[i]='0';<br />
+p[lr+lu]='\0';<br />
+for(i=lr-1; i&gt;=0; --i)<br />
 {
 c=0;<br />
-for(j=lu-1; j&gt;=0; &#8211;j)<br />
+for(j=lu-1; j&gt;=0; --j)<br />
 {
 lp=i+j+1;<br />
-h=(r[i]-&#8216;0&#8217;)*(u[j]-&#8216;0&#8217;)+p[lp]-&#8216;0&#8217;+c;<br />
+h=(r[i]-'0')*(u[j]-'0')+p[lp]-'0'+c;<br />
 c=h/10;<br />
 h=h%10;<br />
-p[lp]=h+&#8217;0&#8217;;<br />
+p[lp]=h+'0';<br />
 }
-if(c&gt;0)p[i+j+1]=c+&#8217;0&#8217;;<br />
+if(c&gt;0)p[i+j+1]=c+'0';<br />
 }
 cdel0(p);<br />
 return p;<br />
@@ -309,10 +309,10 @@ lv=strlen(v);<br />
 f=(char *)malloc((unsigned int)(lu+n+3)*sizeof(char));<br />
 q=(char *)malloc(sizeof(char));<br />
 for(i=0; i&lt;lu+n+3; ++i)<br />
-f[i]=&#8217;\0&#8217;;<br />
+f[i]='\0';<br />
 r=(char *)malloc((unsigned int)(lv+2)*sizeof(char));<br />
 for(i=0; i&lt;lv+2; ++i)<br />
-r[i]=&#8217;\0&#8217;;<br />
+r[i]='\0';<br />
 for(iw=0; iw&lt;lu+n+2; ++iw)<br />
 {
 if(iw&lt;lu)<br />
@@ -320,24 +320,24 @@ if(iw&lt;lu)<br />
 cdel0(r);<br />
 lr=strlen(r);<br />
 r[lr]=u[iw];<br />
-r[lr+1]=&#8217;\0&#8217;;<br />
+r[lr+1]='\0';<br />
 }</p>
 
 <p>else if(iw&gt;lu)<br />
 {
 cdel0(r);<br />
-q[0]=&#8217;0&#8217;;<br />
+q[0]='0';<br />
 if(scmp(r, q)==0)<br />
 {
 break;<br />
 }
 lr=strlen(r);<br />
-r[lr]=&#8217;0&#8217;;<br />
-r[lr+1]=&#8217;\0&#8217;;<br />
+r[lr]='0';<br />
+r[lr+1]='\0';<br />
 }
 else<br />
 {
-f[lu]=&#8217;.&#8217;;<br />
+f[lu]='.';<br />
 continue;<br />
 }
 kh=0;<br />
@@ -347,37 +347,37 @@ p=r;<br />
 r=ssub(p, v);<br />
 ++kh;<br />
 }
-f[iw]=kh+&#8217;0&#8217;;<br />
+f[iw]=kh+'0';<br />
 }
 if(iw==lu+n+2)<br />
 {
-if(f[lu+n+1]&gt;=&#8217;5&#8217;)<br />
+if(f[lu+n+1]&gt;='5')<br />
 {
-f[lu+n+1]=&#8217;\0&#8217;;<br />
+f[lu+n+1]='\0';<br />
 c=1;<br />
-for(j=lu+n; j&gt;=0; &#8211;j)<br />
+for(j=lu+n; j&gt;=0; --j)<br />
 {
 if(c==0)<br />
 {
 break;<br />
 }
-if(f[j]==&#8217;.&#8217;)<br />
+if(f[j]=='.')<br />
 {
 continue;<br />
 }
-h=f[j]-&#8216;0&#8217;+c;<br />
+h=f[j]-'0'+c;<br />
 if(h&gt;9)<br />
 {
 h=h-10;<br />
 c=1;<br />
 }
 else<br />
-c=&#8217;\0&#8217;;<br />
-f[j]=h+&#8217;0&#8217;;<br />
+c='\0';<br />
+f[j]=h+'0';<br />
 }
 }<br />
 else<br />
-f[lu+n+1]=&#8217;\0&#8217;;</p>
+f[lu+n+1]='\0';</p>
 
 <p>}<br />
 free(r);<br />
@@ -398,23 +398,23 @@ lu=strlen(u);<br />
 lv=strlen(v);</p>
 
 <p>f=(char *)malloc((unsigned int)(lu+1)*sizeof(char));<br />
-for(i=0; i&lt;lu+1; ++i) f[i]=&#8217;\0&#8217;;<br />
+for(i=0; i&lt;lu+1; ++i) f[i]='\0';<br />
 r=(char *)malloc((unsigned int)(lv+2)*sizeof(char));<br />
-for(i=0; i&lt;lv+2; ++i) r[i]=&#8217;\0&#8217;;</p>
+for(i=0; i&lt;lv+2; ++i) r[i]='\0';</p>
 
 <p>for(iw=0; iw&lt;lu; ++iw)<br />
 {
 cdel0(r);<br />
 lr=strlen(r);<br />
 r[lr]=u[iw];<br />
-r[lr+1]=&#8217;\0&#8217;;<br />
+r[lr+1]='\0';<br />
 kh=0;<br />
 while(scmp(r, v)&gt;=0)<br />
 {
 r=ssub(r, v);<br />
 ++kh;<br />
 }
-f[iw]=kh+&#8217;0&#8217;;<br />
+f[iw]=kh+'0';<br />
 }
 cdel0(r);<br />
 *rout=r;<br />
@@ -430,70 +430,70 @@ int n;<br />
 if(argc!=4)<br />
 {
 if(argc!=3)<br />
-printf(&#8220;&gt;&gt;&#34;order n1 op n2&#34; or n ! \n&#8221;);<br />
+printf("&gt;&gt;\"order n1 op n2\" or n ! \n");<br />
 exit(0);<br />
 }
 cdel0(argv[1]);<br />
 if(cchkdig(argv[1])==0)<br />
 {
-printf(&#8220;Input data error, Input again!&#8221;);<br />
+printf("Input data error, Input again!");<br />
 exit(0);<br />
 }
 cdel0(argv[3]);<br />
 if(cchkdig(argv[3])==0)<br />
 {
-printf(&#8220;Input data error, Input again!&#8221;);<br />
+printf("Input data error, Input again!");<br />
 exit(0);<br />
 }</p>
 
-<p>if(strcmp(argv[2], &#8220;+&#8221;)==0)<br />
+<p>if(strcmp(argv[2], "+")==0)<br />
 {
-printf(&#8220;%s&#8221;, p=sadd(argv[1], argv[3]));<br />
+printf("%s", p=sadd(argv[1], argv[3]));<br />
 free(p);<br />
 }
-else if(strcmp(argv[2], &#8220;-&#8220;)==0)<br />
+else if(strcmp(argv[2], "-")==0)<br />
 {
-printf(&#8220;%s&#8221;, p=ssub(argv[1], argv[3]));<br />
+printf("%s", p=ssub(argv[1], argv[3]));<br />
 free(p);<br />
 }
-else if(strcmp(argv[2], &#8220;*&#8221;)==0)<br />
+else if(strcmp(argv[2], "*")==0)<br />
 {
-printf(&#8220;%s&#8221;, p=smut(argv[1], argv[3]));<br />
+printf("%s", p=smut(argv[1], argv[3]));<br />
 free(p);<br />
 }
-else if(argv[2][0]==&#8217;/&#8217; &amp;&amp; strlen(argv[2])==1)<br />
+else if(argv[2][0]=='/' &amp;&amp; strlen(argv[2])==1)<br />
 {
-if(argv[3][0]==&#8217;0&#8217;)<br />
+if(argv[3][0]=='0')<br />
 {
-printf(&#8220;error!devided by zero!!\n&#8221;);<br />
+printf("error!devided by zero!!\n");<br />
 exit(0);<br />
 }
 p=sdivkr(argv[1], argv[3], &amp;r);<br />
-printf(&#8220;k=%s r=%s&#8221;, p, r);<br />
+printf("k=%s r=%s", p, r);<br />
 free(p);<br />
 free(r);<br />
 }</p>
 
-<p>else if(argv[2][0]==&#8217;/&#8217;&amp;&amp;strlen(argv[2])&gt;1)<br />
+<p>else if(argv[2][0]=='/'&amp;&amp;strlen(argv[2])&gt;1)<br />
 {
-if(argv[3][0]==&#8217;0&#8217;)<br />
+if(argv[3][0]=='0')<br />
 {
-printf(&#8220;error!devided by zero!!\n&#8221;);<br />
+printf("error!devided by zero!!\n");<br />
 exit(0);<br />
 }</p>
 
-<p>argv[2][0]=&#8217;\0&#8217;;<br />
+<p>argv[2][0]='\0';<br />
 cdel0(argv[2]);<br />
 if(cchkdig(argv[2])==0)<br />
 {
-printf(&#8220;Input data error, Input again!&#8221;);<br />
+printf("Input data error, Input again!");<br />
 exit (0);<br />
 }
 n=atoi(argv[2]);<br />
-printf(&#8220;%s&#8221;, p=sdivf(argv[1], argv[3], n));<br />
+printf("%s", p=sdivf(argv[1], argv[3], n));<br />
 free(p);<br />
 }
-printf(&#8220;\n&#8221;);<br />
+printf("\n");<br />
 }</p>
 
 <p>&nbsp;</p>
@@ -555,7 +555,7 @@ printf(&#8220;\n&#8221;);<br />
 
 
   <section>
-    <h1>Comments</h1>
+    <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
 <div class="ds-thread" data-title="网上找到的高精度运算"></div>
 <script type="text/javascript">

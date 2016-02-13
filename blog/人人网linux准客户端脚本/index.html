@@ -81,7 +81,7 @@
 <time datetime="2012-01-23T00:00:00+08:00" pubdate data-updated="true">Jan 23rd, 2012</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="#comments">评论</a>
         
       </p>
     
@@ -109,44 +109,44 @@
 # 请在使用前自行修改首页url</p>
 
 <p># url为自己登录后的首页<br />
-url=&#8221;&#8221;</p>
+url=""</p>
 
-<p>echo &#8220;输入q退出：&#8221;<br />
-note=&#8221;新消息&#8221;<br />
+<p>echo "输入q退出："<br />
+note="新消息"<br />
 mes=0<br />
 stat=0<br />
-ckp=&#8221;~/.w3m/cookie&#8221;<br />
-while [ &#8220;1&#8221; = &#8220;1&#8221; ];<br />
+ckp="~/.w3m/cookie"<br />
+while [ "1" = "1" ];<br />
 do<br />
-	wget -q &#8211;cookies=on &#8211;load-cookies=$ckp &#8211;keep-session-cookies &#8211;save-cookies=$ckp &#8220;$url&#8221; -O home.htm<br />
-	mes=`cat home.htm¦grep -c &#8220;$note&#8221;`<br />
+	wget -q --cookies=on --load-cookies=$ckp --keep-session-cookies --save-cookies=$ckp "$url" -O home.htm<br />
+	mes=`cat home.htm¦grep -c "$note"`<br />
 	if [ 1 = $mes ]; then<br />
 		date<br />
-		go=`cat home.htm¦grep -Eo &#8216;&#8220;http://3g.renren.com/news/home.do.{45}新消息&lt;&#8217;`<br />
-		des=${go%&#34;&gt;新消息&lt;}<br />
-		des=${des#&#34;}<br />
+		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
+		des=${go%\"&gt;新消息&lt;}<br />
+		des=${des#\"}<br />
 		echo $des<br />
-		echo -n &#8220;新消息，输入y查看：&#8221;<br />
-		echo -e -n &#8220;\a&#8221;<br />
+		echo -n "新消息，输入y查看："<br />
+		echo -e -n "\a"<br />
 		sleep 1<br />
-		echo -e -n &#8220;\a&#8221;<br />
+		echo -e -n "\a"<br />
 		sleep 1<br />
-		echo -e -n &#8220;\a&#8221;<br />
+		echo -e -n "\a"<br />
 	fi<br />
 	if read -n 1 -t 60 stat<br />
 	then<br />
-		if [ $stat = &#8220;y&#8221; ];<br />
+		if [ $stat = "y" ];<br />
 		then<br />
 			w3m -cookie $url<br />
 			echo<br />
 		fi<br />
-		if [ $stat = &#8220;q&#8221; ];<br />
+		if [ $stat = "q" ];<br />
 		then<br />
 			echo<br />
 			exit 0<br />
 		fi<br />
 	fi<br />
-	mes=&#8221;0&#8221;<br />
+	mes="0"<br />
 done
 &nbsp;</p>
 </div>
@@ -204,7 +204,7 @@ done
 
 
   <section>
-    <h1>Comments</h1>
+    <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
 <div class="ds-thread" data-title="人人网Linux准客户端脚本"></div>
 <script type="text/javascript">

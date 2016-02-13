@@ -81,7 +81,7 @@
 <time datetime="2012-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13th, 2012</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="#comments">评论</a>
         
       </p>
     
@@ -107,24 +107,24 @@
 <p># url为自己登录后的首页<br />
 # ！！！请自行修改！！！<br />
 # 格式为http://http://3g.renren.com/home.do加上后面一长串<br />
-url=&#8221;&#8221;</p>
+url=""</p>
 
-<p>note=&#8221;新消息&#8221;<br />
+<p>note="新消息"<br />
 mes=0<br />
-while [ &#8220;1&#8221; = &#8220;1&#8221; ];<br />
+while [ "1" = "1" ];<br />
 do<br />
-	wget -q &#8211;cookies=on &#8211;load-cookies=cookies.txt &#8211;keep-session-cookies &#8211;save-cookies=cookies.txt &#8220;$url&#8221; -O home.htm<br />
-	mes=`cat home.htm¦grep -c &#8220;$note&#8221;`<br />
+	wget -q --cookies=on --load-cookies=cookies.txt --keep-session-cookies --save-cookies=cookies.txt "$url" -O home.htm<br />
+	mes=`cat home.htm¦grep -c "$note"`<br />
 	if [ 1 = $mes ]; then<br />
 		date<br />
-		go=`cat home.htm¦grep -Eo &#8216;&#8220;http://3g.renren.com/news/home.do.{45}新消息&lt;&#8217;`<br />
-		echo &#8220;$go&#8221;<br />
-		echo -e &#8220;\a&#8221;<br />
+		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
+		echo "$go"<br />
+		echo -e "\a"<br />
 		sleep 1<br />
-		echo -e &#8220;\a&#8221;<br />
+		echo -e "\a"<br />
 		sleep 1<br />
-		echo -e &#8220;\a&#8221;<br />
-		mes=&#8221;0&#8221;<br />
+		echo -e "\a"<br />
+		mes="0"<br />
 	fi<br />
 	sleep 60<br />
 done
@@ -184,7 +184,7 @@ done
 
 
   <section>
-    <h1>Comments</h1>
+    <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
 <div class="ds-thread" data-title="人人消息提醒"></div>
 <script type="text/javascript">

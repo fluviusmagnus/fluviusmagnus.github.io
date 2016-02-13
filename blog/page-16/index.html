@@ -86,7 +86,7 @@
 <time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
         
         
-           | <a href="/blog/kr-c-bible-exercises-1-3/#comments">Comments</a>
+           | <a href="/blog/kr-c-bible-exercises-1-3/#comments">评论</a>
         
       </p>
     
@@ -149,14 +149,14 @@ int main()
 <time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
         
         
-           | <a href="/blog/kr-c-bible-exercises-1-2/#comments">Comments</a>
+           | <a href="/blog/kr-c-bible-exercises-1-2/#comments">评论</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Experiment to find out what happens when printf&#8217;s argument string contains \c, where c is some character not listed above.</p>
+  <div class="entry-content"><p>Experiment to find out what happens when printf's argument string contains \c, where c is some character not listed above.</p>
 
 <p>Example: I try to understand how \t works.
 <pre class="brush:c">#include &lt;stdio.h&gt;
@@ -201,14 +201,14 @@ int main()
 <time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
         
         
-           | <a href="/blog/kr-c-bible-exercises-1-1/#comments">Comments</a>
+           | <a href="/blog/kr-c-bible-exercises-1-1/#comments">评论</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Run the &#8220;hello, world&#8221; program on your system. Experiment with leaving out parts of the program, to see what error messages you get.</p>
+  <div class="entry-content"><p>Run the "hello, world" program on your system. Experiment with leaving out parts of the program, to see what error messages you get.</p>
 
 <p>Example:
 <pre class="brush:c">#include &lt;stdio.h&gt;
@@ -250,7 +250,7 @@ int main()
 <time datetime="2012-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13th, 2012</time>
         
         
-           | <a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/#comments">Comments</a>
+           | <a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/#comments">评论</a>
         
       </p>
     
@@ -276,24 +276,24 @@ int main()
 <p># url为自己登录后的首页<br />
 # ！！！请自行修改！！！<br />
 # 格式为http://http://3g.renren.com/home.do加上后面一长串<br />
-url=&#8221;&#8221;</p>
+url=""</p>
 
-<p>note=&#8221;新消息&#8221;<br />
+<p>note="新消息"<br />
 mes=0<br />
-while [ &#8220;1&#8221; = &#8220;1&#8221; ];<br />
+while [ "1" = "1" ];<br />
 do<br />
-	wget -q &#8211;cookies=on &#8211;load-cookies=cookies.txt &#8211;keep-session-cookies &#8211;save-cookies=cookies.txt &#8220;$url&#8221; -O home.htm<br />
-	mes=`cat home.htm¦grep -c &#8220;$note&#8221;`<br />
+	wget -q --cookies=on --load-cookies=cookies.txt --keep-session-cookies --save-cookies=cookies.txt "$url" -O home.htm<br />
+	mes=`cat home.htm¦grep -c "$note"`<br />
 	if [ 1 = $mes ]; then<br />
 		date<br />
-		go=`cat home.htm¦grep -Eo &#8216;&#8220;http://3g.renren.com/news/home.do.{45}新消息&lt;&#8217;`<br />
-		echo &#8220;$go&#8221;<br />
-		echo -e &#8220;\a&#8221;<br />
+		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
+		echo "$go"<br />
+		echo -e "\a"<br />
 		sleep 1<br />
-		echo -e &#8220;\a&#8221;<br />
+		echo -e "\a"<br />
 		sleep 1<br />
-		echo -e &#8220;\a&#8221;<br />
-		mes=&#8221;0&#8221;<br />
+		echo -e "\a"<br />
+		mes="0"<br />
 	fi<br />
 	sleep 60<br />
 done
@@ -330,7 +330,7 @@ done
 <time datetime="2011-12-31T00:00:00+08:00" pubdate data-updated="true">Dec 31st, 2011</time>
         
         
-           | <a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/#comments">Comments</a>
+           | <a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/#comments">评论</a>
         
       </p>
     
@@ -392,7 +392,7 @@ int main()
 <time datetime="2011-12-23T00:00:00+08:00" pubdate data-updated="true">Dec 23rd, 2011</time>
         
         
-           | <a href="/blog/rqnoj-255-%E6%8E%92%E9%98%9F%E6%8E%A5%E6%B0%B4/#comments">Comments</a>
+           | <a href="/blog/rqnoj-255-%E6%8E%92%E9%98%9F%E6%8E%A5%E6%B0%B4/#comments">评论</a>
         
       </p>
     
@@ -473,7 +473,7 @@ int main()
 <time datetime="2011-12-17T00:00:00+08:00" pubdate data-updated="true">Dec 17th, 2011</time>
         
         
-           | <a href="/blog/%E6%9F%90%E5%90%9B/#comments">Comments</a>
+           | <a href="/blog/%E6%9F%90%E5%90%9B/#comments">评论</a>
         
       </p>
     
@@ -518,7 +518,7 @@ int main()
 <time datetime="2011-12-16T00:00:00+08:00" pubdate data-updated="true">Dec 16th, 2011</time>
         
         
-           | <a href="/blog/%E6%89%B9%E9%87%8F%E8%AE%BF%E9%97%AE%E4%BA%BA%E4%BA%BA%E5%A5%BD%E5%8F%8B/#comments">Comments</a>
+           | <a href="/blog/%E6%89%B9%E9%87%8F%E8%AE%BF%E9%97%AE%E4%BA%BA%E4%BA%BA%E5%A5%BD%E5%8F%8B/#comments">评论</a>
         
       </p>
     
@@ -568,7 +568,7 @@ int main()
 <time datetime="2011-12-14T00:00:00+08:00" pubdate data-updated="true">Dec 14th, 2011</time>
         
         
-           | <a href="/blog/unknown-%E9%92%93%E9%B1%BC/#comments">Comments</a>
+           | <a href="/blog/unknown-%E9%92%93%E9%B1%BC/#comments">评论</a>
         
       </p>
     
@@ -614,7 +614,7 @@ int main()
 <time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
         
         
-           | <a href="/blog/rqnoj-654-noip2011%E9%93%BA%E5%9C%B0%E6%AF%AF/#comments">Comments</a>
+           | <a href="/blog/rqnoj-654-noip2011%E9%93%BA%E5%9C%B0%E6%AF%AF/#comments">评论</a>
         
       </p>
     
@@ -651,11 +651,11 @@ int main()
   
   <div class="pagination">
     
-      <a class="prev" href="17">&larr; 旧文</a>
+      <a class="prev" href="/blog/page-17">&larr; 旧文</a>
     
     <a href="/blog/archives">文章归档</a>
     
-    <a class="next" href="15">新文 &rarr;</a>
+    <a class="next" href="/blog/page-15">新文 &rarr;</a>
     
   </div>
 </div>

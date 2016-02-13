@@ -83,7 +83,7 @@
 <time datetime="2014-08-19T00:00:00+08:00" pubdate data-updated="true">Aug 19th, 2014</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="#comments">评论</a>
         
       </p>
     
@@ -126,40 +126,40 @@ hanzi_size = 72</p>
 
 <p># Constants.<br />
 pos = 0<br />
-txt = &#8216;废话还是不要多说的好，除非你是在凑字数。&#8217;<br />
+txt = '废话还是不要多说的好，除非你是在凑字数。'<br />
 reading = False</p>
 
 <p># Getting variants.<br />
 def help():<br />
-    print(&#8221;&#8217;SpeedReading.py<br />
+    print('''SpeedReading.py<br />
 Usage: python3 SpeadReading.py [options] FILENAME<br />
 Press any key to resume or pause.<br />
 Option list:<br />
-    -p NUM, &#8211;pos=NUM   Specify beginning position. 0 by default. (Useful as a bookmark)<br />
-    -s NUM, &#8211;speed=NUM Specify the number of hanzi per minute. 750 by default<br />
-    -w NUM, &#8211;width=NUM Specify the width of display. 3 by default<br />
-    -z NUM, &#8211;size=NUM  Specify the font size. 72 by default<br />
-    -h,     &#8211;help      Show this help<br />
-Position number will be given every time when exit.&#8221;&#8217;)<br />
+    -p NUM, --pos=NUM   Specify beginning position. 0 by default. (Useful as a bookmark)<br />
+    -s NUM, --speed=NUM Specify the number of hanzi per minute. 750 by default<br />
+    -w NUM, --width=NUM Specify the width of display. 3 by default<br />
+    -z NUM, --size=NUM  Specify the font size. 72 by default<br />
+    -h,     --help      Show this help<br />
+Position number will be given every time when exit.''')<br />
 if len(sys.argv) &lt; 2:<br />
-    file_path = input(&#8216;Input file name (or path): &gt;&#8217;)<br />
-    pos = int(input(&#8216;Input position: &gt;&#8217;))<br />
+    file_path = input('Input file name (or path): &gt;')<br />
+    pos = int(input('Input position: &gt;'))<br />
 else:<br />
     try:<br />
-        options,args = getopt.getopt(sys.argv[1:], &#8216;hp:s:w:z:&#8217;, [&#8216;help&#8217;, &#8216;pos=&#8217;, &#8216;speed=&#8217;, &#8216;width=&#8217;, &#8216;size=&#8217;])<br />
+        options,args = getopt.getopt(sys.argv[1:], 'hp:s:w:z:', ['help', 'pos=', 'speed=', 'width=', 'size='])<br />
         if args:<br />
             file_path = args[0]<br />
             if not os.path.isfile(file_path):<br />
-                print(&#8216;File not found.&#8217;)<br />
+                print('File not found.')<br />
                 exit()<br />
             for opt, value in options:<br />
-                if opt in [&#8216;-p&#8217;, &#8216;&#8211;pos&#8217;]:<br />
+                if opt in ['-p', '--pos']:<br />
                     pos = int(value)<br />
-                if opt in [&#8216;-s&#8217;, &#8216;&#8211;speed&#8217;]:<br />
+                if opt in ['-s', '--speed']:<br />
                     hanzi_per_min = int(value)<br />
-                if opt in [&#8216;-w&#8217;, &#8216;&#8211;width&#8217;]:<br />
+                if opt in ['-w', '--width']:<br />
                     hanzi_at_a_time = int(value)<br />
-                if opt in [&#8216;-z&#8217;, &#8216;&#8211;size&#8217;]:<br />
+                if opt in ['-z', '--size']:<br />
                     hanzi_size = int(value)<br />
         else:<br />
             help()<br />
@@ -169,22 +169,22 @@ else:<br />
         exit()</p>
 
 <p># Loading file.<br />
-with open(file_path, mode = &#8216;rb&#8217;) as f:<br />
-    # print(chardet.detect(f.read())[&#8216;encoding&#8217;])<br />
+with open(file_path, mode = 'rb') as f:<br />
+    # print(chardet.detect(f.read())['encoding'])<br />
     data = f.read()<br />
-    code = chardet.detect(data)[&#8216;encoding&#8217;]<br />
+    code = chardet.detect(data)['encoding']<br />
     txt = data.decode(code)<br />
-txt = &#8216;文始&gt;&#8217; + txt.replace(&#8216;\n&#8217;, &#8217;  &#8216;) + &#8216;&lt;文末&#8217;</p>
+txt = '文始&gt;' + txt.replace('\n', '  ') + '&lt;文末'</p>
 
 <p># Preparing window.<br />
 root = tk.Tk()<br />
-root.title(&#8220;速读 &#8221; + file_path)<br />
-show_font = font.Font(family = &#8216;serif&#8217;, size = hanzi_size, weight = &#8216;normal&#8217;)<br />
-show = tk.Label(root, text = &#8216;预备！&#8217;, font = show_font)<br />
+root.title("速读 " + file_path)<br />
+show_font = font.Font(family = 'serif', size = hanzi_size, weight = 'normal')<br />
+show = tk.Label(root, text = '预备！', font = show_font)<br />
 def toogle(event):<br />
     global reading<br />
     reading = not reading<br />
-root.bind(&#8216;&lt;KeyPress&gt;&#8217;, toogle)<br />
+root.bind('&lt;KeyPress&gt;', toogle)<br />
 show.pack()<br />
 def timer():<br />
     global pos<br />
@@ -195,12 +195,12 @@ def timer():<br />
 
 <p># Start.<br />
 timer()<br />
-print(&#8216;Press any key to resume or pause&#8230;&#8217;)<br />
+print('Press any key to resume or pause...')<br />
 show.config(text = txt[pos: pos + hanzi_at_a_time])<br />
 root.mainloop()<br />
-print(&#8216;Stop at position {0}.&#8217;.format(pos))<br />
+print('Stop at position {0}.'.format(pos))<br />
 if pos == len(txt) - (hanzi_at_a_time - 1):<br />
-    print(&#8216;Reading finished.&#8217;)
+    print('Reading finished.')
 
 &nbsp;</p>
 </div>
@@ -258,7 +258,7 @@ if pos == len(txt) - (hanzi_at_a_time - 1):<br />
 
 
   <section>
-    <h1>Comments</h1>
+    <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
 <div class="ds-thread" data-title="Python3快速阅读工具"></div>
 <script type="text/javascript">

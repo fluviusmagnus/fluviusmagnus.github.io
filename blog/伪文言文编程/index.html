@@ -84,7 +84,7 @@
 <time datetime="2012-07-24T00:00:00+08:00" pubdate data-updated="true">Jul 24th, 2012</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="#comments">评论</a>
         
       </p>
     
@@ -102,11 +102,11 @@
 if [ -n "$1" ]
 then</pre></p>
 
-<p>cf=&#8221;$1.cpp&#8221;<br />
+<p>cf="$1.cpp"<br />
 touch $cf<br />
 fl=`cat $1`<br />
 echo $fl<br />
-echo -e &#8220;#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nint main() &#8220;&gt;$cf<br />
+echo -e "#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nint main() "&gt;$cf<br />
 fl=${fl//不逊于/ &gt;= }<br />
 fl=${fl//不胜于/ &lt;= }<br />
 fl=${fl//予以/ = }<br />
@@ -122,7 +122,7 @@ fl=${fl//并以/ += }<br />
 fl=${fl//去以/ -= }<br />
 fl=${fl//其实/ * }<br />
 fl=${fl//其地/ &amp; }<br />
-fl=${fl//取以/ &#92; }<br />
+fl=${fl//取以/ \\ }<br />
 fl=${fl//请将/ for(}<br />
 fl=${fl//归曰/ return(}<br />
 fl=${fl//一/1}<br />
@@ -157,10 +157,10 @@ fl=${fl//听/ cin&gt;&gt;}<br />
 fl=${fl//止/endl}<br />
 fl=${fl//若/if(}<br />
 fl=${fl//可/) }<br />
-fl=${fl//道/ &#34;}<br />
-fl=${fl//也/&#34; }<br />
+fl=${fl//道/ \"}<br />
+fl=${fl//也/\" }<br />
 fl=${fl//益/++ }<br />
-fl=${fl//损/&#8211; }<br />
+fl=${fl//损/-- }<br />
 fl=${fl//并/ + }<br />
 fl=${fl//去/ - }<br />
 fl=${fl//倍/ * }<br />
@@ -178,7 +178,7 @@ fl=${fl//第/[}<br />
 fl=${fl//个/]}</p>
 
 <p>echo $fl&gt;&gt;$cf<br />
-g++ -o &#8220;$1.run&#8221; $cf<br />
+g++ -o "$1.run" $cf<br />
 fi<br />
 exit 0
 &nbsp;</p>
@@ -237,7 +237,7 @@ exit 0
 
 
   <section>
-    <h1>Comments</h1>
+    <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
 <div class="ds-thread" data-title="伪文言文编程"></div>
 <script type="text/javascript">

@@ -81,7 +81,7 @@
 <time datetime="2014-08-17T00:00:00+08:00" pubdate data-updated="true">Aug 17th, 2014</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="#comments">评论</a>
         
       </p>
     
@@ -112,7 +112,7 @@ Author: Tianhu Zhang &lt;zszth@126.com&gt; (A beginner to Python3)<br />
 renren.py is the main file which includes the very basic auth work.<br />
 And all the editable constants are listed in this file for convenience.<br />
 More useful classes are in renrenobj.py and should be imported before use.<br />
-&#8221;&#8217;<br />
+'''<br />
 from selenium import webdriver<br />
 from selenium.webdriver.common.keys import Keys<br />
 import urllib.request<br />
@@ -124,37 +124,37 @@ import easygui as g<br />
 # import glob<br />
 import webbrowser</p>
 
-<p>REFRESH_TOKEN = &#8221;<br />
-ACCESS_TOKEN = &#8221;<br />
+<p>REFRESH_TOKEN = ''<br />
+ACCESS_TOKEN = ''<br />
 USER_ID = 0</p>
 
-<p>if os.path.isfile(os.path.join(os.path.expanduser(&#8216;~/.freerr&#8217;), &#8216;.freerr&#8217;)):<br />
-    with open(os.path.join(os.path.expanduser(&#8216;~/.freerr&#8217;), &#8216;.freerr&#8217;), mode=&#8217;r&#8217;, encoding=&#8217;UTF-8&#8217;) as conf_file:<br />
+<p>if os.path.isfile(os.path.join(os.path.expanduser('~/.freerr'), '.freerr')):<br />
+    with open(os.path.join(os.path.expanduser('~/.freerr'), '.freerr'), mode='r', encoding='UTF-8') as conf_file:<br />
         ACCESS_TOKEN = conf_file.readline()<br />
         USER_ID = int(conf_file.readline())<br />
 else:<br />
-    # user_email = input(&#8216;Input Email to login: &gt;&#8217;)<br />
-    # user_password = getpass.unix_getpass(&#8216;Input password: &gt;&#8217;)<br />
-    user_email = g.enterbox(&#8216;Input Email to login:&#8217;, &#8216;Login&#8217;)<br />
-    user_password = g.passwordbox(&#8216;Input password:&#8217;, &#8216;Login&#8217;)<br />
+    # user_email = input('Input Email to login: &gt;')<br />
+    # user_password = getpass.unix_getpass('Input password: &gt;')<br />
+    user_email = g.enterbox('Input Email to login:', 'Login')<br />
+    user_password = g.passwordbox('Input password:', 'Login')<br />
     browser = webdriver.Firefox()<br />
     #！！！！！以下修改两处。client_id后面加上api_key，redirect_uri后加上php文件的url。<br />
     browser.get(<br />
-        &#8216;https://graph.renren.com/oauth/authorize?client_id=&amp;redirect_uri=&amp;response_type=code&#8217;)<br />
-    username = browser.find_element_by_name(&#8216;username&#8217;)<br />
+        'https://graph.renren.com/oauth/authorize?client_id=&amp;redirect_uri=&amp;response_type=code')<br />
+    username = browser.find_element_by_name('username')<br />
     username.send_keys(user_email)<br />
-    password = browser.find_element_by_name(&#8216;password&#8217;)<br />
+    password = browser.find_element_by_name('password')<br />
     password.send_keys(user_password)<br />
     password.send_keys(Keys.ENTER)<br />
-    json_inputbox = browser.find_element_by_tag_name(&#8216;textarea&#8217;)<br />
-    a_t_data = json.loads(json_inputbox.text, encoding=&#8217;UTF-8&#8217;)<br />
+    json_inputbox = browser.find_element_by_tag_name('textarea')<br />
+    a_t_data = json.loads(json_inputbox.text, encoding='UTF-8')<br />
     browser.close()<br />
-    # REFRESH_TOKEN = a_t_data[&#8216;refresh_token&#8217;]<br />
-    ACCESS_TOKEN = a_t_data[&#8216;access_token&#8217;]<br />
-    USER_ID = a_t_data[&#8216;user&#8217;][&#8216;id&#8217;]<br />
-    os.mkdir(os.path.expanduser(&#8216;~/.freerr&#8217;))<br />
-    with open(os.path.join(os.path.expanduser(&#8216;~/.freerr&#8217;), &#8216;.freerr&#8217;), mode=&#8217;w&#8217;, encoding=&#8217;utf-8&#8217;) as conf_file:<br />
-        conf_file.writelines(ACCESS_TOKEN + &#8216;\n&#8217;)<br />
+    # REFRESH_TOKEN = a_t_data['refresh_token']<br />
+    ACCESS_TOKEN = a_t_data['access_token']<br />
+    USER_ID = a_t_data['user']['id']<br />
+    os.mkdir(os.path.expanduser('~/.freerr'))<br />
+    with open(os.path.join(os.path.expanduser('~/.freerr'), '.freerr'), mode='w', encoding='utf-8') as conf_file:<br />
+        conf_file.writelines(ACCESS_TOKEN + '\n')<br />
         conf_file.writelines(str(USER_ID))<br />
 renrenobj.A_T = ACCESS_TOKEN<br />
 renrenobj.USER_ID = USER_ID</p>
@@ -164,71 +164,71 @@ renrenobj.USER_ID = USER_ID</p>
 <p>flag_exit = False<br />
 i = 0<br />
 while not flag_exit:<br />
-    if f.feed_list[i][&#8216;attachment&#8217;] and f.feed_list[i][&#8216;attachment&#8217;][0][&#8216;orginalUrl&#8217;]:<br />
+    if f.feed_list[i]['attachment'] and f.feed_list[i]['attachment'][0]['orginalUrl']:<br />
         if not os.path.isfile(<br />
-                os.path.join(os.path.expanduser(&#8216;~/.freerr&#8217;), &#8216;.freerr_&#8217; + str(f.feed_list[i][&#8216;resource&#8217;][&#8216;id&#8217;]))):<br />
-            img_data = urllib.request.urlopen(f.feed_list[i][&#8216;attachment&#8217;][0][&#8216;orginalUrl&#8217;]).read()<br />
-            with open(os.path.join(os.path.expanduser(&#8216;~/.freerr&#8217;), &#8216;.freerr_&#8217; + str(f.feed_list[i][&#8216;resource&#8217;][&#8216;id&#8217;])),<br />
-                      mode=&#8217;wb&#8217;) as img_file:<br />
+                os.path.join(os.path.expanduser('~/.freerr'), '.freerr_' + str(f.feed_list[i]['resource']['id']))):<br />
+            img_data = urllib.request.urlopen(f.feed_list[i]['attachment'][0]['orginalUrl']).read()<br />
+            with open(os.path.join(os.path.expanduser('~/.freerr'), '.freerr_' + str(f.feed_list[i]['resource']['id'])),<br />
+                      mode='wb') as img_file:<br />
                 img_file.write(img_data)<br />
-        choice = g.buttonbox(&#8216;{0} {1} {2}\n    {3}\n    source: {4}\n            {5}&#8217;.format(i, f.feed_list[i][&#8216;time&#8217;],<br />
+        choice = g.buttonbox('{0} {1} {2}\n    {3}\n    source: {4}\n            {5}'.format(i, f.feed_list[i]['time'],<br />
                                                                                              f.feed_list[i][<br />
-                                                                                                 &#8216;sourceUser&#8217;][<br />
-                                                                                                 &#8216;name&#8217;],<br />
-                                                                                             f.feed_list[i][&#8216;message&#8217;],<br />
-                                                                                             f.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                                 &#8216;title&#8217;],<br />
-                                                                                             f.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                                 &#8216;content&#8217;]),<br />
-                             &#8216;Feed List &#8217; + str(i),<br />
-                             [&#8216;Next&#8217;, &#8216;Comment&#8217;, &#8216;Open Browser&#8217;, &#8216;Update Status&#8217;, &#8216;Refresh&#8217;, &#8216;Exit&#8217;, &#8216;Prev&#8217;],<br />
-                             image=os.path.join(os.path.expanduser(&#8216;~/.freerr&#8217;),<br />
-                                                &#8216;.freerr_&#8217; + str(f.feed_list[i][&#8216;resource&#8217;][&#8216;id&#8217;])))<br />
+                                                                                                 'sourceUser'][<br />
+                                                                                                 'name'],<br />
+                                                                                             f.feed_list[i]['message'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'title'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'content']),<br />
+                             'Feed List ' + str(i),<br />
+                             ['Next', 'Comment', 'Open Browser', 'Update Status', 'Refresh', 'Exit', 'Prev'],<br />
+                             image=os.path.join(os.path.expanduser('~/.freerr'),<br />
+                                                '.freerr_' + str(f.feed_list[i]['resource']['id'])))<br />
     else:<br />
-        choice = g.buttonbox(&#8216;{0} {1} {2}\n    {3}\n    source: {4}\n            {5}&#8217;.format(i, f.feed_list[i][&#8216;time&#8217;],<br />
+        choice = g.buttonbox('{0} {1} {2}\n    {3}\n    source: {4}\n            {5}'.format(i, f.feed_list[i]['time'],<br />
                                                                                              f.feed_list[i][<br />
-                                                                                                 &#8216;sourceUser&#8217;][<br />
-                                                                                                 &#8216;name&#8217;],<br />
-                                                                                             f.feed_list[i][&#8216;message&#8217;],<br />
-                                                                                             f.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                                 &#8216;title&#8217;],<br />
-                                                                                             f.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                                 &#8216;content&#8217;]),<br />
-                             &#8216;Feed List &#8217; + str(i),<br />
-                             [&#8216;Next&#8217;, &#8216;Comment&#8217;, &#8216;Update Status&#8217;, &#8216;Refresh&#8217;, &#8216;Exit&#8217;, &#8216;Prev&#8217;])<br />
-    if choice == &#8216;Prev&#8217;:<br />
+                                                                                                 'sourceUser'][<br />
+                                                                                                 'name'],<br />
+                                                                                             f.feed_list[i]['message'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'title'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'content']),<br />
+                             'Feed List ' + str(i),<br />
+                             ['Next', 'Comment', 'Update Status', 'Refresh', 'Exit', 'Prev'])<br />
+    if choice == 'Prev':<br />
         if i == 0:<br />
-            g.msgbox(&#8216;No Prev!&#8217;, &#8216;Error&#8217;)<br />
+            g.msgbox('No Prev!', 'Error')<br />
         else:<br />
             i = i - 1<br />
-    elif choice == &#8216;Exit&#8217;:<br />
+    elif choice == 'Exit':<br />
         flag_exit = True<br />
-    elif choice == &#8216;Next&#8217;:<br />
+    elif choice == 'Next':<br />
         if i == len(f.feed_list) - 1:<br />
-            g.msgbox(&#8216;No Next!&#8217;, &#8216;Error&#8217;)<br />
+            g.msgbox('No Next!', 'Error')<br />
         else:<br />
             i = i + 1<br />
-    elif choice == &#8216;Comment&#8217;:<br />
-        c = renrenobj.Comment(f.feed_list[i][&#8216;type&#8217;], f.feed_list[i][&#8216;sourceUser&#8217;][&#8216;id&#8217;],<br />
-                              f.feed_list[i][&#8216;resource&#8217;][&#8216;id&#8217;])<br />
+    elif choice == 'Comment':<br />
+        c = renrenobj.Comment(f.feed_list[i]['type'], f.feed_list[i]['sourceUser']['id'],<br />
+                              f.feed_list[i]['resource']['id'])<br />
         cl = []<br />
         for j in range(len(c.comment_list)):<br />
-            cl.append(&#8216;{0} {1} {2}\n    {3}&#8217;.format(j, c.comment_list[j][&#8216;time&#8217;],<br />
+            cl.append('{0} {1} {2}\n    {3}'.format(j, c.comment_list[j]['time'],<br />
                                                     renrenobj.User.get_user_name(renrenobj.User,<br />
-                                                                                 c.comment_list[j][&#8216;authorId&#8217;]),<br />
-                                                    c.comment_list[j][&#8216;content&#8217;]))<br />
-        cl.append(&#8216;-1 Make a comment without replying to anyone&#8217;)<br />
-        reply_choice = g.choicebox(&#8216;Choose a person to reply:&#8217;, &#8216;Comments List&#8217;, cl)<br />
+                                                                                 c.comment_list[j]['authorId']),<br />
+                                                    c.comment_list[j]['content']))<br />
+        cl.append('-1 Make a comment without replying to anyone')<br />
+        reply_choice = g.choicebox('Choose a person to reply:', 'Comments List', cl)<br />
         if reply_choice:<br />
-            c.make_comment(int(reply_choice.split(&#8217; &#8216;)[0]))<br />
-    elif choice == &#8216;Update Status&#8217;:<br />
+            c.make_comment(int(reply_choice.split(' ')[0]))<br />
+    elif choice == 'Update Status':<br />
         renrenobj.status_pub()<br />
-    elif choice == &#8216;Refresh&#8217;:<br />
+    elif choice == 'Refresh':<br />
         del f<br />
         f = renrenobj.Feed()<br />
         i = 0<br />
-    elif choice == &#8216;Open Browser&#8217;:<br />
-        webbrowser.open(f.feed_list[i][&#8216;attachment&#8217;][0][&#8216;url&#8217;])
+    elif choice == 'Open Browser':<br />
+        webbrowser.open(f.feed_list[i]['attachment'][0]['url'])
 <h3> renrenobj.py</h3>
 <pre class="brush:python">#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
@@ -236,56 +236,56 @@ while not flag_exit:<br />
 
 <p>Renren defines a lot of special types.<br />
 This is a library of types returned in JSON.<br />
-&#8221;&#8217;<br />
+'''<br />
 import json<br />
 import urllib.request<br />
 import urllib.parse<br />
 import easygui as g</p>
 
-<p>A_T = &#8221;<br />
+<p>A_T = ''<br />
 USER_ID = 0</p>
 
 <p>def get_json_get(url_in):<br />
-    &#8221;&#8217;Function get_json_get<br />
+    '''Function get_json_get<br />
     GET mode.<br />
     This returns an object loaded from json.<br />
     When error return None.<br />
     Make sure the end of url_in and the beginning of a_t are correct.<br />
-    If url_in is with a parameter, add a &#8216;&amp;&#8217; after it.<br />
-    &#8221;&#8217;<br />
-    data = urllib.request.urlopen(url_in + &#8216;access_token=&#8217; + A_T).read()<br />
-    json_data = data.decode(&#8216;UTF-8&#8217;)<br />
-    obj = json.loads(json_data, encoding=&#8217;UTF-8&#8217;)<br />
-    if &#8216;error&#8217; in obj:<br />
-        g.msgbox(str(obj), &#8216;Error&#8217;)<br />
+    If url_in is with a parameter, add a '&amp;' after it.<br />
+    '''<br />
+    data = urllib.request.urlopen(url_in + 'access_token=' + A_T).read()<br />
+    json_data = data.decode('UTF-8')<br />
+    obj = json.loads(json_data, encoding='UTF-8')<br />
+    if 'error' in obj:<br />
+        g.msgbox(str(obj), 'Error')<br />
         return None<br />
     else:<br />
-        return obj[&#8216;response&#8217;]</p>
+        return obj['response']</p>
 
 <p>def get_json_post(url_in, para):<br />
-    &#8221;&#8217;Function get_json_post<br />
+    '''Function get_json_post<br />
     POST mode.<br />
     para should be a dict.<br />
     This returns an object loaded from json.<br />
     When error return None.<br />
     Make sure the end of url_no_a_t and the beginning of a_t are correct.<br />
-    &#8221;&#8217;<br />
-    postdata = urllib.parse.urlencode(para).encode(encoding=&#8217;UTF-8&#8217;)<br />
-    json_data = urllib.request.urlopen(url_in + &#8216;access_token=&#8217; + A_T, postdata).read().decode(&#8216;UTF-8&#8217;)<br />
-    obj = json.loads(json_data, encoding=&#8217;UTF-8&#8217;)<br />
-    if &#8216;error&#8217; in obj:<br />
-        g.msgbox(str(obj), &#8216;Error&#8217;)<br />
+    '''<br />
+    postdata = urllib.parse.urlencode(para).encode(encoding='UTF-8')<br />
+    json_data = urllib.request.urlopen(url_in + 'access_token=' + A_T, postdata).read().decode('UTF-8')<br />
+    obj = json.loads(json_data, encoding='UTF-8')<br />
+    if 'error' in obj:<br />
+        g.msgbox(str(obj), 'Error')<br />
         return None<br />
     else:<br />
-        return obj[&#8216;response&#8217;]</p>
+        return obj['response']</p>
 
 <p>class Feed:<br />
-    &#8221;&#8217;Class Feed</p>
+    '''Class Feed</p>
 
 <p>    This deals with the feed list.<br />
     a_t should be passed in when init.<br />
-    &#8221;&#8217;<br />
-    URL_GET_FEED_LIST = &#8216;https://api.renren.com/v2/feed/list?&#8217;</p>
+    '''<br />
+    URL_GET_FEED_LIST = 'https://api.renren.com/v2/feed/list?'</p>
 
 <p>    def __init__(self):<br />
         self.feed_list = get_json_get(self.URL_GET_FEED_LIST)<br />
@@ -294,115 +294,115 @@ USER_ID = 0</p>
             # If the list is None then do nothing.<br />
             # Abandoned.<br />
             # if self.feed_list:<br />
-            # for feed in self.feed_list[&#8216;response&#8217;]:<br />
+            # for feed in self.feed_list['response']:<br />
             # self.simplist.append(<br />
-            #             {&#8216;id&#8217;: feed[&#8216;id&#8217;], &#8216;time&#8217;: feed[&#8216;time&#8217;], &#8216;resource_content&#8217;: feed[&#8216;resource&#8217;][&#8216;content&#8217;],<br />
-            #              &#8216;user&#8217;: feed[&#8216;sourceUser&#8217;][&#8216;name&#8217;], &#8216;message&#8217;: feed[&#8216;message&#8217;],<br />
-            #              &#8216;resource_title&#8217;: feed[&#8216;resource&#8217;][&#8216;title&#8217;], &#8216;resource_id&#8217;: feed[&#8216;resource&#8217;][&#8216;id&#8217;], &#8216;type&#8217;: feed[&#8216;type&#8217;], &#8216;user_id&#8217;: feed[&#8216;sourceUser&#8217;][&#8216;id&#8217;],})</p>
+            #             {'id': feed['id'], 'time': feed['time'], 'resource_content': feed['resource']['content'],<br />
+            #              'user': feed['sourceUser']['name'], 'message': feed['message'],<br />
+            #              'resource_title': feed['resource']['title'], 'resource_id': feed['resource']['id'], 'type': feed['type'], 'user_id': feed['sourceUser']['id'],})</p>
 
 <p>    def show_feed_list(self):<br />
         for i in range(len(self.feed_list)):<br />
-            print(&#8216;{0} {1} {2}\n    {3}\n    source: {4}\n            {5}&#8217;.format(i, self.feed_list[i][&#8216;time&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;sourceUser&#8217;][<br />
-                                                                                      &#8216;name&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;message&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                      &#8216;title&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                      &#8216;content&#8217;]),<br />
-                  end=&#8217;\n\n\n&#8217;)</p>
+            print('{0} {1} {2}\n    {3}\n    source: {4}\n            {5}'.format(i, self.feed_list[i]['time'],<br />
+                                                                                  self.feed_list[i]['sourceUser'][<br />
+                                                                                      'name'],<br />
+                                                                                  self.feed_list[i]['message'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'title'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'content']),<br />
+                  end='\n\n\n')</p>
 
 <p>    def show_comment(self):<br />
-        i = int(input(&#8216;Input id to enter: &gt;&#8217;))<br />
-        c = Comment(self.feed_list[i][&#8216;type&#8217;],<br />
-                    self.feed_list[i][&#8216;sourceUser&#8217;][&#8216;id&#8217;],<br />
-                    self.feed_list[i][&#8216;resource&#8217;][&#8216;id&#8217;])<br />
+        i = int(input('Input id to enter: &gt;'))<br />
+        c = Comment(self.feed_list[i]['type'],<br />
+                    self.feed_list[i]['sourceUser']['id'],<br />
+                    self.feed_list[i]['resource']['id'])<br />
         cl = c.comment_list<br />
-        print(&#8216;|{0} {1} {2}\n|    {3}\n|    source: {4}\n|            {5}&#8217;.format(i, self.feed_list[i][&#8216;time&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;sourceUser&#8217;][<br />
-                                                                                      &#8216;name&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;message&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                      &#8216;title&#8217;],<br />
-                                                                                  self.feed_list[i][&#8216;resource&#8217;][<br />
-                                                                                      &#8216;content&#8217;]),<br />
-              end=&#8217;\n\n\n&#8217;)<br />
+        print('|{0} {1} {2}\n|    {3}\n|    source: {4}\n|            {5}'.format(i, self.feed_list[i]['time'],<br />
+                                                                                  self.feed_list[i]['sourceUser'][<br />
+                                                                                      'name'],<br />
+                                                                                  self.feed_list[i]['message'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'title'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'content']),<br />
+              end='\n\n\n')<br />
         for j in range(len(cl)):<br />
-            print(&#8216;{0} {1} {2}\n    {3}&#8217;.format(j, cl[j][&#8216;time&#8217;], User.get_user_name(User, cl[j][&#8216;authorId&#8217;]),<br />
-                                                cl[j][&#8216;content&#8217;]), end=&#8217;\n\n&#8217;)<br />
-            # ctrl = int(input(&#8216;Input a positive number to comment: &gt;&#8217;))<br />
+            print('{0} {1} {2}\n    {3}'.format(j, cl[j]['time'], User.get_user_name(User, cl[j]['authorId']),<br />
+                                                cl[j]['content']), end='\n\n')<br />
+            # ctrl = int(input('Input a positive number to comment: &gt;'))<br />
             # if ctrl &gt; 0:<br />
             # c.make_comment()</p>
 
 <p>class Comment:<br />
-    URL_GET_COMMENT_LIST = &#8216;https://api.renren.com/v2/comment/list?&#8217;</p>
+    URL_GET_COMMENT_LIST = 'https://api.renren.com/v2/comment/list?'</p>
 
 <p>    def __init__(self, commentType, entryOwnerId, entryId):<br />
-        &#8221;&#8217;Function __init__</p>
+        '''Function __init__</p>
 
 <p>        entryId should be resource id.<br />
-        &#8221;&#8217;<br />
+        '''<br />
         self.entryOwnerId = entryOwnerId<br />
         self.entryId = entryId<br />
-        if &#8216;SHARE&#8217; in commentType:<br />
-            self.commentType = &#8216;SHARE&#8217;<br />
-        if &#8216;UPDATE&#8217; in commentType:<br />
+        if 'SHARE' in commentType:<br />
+            self.commentType = 'SHARE'<br />
+        if 'UPDATE' in commentType:<br />
             self.commentType = commentType[7:]<br />
-        para = &#8216;commentType={0}&amp;entryOwnerId={1}&amp;entryId={2}&amp;&#8217;.format(self.commentType, self.entryOwnerId, self.entryId)<br />
+        para = 'commentType={0}&amp;entryOwnerId={1}&amp;entryId={2}&amp;'.format(self.commentType, self.entryOwnerId, self.entryId)<br />
         self.comment_list = get_json_get(self.URL_GET_COMMENT_LIST + para)<br />
         if self.comment_list:<br />
             self.comment_list = list(self.comment_list)</p>
 
 <p>    def make_comment(self, i):<br />
-        URL_MAKE_COMMENT = &#8216;https://api.renren.com/v2/comment/put?&#8217;<br />
-        # i = int(input(&#8216;Input id to send to,\nNegative number not to specify: &gt;&#8217;))<br />
-        if i &gt;= 0 and self.comment_list[i][&#8216;authorId&#8217;] == USER_ID:<br />
-            g.msgbox(&#8216;Cannot reply to yourself!&#8217;, &#8216;Error&#8217;)<br />
+        URL_MAKE_COMMENT = 'https://api.renren.com/v2/comment/put?'<br />
+        # i = int(input('Input id to send to,\nNegative number not to specify: &gt;'))<br />
+        if i &gt;= 0 and self.comment_list[i]['authorId'] == USER_ID:<br />
+            g.msgbox('Cannot reply to yourself!', 'Error')<br />
             return<br />
-        text = g.enterbox(&#8216;Input the content:&#8217;, &#8216;Comment&#8217;)<br />
+        text = g.enterbox('Input the content:', 'Comment')<br />
         if text:<br />
             if i &lt; 0:<br />
-                para = {&#8216;content&#8217;: text,<br />
-                        &#8216;commentType&#8217;: self.commentType,<br />
-                        &#8216;entryOwnerId&#8217;: self.entryOwnerId,<br />
-                        &#8216;entryId&#8217;: self.entryId}<br />
+                para = {'content': text,<br />
+                        'commentType': self.commentType,<br />
+                        'entryOwnerId': self.entryOwnerId,<br />
+                        'entryId': self.entryId}<br />
                 obj = get_json_post(URL_MAKE_COMMENT, para)<br />
                 if obj:<br />
-                    g.msgbox(&#8216;Done.&#8217;, &#8216;Comment&#8217;)<br />
+                    g.msgbox('Done.', 'Comment')<br />
             else:<br />
-                para = {&#8216;content&#8217;: text,<br />
-                        &#8216;commentType&#8217;: self.commentType,<br />
-                        &#8216;entryOwnerId&#8217;: self.entryOwnerId,<br />
-                        &#8216;entryId&#8217;: self.entryId,<br />
-                        &#8216;targetUserId&#8217;: self.comment_list[i][&#8216;authorId&#8217;]}<br />
+                para = {'content': text,<br />
+                        'commentType': self.commentType,<br />
+                        'entryOwnerId': self.entryOwnerId,<br />
+                        'entryId': self.entryId,<br />
+                        'targetUserId': self.comment_list[i]['authorId']}<br />
                 obj = get_json_post(URL_MAKE_COMMENT, para)<br />
                 if obj:<br />
-                    g.msgbox(&#8216;Done.&#8217;, &#8216;Comment&#8217;)</p>
+                    g.msgbox('Done.', 'Comment')</p>
 
 <p>def status_pub():<br />
-    text = g.enterbox(&#8216;Input status:&#8217;, &#8216;Update Status&#8217;)<br />
+    text = g.enterbox('Input status:', 'Update Status')<br />
     if text:<br />
-        URL_STATUS_PUB = &#8216;https://api.renren.com/v2/status/put?&#8217;<br />
-        obj = get_json_post(URL_STATUS_PUB, {&#8216;content&#8217;: text})<br />
+        URL_STATUS_PUB = 'https://api.renren.com/v2/status/put?'<br />
+        obj = get_json_post(URL_STATUS_PUB, {'content': text})<br />
         if obj:<br />
-            g.msgbox(&#8216;Done.&#8217;, &#8216;Update Status&#8217;)</p>
+            g.msgbox('Done.', 'Update Status')</p>
 
 <p>class User:<br />
-    &#8221;&#8217;Class User</p>
+    '''Class User</p>
 
 <p>    This deals with user info.<br />
-    &#8221;&#8217;<br />
+    '''<br />
     user_id = 0<br />
-    user_name = &#8221;</p>
+    user_name = ''</p>
 
 <p>    def __init__(self, user_id):<br />
         self.user_id = user_id</p>
 
 <p>    def get_user_name(self, user_id):<br />
-        URL_GET_USER_NAME = &#8216;https://api.renren.com/v2/user/get?&#8217;<br />
-        obj = get_json_get(URL_GET_USER_NAME + &#8216;userId={0}&#8217;.format(user_id) + &#8216;&amp;&#8217;)<br />
+        URL_GET_USER_NAME = 'https://api.renren.com/v2/user/get?'<br />
+        obj = get_json_get(URL_GET_USER_NAME + 'userId={0}'.format(user_id) + '&amp;')<br />
         if obj:<br />
-            self.user_name = obj[&#8216;name&#8217;]<br />
+            self.user_name = obj['name']<br />
             return self.user_name
 <h3> freerr.php</h3>
 <pre class="brush:php">&lt;html&gt;
@@ -479,7 +479,7 @@ echo $json;
 
 
   <section>
-    <h1>Comments</h1>
+    <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
 <div class="ds-thread" data-title="人人网Linux客户端预览版（停工）"></div>
 <script type="text/javascript">

@@ -81,7 +81,7 @@
 <time datetime="2015-02-03T00:00:00+08:00" pubdate data-updated="true">Feb 3rd, 2015</time>
         
         
-           | <a href="#comments">Comments</a>
+           | <a href="#comments">评论</a>
         
       </p>
     
@@ -94,7 +94,7 @@
 
 <p>另一个是邮件无法发送的问题。和国内大多数虚拟主机一样，php的邮件函数是被禁用的，所以只能考虑smtp。但是smtp试了一下还是不成功，WP Mail Bank等插件的返回是“smtp error failed to connect to server (0)”。这个问题我研究了很久，网上都没有直接的资料，最后终于发现是wp-includes/class-smtp.php出现问题。</p>
 
-<p>通过<a title="fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案" href="http://leo108.com/pid-1497.asp" target="_blank">《fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案 | leo108&#8217;s blog》</a>可以得知，要在fsockopen上动手脚才能解决问题。但是仔细一看，4.1的wp里已经默认使用了作为“解决方案”的stream_socket_client函数。此时，回到万网后台一看，发现fsockopen恰恰可以选择打开。于是打开后，抱着试试看的心态逆着wp开发者的想法把函数改了回去。如下：
+<p>通过<a title="fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案" href="http://leo108.com/pid-1497.asp" target="_blank">《fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案 | leo108's blog》</a>可以得知，要在fsockopen上动手脚才能解决问题。但是仔细一看，4.1的wp里已经默认使用了作为“解决方案”的stream_socket_client函数。此时，回到万网后台一看，发现fsockopen恰恰可以选择打开。于是打开后，抱着试试看的心态逆着wp开发者的想法把函数改了回去。如下：
 <pre class="brush:php">        //$this-&gt;smtp_conn = @stream_socket_client(
         $this-&gt;smtp_conn = @fsockopen(
         //    $host . ":" . $port,
@@ -166,7 +166,7 @@
 
 
   <section>
-    <h1>Comments</h1>
+    <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
 <div class="ds-thread" data-title="万网虚拟主机Wordpress配置技巧"></div>
 <script type="text/javascript">

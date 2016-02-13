@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 边学边讲 | 人間夜行]]></title>
   <link href="https://koccn.net/blog/categories/bian-xue-bian-jiang/atom.xml" rel="self"/>
   <link href="https://koccn.net/"/>
-  <updated>2016-02-13T22:59:55+08:00</updated>
+  <updated>2016-02-13T23:24:58+08:00</updated>
   <id>https://koccn.net/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -118,7 +118,7 @@ int main()
     <link href="https://koccn.net/blog/kr-c-bible-exercises-1-2/"/>
     <updated>2012-01-19T00:00:00+08:00</updated>
     <id>https://koccn.net/blog/kr-c-bible-exercises-1-2</id>
-    <content type="html"><![CDATA[<p>Experiment to find out what happens when printf&#8217;s argument string contains \c, where c is some character not listed above.</p>
+    <content type="html"><![CDATA[<p>Experiment to find out what happens when printf's argument string contains \c, where c is some character not listed above.</p>
 
 
 
@@ -146,7 +146,7 @@ int main()
     <link href="https://koccn.net/blog/kr-c-bible-exercises-1-1/"/>
     <updated>2012-01-19T00:00:00+08:00</updated>
     <id>https://koccn.net/blog/kr-c-bible-exercises-1-1</id>
-    <content type="html"><![CDATA[<p>Run the &#8220;hello, world&#8221; program on your system. Experiment with leaving out parts of the program, to see what error messages you get.</p>
+    <content type="html"><![CDATA[<p>Run the "hello, world" program on your system. Experiment with leaving out parts of the program, to see what error messages you get.</p>
 
 
 
