@@ -1,0 +1,689 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>网上找到的高精度运算 - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="编译通过。稍微改了一下。可能将被用于solvequad。 //本文件所有代码来自于pucn.com的chenying。由于未注明所用的协议，请原作者速速与本项目取得联系。本文件的部分内容可能将用作头文件。
+//高精度整数除法是高精度加减乘的综合！
+#include &lt;stdio.h&gt &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/%E7%BD%91%E4%B8%8A%E6%89%BE%E5%88%B0%E7%9A%84%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%BF%90%E7%AE%97">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">网上找到的高精度运算</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-29T00:00:00+08:00" pubdate data-updated="true">Jun 29th, 2011</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>编译通过。稍微改了一下。可能将被用于solvequad。</p>
+
+<p>//本文件所有代码来自于pucn.com的chenying。由于未注明所用的协议，请原作者速速与本项目取得联系。本文件的部分内容可能将用作头文件。<br />
+//高精度整数除法是高精度加减乘的综合！<br />
+#include &lt;stdio.h&gt;<br />
+#include &lt;stdlib.h&gt;<br />
+#include &lt;string.h&gt;<br />
+#include &lt;ctype.h&gt;<!--more--></p>
+
+<p>int cchkdig(char *r)<br />
+{
+int i=0;<br />
+while(r[i]!=&#8217;\0&#8217;)<br />
+{
+if(isdigit(r[i++])==0)<br />
+return (0);<br />
+}
+return (1);<br />
+}
+//去掉整数串表示前面多余的零，最后结果为空串时置为&#8221;0&#8221;<br />
+void cdel0(char *r)<br />
+{
+unsigned int lr;<br />
+int i=0, j;<br />
+lr=strlen(r);<br />
+while(r[i]==&#8217;0&#8217;)<br />
+++i;<br />
+if(i&gt;0)<br />
+{
+for(j=0; j&lt;(lr-i); ++j)<br />
+r[j]=r[j+i];<br />
+for(j=lr-i; j&lt;lr; ++j)<br />
+{
+r[j]=&#8217;\0&#8217;;<br />
+}
+}</p>
+
+<p>if(r[0]==&#8217;\0&#8217;)<br />
+{
+r[0]=&#8217;0&#8217;;<br />
+}
+}</p>
+
+<p>int scmp(char *r, char *u)<br />
+{
+unsigned int lr, lu;<br />
+cdel0(r);<br />
+cdel0(u);</p>
+
+<p>lr=strlen(r);<br />
+lu=strlen(u);</p>
+
+<p>if(lr&gt;lu)<br />
+{
+return 1;<br />
+}
+else if (lr&lt;lu)<br />
+{
+return -1;<br />
+}
+return (strcmp(r, u));</p>
+
+<p>}//end scmp()</p>
+
+<p>//两个串表示数的减法<br />
+char *ssub(char *r, char *u)<br />
+{
+unsigned int i,lr, lu, lp,c=0;<br />
+char h,hc;<br />
+char *p;<br />
+if(scmp(r, u)&lt;0)<br />
+return NULL;<br />
+lr=strlen(r);<br />
+lu=strlen(u);<br />
+p=(char *)malloc((unsigned int)(lr+1)*sizeof(char));<br />
+for(i=0; i&lt;lu; ++i)<br />
+{
+h=r[lr-i-1]-u[lu-i-1]-c;<br />
+if(h&lt;0)<br />
+{
+c=1;<br />
+h=h+10;<br />
+}
+else<br />
+c=0;<br />
+p[i]=h+&#8217;0&#8217;;<br />
+hc=h+&#8217;0&#8217;;<br />
+}
+for (i=lu; i&lt;lr; ++i)<br />
+{
+h=r[lr-i-1]-&#8216;0&#8217;-c;<br />
+if(h&lt;0)<br />
+{
+c=1;<br />
+h=h+10;<br />
+}
+else<br />
+c=0;<br />
+p[i]=&#8217;0&#8217;+h;<br />
+hc=&#8217;0&#8217;+h;<br />
+}
+p[i]=&#8217;\0&#8217;;<br />
+lp=i-1;</p>
+
+<p>while(p[lp]==&#8217;0&#8217;&amp;&amp;lp!=0)<br />
+{
+p[lp]=&#8217;\0&#8217;;<br />
+lp&#8211;;<br />
+}</p>
+
+<p>for(i=0; i&lt;(lp+1)/2; ++i)<br />
+{
+hc=p[i];<br />
+p[i]=p[lp-i];<br />
+p[lp-i]=hc;<br />
+}
+return (p);<br />
+}//end ssub()</p>
+
+<p>//两个串表示数的加法<br />
+char *sadd(char *r, char *u)<br />
+{
+unsigned int lr, lu, lp;<br />
+int i, h, c=0;<br />
+char hc, *p;<br />
+lr=strlen(r);<br />
+lu=strlen(u);<br />
+if(lu&gt;lr)<br />
+{
+p=r;<br />
+r=u;<br />
+u=p;<br />
+h=lr;<br />
+lr=lu;<br />
+lu=h;<br />
+}
+p=(char *)malloc((unsigned int)(lr+2)*sizeof(char));<br />
+for(i=0; i&lt;lu; ++i)<br />
+{
+h=r[lr-i-1]-&#8216;0&#8217;+u[lu-i-1]-&#8216;0&#8217;+c;<br />
+if(h&gt;9)<br />
+{
+c=1;<br />
+h=h-10;<br />
+}
+else<br />
+c=0;<br />
+p[i]=h+&#8217;0&#8217;;<br />
+}
+for(i=lu; i&lt;lr; ++i)<br />
+{
+h=r[lr-i-1]-&#8216;0&#8217;+c;<br />
+if(h&gt;9)<br />
+{
+c=1;<br />
+h=h-10;<br />
+}
+else<br />
+c=0;<br />
+p[i]=&#8217;0&#8217;+h;<br />
+}
+if(c&gt;0)<br />
+{
+p[i]=c+&#8217;0&#8217;;<br />
+lp=i;<br />
+}
+else<br />
+lp=i-1;<br />
+for(i=lp+1; i&lt;lr+2; ++i)<br />
+p[i]=&#8217;\0&#8217;;<br />
+for(i=0; i&lt;(lp+1)/2; ++i)<br />
+{
+hc=p[i];<br />
+p[i]=p[lp-i];<br />
+p[lp-i]=hc;<br />
+}
+return (p);<br />
+}//end sadd()</p>
+
+<p>//两个串表示数的乘法<br />
+char *smut(char *r, char *u)<br />
+{
+unsigned int lr, lu, lp;<br />
+int i, j, c, h;<br />
+char *p;<br />
+lr=strlen(r);<br />
+lu=strlen(u);<br />
+p=(char *)malloc((unsigned int)(lr+lu+1)*sizeof(char));<br />
+for(i=0; i&lt;lr+lu; ++i)<br />
+p[i]=&#8217;0&#8217;;<br />
+p[lr+lu]=&#8217;\0&#8217;;<br />
+for(i=lr-1; i&gt;=0; &#8211;i)<br />
+{
+c=0;<br />
+for(j=lu-1; j&gt;=0; &#8211;j)<br />
+{
+lp=i+j+1;<br />
+h=(r[i]-&#8216;0&#8217;)*(u[j]-&#8216;0&#8217;)+p[lp]-&#8216;0&#8217;+c;<br />
+c=h/10;<br />
+h=h%10;<br />
+p[lp]=h+&#8217;0&#8217;;<br />
+}
+if(c&gt;0)p[i+j+1]=c+&#8217;0&#8217;;<br />
+}
+cdel0(p);<br />
+return p;<br />
+}//end smut()</p>
+
+<p>//两个串表示数的除法，结果精确到小数点后第n位<br />
+char *sdivf(char *u, char *v, int n)<br />
+{
+char *p, *f, *r,*q;<br />
+unsigned int i, lu, lv, lr, iw, c, h;<br />
+int kh, j;<br />
+lu=strlen(u);<br />
+lv=strlen(v);<br />
+f=(char *)malloc((unsigned int)(lu+n+3)*sizeof(char));<br />
+q=(char *)malloc(sizeof(char));<br />
+for(i=0; i&lt;lu+n+3; ++i)<br />
+f[i]=&#8217;\0&#8217;;<br />
+r=(char *)malloc((unsigned int)(lv+2)*sizeof(char));<br />
+for(i=0; i&lt;lv+2; ++i)<br />
+r[i]=&#8217;\0&#8217;;<br />
+for(iw=0; iw&lt;lu+n+2; ++iw)<br />
+{
+if(iw&lt;lu)<br />
+{
+cdel0(r);<br />
+lr=strlen(r);<br />
+r[lr]=u[iw];<br />
+r[lr+1]=&#8217;\0&#8217;;<br />
+}</p>
+
+<p>else if(iw&gt;lu)<br />
+{
+cdel0(r);<br />
+q[0]=&#8217;0&#8217;;<br />
+if(scmp(r, q)==0)<br />
+{
+break;<br />
+}
+lr=strlen(r);<br />
+r[lr]=&#8217;0&#8217;;<br />
+r[lr+1]=&#8217;\0&#8217;;<br />
+}
+else<br />
+{
+f[lu]=&#8217;.&#8217;;<br />
+continue;<br />
+}
+kh=0;<br />
+while(scmp(r, v)&gt;=0)<br />
+{
+p=r;<br />
+r=ssub(p, v);<br />
+++kh;<br />
+}
+f[iw]=kh+&#8217;0&#8217;;<br />
+}
+if(iw==lu+n+2)<br />
+{
+if(f[lu+n+1]&gt;=&#8217;5&#8217;)<br />
+{
+f[lu+n+1]=&#8217;\0&#8217;;<br />
+c=1;<br />
+for(j=lu+n; j&gt;=0; &#8211;j)<br />
+{
+if(c==0)<br />
+{
+break;<br />
+}
+if(f[j]==&#8217;.&#8217;)<br />
+{
+continue;<br />
+}
+h=f[j]-&#8216;0&#8217;+c;<br />
+if(h&gt;9)<br />
+{
+h=h-10;<br />
+c=1;<br />
+}
+else<br />
+c=&#8217;\0&#8217;;<br />
+f[j]=h+&#8217;0&#8217;;<br />
+}
+}<br />
+else<br />
+f[lu+n+1]=&#8217;\0&#8217;;</p>
+
+<p>}<br />
+free(r);<br />
+free(p);<br />
+q=NULL;<br />
+free(q);<br />
+cdel0(f);<br />
+return(f);<br />
+}//end sdivf()</p>
+
+<p>//两个串表示数的除法，结果分别用整商与余数表示<br />
+char *sdivkr(char *u, char *v, char **rout)<br />
+{
+char *f, *r;<br />
+unsigned int i, lu, lv, lr, iw;<br />
+int kh;<br />
+lu=strlen(u);<br />
+lv=strlen(v);</p>
+
+<p>f=(char *)malloc((unsigned int)(lu+1)*sizeof(char));<br />
+for(i=0; i&lt;lu+1; ++i) f[i]=&#8217;\0&#8217;;<br />
+r=(char *)malloc((unsigned int)(lv+2)*sizeof(char));<br />
+for(i=0; i&lt;lv+2; ++i) r[i]=&#8217;\0&#8217;;</p>
+
+<p>for(iw=0; iw&lt;lu; ++iw)<br />
+{
+cdel0(r);<br />
+lr=strlen(r);<br />
+r[lr]=u[iw];<br />
+r[lr+1]=&#8217;\0&#8217;;<br />
+kh=0;<br />
+while(scmp(r, v)&gt;=0)<br />
+{
+r=ssub(r, v);<br />
+++kh;<br />
+}
+f[iw]=kh+&#8217;0&#8217;;<br />
+}
+cdel0(r);<br />
+*rout=r;<br />
+cdel0(f);<br />
+return(f);<br />
+}//end *sdivkr()</p>
+
+<p>//调用上述函数实现两任意长正整数任意指定精度的算术计算器程序<br />
+void main(int argc, char *argv[])<br />
+{
+char *p, *r;<br />
+int n;<br />
+if(argc!=4)<br />
+{
+if(argc!=3)<br />
+printf(&#8220;&gt;&gt;&#34;order n1 op n2&#34; or n ! \n&#8221;);<br />
+exit(0);<br />
+}
+cdel0(argv[1]);<br />
+if(cchkdig(argv[1])==0)<br />
+{
+printf(&#8220;Input data error, Input again!&#8221;);<br />
+exit(0);<br />
+}
+cdel0(argv[3]);<br />
+if(cchkdig(argv[3])==0)<br />
+{
+printf(&#8220;Input data error, Input again!&#8221;);<br />
+exit(0);<br />
+}</p>
+
+<p>if(strcmp(argv[2], &#8220;+&#8221;)==0)<br />
+{
+printf(&#8220;%s&#8221;, p=sadd(argv[1], argv[3]));<br />
+free(p);<br />
+}
+else if(strcmp(argv[2], &#8220;-&#8220;)==0)<br />
+{
+printf(&#8220;%s&#8221;, p=ssub(argv[1], argv[3]));<br />
+free(p);<br />
+}
+else if(strcmp(argv[2], &#8220;*&#8221;)==0)<br />
+{
+printf(&#8220;%s&#8221;, p=smut(argv[1], argv[3]));<br />
+free(p);<br />
+}
+else if(argv[2][0]==&#8217;/&#8217; &amp;&amp; strlen(argv[2])==1)<br />
+{
+if(argv[3][0]==&#8217;0&#8217;)<br />
+{
+printf(&#8220;error!devided by zero!!\n&#8221;);<br />
+exit(0);<br />
+}
+p=sdivkr(argv[1], argv[3], &amp;r);<br />
+printf(&#8220;k=%s r=%s&#8221;, p, r);<br />
+free(p);<br />
+free(r);<br />
+}</p>
+
+<p>else if(argv[2][0]==&#8217;/&#8217;&amp;&amp;strlen(argv[2])&gt;1)<br />
+{
+if(argv[3][0]==&#8217;0&#8217;)<br />
+{
+printf(&#8220;error!devided by zero!!\n&#8221;);<br />
+exit(0);<br />
+}</p>
+
+<p>argv[2][0]=&#8217;\0&#8217;;<br />
+cdel0(argv[2]);<br />
+if(cchkdig(argv[2])==0)<br />
+{
+printf(&#8220;Input data error, Input again!&#8221;);<br />
+exit (0);<br />
+}
+n=atoi(argv[2]);<br />
+printf(&#8220;%s&#8221;, p=sdivf(argv[1], argv[3], n));<br />
+free(p);<br />
+}
+printf(&#8220;\n&#8221;);<br />
+}</p>
+
+<p>&nbsp;</p>
+
+<p>话说考试考完了，放假了，初中毕业了。考得一般。心情一般。<br />
+还是应该向前看啊。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-06-29T00:00:00+08:00" pubdate data-updated="true">Jun 29th, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/%E7%BD%91%E4%B8%8A%E6%89%BE%E5%88%B0%E7%9A%84%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%BF%90%E7%AE%97/" data-via="" data-counturl="https://koccn.net/blog/%E7%BD%91%E4%B8%8A%E6%89%BE%E5%88%B0%E7%9A%84%E9%AB%98%E7%B2%BE%E5%BA%A6%E8%BF%90%E7%AE%97/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/%E6%8F%90%E5%89%8D%E9%80%9A%E5%91%8A/" title="Previous Post: 提前通告">&laquo; 提前通告</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E9%99%8D%E4%BD%8E%E6%88%90%E6%9C%AC%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/" title="Next Post: 降低成本的头文件">降低成本的头文件 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="网上找到的高精度运算"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

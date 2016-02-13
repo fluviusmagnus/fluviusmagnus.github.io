@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>伪文言文编程 - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="实际上还是基于C++的，功能极为简单（仅10个变量，不过组合性强），一一替换而已。耍人不错。 一个程序的例子：
+天 为 今有甲与乙兮 乙予以〇兮 请将甲予以一兮甲不胜于一〇〇兮甲益则为 乙并以甲兮哉 曰乙兮曰止兮 归曰善兮哉
+运行结果为：5050。 上转换代码，求高人继续改进！
+#!/bin/ &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/%E4%BC%AA%E6%96%87%E8%A8%80%E6%96%87%E7%BC%96%E7%A8%8B">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">伪文言文编程</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-07-24T00:00:00+08:00" pubdate data-updated="true">Jul 24th, 2012</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>实际上还是基于C++的，功能极为简单（仅10个变量，不过组合性强），一一替换而已。耍人不错。</p>
+
+<p>一个程序的例子：
+<blockquote>天 为 今有甲与乙兮 乙予以〇兮 请将甲予以一兮甲不胜于一〇〇兮甲益则为 乙并以甲兮哉 曰乙兮曰止兮 归曰善兮哉</blockquote>
+运行结果为：5050。</p>
+
+<p>上转换代码，求高人继续改进！<!--more-->
+<pre class="brush:bash">#!/bin/bash
+if [ -n "$1" ]
+then</pre></p>
+
+<p>cf=&#8221;$1.cpp&#8221;<br />
+touch $cf<br />
+fl=`cat $1`<br />
+echo $fl<br />
+echo -e &#8220;#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nint main() &#8220;&gt;$cf<br />
+fl=${fl//不逊于/ &gt;= }<br />
+fl=${fl//不胜于/ &lt;= }<br />
+fl=${fl//予以/ = }<br />
+fl=${fl//同于/ == }<br />
+fl=${fl//异于/ != }<br />
+fl=${fl//胜于/ &gt; }<br />
+fl=${fl//逊于/ &lt; }<br />
+fl=${fl//今有/ int }<br />
+fl=${fl//或云/ string }<br />
+fl=${fl//均以/ \/= }<br />
+fl=${fl//倍以/ *= }<br />
+fl=${fl//并以/ += }<br />
+fl=${fl//去以/ -= }<br />
+fl=${fl//其实/ * }<br />
+fl=${fl//其地/ &amp; }<br />
+fl=${fl//取以/ &#92; }<br />
+fl=${fl//请将/ for(}<br />
+fl=${fl//归曰/ return(}<br />
+fl=${fl//一/1}<br />
+fl=${fl//二/2}<br />
+fl=${fl//三/3}<br />
+fl=${fl//四/4}<br />
+fl=${fl//五/5}<br />
+fl=${fl//六/6}<br />
+fl=${fl//七/7}<br />
+fl=${fl//八/8}<br />
+fl=${fl//九/9}<br />
+fl=${fl//〇/0}<br />
+fl=${fl//甲/a}<br />
+fl=${fl//乙/b}<br />
+fl=${fl//丙/c}<br />
+fl=${fl//丁/d}<br />
+fl=${fl//戊/e}<br />
+fl=${fl//己/f}<br />
+fl=${fl//庚/g}<br />
+fl=${fl//辛/h}<br />
+fl=${fl//壬/i}<br />
+fl=${fl//癸/j}<br />
+fl=${fl//天/}<br />
+fl=${fl//与/ , }<br />
+fl=${fl//为/ \{ }<br />
+fl=${fl//哉/ \} }<br />
+fl=${fl//兮/; }<br />
+fl=${fl//且/ &amp;&amp; }<br />
+fl=${fl//或/ || }<br />
+fl=${fl//曰/ cout&lt;&lt;}<br />
+fl=${fl//听/ cin&gt;&gt;}<br />
+fl=${fl//止/endl}<br />
+fl=${fl//若/if(}<br />
+fl=${fl//可/) }<br />
+fl=${fl//道/ &#34;}<br />
+fl=${fl//也/&#34; }<br />
+fl=${fl//益/++ }<br />
+fl=${fl//损/&#8211; }<br />
+fl=${fl//并/ + }<br />
+fl=${fl//去/ - }<br />
+fl=${fl//倍/ * }<br />
+fl=${fl//均/ \/ }<br />
+fl=${fl//剩/ % }<br />
+fl=${fl//乾/1}<br />
+fl=${fl//坤/0}<br />
+fl=${fl//当/while(}<br />
+fl=${fl//试/do }<br />
+fl=${fl//则/) }<br />
+fl=${fl//善/0)}<br />
+fl=${fl//之/.}<br />
+fl=${fl//又/.}<br />
+fl=${fl//第/[}<br />
+fl=${fl//个/]}</p>
+
+<p>echo $fl&gt;&gt;$cf<br />
+g++ -o &#8220;$1.run&#8221; $cf<br />
+fi<br />
+exit 0
+&nbsp;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-07-24T00:00:00+08:00" pubdate data-updated="true">Jul 24th, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/%E4%BC%AA%E6%96%87%E8%A8%80%E6%96%87%E7%BC%96%E7%A8%8B/" data-via="" data-counturl="https://koccn.net/blog/%E4%BC%AA%E6%96%87%E8%A8%80%E6%96%87%E7%BC%96%E7%A8%8B/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/%E7%81%B5%E3%80%81%E8%82%89%E4%B8%8E%E6%AD%BB%E3%80%81%E7%94%9F/" title="Previous Post: 灵、肉与死、生">&laquo; 灵、肉与死、生</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E6%8B%92%E7%BB%9D/" title="Next Post: 拒绝">拒绝 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="伪文言文编程"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

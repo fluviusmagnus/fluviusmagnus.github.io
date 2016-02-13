@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Linux下优酷视频自动下载脚本 - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="20150408再更新：发现github上有个叫作you-get的项目，可以比我这个脚本更出色地完成这种任务。于是以下内容就仅供参考好了。 提示：由于flvcd.com不再正常提供有解析结果的网页，本脚本只剩下参考价值。此非我力所能及，敬请谅解。
+20150217更新：flvcd.com服务恢复， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/linux%E4%B8%8B%E4%BC%98%E9%85%B7%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Linux下优酷视频自动下载脚本</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-08-16T00:00:00+08:00" pubdate data-updated="true">Aug 16th, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><span style="color: #ff0000;">20150408再更新：发现github上有个叫作you-get的项目，可以比我这个脚本更出色地完成这种任务。于是以下内容就仅供参考好了。</span></p>
+
+<p><del>提示：由于flvcd.com不再正常提供有解析结果的网页，本脚本只剩下参考价值。此非我力所能及，敬请谅解。<span style="color: #ff0000;">
+</span></del><span style="color: #ff0000;">20150217更新：flvcd.com服务恢复，源脚本稍作修改可用。具体见代码。下载处链接已更新。</span></p>
+
+<p>今天在网上看到一篇题为《<a style="color: #000000;" title="python3自动下载优酷视频小程序" href="http://blog.csdn.net/littlethunder/article/details/18230859" target="_blank">python3自动下载优酷视频小程序</a>》的文章，赶紧试用了一下，发现已经失效了。可能是优酷已经改变了其策略，导致经常性403错误。而且，原作者竟然通过直接拼接的方式合并视频，相当于：
+<blockquote>
+<pre class="brush:bash">cat 1.flv 2.flv &gt; 3.flv</pre>
+</blockquote>
+众所周知，如此合并是行不通的，至少是有隐患的。于是，我尝试使用了新方法来实现这个程序的功能。<!--more-->
+<h2>原理</h2>
+本脚本youkudownloader.py由Python3写成，使用了相对脆弱的正则表达式来通过flvcd.com来获取较为稳定的视频地址，同时使用了mencoder作为合并视频的工具，并且为图方便省事，排除了对其他操作系统的支持。
+<h2>使用方法</h2>
+在终端中输入：
+<pre class="brush:bash">chmod +x youkudownloader.py    #此步骤在第一次使用前做一次即可。
+python3 youkudownloader.py video_url</pre>
+把video_url替换成优酷视频id页，有如http://v.youku.com/v_show/id_XMzA2NTM4NDQ0.html。或者你也可以先留空，留待脚本运行时输入。 需要注意的是，mencode必须已经安装好，否则就白忙活了。
+<h2>代码</h2>
+<pre class="brush:python">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+'''youkudownloader.py</pre></p>
+
+<p>Author: Tianhu Zhang &lt;zszth@126.com&gt;<br />
+License: GPLv3</p>
+
+<p>A python3 script for downloading videos from youku.com.<br />
+Using flvcd.com to get source urls.<br />
+Using mencoder to merge files.</p>
+
+<p>IMPORTANT!!<br />
+1. This script works ONLY under LINUX (or other unix-like systems).<br />
+2. Please make sure that you have mencoder installed.<br />
+In Ubuntu (or other similar linux distributions), enter this in your<br />
+shell to install mencoder:<br />
+    sudo apt-get install mencoder<br />
+Installations on other systems may vary.</p>
+
+<p>Usage:<br />
+    In shell enter:<br />
+        chmod +x youkudownloader.py #Do this for the first time.<br />
+        python3 youkudownloader.py video_url<br />
+    And video_url should be replaced by the url of Youku video id page,<br />
+    such as http://v.youku.com/v_show/id_XMzA2NTM4NDQ0.html<br />
+    Or you can leave it empty and type the url in when asked.<br />
+&#8221;&#8217;<br />
+__author__ = &#8216;Tianhu Zhang&#8217;<br />
+import urllib.request<br />
+import re<br />
+import os<br />
+FLVCD_URL = &#8216;http://www.flvcd.com/parse.php?kw=&#8217;<br />
+# video_id_page = &#8216;http://v.youku.com/v_show/id_XMzA2NTM4NDQ0.html&#8217;</p>
+
+<p>def get_info(video_id_page):<br />
+    parse_page = urllib.request.urlopen(FLVCD_URL+video_id_page).read().decode(&#8216;gb2312&#8217;)<br />
+    # print(parse_page)<br />
+    # urls_unparsed = re.findall(r&#8217;&lt;a href=&#8221;.*?&#8221; target=&#8221;_blank&#8221; onclick=&#8221;_alert\(\);return false;&#8221;&gt;&#8217;, parse_page)<br />
+    urls_unparsed = re.findall(r&#8217;&lt;a href=&#8221;.*?&#8221; target=&#8221;_blank&#8221; onclick=&#39;_alert\(\);return false;&#39;&gt;&#8217;, parse_page)<br />
+    urls = []<br />
+    for url in urls_unparsed:<br />
+        urls.append(url[9:-51])<br />
+    # print(urls)<br />
+    # print(len(urls))<br />
+    title = re.findall(r&#8217;&lt;strong&gt;当前解析视频：&lt;/strong&gt;.*?&lt;strong&gt;&#8217;, parse_page)[0][24:-8].strip(&#8217; &#8216;)<br />
+    title = re.sub(r&#8217;[ /#$&amp;()-&#92;\t*?+.,&#39;&#8221;_`~|&lt;&gt;{}^]&#8217;, &#8220;&#8221;, title)<br />
+    # print(title)<br />
+    return [urls, title]</p>
+
+<p>def download(info):<br />
+    para = &#8221;<br />
+    for i in range(len(info[0])):<br />
+        with open(info[1]+&#8217;_{0}.flv&#8217;.format(i), mode=&#8217;wb&#8217;) as f:<br />
+            print(&#8216;Downloading part {0} of {1}&#8230;&#8217;.format(i+1, len(info[0])))<br />
+            data = urllib.request.urlopen(info[0][i]+&#8217;&amp;referer=www.youku.com&#8217;).read()<br />
+            f.write(data)<br />
+        para = para + &#8217; &#8217; + info[1]+&#8217;_{0}.flv&#8217;.format(i)<br />
+    cmd = &#8216;mencoder -ovc copy -oac mp3lame&#8217; + para + &#8217; -o &#8217; +info[1] +&#8217;.flv&#8217;<br />
+    print(&#8216;Merging&#8230;&#8217;)<br />
+    if os.system(cmd) == 0:<br />
+        print(&#8216;Done. File saved to &#8217; + info[1] +&#8217;.flv successfully.&#8217;)<br />
+        os.system(&#8216;rm &#8217; + info[1] + &#8216;_*.flv&#8217;)</p>
+
+<p>if __name__ == &#8216;__main__&#8217;:<br />
+    if len(os.sys.argv)&lt;2:<br />
+        video_id_page = input(&#8216;Input video id page full url: &gt;&#8217;)<br />
+    else:<br />
+        video_id_page = os.sys.argv[1]<br />
+    video = get_info(video_id_page)<br />
+    download(video)
+<h2>附注</h2>
+9月26日发现Bug一个，当优酷未将一个较短视频分割为多部分时，即只有一段时，下载失败。目前水平不够，不敢对此轻举妄动。 另外，事实上也可以用此脚本下载别的视频网站的视频，只要提供的url符合flvcd.com的要求即可。 祝大家使用愉快。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-08-16T00:00:00+08:00" pubdate data-updated="true">Aug 16th, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/linux%E4%B8%8B%E4%BC%98%E9%85%B7%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/" data-via="" data-counturl="https://koccn.net/blog/linux%E4%B8%8B%E4%BC%98%E9%85%B7%E8%A7%86%E9%A2%91%E8%87%AA%E5%8A%A8%E4%B8%8B%E8%BD%BD%E8%84%9A%E6%9C%AC/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/%E6%9F%90%E6%96%B9%E8%A8%80%E4%BB%A3%E6%8C%87%E5%B0%8F%E7%BB%93/" title="Previous Post: 某方言代指小结">&laquo; 某方言代指小结</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E4%BA%BA%E4%BA%BA%E7%BD%91linux%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%A2%84%E8%A7%88%E7%89%88%EF%BC%88%E5%81%9C%E5%B7%A5%EF%BC%89/" title="Next Post: 人人网Linux客户端预览版（停工）">人人网Linux客户端预览版（停工） &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="Linux下优酷视频自动下载脚本"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

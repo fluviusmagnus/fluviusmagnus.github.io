@@ -1,0 +1,840 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="#include &lt;stdio.h&gt;
+int ff(int now)
+{
+        if(now==0) return 1;
+        else
+        {
+                int i,sum=0;
+                for(i=now &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/posts/19">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-153-%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97/">RQNOJ 153 数的计算</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-153-%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>#include &lt;stdio.h&gt;
+int ff(int now)
+{
+        if(now==0) return 1;
+        else
+        {
+                int i,sum=0;
+                for(i=now/2;i&gt;=0;i--)
+                        sum+=ff(i);
+                return sum;
+        }
+}
+int main()
+{
+        int n;
+        scanf("%d",&amp;n);
+        printf("%d",ff(n));
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-144-%E4%BC%AF%E8%99%8E%E7%82%B9%E7%A7%8B%E9%A6%99/">RQNOJ 144 伯虎点秋香</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-144-%E4%BC%AF%E8%99%8E%E7%82%B9%E7%A7%8B%E9%A6%99/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//此题应当注意字符串的操作。
+//确保字符串函数不要用错！
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+void swap(char* a,char* b)
+{
+        char temp[1001];
+        strcpy(temp,a);
+        strcpy(a,b);
+        strcpy(b,temp);
+}
+int main()
+{
+        int n;
+        char name[1001][1001];
+        char nnn[1001];
+        scanf("%d",&amp;n);
+        int k;
+        scanf("%d",&amp;k);
+        int i,r;
+        for(i=1;i&lt;=n;i++)
+        {
+            scanf("%s",&amp;name[i][0]);
+        }
+        for(i=1;i&lt;=n;i++)
+                for(r=n;r&gt;=i+1;r--)
+                        if(strcmp(&amp;name[i][0],&amp;name[r][0])&gt;0) swap(&amp;name[i][0],&amp;name[r][0]);
+        printf("%s",&amp;name[k][0]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-96-%E8%8B%B9%E6%9E%9C%E6%91%98%E9%99%B6%E9%99%B6/">RQNOJ 96 苹果摘陶陶</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-96-%E8%8B%B9%E6%9E%9C%E6%91%98%E9%99%B6%E9%99%B6/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//果然是一道恶俗的题目。这里强调一下我用的qsort函数。
+//貌似竞赛是可以用许多标准库的。（用C++福气更好，STL，汗）
+//对了，这道题很坑人，陶陶高度不能为0哦。
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int cmp(const void *a,const void *b)
+{
+        return *(int *)b-*(int *)a;
+}
+int main()
+{
+        int n,m;
+        int gh[2001]={0};
+        int th[2001]={0};
+        scanf("%d%d",&amp;n,&amp;m);
+        int i;
+        int y=m;
+        for(i=1;i&lt;=n;i++) scanf("%d",&amp;gh[i]);
+        for(i=1;i&lt;=m;i++) scanf("%d",&amp;th[i]);
+        qsort(&amp;th[1],m,sizeof(th[1]),cmp);
+        for(i=1;i&lt;=n;i++)
+        {
+                int r;
+                for(r=1;r&lt;=m;r++)
+                {
+                        if(gh[i]&gt;th[r]&amp;&amp;th[r]&gt;0)
+                        {
+                                y--;
+                                th[r]=-1;
+                                break;
+                        }
+                }
+        }
+        printf("%d",y);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-72-%E6%8B%94%E6%B2%B3%E6%AF%94%E8%B5%9B/">RQNOJ 72 拔河比赛</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-72-%E6%8B%94%E6%B2%B3%E6%AF%94%E8%B5%9B/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//这道题一开始还不知道怎么做，后来一想，要是两组体重差最小，
+//必然某一组极度接近总重的一半。显然又是一道背包。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else return b;
+}
+int main()
+{
+        int n,w[101]={0},allsum=0,i,r,f[10001];
+        scanf("%d",&amp;n);
+        for(i=1;i&lt;=n;i++)
+        {
+                scanf("%d",&amp;w[i]);
+                allsum+=w[i];
+        }
+        int top=allsum/2;
+        for(r=0;r&lt;=top;r++)
+                if(r&lt;w[1]) f[r]=0;
+                else f[r]=w[1];
+        for(i=2;i&lt;=n;i++)
+                for(r=0;r&lt;=top;r++)
+                        if(r&lt;w[i]) f[r]=f[r];
+                        else f[r]=max(f[r],f[r-w[i]]+w[i]);
+        printf("%d",allsum-2*f[top]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/">RQNOJ 66 级数求和</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//特别注意要强制类型转换。
+//当然也可以不用。这是另一份参考：<a title="RQNOJP66　级数求和[2002NOIP普及组]" href="http://sfiction.blog.163.com/blog/static/199404010201110835749863/" target="_blank">http://sfiction.blog.163.com/blog/static/199404010201110835749863/</a>
+#include &lt;stdio.h&gt;
+int main()
+{
+        double sn=0;
+        int k;
+        int sum=0;
+        scanf("%d",&amp;k);
+        while(sn&lt;=k)
+        {
+                sum++;
+                sn+=1/(double)sum;
+        }
+        printf("%d",sum);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/">RQNOJ 602 [NOIP2010普及组]数字统计</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
+{
+        if(k&lt;10) sta[k]++;
+        else
+        {
+                sta[k%10]++;
+                tj(k/10);
+        }
+}
+int main()
+{
+        int l,r;
+        scanf("%d%d",&amp;l,&amp;r);
+        int i;
+        for(i=l;i&lt;=r;i++) tj(i);
+        printf("%d",sta[2]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-39-%E9%A5%AE%E9%A3%9F%E9%97%AE%E9%A2%98/">RQNOJ 39 饮食问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-39-%E9%A5%AE%E9%A3%9F%E9%97%AE%E9%A2%98/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else return b;
+}
+int main()
+{
+        int ca[22]={0};
+        int f[22][35001];
+        int i,r;
+        int b;
+        int up;
+        scanf("%d%d",&amp;up,&amp;b);
+        for(i=1;i&lt;=b;i++) scanf("%d",&amp;ca[i]);
+        for(r=0;r&lt;=up;r++)
+                if(r&lt;ca[1]) f[1][r]=0;
+                else f[1][r]=ca[1];
+        for(i=2;i&lt;=b;i++)
+                for(r=0;r&lt;=up;r++)
+                {
+                        if(r&lt;ca[i]) f[i][r]=f[i-1][r];
+                        else f[i][r]=max(f[i-1][r],f[i-1][r-ca[i]]+ca[i]);
+                }
+        printf("%d",f[b][up]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/">RQNOJ 304 最大公约数和最小公倍数问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//这道题的数学技巧比较强。
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+long int gcd(long int a,long int b)
+{
+        if(a%b!=0) return gcd(b,a%b);
+        else return b;
+}
+int main()
+{
+        long int x,y;
+        scanf("%ld%ld",&amp;x,&amp;y);
+        long int i,num;
+        num=0;
+        for(i=x;i&lt;=y;i++)
+        {
+                if(x*y%i==0&amp;&amp;x==gcd(i,x*y/i)) num++;
+        }
+        printf("%ld",num);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-25-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/">RQNOJ 25 合并果子</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-25-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//先一次快排。以后挪一挪。
+//贪心。
+//又想起WJMZBMR曾经用这道题演示C++的STL。这样不就几乎不用做了吗？
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int comp(const void *p1,const void *p2)
+    {
+return *((int *)p1)-*((int *)p2);
+}
+int main()
+{
+int i,n,j,a[10001]={0},s=0,t;
+scanf("%d",&amp;n);
+for(i=0;i&lt;=n-1;i++) scanf("%d",&amp;a[i]);
+qsort(a,n,sizeof(int),comp);
+for(i=0;i&lt;=n-2;i++)
+{
+    a[i+1]=a[i]+a[i+1];
+    s+=a[i+1];
+    for(j=i+1;j&lt;=n-2;j++) if(a[j]&gt;a[j+1]) 
+{
+t=a[j];
+        a[j]=a[j+1];
+     a[j+1]=t;
+}
+}
+printf("%d",s);
+         return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-20-%E4%B8%8D%E9%AB%98%E5%85%B4%E7%9A%84%E6%B4%A5%E6%B4%A5/">RQNOJ 20 不高兴的津津</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-20-%E4%B8%8D%E9%AB%98%E5%85%B4%E7%9A%84%E6%B4%A5%E6%B4%A5/#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//模拟全过程就行了。
+#include &lt;stdio.h&gt;
+int main()
+{
+        int hp[8]={0,0,0,0,0,0,0,0};
+        int i;
+        for(i=1;i&lt;=7;i++)
+        {
+                int a,b;
+                scanf("%d%d",&amp;a,&amp;b);
+                hp[i]=a+b;
+        }
+        for(i=1;i&lt;=6;i++)
+        {
+                if(hp[i]&gt;8) hp[i]-=8;
+                else hp[i]=0;
+     //           hp[i+1]+=hp[i];
+        }
+        if(hp[7]&gt;8) hp[7]-=9;
+        else hp[7]=0;
+        int t=0,h=0;
+        for(i=1;i&lt;=7;i++)
+        {
+               if(hp[i]&gt;h)
+               {
+                        t=i;
+                        h=hp[i];
+               }
+        }
+        printf("%d",t);
+//        while(1);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="20">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="18">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

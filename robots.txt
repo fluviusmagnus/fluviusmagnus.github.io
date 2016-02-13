@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: https://koccn.net/sitemap.xml 

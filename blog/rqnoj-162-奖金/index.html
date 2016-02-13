@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>RQNOJ 162 奖金 - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="//这是一道完全背包。与0/1背包不同，空间优化后不必逆序，
+//以实现多次选取。
+//此外本题要求装满，所以f[j](j!=0)初始化为负无限大。
+//关于“装满”，参见jake1036的《01背包问题总结（一）》。
+#include &lt;stdio.h&gt;
+#include &lt; &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/rqnoj-162-%E5%A5%96%E9%87%91">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">RQNOJ 162 奖金</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-25T00:00:00+08:00" pubdate data-updated="true">Nov 25th, 2011</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><pre>//这是一道完全背包。与0/1背包不同，空间优化后不必逆序，
+//以实现多次选取。
+//此外本题要求装满，所以f[j](j!=0)初始化为负无限大。
+//关于“装满”，参见jake1036的<a title="01背包问题总结（一）" href="http://www.cppblog.com/jake1036/archive/2011/06/27/149566.html" target="_blank">《01背包问题总结（一）》</a>。
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+int main()
+{
+	long int n,m,p[10001],v[10002],f[10001];
+	scanf("%ld%ld",&amp;n,&amp;m);
+	int i,j;
+	for(i=1;i&lt;=n;i++) scanf("%ld%ld",&amp;p[i],&amp;v[i]);
+	for(j=1;j&lt;=m;j++) f[j]=LONG_MIN;
+	for(i=1;i&lt;=n;i++)
+		for(j=p[i];j&lt;=m;j++)
+			if(f[j-p[i]]+v[i]&gt;f[j]) f[j]=f[j-p[i]]+v[i];
+	printf("%ld",f[m]);
+	return 0;
+}</pre></p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-25T00:00:00+08:00" pubdate data-updated="true">Nov 25th, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/acdai-ma/'>ac代码</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/rqnoj-162-%E5%A5%96%E9%87%91/" data-via="" data-counturl="https://koccn.net/blog/rqnoj-162-%E5%A5%96%E9%87%91/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/" title="Previous Post: 苦逼的NOIP复赛">&laquo; 苦逼的NOIP复赛</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/usaco%E8%AE%AD%E7%BB%83%E6%B5%8B%E8%AF%84%E5%88%9D%E4%BD%93%E9%AA%8C/" title="Next Post: USACO训练测评初体验">USACO训练测评初体验 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="RQNOJ 162 奖金"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

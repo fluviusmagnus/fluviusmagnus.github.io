@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ubuntu连接北外新版无线网教程 - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="2015年11月，我们学校（北京外国语大学）在全校范围内更新了一整套无线网系统，从此告别无加密的危险网络。 原来的认证方式是经典的连接后通过网页确认用户名密码的两步认证设计。这一设计在校内经常断线的环境下体验不佳，经常用到一半就需要判断是否需要断开重连，或者开个任意网页重新认证。为避免麻烦， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/ubuntu%E8%BF%9E%E6%8E%A5%E5%8C%97%E5%A4%96%E6%96%B0%E7%89%88%E6%97%A0%E7%BA%BF%E7%BD%91%E6%95%99%E7%A8%8B">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Ubuntu连接北外新版无线网教程</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-17T00:00:00+08:00" pubdate data-updated="true">Nov 17th, 2015</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>2015年11月，我们学校（北京外国语大学）在全校范围内更新了一整套无线网系统，从此告别无加密的危险网络。</p>
+
+<p>原来的认证方式是经典的连接后通过网页确认用户名密码的两步认证设计。这一设计在校内经常断线的环境下体验不佳，经常用到一半就需要判断是否需要断开重连，或者开个任意网页重新认证。为避免麻烦，许多人选择了有线并加装路由器的方式。这种方式固然有其额外的好处，但晚上断电后便无法使用。一种新的方式实际上还是需要的。<!--more--></p>
+
+<p>新版的无线网（指BFSU和BFSU Secure，BFSU Web仍然是原来网页认证方式）提供了wpa企业级加密，使用受保护的EAP（PEAP）认证方式，MSCHAPv2内部认证，其优越性不言而喻。虽然学校针对各个主要平台（Windows PC、Mac OS、iOS、Android）对于如何连接网络有着详细教程（因为似乎没有固定链接，所以详见数字北外），但是并没有Linux用户所需要的版本，而且事实上整个流程对于Linux用户而言并不是很友好。这种网络不能自动识别，因此需要手动配置。方法如图：</p>
+
+<p><a href="http://koccn.net/wordpress/wp-content/uploads/2015/11/2015-11-17-212556屏幕截图.png"><img class="alignnone wp-image-1161 size-full" src="http://koccn.net/wordpress/wp-content/uploads/2015/11/2015-11-17-212556屏幕截图.png" alt="配置教程" width="480" height="518" /></a></p>
+
+<p>主要应当确认“认证”以及“内部认证”，“匿名身份”为空，“用户名”“密码”就是曾经用于登录的帐号所用，证书的问题忽略即可。</p>
+
+<p>然而问题是无线网信号还是很差。反正出门基本就不用无线了，室内就用路由器，日子照样好好过。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2015-11-17T00:00:00+08:00" pubdate data-updated="true">Nov 17th, 2015</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/ubuntu%E8%BF%9E%E6%8E%A5%E5%8C%97%E5%A4%96%E6%96%B0%E7%89%88%E6%97%A0%E7%BA%BF%E7%BD%91%E6%95%99%E7%A8%8B/" data-via="" data-counturl="https://koccn.net/blog/ubuntu%E8%BF%9E%E6%8E%A5%E5%8C%97%E5%A4%96%E6%96%B0%E7%89%88%E6%97%A0%E7%BA%BF%E7%BD%91%E6%95%99%E7%A8%8B/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/%E8%AF%BB%E8%BF%87%E5%A4%A9%E5%B9%B4/" title="Previous Post: 读过天年">&laquo; 读过天年</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E5%85%B3%E4%BA%8E%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E6%83%B3%E5%83%8F%E7%9A%84%E8%AF%AF%E8%A7%A3%E7%9A%84%E8%AE%A8%E8%AE%BA/" title="Next Post: 关于共产主义想像的误解的讨论">关于共产主义想像的误解的讨论 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="Ubuntu连接北外新版无线网教程"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

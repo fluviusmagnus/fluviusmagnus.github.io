@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
+  <link href="https://koccn.net/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
+  <link href="https://koccn.net/"/>
+  <updated>2016-02-13T21:24:00+08:00</updated>
+  <id>https://koccn.net/</id>
+  <author>
+    <name><![CDATA[人間夜行]]></name>
+    <email><![CDATA[zszth@126.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu连接北外新版无线网教程]]></title>
+    <link href="https://koccn.net/blog/ubuntu%E8%BF%9E%E6%8E%A5%E5%8C%97%E5%A4%96%E6%96%B0%E7%89%88%E6%97%A0%E7%BA%BF%E7%BD%91%E6%95%99%E7%A8%8B/"/>
+    <updated>2015-11-17T00:00:00+08:00</updated>
+    <id>https://koccn.net/blog/ubuntu连接北外新版无线网教程</id>
+    <content type="html"><![CDATA[<p>2015年11月，我们学校（北京外国语大学）在全校范围内更新了一整套无线网系统，从此告别无加密的危险网络。</p>
+
+
+
+
+<p>原来的认证方式是经典的连接后通过网页确认用户名密码的两步认证设计。这一设计在校内经常断线的环境下体验不佳，经常用到一半就需要判断是否需要断开重连，或者开个任意网页重新认证。为避免麻烦，许多人选择了有线并加装路由器的方式。这种方式固然有其额外的好处，但晚上断电后便无法使用。一种新的方式实际上还是需要的。<!--more--></p>
+
+
+
+
+<p>新版的无线网（指BFSU和BFSU Secure，BFSU Web仍然是原来网页认证方式）提供了wpa企业级加密，使用受保护的EAP（PEAP）认证方式，MSCHAPv2内部认证，其优越性不言而喻。虽然学校针对各个主要平台（Windows PC、Mac OS、iOS、Android）对于如何连接网络有着详细教程（因为似乎没有固定链接，所以详见数字北外），但是并没有Linux用户所需要的版本，而且事实上整个流程对于Linux用户而言并不是很友好。这种网络不能自动识别，因此需要手动配置。方法如图：</p>
+
+
+
+
+<p><a href="http://koccn.net/wordpress/wp-content/uploads/2015/11/2015-11-17-212556屏幕截图.png"><img class="alignnone wp-image-1161 size-full" src="http://koccn.net/wordpress/wp-content/uploads/2015/11/2015-11-17-212556屏幕截图.png" alt="配置教程" width="480" height="518" /></a></p>
+
+
+
+
+<p>主要应当确认“认证”以及“内部认证”，“匿名身份”为空，“用户名”“密码”就是曾经用于登录的帐号所用，证书的问题忽略即可。</p>
+
+
+
+
+<p>然而问题是无线网信号还是很差。反正出门基本就不用无线了，室内就用路由器，日子照样好好过。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[我的行为艺术]]></title>
+    <link href="https://koccn.net/blog/%E6%88%91%E7%9A%84%E8%A1%8C%E4%B8%BA%E8%89%BA%E6%9C%AF/"/>
+    <updated>2015-04-06T00:00:00+08:00</updated>
+    <id>https://koccn.net/blog/我的行为艺术</id>
+    <content type="html"><![CDATA[<p>我用假文制作了一个看似有内容的站点：<a title="人间夜行的行为艺术" href="http://art.koccn.net" target="_blank">人间夜行的行为艺术</a>。</p>
+
+
+
+
+<p>大家可以通过<a title="人间夜行的行为艺术" href="http://art.koccn.net" target="_blank">art.koccn.net</a>或<a title="人间夜行的行为艺术" href="http://art.koccn.net" target="_blank">art.elephantus.tk</a>来访问。</p>
+
+
+
+
+<p>其不能称内容的内容来源于 <a title="MoreText.js" href="http://more.handlino.com/?corpus=xuzhimo" target="_blank">MoreText.js: 一用就愛上的中文假文產生器</a>。当然，语料库还是徐志摩的比较好看。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[万网虚拟主机Wordpress配置技巧]]></title>
+    <link href="https://koccn.net/blog/%E4%B8%87%E7%BD%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAwordpress%E9%85%8D%E7%BD%AE%E6%8A%80%E5%B7%A7/"/>
+    <updated>2015-02-03T00:00:00+08:00</updated>
+    <id>https://koccn.net/blog/万网虚拟主机wordpress配置技巧</id>
+    <content type="html"><![CDATA[<p>众所周知，Wordpress如果运行不正常很可能是由于php的配置有误。本来只需要修改一下配置，但对于虚拟主机来说，这个问题确实相当棘手的。现在就来分享一下我目前遇到的两个问题及其解决办法。Wordpress版本4.1，从其他网站迁移过来的，php版本5.3.23。<!--more--></p>
+
+
+
+
+<p>首先遇到的是登录问题，由于headers无法rewrite，wp就没法写cookies。这个问题的解决其实很简单，良心的万网在后台提供了打开输出缓冲区数据块的php设置项。只要启用，问题就解决。真是踏破铁鞋无觅处，得来全不费工夫。</p>
+
+
+
+
+<p>另一个是邮件无法发送的问题。和国内大多数虚拟主机一样，php的邮件函数是被禁用的，所以只能考虑smtp。但是smtp试了一下还是不成功，WP Mail Bank等插件的返回是“smtp error failed to connect to server (0)”。这个问题我研究了很久，网上都没有直接的资料，最后终于发现是wp-includes/class-smtp.php出现问题。</p>
+
+
+
+
+<p>通过<a title="fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案" href="http://leo108.com/pid-1497.asp" target="_blank">《fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案 | leo108&#8217;s blog》</a>可以得知，要在fsockopen上动手脚才能解决问题。但是仔细一看，4.1的wp里已经默认使用了作为“解决方案”的stream_socket_client函数。此时，回到万网后台一看，发现fsockopen恰恰可以选择打开。于是打开后，抱着试试看的心态逆着wp开发者的想法把函数改了回去。如下：
+<pre class="brush:php">        //$this-&gt;smtp_conn = @stream_socket_client(
+        $this-&gt;smtp_conn = @fsockopen(
+        //    $host . ":" . $port,
+            $host, //added
+            $port, //added
+            $errno,
+            $errstr,
+            $timeout
+        //    STREAM_CLIENT_CONNECT,
+        //    $socket_context
+        );</pre>
+注释掉的为原来的部分。经测试成功。</p>
+
+
+
+
+<p>如此奇怪的方法只能在这里记一下，免得到时候升级程序时又挂了。</p>
+
+
+
+
+<p>PS：其实问题没有得到真正解决。Backupwp插件无法正常发送备份邮件。懒人只能选择换一个能用的插件。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Linux下的中文LaTeX实践]]></title>
+    <link href="https://koccn.net/blog/linux%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%87latex%E5%AE%9E%E8%B7%B5/"/>
+    <updated>2014-08-27T00:00:00+08:00</updated>
+    <id>https://koccn.net/blog/linux下的中文latex实践</id>
+    <content type="html"><![CDATA[<p>LaTeX是优秀的跨平台计算机排版软件，具体就不多介绍。虽然我大概是不会有那种程度的科技类文章的排版需要的，不过作为一种技术本身，我还是愿意去涉猎一下。综合目前网上的各种教程，我发现最省心的配置还是xetex加ctex，这样可以省去配置中文编码、字体的种种麻烦。一步到位，轻松解决。<!--more-->
+<h2>安装</h2>
+有人说要专门下载一个Live CD，我觉得没这个必要。Ubuntu的软件源里同样有这些软件。即使不使用其自带的包管理器，使用新立得包管理器也可以方便地查找相关包的信息。一般情况，你可能只需要选择下载支持UTF-8的并能用xelatex直接生成PDF的texlive-xetex，和包含ctex的texlive-lang-cjk即可，其余的必需部件根据依赖关系就可以自动搞定。不过，如果你硬盘空间充足，我仍然建议你直接安装texlive-full，这样便将所有可能用到的包全部下载下来了，尽管你不会用到其中的大部分。</p>
+
+
+
+
+<p>终端下部分安装：
+<pre class="brush:bash">sudo apt-get install texlive-xetex texlive-lang-cjk</pre>
+全部安装：
+<pre class="brush:bash">sudo apt-get install texlive-full</pre>
+<h2>使用</h2>
+对于初学者，我推荐《一份不太简短的LaTex介绍》作为一般的入门教程。如果你希望获得更多的中文排版知识，《ctex 宏包说明》则是很好的参考资料，特别是对于使用ctex宏包的我们而言。以上两份资料网上都很容易获得。</p>
+
+
+
+
+<p>一般简单文件的模版如下（抱歉语法高亮目前不支持）：
+<pre>&#37; 关于文档的一些基本设置
+\documentclass[a4paper, adobefonts]{ctexart}
+\setCJKmainfont{SimSun}
+&#37; 设置标题信息
+\title{标题}
+\author{作者}
+\date{\today}
+\begin{document}
+&#37; 打印标题信息
+\maketitle
+&#37; 正文开始
+你好，世界。（或者其他什么内容）
+\end{document}</pre>
+关于字体，我推荐Linux用户设置adobefonts，虽然理论上可以从别的Windows复制宋体、黑体、楷体等等来使用，但总觉得不太好。</p>
+
+
+
+
+<p>文档编辑完后，保存为.tex文件，例如test.tex。LaTeX对后缀名还是比较敏感的，不喜欢后缀名的用户需要注意这一点。然后在终端下我们直接输出PDF：
+<pre class="brush:bash">xelatex test.tex</pre>
+得到test.pdf。虽然没有错误，但仍然有很多信息输出，感兴趣可以看一下。如果有错误，那就必须仔细研读了。
+<h2>编辑器</h2>
+Windows下有很多好用的编辑器，Linux下也有，不过稍微弱一些，但不至于非常影响使用就是了。虽然有专门为TeX设计的编辑器，如Gummi等，我还是推荐Gedit加上LaTeX插件来使用。但无论如何，它们都需要一定的配置。</p>
+
+
+
+
+<p>Gummi的亮点在于它提供了一个实时预览界面，你可以一边编辑一边查看结果。安装：
+<pre class="brush:bash">sudo apt-get install gummi</pre>
+Gummi中，要在设置里将编译器设置为xetex，因为默认的不可用，其他设置随意。</p>
+
+
+
+
+<p>Gedit虽然是GNOME环境默认的编辑器，依靠扩展它仍然可以变得很强大。安装：
+<pre class="brush:bash">sudo apt-get install gedit-latex-plugin</pre>
+然后打开gedit并启用此插件。在插件设置中添加一个编译命令：
+<pre>xelatex $filename</pre>
+调整到你喜欢的位置即可。在Gedit中，你可能还要在“查看”菜单中打开侧边栏、底部面板才能用个痛快，或许安装一个终端插件也不错。具体细节就交给大家自己去探索吧。
+<h2>与其他文件格式的关系</h2>
+<h3>HTML</h3>
+Tex文件自然是可以转换为PDF的，可惜一般来说是不可逆的，而HTML和它却能双向转换。但也许你也能猜到，显然tex变成HTML会损失许多细节，好在内容主体还算完好，修改一下应该不是很困难的事。我在源中发现了LaTeX2HTML和gnuhtml2latex，具体没用过，大家可以试一试。
+<h3>Markdown</h3>
+Markdown是最近知名度突然变高的语言。它是纯文本，却也是有格式的纯文本，格式的标记十分友好，在可读性和机器的可识别性上取得了极佳的平衡。许多人喜欢直接用它来写各种文档。使用pandoc可以把markdown文件转换为PDF。乍一看和LaTeX没什么关系，可它并不能直接生成PDF，必须使用tex来过渡。默认的tex模版并不适合中文文档，强行使用必然报错。我尝试折腾了一个中文模板，对付简单的文件似乎问题不大，大家可以根据自己的需要修改。（虽然貌似大部分看不太懂。我也是新手啊。）
+<pre>\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} &#37; provides \textsubscript
+&#37; use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 &#37; if pdftex
+ \usepackage[utf8]{inputenc}
+$if(euro)$
+ \usepackage{eurosym}
+$endif$
+\else &#37; if luatex or xelatex
+ \ifxetex
+ \usepackage{mathspec}
+ \usepackage{xltxtra,xunicode}
+ \usepackage[adobefonts]{ctex}
+ \setCJKmainfont{SimSun}
+ \setCJKsansfont{SimHei}
+ \setCJKmonofont{WenQuanYi Micro Hei Mono}
+ \else
+ \usepackage{fontspec}
+ \fi
+ &#37;\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+ \newcommand{\euro}{€}
+\setmainfont{Times New Roman}
+$if(mainfont)$
+ \setmainfont{$mainfont$}
+$endif$
+$if(sansfont)$
+ \setsansfont{$sansfont$}
+$endif$
+$if(monofont)$
+ \setmonofont[Mapping=tex-ansi]{$monofont$}
+$endif$
+$if(mathfont)$
+ \setmathfont(Digits,Latin,Greek){$mathfont$}
+$endif$
+\fi
+&#37; use microtype if available
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+$if(geometry)$
+\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+$endif$
+$if(natbib)$
+\usepackage{natbib}
+\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+$endif$
+$if(biblatex)$
+\usepackage{biblatex}
+$if(biblio-files)$
+\bibliography{$biblio-files$}
+$endif$
+$endif$
+$if(listings)$
+\usepackage{listings}
+$endif$
+$if(lhs)$
+\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+$endif$
+$if(highlighting-macros)$
+$highlighting-macros$
+$endif$
+$if(verbatim-in-note)$
+\usepackage{fancyvrb}
+$endif$
+$if(tables)$
+\usepackage{longtable,booktabs}
+$endif$
+$if(graphics)$
+\usepackage{graphicx}
+&#37; Redefine \includegraphics so that, unless explicit options are
+&#37; given, the image width will not exceed the width of the page.
+&#37; Images get their normal width if they fit onto the page, but
+&#37; are scaled down if they would overflow the margins.
+\makeatletter
+\def\ScaleIfNeeded{&#37;
+ \ifdim\Gin@nat@width&gt;\linewidth
+ \linewidth
+ \else
+ \Gin@nat@width
+ \fi
+}
+\makeatother
+\let\Oldincludegraphics\includegraphics
+{&#37;
+ \catcode`\@=11\relax&#37;
+ \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}&#37;
+}&#37;
+$endif$
+\ifxetex
+ \usepackage[setpagesize=false, &#37; page size defined by xetex
+ unicode=false, &#37; unicode breaks when used with xetex
+ xetex]{hyperref}
+\else
+ \usepackage[unicode=true]{hyperref}
+\fi
+\hypersetup{breaklinks=true,
+ bookmarks=true,
+ pdfauthor={$author-meta$},
+ pdftitle={$title-meta$},
+ colorlinks=true,
+ citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
+ urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
+ linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
+ pdfborder={0 0 0}}
+\urlstyle{same} &#37; don't use monospace font for urls
+$if(links-as-notes)$
+&#37; Make links footnotes instead of hotlinks:
+\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
+$endif$
+$if(strikeout)$
+\usepackage[normalem]{ulem}
+&#37; avoid problems with \sout in headers with hyperref:
+\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
+$endif$
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em} &#37; prevent overfull lines
+$if(numbersections)$
+\setcounter{secnumdepth}{5}
+$else$
+\setcounter{secnumdepth}{0}
+$endif$
+$if(verbatim-in-note)$
+\VerbatimFootnotes &#37; allows verbatim text in footnotes
+$endif$
+$if(lang)$
+\ifxetex
+ \usepackage{polyglossia}
+ \setmainlanguage{$mainlang$}
+\else
+ \usepackage[$lang$]{babel}
+\fi
+$endif$
+$for(header-includes)$
+$header-includes$
+$endfor$
+$if(title)$
+\title{$title$}
+$endif$
+$if(subtitle)$
+\subtitle{$subtitle$}
+$endif$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+\date{$date$}
+\begin{document}
+$if(title)$
+\maketitle
+$endif$
+$for(include-before)$
+$include-before$
+$endfor$
+$if(toc)$
+{
+\hypersetup{linkcolor=black}
+\setcounter{tocdepth}{$toc-depth$}
+\tableofcontents
+}
+$endif$
+$body$
+$if(natbib)$
+$if(biblio-files)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{$biblio-title$}
+$else$
+\renewcommand\refname{$biblio-title$}
+$endif$
+$endif$
+\bibliography{$biblio-files$}
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+$endif$
+$for(include-after)$
+$include-after$
+$endfor$
+\end{document}</pre>
+假如markdown文件为test.md，模版文件名为latex.template.cjk.tex，你可以用pandoc作如下转换：
+<pre class="brush:bash">pandoc test.md -o test.pdf --latex-engine=xelatex --template=latex.template.cjk.tex</pre>
+<h2>结语</h2>
+以上均是一些最基础的应用，实际使用过程中会出现各种各样复杂的需求。遇到问题先看文档，再好好搜索，实在不行问别人，这可谓是获取一切计算机知识的通径。就目前来说，我的需求基本已经得到满足，接下来就看你的了。</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Python3快速阅读工具]]></title>
+    <link href="https://koccn.net/blog/python3%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB%E5%B7%A5%E5%85%B7/"/>
+    <updated>2014-08-19T00:00:00+08:00</updated>
+    <id>https://koccn.net/blog/python3快速阅读工具</id>
+    <content type="html"><![CDATA[<p>好吧，最近手停不下来了。今天看到网上有个名叫“<a title="快读啦" href="http://kuaidula.com/" target="_blank">快读啦</a>”的快速阅读工具，号称能“让你不用移动眼睛，不用靠近屏幕就能阅读，保护视力”，觉得确实有用。可是它只有网页版，于是我便尝试用Python3写了一个。可以读txt电子书。Linux测试通过。<!--more-->
+<h2>原理</h2>
+从txt文件读取一个大字符串，每次只取一点点，每隔一段时间就移动切片。使用Tkinter作为图形界面（最近老是和GUI过不去……），chardet判断文本编码，突发奇想地用了getopt接收参数，还写了个帮助。
+<h2>使用说明</h2>
+<pre>Usage: python3 SpeadReading.py [options] FILENAME
+Press any key to resume or pause.
+Option list:
+-p NUM, --pos=NUM Specify beginning position. 0 by default. (Useful as a bookmark)
+-s NUM, --speed=NUM Specify the number of hanzi per minute. 750 by default
+-w NUM, --width=NUM Specify the width of display. 3 by default
+-z NUM, --size=NUM Specify the font size. 72 by default
+-h, --help Show this help
+Position number will be given every time when exit.</pre>
+总之任意键开始或暂停，退出时有当前位置提醒，下次就可以当做书签参数输入了。
+<h2>代码</h2>
+<pre class="brush:python">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+'''SpeedReading.py
+Speed up your reading!
+Author: Tianhu Zhang &lt;zszth@126.com&gt;
+Run with option -h or --help to show help.
+'''
+import tkinter as tk
+from tkinter import font
+import chardet
+import sys
+import getopt
+import os</pre></p>
+
+
+
+
+<p># Settings.<br />
+hanzi_per_min = 750<br />
+hanzi_at_a_time = 3<br />
+hanzi_size = 72</p>
+
+
+
+
+<p># Constants.<br />
+pos = 0<br />
+txt = &#8216;废话还是不要多说的好，除非你是在凑字数。&#8217;<br />
+reading = False</p>
+
+
+
+
+<p># Getting variants.<br />
+def help():<br />
+    print(&#8221;&#8217;SpeedReading.py<br />
+Usage: python3 SpeadReading.py [options] FILENAME<br />
+Press any key to resume or pause.<br />
+Option list:<br />
+    -p NUM, &#8211;pos=NUM   Specify beginning position. 0 by default. (Useful as a bookmark)<br />
+    -s NUM, &#8211;speed=NUM Specify the number of hanzi per minute. 750 by default<br />
+    -w NUM, &#8211;width=NUM Specify the width of display. 3 by default<br />
+    -z NUM, &#8211;size=NUM  Specify the font size. 72 by default<br />
+    -h,     &#8211;help      Show this help<br />
+Position number will be given every time when exit.&#8221;&#8217;)<br />
+if len(sys.argv) &lt; 2:<br />
+    file_path = input(&#8216;Input file name (or path): &gt;&#8217;)<br />
+    pos = int(input(&#8216;Input position: &gt;&#8217;))<br />
+else:<br />
+    try:<br />
+        options,args = getopt.getopt(sys.argv[1:], &#8216;hp:s:w:z:&#8217;, [&#8216;help&#8217;, &#8216;pos=&#8217;, &#8216;speed=&#8217;, &#8216;width=&#8217;, &#8216;size=&#8217;])<br />
+        if args:<br />
+            file_path = args[0]<br />
+            if not os.path.isfile(file_path):<br />
+                print(&#8216;File not found.&#8217;)<br />
+                exit()<br />
+            for opt, value in options:<br />
+                if opt in [&#8216;-p&#8217;, &#8216;&#8211;pos&#8217;]:<br />
+                    pos = int(value)<br />
+                if opt in [&#8216;-s&#8217;, &#8216;&#8211;speed&#8217;]:<br />
+                    hanzi_per_min = int(value)<br />
+                if opt in [&#8216;-w&#8217;, &#8216;&#8211;width&#8217;]:<br />
+                    hanzi_at_a_time = int(value)<br />
+                if opt in [&#8216;-z&#8217;, &#8216;&#8211;size&#8217;]:<br />
+                    hanzi_size = int(value)<br />
+        else:<br />
+            help()<br />
+            exit()<br />
+    except getopt.GetoptError:<br />
+        help()<br />
+        exit()</p>
+
+
+
+
+<p># Loading file.<br />
+with open(file_path, mode = &#8216;rb&#8217;) as f:<br />
+    # print(chardet.detect(f.read())[&#8216;encoding&#8217;])<br />
+    data = f.read()<br />
+    code = chardet.detect(data)[&#8216;encoding&#8217;]<br />
+    txt = data.decode(code)<br />
+txt = &#8216;文始&gt;&#8217; + txt.replace(&#8216;\n&#8217;, &#8217;  &#8216;) + &#8216;&lt;文末&#8217;</p>
+
+
+
+
+<p># Preparing window.<br />
+root = tk.Tk()<br />
+root.title(&#8220;速读 &#8221; + file_path)<br />
+show_font = font.Font(family = &#8216;serif&#8217;, size = hanzi_size, weight = &#8216;normal&#8217;)<br />
+show = tk.Label(root, text = &#8216;预备！&#8217;, font = show_font)<br />
+def toogle(event):<br />
+    global reading<br />
+    reading = not reading<br />
+root.bind(&#8216;&lt;KeyPress&gt;&#8217;, toogle)<br />
+show.pack()<br />
+def timer():<br />
+    global pos<br />
+    if reading and pos &lt; len(txt) - (hanzi_at_a_time - 1):<br />
+        show.config(text = txt[pos: pos + hanzi_at_a_time])<br />
+        pos = pos + 1<br />
+    root.after(int(1000 * 60 / hanzi_per_min), timer)</p>
+
+
+
+
+<p># Start.<br />
+timer()<br />
+print(&#8216;Press any key to resume or pause&#8230;&#8217;)<br />
+show.config(text = txt[pos: pos + hanzi_at_a_time])<br />
+root.mainloop()<br />
+print(&#8216;Stop at position {0}.&#8217;.format(pos))<br />
+if pos == len(txt) - (hanzi_at_a_time - 1):<br />
+    print(&#8216;Reading finished.&#8217;)
+
+&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+</feed>

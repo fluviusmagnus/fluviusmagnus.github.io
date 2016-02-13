@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>搜索引擎shell：goosh.org - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="发现一个酷站：goosh.org。它是一个搜索引擎，准确地说，应该是一个搜索引擎的shell。它以google的服务为基础，我们可以像使用命令行一样使用它。 进入之后，会有这样一个提示符：
+guest@goosh.org:/web&gt;
+这时你只要输入关键词，然后回车即可。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eshell%EF%BC%9Agoosh-org">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">搜索引擎shell：goosh.org</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-01-22T00:00:00+08:00" pubdate data-updated="true">Jan 22nd, 2012</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>发现一个酷站：<a title="goosh.org" href="http://goosh.org" target="_blank">goosh.org</a>。它是一个搜索引擎，准确地说，应该是一个搜索引擎的shell。它以google的服务为基础，我们可以像使用命令行一样使用它。</p>
+
+<p>进入之后，会有这样一个提示符：
+<blockquote>guest@goosh.org:/web&gt;</blockquote>
+这时你只要输入关键词，然后回车即可。此时前4个搜索结果就会显示出来。直接输入序号并回车，即能在新窗口中打开你想要的url。如果对搜索结果不满意，直接回车便会再给出4个结果。<!--more--></p>
+
+<p>查看更多功能请使用help命令。我们可以看到这样一张列表：
+<blockquote>
+<table border="0">
+<tbody>
+<tr>
+<td><strong>command</strong></td>
+<td><strong>aliases</strong></td>
+<td><strong>parameters</strong></td>
+<td><strong>function</strong></td>
+</tr>
+<tr>
+<td>web</td>
+<td>(search,s,w)</td>
+<td>[keywords]</td>
+<td>google web search</td>
+</tr>
+<tr>
+<td>news</td>
+<td>(n)</td>
+<td>[keywords]</td>
+<td>google news search</td>
+</tr>
+<tr>
+<td>more</td>
+<td>(m)</td>
+<td>get more results</td>
+</tr>
+<tr>
+<td>blogs</td>
+<td>(blog,b)</td>
+<td>[keywords]</td>
+<td>google blog search</td>
+</tr>
+<tr>
+<td>read</td>
+<td>(rss,r)</td>
+<td>&lt;url&gt;</td>
+<td>read feed of url</td>
+</tr>
+<tr>
+<td>feeds</td>
+<td>(feed,f)</td>
+<td>[keywords]</td>
+<td>google feed search</td>
+</tr>
+<tr>
+<td>place</td>
+<td>(places,map,p)</td>
+<td>[address]</td>
+<td>google maps search</td>
+</tr>
+<tr>
+<td>translate</td>
+<td>(trans,t)</td>
+<td>[lang1] [lang2] &lt;words&gt;</td>
+<td>google translation</td>
+</tr>
+<tr>
+<td>images</td>
+<td>(image,i)</td>
+<td>[keywords]</td>
+<td>google image search</td>
+</tr>
+<tr>
+<td>video</td>
+<td>(videos,v)</td>
+<td>[keywords]</td>
+<td>google video search</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>(c)</td>
+<td>clear the screen</td>
+</tr>
+<tr>
+<td>wiki</td>
+<td>(wikipedia)</td>
+<td>[keywords]</td>
+<td>wikipedia search</td>
+</tr>
+<tr>
+<td>help</td>
+<td>(man,h,?)</td>
+<td>[command]</td>
+<td>displays help text</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>&lt;command&gt;</td>
+<td>change mode</td>
+</tr>
+<tr>
+<td>site</td>
+<td>(in)</td>
+<td>&lt;url&gt; &lt;keywords&gt;</td>
+<td>search in a specific website</td>
+</tr>
+<tr>
+<td>open</td>
+<td>(o)</td>
+<td>&lt;url&gt;</td>
+<td>open url in new window</td>
+</tr>
+<tr>
+<td>go</td>
+<td>(g)</td>
+<td>&lt;url&gt;</td>
+<td>open url</td>
+</tr>
+<tr>
+<td>lucky</td>
+<td>(l)</td>
+<td>[keywords]</td>
+<td>go directly to first result</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>[command]</td>
+<td>lists commands</td>
+</tr>
+<tr>
+<td>addengine</td>
+<td>add goosh to firefox search box</td>
+</tr>
+<tr>
+<td>load</td>
+<td>&lt;extension_url&gt;</td>
+<td>load an extension</td>
+</tr>
+<tr>
+<td>calculate</td>
+<td>(calc)</td>
+<td>[mathematical expression]</td>
+<td>evaluate a mathematical expression</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>(set)</td>
+<td>[name] [value]</td>
+<td>edit settings</td>
+</tr>
+<tr>
+<td>gmail</td>
+<td>(mail)</td>
+<td>[compose]</td>
+<td>read &amp; write mail in gmail *</td>
+</tr>
+<tr>
+<td>login</td>
+<td>login with your google account *</td>
+</tr>
+<tr>
+<td>logout</td>
+<td>log out of goosh *</td>
+</tr>
+</tbody>
+</table>
+- Enter green commands without parameters to change default mode.<br />
+- Anything that&#8217;s not a command will search in current default mode.<br />
+- Aliases will expand to commands. Numbers will expand to corresponding search results.<br />
+- Use cursor up and down for command history.<br />
+- Enter keyword and hit the tab-key for tab-completion.<br />
+- Commands marked with * are experimental, use them with care and please report any bugs.</blockquote>
+已经很详细了，应该不用多解释了吧？</p>
+
+<p>这种shell的设计好处在于，它避免了鼠标与键盘切换过于频繁的麻烦（这同样是CLI的优势），而且我发现比起直接使用google搜索，其速度稍有提升。于是我就把它设为主页了。但正如其声明中所说，它毕竟是开发中的产品，可能还有许多不足之处，如果有兴趣，也请参与贡献。</p>
+
+<p>项目主页<a title="goosh home" href="http://code.google.com/p/goosh/" target="_blank">http://code.google.com/p/goosh/</a>
+Goosh is written by Stefan Grothkopp &lt;<a href="mailto:grothkopp@gmail.com?subject=goosh.org">grothkopp@gmail.com</a>&gt;<br />
+It is NOT an official google product!<br />
+Goosh is open source under the Artistic License/GPL.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-01-22T00:00:00+08:00" pubdate data-updated="true">Jan 22nd, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eshell%EF%BC%9Agoosh-org/" data-via="" data-counturl="https://koccn.net/blog/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8Eshell%EF%BC%9Agoosh-org/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/kr-c-bible-exercises-1-5/" title="Previous Post: K&R C Bible Exercises 1-5">&laquo; K&R C Bible Exercises 1-5</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E4%BA%BA%E4%BA%BA%E7%BD%91linux%E5%87%86%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%84%9A%E6%9C%AC/" title="Next Post: 人人网Linux准客户端脚本">人人网Linux准客户端脚本 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="搜索引擎shell：goosh.org"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

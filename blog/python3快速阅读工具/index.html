@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Python3快速阅读工具 - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="好吧，最近手停不下来了。今天看到网上有个名叫“快读啦”的快速阅读工具，号称能“让你不用移动眼睛，不用靠近屏幕就能阅读，保护视力”，觉得确实有用。可是它只有网页版，于是我便尝试用Python3写了一个。可以读txt电子书。Linux测试通过。
+原理
+从txt文件读取一个大字符串，每次只取一点点， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/python3%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB%E5%B7%A5%E5%85%B7">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Python3快速阅读工具</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-08-19T00:00:00+08:00" pubdate data-updated="true">Aug 19th, 2014</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>好吧，最近手停不下来了。今天看到网上有个名叫“<a title="快读啦" href="http://kuaidula.com/" target="_blank">快读啦</a>”的快速阅读工具，号称能“让你不用移动眼睛，不用靠近屏幕就能阅读，保护视力”，觉得确实有用。可是它只有网页版，于是我便尝试用Python3写了一个。可以读txt电子书。Linux测试通过。<!--more-->
+<h2>原理</h2>
+从txt文件读取一个大字符串，每次只取一点点，每隔一段时间就移动切片。使用Tkinter作为图形界面（最近老是和GUI过不去……），chardet判断文本编码，突发奇想地用了getopt接收参数，还写了个帮助。
+<h2>使用说明</h2>
+<pre>Usage: python3 SpeadReading.py [options] FILENAME
+Press any key to resume or pause.
+Option list:
+-p NUM, --pos=NUM Specify beginning position. 0 by default. (Useful as a bookmark)
+-s NUM, --speed=NUM Specify the number of hanzi per minute. 750 by default
+-w NUM, --width=NUM Specify the width of display. 3 by default
+-z NUM, --size=NUM Specify the font size. 72 by default
+-h, --help Show this help
+Position number will be given every time when exit.</pre>
+总之任意键开始或暂停，退出时有当前位置提醒，下次就可以当做书签参数输入了。
+<h2>代码</h2>
+<pre class="brush:python">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+'''SpeedReading.py
+Speed up your reading!
+Author: Tianhu Zhang &lt;zszth@126.com&gt;
+Run with option -h or --help to show help.
+'''
+import tkinter as tk
+from tkinter import font
+import chardet
+import sys
+import getopt
+import os</pre></p>
+
+<p># Settings.<br />
+hanzi_per_min = 750<br />
+hanzi_at_a_time = 3<br />
+hanzi_size = 72</p>
+
+<p># Constants.<br />
+pos = 0<br />
+txt = &#8216;废话还是不要多说的好，除非你是在凑字数。&#8217;<br />
+reading = False</p>
+
+<p># Getting variants.<br />
+def help():<br />
+    print(&#8221;&#8217;SpeedReading.py<br />
+Usage: python3 SpeadReading.py [options] FILENAME<br />
+Press any key to resume or pause.<br />
+Option list:<br />
+    -p NUM, &#8211;pos=NUM   Specify beginning position. 0 by default. (Useful as a bookmark)<br />
+    -s NUM, &#8211;speed=NUM Specify the number of hanzi per minute. 750 by default<br />
+    -w NUM, &#8211;width=NUM Specify the width of display. 3 by default<br />
+    -z NUM, &#8211;size=NUM  Specify the font size. 72 by default<br />
+    -h,     &#8211;help      Show this help<br />
+Position number will be given every time when exit.&#8221;&#8217;)<br />
+if len(sys.argv) &lt; 2:<br />
+    file_path = input(&#8216;Input file name (or path): &gt;&#8217;)<br />
+    pos = int(input(&#8216;Input position: &gt;&#8217;))<br />
+else:<br />
+    try:<br />
+        options,args = getopt.getopt(sys.argv[1:], &#8216;hp:s:w:z:&#8217;, [&#8216;help&#8217;, &#8216;pos=&#8217;, &#8216;speed=&#8217;, &#8216;width=&#8217;, &#8216;size=&#8217;])<br />
+        if args:<br />
+            file_path = args[0]<br />
+            if not os.path.isfile(file_path):<br />
+                print(&#8216;File not found.&#8217;)<br />
+                exit()<br />
+            for opt, value in options:<br />
+                if opt in [&#8216;-p&#8217;, &#8216;&#8211;pos&#8217;]:<br />
+                    pos = int(value)<br />
+                if opt in [&#8216;-s&#8217;, &#8216;&#8211;speed&#8217;]:<br />
+                    hanzi_per_min = int(value)<br />
+                if opt in [&#8216;-w&#8217;, &#8216;&#8211;width&#8217;]:<br />
+                    hanzi_at_a_time = int(value)<br />
+                if opt in [&#8216;-z&#8217;, &#8216;&#8211;size&#8217;]:<br />
+                    hanzi_size = int(value)<br />
+        else:<br />
+            help()<br />
+            exit()<br />
+    except getopt.GetoptError:<br />
+        help()<br />
+        exit()</p>
+
+<p># Loading file.<br />
+with open(file_path, mode = &#8216;rb&#8217;) as f:<br />
+    # print(chardet.detect(f.read())[&#8216;encoding&#8217;])<br />
+    data = f.read()<br />
+    code = chardet.detect(data)[&#8216;encoding&#8217;]<br />
+    txt = data.decode(code)<br />
+txt = &#8216;文始&gt;&#8217; + txt.replace(&#8216;\n&#8217;, &#8217;  &#8216;) + &#8216;&lt;文末&#8217;</p>
+
+<p># Preparing window.<br />
+root = tk.Tk()<br />
+root.title(&#8220;速读 &#8221; + file_path)<br />
+show_font = font.Font(family = &#8216;serif&#8217;, size = hanzi_size, weight = &#8216;normal&#8217;)<br />
+show = tk.Label(root, text = &#8216;预备！&#8217;, font = show_font)<br />
+def toogle(event):<br />
+    global reading<br />
+    reading = not reading<br />
+root.bind(&#8216;&lt;KeyPress&gt;&#8217;, toogle)<br />
+show.pack()<br />
+def timer():<br />
+    global pos<br />
+    if reading and pos &lt; len(txt) - (hanzi_at_a_time - 1):<br />
+        show.config(text = txt[pos: pos + hanzi_at_a_time])<br />
+        pos = pos + 1<br />
+    root.after(int(1000 * 60 / hanzi_per_min), timer)</p>
+
+<p># Start.<br />
+timer()<br />
+print(&#8216;Press any key to resume or pause&#8230;&#8217;)<br />
+show.config(text = txt[pos: pos + hanzi_at_a_time])<br />
+root.mainloop()<br />
+print(&#8216;Stop at position {0}.&#8217;.format(pos))<br />
+if pos == len(txt) - (hanzi_at_a_time - 1):<br />
+    print(&#8216;Reading finished.&#8217;)
+
+&nbsp;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-08-19T00:00:00+08:00" pubdate data-updated="true">Aug 19th, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/python3%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB%E5%B7%A5%E5%85%B7/" data-via="" data-counturl="https://koccn.net/blog/python3%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB%E5%B7%A5%E5%85%B7/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/%E4%BA%BA%E4%BA%BA%E7%BD%91linux%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%A2%84%E8%A7%88%E7%89%88%EF%BC%88%E5%81%9C%E5%B7%A5%EF%BC%89/" title="Previous Post: 人人网Linux客户端预览版（停工）">&laquo; 人人网Linux客户端预览版（停工）</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E6%97%A0%E9%A2%982/" title="Next Post: 无题2">无题2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="Python3快速阅读工具"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

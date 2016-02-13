@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>神奇的Brainf*ck - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（Prolog语言一瞥）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。 八个图灵机状态： 字符
+含义 &gt;
+指针加一 &lt;
+指针减一 +
+指针指向的字节的值加一 -
+指针指向的字节的值减一 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">神奇的Brainf*ck</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
+
+<p>八个图灵机状态：
+<blockquote>
+<table width="464">
+<tbody>
+<tr>
+<td width="100">字符</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>指针加一</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>指针减一</td>
+</tr>
+<tr>
+<td>+</td>
+<td>指针指向的字节的值加一</td>
+</tr>
+<tr>
+<td>-</td>
+<td>指针指向的字节的值减一</td>
+</tr>
+<tr>
+<td>.</td>
+<td>输出指针指向的单元内容（ASCII码）</td>
+</tr>
+<tr>
+<td>,</td>
+<td>输入内容到指针指向的单元（ASCII码）</td>
+</tr>
+<tr>
+<td>[</td>
+<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
+</tr>
+<tr>
+<td>]</td>
+<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!--more-->于是简简单单的Hello World变成：
+<blockquote>&gt;+++++++++[&lt;++++++++&gt;-]&lt;.&gt;+++++++[&lt;++++&gt;-]&lt;+.+++++++..+++.&gt;&gt;&gt;++++++++[&lt;++++&gt;-]&lt;.&gt;&gt;&gt;++++++++++[&lt;+++++++++&gt;-]&lt;&#8212;.&lt;&lt;&lt;&lt;.+++.&#8212;&#8212;.&#8212;&#8212;&#8211;.&gt;&gt;+.</blockquote>
+很不可思议吧？这个语言果然名实如一。</p>
+
+<p>为了自己验证一下，这个语言的编译器，我也去找了。
+<blockquote>[koc@koc-desktop ~]$ yaourt brainfuck</blockquote></p>
+
+<p>1 aur/awib 0.3-2 (22)</p>
+
+<p>A brainfuck compiler written in brainfuck, able to generate x86 linux</p>
+
+<p>binaries, C code, Ruby code, Go code and Tcl code.</p>
+
+<p>2 aur/bfc 1-3 [installed] (37)</p>
+
+<p>A minimalistic brainfuck compiler.</p>
+
+<p>3 aur/brainfuck-git 9999-1 (6)</p>
+
+<p>A simple brainfuck interpreter</p>
+
+<p>4 aur/brainfuck-parser 20110601-1 (3)</p>
+
+<p>Brainfuck interpretor in C</p>
+
+<p>5 aur/brainspell-git 20101215-2 (1)</p>
+
+<p>logical game for programmers: write on Brainfuck for speed!</p>
+
+<p>6 aur/cpbrainfuck 1.1-3 (7)</p>
+
+<p>A simple Brainfuck interpretter.</p>
+
+<p>==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)</p>
+
+<p>==&gt; &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-</p>
+
+<p>==&gt; 2
+应该选第二个（我已经装了:-)）。在安装过程中发现它依赖于nasm——一个为可移植性与模块化而设计的一个80x86的汇编器。关于nasm就不多提了，有兴趣的自己去搜吧。值得一提的是，这个编译器源代码只有两百多行，更加显出其神奇之处，以至于我觉得用C编一个简单的小程序就可以模拟这个图灵机了。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/" data-via="" data-counturl="https://koccn.net/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/" title="Previous Post: Prolog语言一瞥">&laquo; Prolog语言一瞥</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E6%88%91%E7%9A%84-vimrc/" title="Next Post: 我的.vimrc">我的.vimrc &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="神奇的Brainf*ck"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

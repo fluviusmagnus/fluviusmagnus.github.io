@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Unknown 钓鱼 - 人間夜行</title>
+  <meta name="author" content="人間夜行">
+
+  
+  <meta name="description" content="题目描述
+约翰是个垂钓谜，星期天他决定外出钓鱼h小时（1≤h≤16），约翰家附近共有n个池塘（2≤n≤25），这些池塘分布在一条直线上，约翰将这些池塘按离家的距离编上号，依次为L1,L2,…,Ln，他从湖1出发，向右走，有选择性地在一些湖停留一定的时间钓鱼，最后在某一个湖结束钓鱼。 &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="https://koccn.net/blog/unknown-%E9%92%93%E9%B1%BC">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.lug.ustc.edu.cn/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">人間夜行</a></h1>
+  
+    <h2>一切の有為の法　夢幻泡影の如し</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Unknown 钓鱼</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-14T00:00:00+08:00" pubdate data-updated="true">Dec 14th, 2011</time>
+        
+        
+           | <a href="#comments">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><h3>题目描述</h3>
+约翰是个垂钓谜，星期天他决定外出钓鱼h小时（1≤h≤16），约翰家附近共有n个池塘（2≤n≤25），这些池塘分布在一条直线上，约翰将这些池塘按离家的距离编上号，依次为L1,L2,…,Ln，他从湖1出发，向右走，有选择性地在一些湖停留一定的时间钓鱼，最后在某一个湖结束钓鱼。</p>
+
+<p>约翰家门外就是第一个池塘，所以他到第一个池塘是不用花时间的，约翰可以任选若干个池塘垂钓，并且在每个池塘他都可以呆上任意长的时间，但呆的时间必须为5分钟的倍数，（5分钟为一个单位时间），已知从池塘Li到池塘Li+1要化去约翰ti个单位时间，每个池塘的上鱼率预先也是已知的，池塘Li在第一个单位时间内能钓到的鱼为Fi（0≤Fi≤100），并且每过一个单位时间在单位时间内能钓到的鱼将减少一个常数di（0≤di≤100），现在请你编一个程序计算约翰最多能钓到多少鱼。<!--more-->
+<h3>输入</h3>
+输入文件第一行为一个整数n，第二行为一个整数h，第三行为n个用空格隔开的整数，表示Fi（i=1,2,…,n），第四行为n个用空格隔开的整数，表示di（i=1,2,…,n），第五行为n-1个用空格隔开的整数，表示ti（i=1,2,…,n-1）
+<h3>输出</h3>
+输出一个整数，表示约翰最多能钓到的鱼的数量。
+<h3>样例输入</h3>
+2<br />
+1
+10 1<br />
+2 5<br />
+2
+<h3>样例输出</h3>
+31
+<h3>Code</h3>
+<pre class="brush:c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#define MS 26</pre></p>
+
+<p>int f[MS],fb[MS],d[MS];<br />
+int t[MS]={0};<br />
+int res[MS]={0};<br />
+int n,k;<br />
+int fx[MS]={0};</p>
+
+<p>void init()<br />
+{
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;k);<br />
+        k=k*12;<br />
+        int i;<br />
+        for(i=1;i&lt;=n;i++)<br />
+                scanf(&quot;%d&quot;,&amp;f[i]);<br />
+        for(i=1;i&lt;=n;i++)<br />
+                scanf(&quot;%d&quot;,&amp;fb[i]);<br />
+        for(i=2;i&lt;=n;i++)<br />
+                scanf(&quot;%d&quot;,&amp;d[i]);<br />
+        for(i=2;i&lt;=n;i++)<br />
+                t[i]=t[i-1]+d[i];<br />
+}</p>
+
+<p>int findmax(int pool)<br />
+{
+        int i,max=0,maxi=0;<br />
+        for(i=1;i&lt;=pool;i++)<br />
+        {<br />
+                if(fx[i]&gt;max)<br />
+                {<br />
+                        max=fx[i];<br />
+                        maxi=i;<br />
+                }<br />
+        }<br />
+        return maxi;<br />
+}</p>
+
+<p>void stopat(int pool)<br />
+{
+//      memcpy(fx,f,MS*sizeof(f[0]));<br />
+        int i;<br />
+        for(i=1;i&lt;=n;i++) fx[i]=f[i];<br />
+        int kx=k;<br />
+        kx=kx-t[pool];<br />
+        while(kx&gt;0)<br />
+        {<br />
+                int pos=findmax(pool);<br />
+                if(pos!=0)<br />
+                {<br />
+                        res[pool]+=fx[pos];<br />
+                        fx[pos]-=fb[pos];<br />
+                }<br />
+                kx&#8211;;<br />
+        }<br />
+}
+int main()<br />
+{
+        init();<br />
+        int i;<br />
+        for(i=1;i&lt;=n;i++)<br />
+                stopat(i);<br />
+        int max=0;<br />
+        for(i=1;i&lt;=n;i++)<br />
+                max=res[i]&gt;max?res[i]:max;<br />
+//              printf(&quot;%d\n&quot;,res[i]);<br />
+        printf(&quot;%d&quot;,max);<br />
+        return 0;<br />
+}</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">人間夜行</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-14T00:00:00+08:00" pubdate data-updated="true">Dec 14th, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/acdai-ma/'>ac代码</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="https://koccn.net/blog/unknown-%E9%92%93%E9%B1%BC/" data-via="" data-counturl="https://koccn.net/blog/unknown-%E9%92%93%E9%B1%BC/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/rqnoj-654-noip2011%E9%93%BA%E5%9C%B0%E6%AF%AF/" title="Previous Post: RQNOJ 654 [NOIP2011]铺地毯">&laquo; RQNOJ 654 [NOIP2011]铺地毯</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/%E6%89%B9%E9%87%8F%E8%AE%BF%E9%97%AE%E4%BA%BA%E4%BA%BA%E5%A5%BD%E5%8F%8B/" title="Next Post: 批量访问人人好友">批量访问人人好友 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+  <section>
+    <h1>Comments</h1>
+    <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
+<div class="ds-thread" data-title="Unknown 钓鱼"></div>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"koccn"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'https://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+<!-- Duoshuo Comment END --></div>
+  </section>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="https://www.google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:koccn.net" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">想看只有我不存在的城市</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/">读过シドニアの騎士 15</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/">看过命运石之门剧场版：负荷领域的既视感</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+<section>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- art -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4233275739544541"
+         data-ad-slot="2323760118"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</section>
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2016 - 人間夜行 -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>
