@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://koccn.net/atom.xml" rel="self"/>
   <link href="https://koccn.net/"/>
-  <updated>2016-02-14T13:37:36+08:00</updated>
+  <updated>2016-02-14T16:26:45+08:00</updated>
   <id>https://koccn.net/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,47 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[导入豆瓣 RSS 至 Octopress]]></title>
+    <link href="https://koccn.net/blog/import-douban-rss-into-octopress/"/>
+    <updated>2016-02-14T14:14:30+08:00</updated>
+    <id>https://koccn.net/blog/import-douban-rss-into-octopress</id>
+    <content type="html"><![CDATA[<p>大家也许已经熟悉了本站最近的运作风格，即发表的文章中有许多来自我在 <a href="http://www.douban.com/people/elephantus/">豆瓣</a> 上的短评。之前在使用 WordPress 的时候，我使用了一个插件来导入 RSS 文件，虽然能用，但是并不稳定。<!-- more --></p>
+
+<p>如今我使用了 Octopress，这就意味着如果还要做这样一件事，就必须自己动手写一些东西了。非常幸运，这件事情可以还原为<strong>从 RSS 迁移博客</strong>，简单搜索便得到了 <a href="http://import.jekyllrb.com/docs/rss/">官方指南</a>。由于避免重复劳动是美德，我便写了如下脚本放在 Octopress 目录下新建的 <code>douban</code> 文件夹中。</p>
+
+<p>使用前除了注意脚本位置外，还应更改你所需的 URL 等信息，另外如果是第一次使用，可能还需要运行 <code>gem install jekyll-import</code> 安装相应依赖。</p>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
+<span class="c"># get_douban.sh</span>
+<span class="c">#</span>
+<span class="c"># This script gets 10 latest items in your collection in douban.com via its RSS file offered, and converts them to octopress posts.</span>
+<span class="c"># This script works in a subdirectory (you can create a new one) which has the same position as the directory &#39;source&#39;.</span>
+<span class="c"># Before you run this, make sure that &#39;jekyll-import&#39; is installed by gem.</span>
+<span class="c"># You must change the URL below to your own feed. You can also customize the category name.</span>
+
+<span class="c"># Change the URL below!</span>
+wget http://www.douban.com/feed/people/elephantus/interests -O douban.xml
+
+ruby -rubygems -e <span class="s1">&#39;require &quot;jekyll-import&quot;;</span>
+<span class="s1">    JekyllImport::Importers::RSS.run({</span>
+<span class="s1">      &quot;source&quot; =&gt; &quot;douban.xml&quot;</span>
+<span class="s1">    })&#39;</span>
+
+<span class="k">for</span> f in ./_posts/*
+<span class="k">do</span>
+    <span class="c"># Maybe change this line. Check &#39;man sed&#39; to know more about this.</span>
+    sed -i <span class="s1">&#39;3 acategories:\n-\ 豆瓣收藏&#39;</span> <span class="nv">$f</span>
+<span class="k">done</span>
+
+mv -nv ./_posts/* ../source/_posts/
+rm ./_posts/*</code></pre></div>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[博客迁移至 Octopress]]></title>
@@ -22,7 +63,7 @@
 
 <p>由于原来的 WordPress 博客已经不堪重负，机房已经多次因为消耗过多资源而暂停我的机器，我不得不考虑将我所有内容迁移至此。一不做二不休，这次使用的是 Octopress，产生的全是静态页面，感谢 GitHub Pages 提供托管，我就不信这样也会出问题。</p>
 
-<p>负面效果也存在，除却一定的工作量，迁移过程中还损失了以往的评论。这一点与多说评论框 WordPress 插件的设计不太合理有关。好在没有太多，这一点我还是有自知之明的。另外，页面的固定链接也被我 301 重定向了，把 /wordpress 换成 /blog 应该更好吧。</p>
+<p>负面效果也存在。除却一定的工作量，迁移过程中还损失了以往的评论。这一点与多说评论框 WordPress 插件的设计不太合理有关。好在没有太多，这一点我还是有自知之明的。另外，页面的固定链接也被我 301 重定向了，把 /wordpress 换成 /blog 应该更好吧。为了今后的便利，文章固定链接用英文写，这算是一个教训。原先上传在服务器上的多媒体文件虽然有备份，但在此恢复实在太麻烦了，暂时不做。</p>
 
 <p>目前其实并不能说是全部完工，页面的自定义只完成了一小部分。下载的主题竟然还坑我，要我手工除虫。不过既然我已经发出来了，就说明已无大碍。</p>
 
@@ -318,23 +359,6 @@
         <p>推荐: 力荐</p>
         <p>标签: 日本动画</p>
         <p>备注: 莫名地好看。明明是常规的商业作，并没有什么特别高端的东西，但设定就是很复杂。接下来可以去系统了解神道教了。为数不多的想看的新番。</p>
-    </td></tr></table></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[读过解读欧陆哲学]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E8%A7%A3%E8%AF%BB%E6%AC%A7%E9%99%86%E5%93%B2%E5%AD%A6/"/>
-    <updated>2015-12-25T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过解读欧陆哲学</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://book.douban.com/subject/3436961/" title="解读欧陆哲学">
-    <img src="http://img3.douban.com/spic/s3563591.jpg" alt="解读欧陆哲学" /></a></td>
-    <td>
-        <p>推荐: 推荐</p>
-        <p>备注: 对于初步了解当代两大哲学对立的源流有帮助。广义上确实是入门书，但绝对不适合给没有基础的初学者看。我自己有许多地方是不了解的，或许了解了以后就能读懂更多。<br />
-评论区里充斥了火药味，也算是讽刺。<br />
-无论是分析还是欧陆，他们最终都要超越自身走到一起。为了一种未来的哲学，我们必定还是需要付出难以想象的巨大努力。</p>
     </td></tr></table></p>
 ]]></content>
   </entry>

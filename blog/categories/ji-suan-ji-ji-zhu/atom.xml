@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
   <link href="https://koccn.net/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
   <link href="https://koccn.net/"/>
-  <updated>2016-02-14T13:37:36+08:00</updated>
+  <updated>2016-02-14T16:26:45+08:00</updated>
   <id>https://koccn.net/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,53 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[导入豆瓣 RSS 至 Octopress]]></title>
+    <link href="https://koccn.net/blog/import-douban-rss-into-octopress/"/>
+    <updated>2016-02-14T14:14:30+08:00</updated>
+    <id>https://koccn.net/blog/import-douban-rss-into-octopress</id>
+    <content type="html"><![CDATA[<p>大家也许已经熟悉了本站最近的运作风格，即发表的文章中有许多来自我在 <a href="http://www.douban.com/people/elephantus/">豆瓣</a> 上的短评。之前在使用 WordPress 的时候，我使用了一个插件来导入 RSS 文件，虽然能用，但是并不稳定。<!-- more --></p>
+
+<p>如今我使用了 Octopress，这就意味着如果还要做这样一件事，就必须自己动手写一些东西了。非常幸运，这件事情可以还原为<strong>从 RSS 迁移博客</strong>，简单搜索便得到了 <a href="http://import.jekyllrb.com/docs/rss/">官方指南</a>。由于避免重复劳动是美德，我便写了如下脚本放在 Octopress 目录下新建的 <code>douban</code> 文件夹中。</p>
+
+<p>使用前除了注意脚本位置外，还应更改你所需的 URL 等信息，另外如果是第一次使用，可能还需要运行 <code>gem install jekyll-import</code> 安装相应依赖。</p>
+
+<p><div class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;/p&gt;
+
+&lt;h1&gt;!/bin/bash&lt;/h1&gt;
+
+&lt;h1&gt;get_douban.sh&lt;/h1&gt;
+
+&lt;p&gt;#&lt;/p&gt;
+
+&lt;h1&gt;This script gets <span class="m">10</span> latest items in your collection in douban.com via its RSS file offered, and converts them to octopress posts.&lt;/h1&gt;
+
+&lt;h1&gt;This script works in a subdirectory <span class="o">(</span>you can create a new one<span class="o">)</span> which has the same position as the directory <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="nb">source</span><span class="p">&amp;</span>rsquo<span class="p">;</span>.&lt;/h1&gt;
+
+&lt;h1&gt;Before you run this, make sure that <span class="p">&amp;</span>lsquo<span class="p">;</span>jekyll-import<span class="p">&amp;</span>rsquo<span class="p">;</span> is installed by gem.&lt;/h1&gt;
+
+&lt;h1&gt;You must change the URL below to your own feed. You can also customize the category name.&lt;/h1&gt;
+
+&lt;h1&gt;Change the URL below!&lt;/h1&gt;
+
+&lt;p&gt;wget &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;http://www.douban.com/feed/people/elephantus/interests&quot;</span>&gt;http://www.douban.com/feed/people/elephantus/interests&lt;/a&gt; -O douban.xml&lt;/p&gt;
+
+&lt;p&gt;ruby -rubygems -e <span class="p">&amp;</span>lsquo<span class="p">;</span>require <span class="p">&amp;</span>ldquo<span class="p">;</span>jekyll-import<span class="p">&amp;</span>rdquo<span class="p">;;</span>
+    JekyllImport::Importers::RSS.run<span class="o">({</span>
+      <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nb">source</span><span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="o">=</span>&gt; <span class="p">&amp;</span>ldquo<span class="p">;</span>douban.xml<span class="p">&amp;</span>rdquo<span class="p">;</span>
+    <span class="o">})</span><span class="p">&amp;</span>rsquo<span class="p">;</span>&lt;/p&gt;
+
+&lt;p&gt;for f in ./_posts/*
+<span class="k">do</span>
+    <span class="c"># Maybe change this line. Check &amp;lsquo;man sed&amp;rsquo; to know more about this.</span>
+    sed -i <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="m">3</span> acategories:<span class="se">\n</span>-<span class="se">\ </span>豆瓣收藏<span class="p">&amp;</span>rsquo<span class="p">;</span> <span class="nv">$f</span>
+<span class="k">done</span>&lt;/p&gt;
+
+&lt;p&gt;mv -nv ./&lt;em&gt;posts/* ../source/&lt;/em&gt;posts/
+rm ./_posts/*</code></pre></div></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu连接北外新版无线网教程]]></title>
@@ -367,146 +414,6 @@ $endfor$
 <pre class="brush:bash">pandoc test.md -o test.pdf --latex-engine=xelatex --template=latex.template.cjk.tex</pre>
 <h2>结语</h2>
 以上均是一些最基础的应用，实际使用过程中会出现各种各样复杂的需求。遇到问题先看文档，再好好搜索，实在不行问别人，这可谓是获取一切计算机知识的通径。就目前来说，我的需求基本已经得到满足，接下来就看你的了。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Python3快速阅读工具]]></title>
-    <link href="https://koccn.net/blog/python3%E5%BF%AB%E9%80%9F%E9%98%85%E8%AF%BB%E5%B7%A5%E5%85%B7/"/>
-    <updated>2014-08-19T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/python3快速阅读工具</id>
-    <content type="html"><![CDATA[<p>好吧，最近手停不下来了。今天看到网上有个名叫“<a title="快读啦" href="http://kuaidula.com/" target="_blank">快读啦</a>”的快速阅读工具，号称能“让你不用移动眼睛，不用靠近屏幕就能阅读，保护视力”，觉得确实有用。可是它只有网页版，于是我便尝试用Python3写了一个。可以读txt电子书。Linux测试通过。<!--more-->
-<h2>原理</h2>
-从txt文件读取一个大字符串，每次只取一点点，每隔一段时间就移动切片。使用Tkinter作为图形界面（最近老是和GUI过不去……），chardet判断文本编码，突发奇想地用了getopt接收参数，还写了个帮助。
-<h2>使用说明</h2>
-<pre>Usage: python3 SpeadReading.py [options] FILENAME
-Press any key to resume or pause.
-Option list:
--p NUM, --pos=NUM Specify beginning position. 0 by default. (Useful as a bookmark)
--s NUM, --speed=NUM Specify the number of hanzi per minute. 750 by default
--w NUM, --width=NUM Specify the width of display. 3 by default
--z NUM, --size=NUM Specify the font size. 72 by default
--h, --help Show this help
-Position number will be given every time when exit.</pre>
-总之任意键开始或暂停，退出时有当前位置提醒，下次就可以当做书签参数输入了。
-<h2>代码</h2>
-<pre class="brush:python">#!/usr/bin/env python3
-# -*- coding:utf-8 -*-
-'''SpeedReading.py
-Speed up your reading!
-Author: Tianhu Zhang &lt;zszth@126.com&gt;
-Run with option -h or --help to show help.
-'''
-import tkinter as tk
-from tkinter import font
-import chardet
-import sys
-import getopt
-import os</pre></p>
-
-
-
-
-<p># Settings.<br />
-hanzi_per_min = 750<br />
-hanzi_at_a_time = 3<br />
-hanzi_size = 72</p>
-
-
-
-
-<p># Constants.<br />
-pos = 0<br />
-txt = '废话还是不要多说的好，除非你是在凑字数。'<br />
-reading = False</p>
-
-
-
-
-<p># Getting variants.<br />
-def help():<br />
-    print('''SpeedReading.py<br />
-Usage: python3 SpeadReading.py [options] FILENAME<br />
-Press any key to resume or pause.<br />
-Option list:<br />
-    -p NUM, --pos=NUM   Specify beginning position. 0 by default. (Useful as a bookmark)<br />
-    -s NUM, --speed=NUM Specify the number of hanzi per minute. 750 by default<br />
-    -w NUM, --width=NUM Specify the width of display. 3 by default<br />
-    -z NUM, --size=NUM  Specify the font size. 72 by default<br />
-    -h,     --help      Show this help<br />
-Position number will be given every time when exit.''')<br />
-if len(sys.argv) &lt; 2:<br />
-    file_path = input('Input file name (or path): &gt;')<br />
-    pos = int(input('Input position: &gt;'))<br />
-else:<br />
-    try:<br />
-        options,args = getopt.getopt(sys.argv[1:], 'hp:s:w:z:', ['help', 'pos=', 'speed=', 'width=', 'size='])<br />
-        if args:<br />
-            file_path = args[0]<br />
-            if not os.path.isfile(file_path):<br />
-                print('File not found.')<br />
-                exit()<br />
-            for opt, value in options:<br />
-                if opt in ['-p', '--pos']:<br />
-                    pos = int(value)<br />
-                if opt in ['-s', '--speed']:<br />
-                    hanzi_per_min = int(value)<br />
-                if opt in ['-w', '--width']:<br />
-                    hanzi_at_a_time = int(value)<br />
-                if opt in ['-z', '--size']:<br />
-                    hanzi_size = int(value)<br />
-        else:<br />
-            help()<br />
-            exit()<br />
-    except getopt.GetoptError:<br />
-        help()<br />
-        exit()</p>
-
-
-
-
-<p># Loading file.<br />
-with open(file_path, mode = 'rb') as f:<br />
-    # print(chardet.detect(f.read())['encoding'])<br />
-    data = f.read()<br />
-    code = chardet.detect(data)['encoding']<br />
-    txt = data.decode(code)<br />
-txt = '文始&gt;' + txt.replace('\n', '  ') + '&lt;文末'</p>
-
-
-
-
-<p># Preparing window.<br />
-root = tk.Tk()<br />
-root.title("速读 " + file_path)<br />
-show_font = font.Font(family = 'serif', size = hanzi_size, weight = 'normal')<br />
-show = tk.Label(root, text = '预备！', font = show_font)<br />
-def toogle(event):<br />
-    global reading<br />
-    reading = not reading<br />
-root.bind('&lt;KeyPress&gt;', toogle)<br />
-show.pack()<br />
-def timer():<br />
-    global pos<br />
-    if reading and pos &lt; len(txt) - (hanzi_at_a_time - 1):<br />
-        show.config(text = txt[pos: pos + hanzi_at_a_time])<br />
-        pos = pos + 1<br />
-    root.after(int(1000 * 60 / hanzi_per_min), timer)</p>
-
-
-
-
-<p># Start.<br />
-timer()<br />
-print('Press any key to resume or pause...')<br />
-show.config(text = txt[pos: pos + hanzi_at_a_time])<br />
-root.mainloop()<br />
-print('Stop at position {0}.'.format(pos))<br />
-if pos == len(txt) - (hanzi_at_a_time - 1):<br />
-    print('Reading finished.')
-
-&nbsp;</p>
 
 ]]></content>
   </entry>

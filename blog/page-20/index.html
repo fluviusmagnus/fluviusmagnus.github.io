@@ -9,13 +9,12 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//模拟全过程就行了。
-#include &lt;stdio.h&gt;
-int main()
-{
-        int hp[8]={0,0,0,0,0,0,0,0};
-        int i;
-        for(i=1;i&lt;=7;i &hellip;">
+  <meta name="description" content="//先一次快排。以后挪一挪。
+//贪心。
+//又想起WJMZBMR曾经用这道题演示C++的STL。这样不就几乎不用做了吗？
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int comp(const void *p1,const void *p2 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -58,10 +57,10 @@ int main()
   <li><a href="/">博客</a></li>
   <li><a href="/blog/archives/">所有文章</a></li>
   <li><a href="/work/">工作室</a></li>
-  <li><a href="/blog/history/">站点历史</a></li>
-  <li><a href="/blog/留言板/">留言板</a></li>
-  <li><a href="/blog/donate/">捐赠与致谢</a></li>
-  <li><a href="/blog/about/">关于</a></li>
+  <li><a href="/history/">站点历史</a></li>
+  <li><a href="/留言板/">留言板</a></li>
+  <li><a href="/donate/">捐赠与致谢</a></li>
+  <li><a href="/about/">关于</a></li>
 </ul>
 
 </nav>
@@ -69,6 +68,74 @@ int main()
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-25-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/">RQNOJ 25 合并果子</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-25-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//先一次快排。以后挪一挪。
+//贪心。
+//又想起WJMZBMR曾经用这道题演示C++的STL。这样不就几乎不用做了吗？
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int comp(const void *p1,const void *p2)
+    {
+return *((int *)p1)-*((int *)p2);
+}
+int main()
+{
+int i,n,j,a[10001]={0},s=0,t;
+scanf("%d",&amp;n);
+for(i=0;i&lt;=n-1;i++) scanf("%d",&amp;a[i]);
+qsort(a,n,sizeof(int),comp);
+for(i=0;i&lt;=n-2;i++)
+{
+    a[i+1]=a[i]+a[i+1];
+    s+=a[i+1];
+    for(j=i+1;j&lt;=n-2;j++) if(a[j]&gt;a[j+1]) 
+{
+t=a[j];
+        a[j]=a[j+1];
+     a[j+1]=t;
+}
+}
+printf("%d",s);
+         return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -647,50 +714,6 @@ done</blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/">小小地吐一个</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-24T00:00:00+08:00" pubdate data-updated="true">Sep 24th, 2011</time>
-        
-        
-           | <a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>我不过是下一个游戏罢了，用得着给这种速度吗？</p>
-
-<p>[caption id="attachment_194" align="aligncenter" width="300" caption="下载0ad时的速度，sf不给力"]<a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1.png"><img class="size-medium wp-image-194" title="下载0ad时的速度" src="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1-300x209.png" alt="下载0ad时的速度，sf不给力" width="300" height="209" /></a>[/caption]</p>
-
-<p>Sourceforge每次都自动跳转到那个镜像。慢啊。:-(也许下次该设法配置一下了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-21">&larr; 旧文</a>
@@ -712,11 +735,16 @@ done</blockquote>
   
   
     <section>
-    <a href="/blog/donate/"><img src="https://o2guqap13.qnssl.com/donate_page.jpg" /></a>
+    <h1>捐赠与致谢</h1>
+    <a href="/donate/"><img src="https://o2guqap13.qnssl.com/donate_page.jpg" /></a>
 </section>
 <section>
   <h1>最新文章</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/import-douban-rss-into-octopress/">导入豆瓣 RSS 至 Octopress</a>
+      </li>
     
       <li class="post">
         <a href="/blog/a-new-start-with-octopress/">博客迁移至 Octopress</a>
@@ -734,20 +762,18 @@ done</blockquote>
         <a href="/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/">读过シドニアの騎士 1</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/">看过追逐繁星的孩子</a>
-      </li>
-    
   </ul>
 </section>
-
-
-
-
 <section>
+  <h1>文章分类</h1>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (50)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+</section>
+<section>
+    <h1>推荐</h1>
     <a href="https://www.vultr.com/?ref=6858690"><img src="https://www.vultr.com/media/300x250_02.gif" width="300" height="250"><br />每月 5 美元，768MB内存，15GB SSD硬盘，1000GB流量，含日本机房</a>
 </section>
 <section>
+    <h1>广告</h1>
     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <!-- art -->
     <ins class="adsbygoogle"
@@ -758,6 +784,17 @@ done</blockquote>
     <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+</section>
+<section>
+    <h1>友情链接</h1>
+    <ul>
+        <li><a href="http://www.archlinuxcn.org/">Archlinux中文论坛</a></li>
+        <li><a href="http://sfiction.blog.163.com/">灰然如此</a> 某同学之私人 Blog</li>
+        <li><a href="http://gndrive.org/">高达数字实验室</a> Eric 的小站</li>
+        <li><a href="http://www.gaomezi.com/">搞么子</a> 质量原创</li>
+        <li><a href="http://forum.ubuntu.org.cn/">Ubuntu中文论坛</a></li>
+        <li><a href="https://koccn.net/about/">申请加入</a> 请联系我</li>
+    </ul>
 </section>
 
   

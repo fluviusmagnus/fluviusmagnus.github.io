@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://koccn.net/blog/import-douban-rss-into-octopress/</loc>
+<lastmod>2016-02-14T14:14:30+08:00</lastmod>
+</url>
+<url>
 <loc>https://koccn.net/blog/a-new-start-with-octopress/</loc>
 <lastmod>2016-02-14T10:57:52+08:00</lastmod>
 </url>
@@ -953,22 +957,22 @@
 <lastmod>2011-03-26T00:00:00+08:00</lastmod>
 </url>
 <url>
-<loc>https://koccn.net/blog/about/</loc>
+<loc>https://koccn.net/history/</loc>
 </url>
 <url>
-<loc>https://koccn.net/blog/history/</loc>
+<loc>https://koccn.net/%25E7%2595%2599%25E8%25A8%2580%25E6%259D%25BF/</loc>
 </url>
 <url>
-<loc>https://koccn.net/blog/%25E7%2595%2599%25E8%25A8%2580%25E6%259D%25BF/</loc>
+<loc>https://koccn.net/donate/</loc>
 </url>
 <url>
-<loc>https://koccn.net/blog/archives/</loc>
+<loc>https://koccn.net/about/</loc>
 </url>
 <url>
 <loc>https://koccn.net/</loc>
 </url>
 <url>
-<loc>https://koccn.net/blog/donate/</loc>
+<loc>https://koccn.net/blog/archives/</loc>
 </url>
 <url>
 <loc>https://koccn.net/blog/categories/wei-fen-lei/</loc>
