@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://koccn.net/atom.xml" rel="self"/>
   <link href="https://koccn.net/"/>
-  <updated>2016-02-13T23:24:58+08:00</updated>
+  <updated>2016-02-14T11:17:01+08:00</updated>
   <id>https://koccn.net/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -14,16 +14,37 @@
 
   
   <entry>
-    <title type="html"><![CDATA[想看只有我不存在的城市]]></title>
-    <link href="https://koccn.net/blog/%E6%83%B3%E7%9C%8B%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/"/>
-    <updated>2016-02-05T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/想看只有我不存在的城市</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://movie.douban.com/subject/26427106/" title="僕だけがいない街">
-    <img src="http://img6.douban.com/view/movie_poster_cover/ipst/public/p2305467317.jpg" alt="僕だけがいない街" /></a></td>
+    <title type="html"><![CDATA[博客迁移至 Octopress]]></title>
+    <link href="https://koccn.net/blog/a-new-start-with-octopress/"/>
+    <updated>2016-02-14T10:57:52+08:00</updated>
+    <id>https://koccn.net/blog/a-new-start-with-octopress</id>
+    <content type="html"><![CDATA[<p>各位新年好！</p>
+
+<p>由于原来的 WordPress 博客已经不堪重负，机房已经多次因为消耗过多资源而暂停我的机器，我不得不考虑将我所有内容迁移至此。一不做二不休，这次使用的是 Octopress，产生的全是静态页面，感谢 GitHub Pages 提供托管，我就不信这样也会出问题。</p>
+
+<p>负面效果也存在，除却一定的工作量，迁移过程中还损失了以往的评论。这一点与多说评论框 WordPress 插件的设计不太合理有关。好在没有太多，这一点我还是有自知之明的。另外，页面的固定链接也被我 301 重定向了，把 /wordpress 换成 /blog 应该更好吧。</p>
+
+<p>目前其实并不能说是全部完工，页面的自定义只完成了一小部分。下载的主题竟然还坑我，要我手工除虫。不过既然我已经发出来了，就说明已无大碍。</p>
+
+<p>作为公告性质的文章我就不作“阅读更多”的分段了。感谢各位看到这里，也请在接下来的日子里继续支持本站。</p>
+
+<p>敬上。</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[看过GATE 奇幻自卫队]]></title>
+    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F/"/>
+    <updated>2016-02-10T00:00:00+08:00</updated>
+    <id>https://koccn.net/blog/看过gate-奇幻自卫队</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="http://movie.douban.com/subject/26287113/" title="ゲート 自衛隊 彼の地にて、斯く戦えり">
+    <img src="http://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2218257979.jpg" alt="ゲート 自衛隊 彼の地にて、斯く戦えり"></a></td>
     <td>
+        <p>推荐: 推荐</p>
         <p>标签: 日本动画</p>
-    </td></tr></table></p>
+        <p>备注: 自卫队的广告吗？现代装备虐古人。现实中无法实现的幻想只能到异世界寻找了，包括三个可爱的妹子？（大雾）另有普通级别的政治讽刺，吾辈看看就好。</p>
+    </td></tr></table>
 ]]></content>
   </entry>
   
@@ -314,22 +335,6 @@
         <p>备注: 对于初步了解当代两大哲学对立的源流有帮助。广义上确实是入门书，但绝对不适合给没有基础的初学者看。我自己有许多地方是不了解的，或许了解了以后就能读懂更多。<br />
 评论区里充斥了火药味，也算是讽刺。<br />
 无论是分析还是欧陆，他们最终都要超越自身走到一起。为了一种未来的哲学，我们必定还是需要付出难以想象的巨大努力。</p>
-    </td></tr></table></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[读过德意志文学简史]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E5%BE%B7%E6%84%8F%E5%BF%97%E6%96%87%E5%AD%A6%E7%AE%80%E5%8F%B2/"/>
-    <updated>2015-12-17T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过德意志文学简史</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://book.douban.com/subject/25736477/" title="德意志文学简史">
-    <img src="http://img3.douban.com/spic/s27219455.jpg" alt="德意志文学简史" /></a></td>
-    <td>
-        <p>推荐: 推荐</p>
-        <p>标签: 德国 文学 文学史</p>
-        <p>备注: 短小精悍，抽出了精神主线宏观把握。据说褒贬不一，引发大争议。对于完全不了解的人（比如我）来说并不适合入门。目前排名在前的短评给出了主线，我大致同意。大约以后应该再读一遍。</p>
     </td></tr></table></p>
 ]]></content>
   </entry>
