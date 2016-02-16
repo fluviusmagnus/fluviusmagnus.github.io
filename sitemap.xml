@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://koccn.net/blog/%25E8%25AF%25BB%25E8%25BF%2587%25E5%259C%25B0%25E9%2593%2581/</loc>
+<lastmod>2016-02-15T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>https://koccn.net/blog/import-douban-rss-into-octopress/</loc>
 <lastmod>2016-02-14T14:14:30+08:00</lastmod>
 </url>
