@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[人間夜行]]></title>
-  <link href="https://koccn.net/atom.xml" rel="self"/>
-  <link href="https://koccn.net/"/>
-  <updated>2016-02-16T09:38:06+08:00</updated>
-  <id>https://koccn.net/</id>
+  <link href="https://elephantus.moe/atom.xml" rel="self"/>
+  <link href="https://elephantus.moe/"/>
+  <updated>2016-02-18T11:39:04+08:00</updated>
+  <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
     <email><![CDATA[zszth@126.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[读过地铁]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/"/>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/"/>
     <updated>2016-02-15T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过地铁</id>
+    <id>https://elephantus.moe/blog/读过地铁</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="http://book.douban.com/subject/5336223/" title="地铁">
     <img src="http://img3.doubanio.com/spic/s4549416.jpg" alt="地铁"></a></td>
@@ -31,9 +31,9 @@
   
   <entry>
     <title type="html"><![CDATA[导入豆瓣 RSS 至 Octopress]]></title>
-    <link href="https://koccn.net/blog/import-douban-rss-into-octopress/"/>
+    <link href="https://elephantus.moe/blog/import-douban-rss-into-octopress/"/>
     <updated>2016-02-14T14:14:30+08:00</updated>
-    <id>https://koccn.net/blog/import-douban-rss-into-octopress</id>
+    <id>https://elephantus.moe/blog/import-douban-rss-into-octopress</id>
     <content type="html"><![CDATA[<p>大家也许已经熟悉了本站最近的运作风格，即发表的文章中有许多来自我在 <a href="http://www.douban.com/people/elephantus/">豆瓣</a> 上的短评。之前在使用 WordPress 的时候，我使用了一个插件来导入 RSS 文件，虽然能用，但是并不稳定。<!-- more --></p>
 
 <p>如今我使用了 Octopress，这就意味着如果还要做这样一件事，就必须自己动手写一些东西了。非常幸运，这件事情可以还原为<strong>从 RSS 迁移博客</strong>，简单搜索便得到了 <a href="http://import.jekyllrb.com/docs/rss/">官方指南</a>。由于避免重复劳动是美德，我便写了如下脚本放在 Octopress 目录下新建的 <code>douban</code> 文件夹中。</p>
@@ -72,9 +72,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[博客迁移至 Octopress]]></title>
-    <link href="https://koccn.net/blog/a-new-start-with-octopress/"/>
+    <link href="https://elephantus.moe/blog/a-new-start-with-octopress/"/>
     <updated>2016-02-14T10:57:52+08:00</updated>
-    <id>https://koccn.net/blog/a-new-start-with-octopress</id>
+    <id>https://elephantus.moe/blog/a-new-start-with-octopress</id>
     <content type="html"><![CDATA[<p>各位新年好！</p>
 
 <p>由于原来的 WordPress 博客已经不堪重负，机房已经多次因为消耗过多资源而暂停我的机器，我不得不考虑将我所有内容迁移至此。一不做二不休，这次使用的是 Octopress，产生的全是静态页面，感谢 GitHub Pages 提供托管，我就不信这样也会出问题。</p>
@@ -91,9 +91,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过GATE 奇幻自卫队]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F/"/>
     <updated>2016-02-10T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过gate-奇幻自卫队</id>
+    <id>https://elephantus.moe/blog/看过gate-奇幻自卫队</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/26287113/" title="ゲート 自衛隊 彼の地にて、斯く戦えり">
     <img src="http://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2218257979.jpg" alt="ゲート 自衛隊 彼の地にて、斯く戦えり"></a></td>
@@ -107,9 +107,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[读过シドニアの騎士 15]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/"/>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-15/"/>
     <updated>2016-02-01T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过シドニアの騎士-15</id>
+    <id>https://elephantus.moe/blog/读过シドニアの騎士-15</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://book.douban.com/subject/26616184/" title="シドニアの騎士 15">
     <img src="http://img3.doubanio.com/spic/s28340548.jpg" alt="シドニアの騎士 15" /></a></td>
@@ -123,9 +123,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[读过シドニアの騎士 1]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/"/>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E3%82%B7%E3%83%89%E3%83%8B%E3%82%A2%E3%81%AE%E9%A8%8E%E5%A3%AB-1/"/>
     <updated>2016-02-01T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过シドニアの騎士-1</id>
+    <id>https://elephantus.moe/blog/读过シドニアの騎士-1</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://book.douban.com/subject/4049903/" title="シドニアの騎士 1">
     <img src="http://img3.douban.com/spic/s3989495.jpg" alt="シドニアの騎士 1" /></a></td>
@@ -139,9 +139,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过追逐繁星的孩子]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E8%BF%BD%E9%80%90%E7%B9%81%E6%98%9F%E7%9A%84%E5%AD%A9%E5%AD%90/"/>
     <updated>2016-02-01T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过追逐繁星的孩子</id>
+    <id>https://elephantus.moe/blog/看过追逐繁星的孩子</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/4246125/" title="星を追う子ども">
     <img src="http://img3.douban.com/view/movie_poster_cover/ipst/public/p1957577564.jpg" alt="星を追う子ども" /></a></td>
@@ -155,9 +155,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过命运石之门剧场版：负荷领域的既视感]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%91%BD%E8%BF%90%E7%9F%B3%E4%B9%8B%E9%97%A8%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9A%E8%B4%9F%E8%8D%B7%E9%A2%86%E5%9F%9F%E7%9A%84%E6%97%A2%E8%A7%86%E6%84%9F/"/>
     <updated>2016-02-01T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过命运石之门剧场版：负荷领域的既视感</id>
+    <id>https://elephantus.moe/blog/看过命运石之门剧场版：负荷领域的既视感</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/6844861/" title="劇場版 STEINS;GATE 負荷領域のデジャヴ">
     <img src="http://img3.douban.com/view/movie_poster_cover/ipst/public/p1957382613.jpg" alt="劇場版 STEINS;GATE 負荷領域のデジャヴ" /></a></td>
@@ -171,9 +171,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过十字路口]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3/"/>
     <updated>2016-02-01T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过十字路口</id>
+    <id>https://elephantus.moe/blog/看过十字路口</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/25834500/" title="クロスロード">
     <img src="http://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2172441219.jpg" alt="クロスロード" /></a></td>
@@ -187,9 +187,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过德国人 第一季]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E5%BE%B7%E5%9B%BD%E4%BA%BA-%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%BE%B7%E5%9B%BD%E4%BA%BA-%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
     <updated>2016-01-30T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过德国人-第一季</id>
+    <id>https://elephantus.moe/blog/看过德国人-第一季</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/5183318/" title="Die Deutschen">
     <img src="http://img3.doubanio.com/spic/s4677548.jpg" alt="Die Deutschen" /></a></td>
@@ -203,9 +203,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过希德尼娅的骑士 第二季 第九惑星战役]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E5%B8%8C%E5%BE%B7%E5%B0%BC%E5%A8%85%E7%9A%84%E9%AA%91%E5%A3%AB-%E7%AC%AC%E4%BA%8C%E5%AD%A3-%E7%AC%AC%E4%B9%9D%E6%83%91%E6%98%9F%E6%88%98%E5%BD%B9/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%B8%8C%E5%BE%B7%E5%B0%BC%E5%A8%85%E7%9A%84%E9%AA%91%E5%A3%AB-%E7%AC%AC%E4%BA%8C%E5%AD%A3-%E7%AC%AC%E4%B9%9D%E6%83%91%E6%98%9F%E6%88%98%E5%BD%B9/"/>
     <updated>2016-01-30T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过希德尼娅的骑士-第二季-第九惑星战役</id>
+    <id>https://elephantus.moe/blog/看过希德尼娅的骑士-第二季-第九惑星战役</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/25915879/" title="シドニアの騎士 第九惑星戦役">
     <img src="http://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2233783138.jpg" alt="シドニアの騎士 第九惑星戦役" /></a></td>
@@ -219,9 +219,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过希德尼娅的骑士]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E5%B8%8C%E5%BE%B7%E5%B0%BC%E5%A8%85%E7%9A%84%E9%AA%91%E5%A3%AB/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%B8%8C%E5%BE%B7%E5%B0%BC%E5%A8%85%E7%9A%84%E9%AA%91%E5%A3%AB/"/>
     <updated>2016-01-29T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过希德尼娅的骑士</id>
+    <id>https://elephantus.moe/blog/看过希德尼娅的骑士</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/24700703/" title="シドニアの騎士">
     <img src="http://img3.douban.com/view/movie_poster_cover/ipst/public/p2179176063.jpg" alt="シドニアの騎士" /></a></td>
@@ -235,9 +235,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[读过丈量世界]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E4%B8%88%E9%87%8F%E4%B8%96%E7%95%8C/"/>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E4%B8%88%E9%87%8F%E4%B8%96%E7%95%8C/"/>
     <updated>2016-01-22T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过丈量世界</id>
+    <id>https://elephantus.moe/blog/读过丈量世界</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://book.douban.com/subject/26320883/" title="丈量世界">
     <img src="http://img3.doubanio.com/spic/s28295328.jpg" alt="丈量世界" /></a></td>
@@ -251,9 +251,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过こわぼん]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E3%81%93%E3%82%8F%E3%81%BC%E3%82%93/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E3%81%93%E3%82%8F%E3%81%BC%E3%82%93/"/>
     <updated>2016-01-15T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过こわぼん</id>
+    <id>https://elephantus.moe/blog/看过こわぼん</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/26426037/" title="こわぼん">
     <img src="http://img3.douban.com/view/movie_poster_cover/ipst/public/p2261001891.jpg" alt="こわぼん" /></a></td>
@@ -267,9 +267,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[读过写给大家的日语史]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9A%84%E6%97%A5%E8%AF%AD%E5%8F%B2/"/>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E5%86%99%E7%BB%99%E5%A4%A7%E5%AE%B6%E7%9A%84%E6%97%A5%E8%AF%AD%E5%8F%B2/"/>
     <updated>2016-01-14T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过写给大家的日语史</id>
+    <id>https://elephantus.moe/blog/读过写给大家的日语史</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://book.douban.com/subject/10599770/" title="写给大家的日语史">
     <img src="http://img3.doubanio.com/spic/s11311597.jpg" alt="写给大家的日语史" /></a></td>
@@ -285,9 +285,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过神探夏洛克]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E7%A5%9E%E6%8E%A2%E5%A4%8F%E6%B4%9B%E5%85%8B/"/>
     <updated>2016-01-07T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过神探夏洛克</id>
+    <id>https://elephantus.moe/blog/看过神探夏洛克</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/25920885/" title="Sherlock: The Abominable Bride">
     <img src="http://img3.douban.com/view/movie_poster_cover/ipst/public/p2299823043.jpg" alt="Sherlock: The Abominable Bride" /></a></td>
@@ -301,9 +301,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过终物语]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E7%BB%88%E7%89%A9%E8%AF%AD/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E7%BB%88%E7%89%A9%E8%AF%AD/"/>
     <updated>2016-01-06T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过终物语</id>
+    <id>https://elephantus.moe/blog/看过终物语</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/26434811/" title="終物語">
     <img src="http://img3.douban.com/view/movie_poster_cover/ipst/public/p2273880414.jpg" alt="終物語" /></a></td>
@@ -317,9 +317,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过日常]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E6%97%A5%E5%B8%B8/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%97%A5%E5%B8%B8/"/>
     <updated>2016-01-04T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过日常</id>
+    <id>https://elephantus.moe/blog/看过日常</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/4848701/" title="日常">
     <img src="http://img3.douban.com/spic/s6357164.jpg" alt="日常" /></a></td>
@@ -333,9 +333,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[读过来自天然星的伊迪奥特]]></title>
-    <link href="https://koccn.net/blog/%E8%AF%BB%E8%BF%87%E6%9D%A5%E8%87%AA%E5%A4%A9%E7%84%B6%E6%98%9F%E7%9A%84%E4%BC%8A%E8%BF%AA%E5%A5%A5%E7%89%B9/"/>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E6%9D%A5%E8%87%AA%E5%A4%A9%E7%84%B6%E6%98%9F%E7%9A%84%E4%BC%8A%E8%BF%AA%E5%A5%A5%E7%89%B9/"/>
     <updated>2016-01-01T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/读过来自天然星的伊迪奥特</id>
+    <id>https://elephantus.moe/blog/读过来自天然星的伊迪奥特</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://book.douban.com/subject/26637516/" title="来自天然星的伊迪奥特">
     <img src="http://img4.douban.com/spic/s28312537.jpg" alt="来自天然星的伊迪奥特" /></a></td>
@@ -349,9 +349,9 @@ rm ./_posts/*</code></pre></div>
   
   <entry>
     <title type="html"><![CDATA[看过水滴]]></title>
-    <link href="https://koccn.net/blog/%E7%9C%8B%E8%BF%87%E6%B0%B4%E6%BB%B4/"/>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%B0%B4%E6%BB%B4/"/>
     <updated>2015-12-29T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/看过水滴</id>
+    <id>https://elephantus.moe/blog/看过水滴</id>
     <content type="html"><![CDATA[<p><table><tr>
     <td width="80px"><a href="http://movie.douban.com/subject/26613444/" title="Waterdrop">
     <img src="http://img4.douban.com/view/movie_poster_cover/ipst/public/p2267251808.jpg" alt="Waterdrop" /></a></td>

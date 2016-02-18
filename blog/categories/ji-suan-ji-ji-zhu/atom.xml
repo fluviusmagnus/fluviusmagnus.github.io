@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
-  <link href="https://koccn.net/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
-  <link href="https://koccn.net/"/>
-  <updated>2016-02-16T09:38:06+08:00</updated>
-  <id>https://koccn.net/</id>
+  <link href="https://elephantus.moe/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
+  <link href="https://elephantus.moe/"/>
+  <updated>2016-02-18T11:39:04+08:00</updated>
+  <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
     <email><![CDATA[zszth@126.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[导入豆瓣 RSS 至 Octopress]]></title>
-    <link href="https://koccn.net/blog/import-douban-rss-into-octopress/"/>
+    <link href="https://elephantus.moe/blog/import-douban-rss-into-octopress/"/>
     <updated>2016-02-14T14:14:30+08:00</updated>
-    <id>https://koccn.net/blog/import-douban-rss-into-octopress</id>
+    <id>https://elephantus.moe/blog/import-douban-rss-into-octopress</id>
     <content type="html"><![CDATA[<p>大家也许已经熟悉了本站最近的运作风格，即发表的文章中有许多来自我在 <a href="http://www.douban.com/people/elephantus/">豆瓣</a> 上的短评。之前在使用 WordPress 的时候，我使用了一个插件来导入 RSS 文件，虽然能用，但是并不稳定。<!-- more --></p>
 
 <p>如今我使用了 Octopress，这就意味着如果还要做这样一件事，就必须自己动手写一些东西了。非常幸运，这件事情可以还原为<strong>从 RSS 迁移博客</strong>，简单搜索便得到了 <a href="http://import.jekyllrb.com/docs/rss/">官方指南</a>。由于避免重复劳动是美德，我便写了如下脚本放在 Octopress 目录下新建的 <code>douban</code> 文件夹中。</p>
@@ -62,9 +62,9 @@ rm ./_posts/*</code></pre></div></p>
   
   <entry>
     <title type="html"><![CDATA[Ubuntu连接北外新版无线网教程]]></title>
-    <link href="https://koccn.net/blog/ubuntu%E8%BF%9E%E6%8E%A5%E5%8C%97%E5%A4%96%E6%96%B0%E7%89%88%E6%97%A0%E7%BA%BF%E7%BD%91%E6%95%99%E7%A8%8B/"/>
+    <link href="https://elephantus.moe/blog/ubuntu%E8%BF%9E%E6%8E%A5%E5%8C%97%E5%A4%96%E6%96%B0%E7%89%88%E6%97%A0%E7%BA%BF%E7%BD%91%E6%95%99%E7%A8%8B/"/>
     <updated>2015-11-17T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/ubuntu连接北外新版无线网教程</id>
+    <id>https://elephantus.moe/blog/ubuntu连接北外新版无线网教程</id>
     <content type="html"><![CDATA[<p>2015年11月，我们学校（北京外国语大学）在全校范围内更新了一整套无线网系统，从此告别无加密的危险网络。</p>
 
 
@@ -97,9 +97,9 @@ rm ./_posts/*</code></pre></div></p>
   
   <entry>
     <title type="html"><![CDATA[我的行为艺术]]></title>
-    <link href="https://koccn.net/blog/%E6%88%91%E7%9A%84%E8%A1%8C%E4%B8%BA%E8%89%BA%E6%9C%AF/"/>
+    <link href="https://elephantus.moe/blog/%E6%88%91%E7%9A%84%E8%A1%8C%E4%B8%BA%E8%89%BA%E6%9C%AF/"/>
     <updated>2015-04-06T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/我的行为艺术</id>
+    <id>https://elephantus.moe/blog/我的行为艺术</id>
     <content type="html"><![CDATA[<p>我用假文制作了一个看似有内容的站点：<a title="人间夜行的行为艺术" href="http://art.koccn.net" target="_blank">人间夜行的行为艺术</a>。</p>
 
 
@@ -117,9 +117,9 @@ rm ./_posts/*</code></pre></div></p>
   
   <entry>
     <title type="html"><![CDATA[万网虚拟主机Wordpress配置技巧]]></title>
-    <link href="https://koccn.net/blog/%E4%B8%87%E7%BD%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAwordpress%E9%85%8D%E7%BD%AE%E6%8A%80%E5%B7%A7/"/>
+    <link href="https://elephantus.moe/blog/%E4%B8%87%E7%BD%91%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BAwordpress%E9%85%8D%E7%BD%AE%E6%8A%80%E5%B7%A7/"/>
     <updated>2015-02-03T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/万网虚拟主机wordpress配置技巧</id>
+    <id>https://elephantus.moe/blog/万网虚拟主机wordpress配置技巧</id>
     <content type="html"><![CDATA[<p>众所周知，Wordpress如果运行不正常很可能是由于php的配置有误。本来只需要修改一下配置，但对于虚拟主机来说，这个问题确实相当棘手的。现在就来分享一下我目前遇到的两个问题及其解决办法。Wordpress版本4.1，从其他网站迁移过来的，php版本5.3.23。<!--more--></p>
 
 
@@ -164,9 +164,9 @@ rm ./_posts/*</code></pre></div></p>
   
   <entry>
     <title type="html"><![CDATA[Linux下的中文LaTeX实践]]></title>
-    <link href="https://koccn.net/blog/linux%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%87latex%E5%AE%9E%E8%B7%B5/"/>
+    <link href="https://elephantus.moe/blog/linux%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%87latex%E5%AE%9E%E8%B7%B5/"/>
     <updated>2014-08-27T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/linux下的中文latex实践</id>
+    <id>https://elephantus.moe/blog/linux下的中文latex实践</id>
     <content type="html"><![CDATA[<p>LaTeX是优秀的跨平台计算机排版软件，具体就不多介绍。虽然我大概是不会有那种程度的科技类文章的排版需要的，不过作为一种技术本身，我还是愿意去涉猎一下。综合目前网上的各种教程，我发现最省心的配置还是xetex加ctex，这样可以省去配置中文编码、字体的种种麻烦。一步到位，轻松解决。<!--more-->
 <h2>安装</h2>
 有人说要专门下载一个Live CD，我觉得没这个必要。Ubuntu的软件源里同样有这些软件。即使不使用其自带的包管理器，使用新立得包管理器也可以方便地查找相关包的信息。一般情况，你可能只需要选择下载支持UTF-8的并能用xelatex直接生成PDF的texlive-xetex，和包含ctex的texlive-lang-cjk即可，其余的必需部件根据依赖关系就可以自动搞定。不过，如果你硬盘空间充足，我仍然建议你直接安装texlive-full，这样便将所有可能用到的包全部下载下来了，尽管你不会用到其中的大部分。</p>

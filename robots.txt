@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://koccn.net/sitemap.xml 
+Sitemap: https://elephantus.moe/sitemap.xml 

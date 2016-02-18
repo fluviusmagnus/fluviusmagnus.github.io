@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 未分类 | 人間夜行]]></title>
-  <link href="https://koccn.net/blog/categories/wei-fen-lei/atom.xml" rel="self"/>
-  <link href="https://koccn.net/"/>
-  <updated>2016-02-16T09:38:06+08:00</updated>
-  <id>https://koccn.net/</id>
+  <link href="https://elephantus.moe/blog/categories/wei-fen-lei/atom.xml" rel="self"/>
+  <link href="https://elephantus.moe/"/>
+  <updated>2016-02-18T11:39:04+08:00</updated>
+  <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
     <email><![CDATA[zszth@126.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[博客迁移至 Octopress]]></title>
-    <link href="https://koccn.net/blog/a-new-start-with-octopress/"/>
+    <link href="https://elephantus.moe/blog/a-new-start-with-octopress/"/>
     <updated>2016-02-14T10:57:52+08:00</updated>
-    <id>https://koccn.net/blog/a-new-start-with-octopress</id>
+    <id>https://elephantus.moe/blog/a-new-start-with-octopress</id>
     <content type="html"><![CDATA[<p>各位新年好！</p>
 
 <p>由于原来的 WordPress 博客已经不堪重负，机房已经多次因为消耗过多资源而暂停我的机器，我不得不考虑将我所有内容迁移至此。一不做二不休，这次使用的是 Octopress，产生的全是静态页面，感谢 GitHub Pages 提供托管，我就不信这样也会出问题。</p>
@@ -34,9 +34,9 @@
   
   <entry>
     <title type="html"><![CDATA[测试]]></title>
-    <link href="https://koccn.net/blog/%E6%B5%8B%E8%AF%95/"/>
+    <link href="https://elephantus.moe/blog/%E6%B5%8B%E8%AF%95/"/>
     <updated>2014-01-12T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/测试</id>
+    <id>https://elephantus.moe/blog/测试</id>
     <content type="html"><![CDATA[<p>测试海外服务器e.koccn.net同步性能。</p>
 
 ]]></content>
@@ -44,9 +44,9 @@
   
   <entry>
     <title type="html"><![CDATA[致歉]]></title>
-    <link href="https://koccn.net/blog/%E8%87%B4%E6%AD%89/"/>
+    <link href="https://elephantus.moe/blog/%E8%87%B4%E6%AD%89/"/>
     <updated>2013-08-15T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/致歉</id>
+    <id>https://elephantus.moe/blog/致歉</id>
     <content type="html"><![CDATA[<p>由于本人实在忙，最近及时更新一般难以做到，望能理解。</p>
 
 ]]></content>
@@ -54,9 +54,9 @@
   
   <entry>
     <title type="html"><![CDATA[新图床的测试]]></title>
-    <link href="https://koccn.net/blog/%E6%96%B0%E5%9B%BE%E5%BA%8A%E7%9A%84%E6%B5%8B%E8%AF%95/"/>
+    <link href="https://elephantus.moe/blog/%E6%96%B0%E5%9B%BE%E5%BA%8A%E7%9A%84%E6%B5%8B%E8%AF%95/"/>
     <updated>2013-02-01T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/新图床的测试</id>
+    <id>https://elephantus.moe/blog/新图床的测试</id>
     <content type="html"><![CDATA[<p>众所周知，网站空间有限，所以就用了别的什么图床（<a href="http://poco.cn" target="_blank">POCO</a>）。就在这里试试看吧。</p>
 
 
@@ -74,9 +74,9 @@
   
   <entry>
     <title type="html"><![CDATA[汉字一简对多繁现象整理]]></title>
-    <link href="https://koccn.net/blog/%E6%B1%89%E5%AD%97%E4%B8%80%E7%AE%80%E5%AF%B9%E5%A4%9A%E7%B9%81%E7%8E%B0%E8%B1%A1%E6%95%B4%E7%90%86/"/>
+    <link href="https://elephantus.moe/blog/%E6%B1%89%E5%AD%97%E4%B8%80%E7%AE%80%E5%AF%B9%E5%A4%9A%E7%B9%81%E7%8E%B0%E8%B1%A1%E6%95%B4%E7%90%86/"/>
     <updated>2012-07-05T00:00:00+08:00</updated>
-    <id>https://koccn.net/blog/汉字一简对多繁现象整理</id>
+    <id>https://elephantus.moe/blog/汉字一简对多繁现象整理</id>
     <content type="html"><![CDATA[<p>来源：百度文库</p>
 
 
