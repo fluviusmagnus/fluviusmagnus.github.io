@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-02-18T16:37:54+08:00</updated>
+  <updated>2016-02-19T20:35:07+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,25 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[沉落于真夜]]></title>
+    <link href="https://elephantus.moe/blog/sinking-into-the-deep-night/"/>
+    <updated>2016-02-19T18:27:04+08:00</updated>
+    <id>https://elephantus.moe/blog/sinking-into-the-deep-night</id>
+    <content type="html"><![CDATA[<h2>宣言</h2>
+
+<p>现在开始，此处就要将现实抹消，任不羁的幻想如点入清水的墨汁，爬行、生长、扩散，最终以自身占领整个世界，夺取本应归于他的国。<!--more--></p>
+
+<h2>本篇</h2>
+
+<p>黑一贯说：从前被迫失去的，我要以我自己的方式夺回来。这实在是正确极了。若要夺回失去的东西，必不能用与失去同样的办法，而整个局面由自己武断决定，便再好不过。我想，既然如此之好，这路上同行便是。</p>
+
+<p>于是我武断地走了——我抽象地走了，没有太多可描述的，我的转述只能覆盖那些可以描述的，对于那些不可描述的，我只不说：这一点是先决的——我走在抽象的地上，脚下的黑一层层地荡开，身边的白都以我为中心慢慢地融化、分解、消失在沉默坚定的黑里。出乎我的意料，不久我便不必再走了，吞噬一切的眩目骄傲的黑在所有方向都是那样温柔迷人。没有外力，在世界中心的深处，我竟感到了自己的沉落。</p>
+
+<p>五光十色的良夜中，一切好事都要发生。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[读过地铁]]></title>
@@ -343,22 +362,6 @@ rm ./_posts/*</code></pre></div>
         <p>推荐: 很差</p>
         <p>标签: 中国科幻</p>
         <p>备注: 极度不推荐。你不能说有了几个（和人类没区别的）外星人、有了点（科普级别）科学知识的讲解的、充满装逼用大段德语的、夹了作者自身经历私货的环球旅游指南就是科幻了。此外身为老科学家的作者早年出国，在书中似乎以外星人为“Idol”（其名字已经暴露了这一点）、为其理想的化身、为传教士、为社会意识普遍必然性的第三方保证向如今的我们普及现代社会的常识。作者的雄心是将科学研究与文学创作融合起来，可惜的是，作为科幻小说，最要不得的就是想象力的缺乏，再严谨的理论基础都不能掩饰这一点，更何况作者在书中已经暴露其知识结构的偏斜。我希望未来如果作者还要写“科幻小说”，务必先读上几本经典著作，免得令读者过于尴尬。</p>
-    </td></tr></table></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过水滴]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%B0%B4%E6%BB%B4/"/>
-    <updated>2015-12-29T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过水滴</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://movie.douban.com/subject/26613444/" title="Waterdrop">
-    <img src="http://img4.douban.com/view/movie_poster_cover/ipst/public/p2267251808.jpg" alt="Waterdrop" /></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 中国 科幻 短片</p>
-        <p>备注: 意境取胜。</p>
     </td></tr></table></p>
 ]]></content>
   </entry>
