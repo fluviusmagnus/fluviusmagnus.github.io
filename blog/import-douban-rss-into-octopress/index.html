@@ -111,6 +111,16 @@
 
 <p>使用前除了注意脚本位置外，还应更改你所需的 URL 等信息，另外如果是第一次使用，可能还需要运行 <code>gem install jekyll-import</code> 安装相应依赖。</p>
 
+<hr />
+
+<p>2016-02-22 更新</p>
+
+<p>被友人刺激，我下决心改善一下本站 https 崩掉的情况。除了那个令人束手无策的评论框，想来大概也就是豆瓣的问题。本想做个查找替换，却无意间发现 RSS 文件本身如果用 https 调用，则里面的资源也都会相应改变。这下只要稍作修改，便一劳永逸。当然以前发布了的还是要手动改。</p>
+
+<p>仔细看发现 http 版的 RSS 中豆瓣的图片资源有两类位置，其一类似于 <code>imgX.douban.com</code>，其二 <code>imgX.doubanio.com</code>，<code>X</code> 是一个数字。其中后者可以直接支持 https。而在 https 版的 RSS 中，所有资源都是后者形式。图片文件名虽然相同，但服务器的对应关系（主要是那个数字）我尚不明确，欢迎各位讨论。我觉得说不定豆瓣也要开始做全站 https 化了呢。</p>
+
+<p>总之，下方代码也作出更新。</p>
+
 <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c">#!/bin/bash</span>
 <span class="c"># get_douban.sh</span>
 <span class="c">#</span>
@@ -120,7 +130,7 @@
 <span class="c"># You must change the URL below to your own feed. You can also customize the category name.</span>
 
 <span class="c"># Change the URL below!</span>
-wget http://www.douban.com/feed/people/elephantus/interests -O douban.xml
+wget https://www.douban.com/feed/people/elephantus/interests -O douban.xml
 
 ruby -rubygems -e <span class="s1">&#39;require &quot;jekyll-import&quot;;</span>
 <span class="s1">    JekyllImport::Importers::RSS.run({</span>
