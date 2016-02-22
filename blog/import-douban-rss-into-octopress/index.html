@@ -140,7 +140,7 @@ ruby -rubygems -e <span class="s1">&#39;require &quot;jekyll-import&quot;;</span
 <span class="k">for</span> f in ./_posts/*
 <span class="k">do</span>
     <span class="c"># Maybe change this line. Check &#39;man sed&#39; to know more about this.</span>
-    sed -i <span class="s1">&#39;3 acategories:\n-\ 豆瓣收藏&#39;</span> <span class="nv">$f</span>
+    sed -i <span class="s1">&#39;3 acategories:\n-\ 豆瓣收藏\npublished:\ true\ncomments:\ true&#39;</span> <span class="nv">$f</span>
 <span class="k">done</span>
 
 mv -nv ./_posts/* ../source/_posts/

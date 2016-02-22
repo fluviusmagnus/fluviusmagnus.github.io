@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-02-22T15:11:25+08:00</updated>
+  <updated>2016-02-22T15:25:05+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -62,7 +62,7 @@
 &lt;p&gt;for f in ./_posts/*
 <span class="k">do</span>
     <span class="c"># Maybe change this line. Check &amp;lsquo;man sed&amp;rsquo; to know more about this.</span>
-    sed -i <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="m">3</span> acategories:<span class="se">\n</span>-<span class="se">\ </span>豆瓣收藏<span class="p">&amp;</span>rsquo<span class="p">;</span> <span class="nv">$f</span>
+    sed -i <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="m">3</span> acategories:<span class="se">\n</span>-<span class="se">\ </span>豆瓣收藏<span class="se">\n</span>published:<span class="se">\ </span><span class="nb">true</span><span class="se">\n</span>comments:<span class="se">\ </span><span class="nb">true</span><span class="p">&amp;</span>rsquo<span class="p">;</span> <span class="nv">$f</span>
 <span class="k">done</span>&lt;/p&gt;
 
 &lt;p&gt;mv -nv ./&lt;em&gt;posts/* ../source/&lt;/em&gt;posts/
