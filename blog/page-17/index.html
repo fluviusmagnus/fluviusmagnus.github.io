@@ -9,7 +9,7 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="某君有一个爱好，就是走路。据某君自己所说，他从小时候开始就爱上了走路。那时，他偶然发现走路走的多了就会双腿酸胀。而一旦停下休息便会感到无比舒服。并且走的越多，休息时就越舒服。从此，它一有空便去走路。 某君最喜欢这样一句话：“这世上本没有路，走的人多了，也就成了路。”他常常将这话挂在嘴边， &hellip;">
+  <meta name="description" content="本人致力于服务人人网上的Linux用户。时值寒假初始，热烈奉送一款运行于终端的消息提醒器。 原理：wget读取cookie并登录手机人人，下载首页。grep分析有无新消息。终端响铃。 提醒：cookie的取得可以通过各种途径。一般情况下使用浏览器正常登录一次，再导出为cookies.txt即可。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +75,229 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/">人人消息提醒</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13th, 2012</time>
+        
+        
+           | <a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本人致力于服务人人网上的Linux用户。时值寒假初始，热烈奉送一款运行于终端的消息提醒器。</p>
+
+<p>原理：wget读取cookie并登录手机人人，下载首页。grep分析有无新消息。终端响铃。</p>
+
+<p>提醒：cookie的取得可以通过各种途径。一般情况下使用浏览器正常登录一次，再导出为cookies.txt即可。如果下载下来的页面很小，多试几次即可。如home.htm一直不正常，请检查你的cookie是否正确，保证url已经修改为可以正确登录首页的url。此外，请开启你的终端响铃。
+<pre class="brush:bash">#!/bin/bash</pre></p>
+
+<p># Renren Messages Notifier<br />
+# 人人消息提醒<br />
+# Koc Zhang: zszth@126.com<br />
+# GPLv3 Licensed</p>
+
+<p># 仅识别手机人人<br />
+# 请在使用前自行修改首页url<br />
+# 放置已成功登录过手机人人的cookies.txt至当前目录</p>
+
+<p># url为自己登录后的首页<br />
+# ！！！请自行修改！！！<br />
+# 格式为http://http://3g.renren.com/home.do加上后面一长串<br />
+url=""</p>
+
+<p>note="新消息"<br />
+mes=0<br />
+while [ "1" = "1" ];<br />
+do<br />
+	wget -q --cookies=on --load-cookies=cookies.txt --keep-session-cookies --save-cookies=cookies.txt "$url" -O home.htm<br />
+	mes=`cat home.htm¦grep -c "$note"`<br />
+	if [ 1 = $mes ]; then<br />
+		date<br />
+		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
+		echo "$go"<br />
+		echo -e "\a"<br />
+		sleep 1<br />
+		echo -e "\a"<br />
+		sleep 1<br />
+		echo -e "\a"<br />
+		mes="0"<br />
+	fi<br />
+	sleep 60<br />
+done
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/">RQNOJ 262 游戏排行榜</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-31T00:00:00+08:00" pubdate data-updated="true">Dec 31st, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre class="brush:c">//稍微有点算是水题。吧。
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+int main()
+{
+        unsigned int list[51]={0};
+        list[0]=INT_MAX;
+        int p,s;
+        unsigned int n;
+        scanf("%d%d%d",&amp;p,&amp;s,&amp;n);
+        int i;
+        for(i=1;i&lt;=s;i++)
+                scanf("%d",&amp;list[i]);
+        for(i=1;i&lt;=p;i++)
+                if(n&gt;=list[i]&amp;&amp;n&gt;list[p]&amp;&amp;n&lt;list[i-1])
+                {
+                        printf("%d",i);
+                        return 0;
+                }
+        printf("-1");
+        return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-255-%E6%8E%92%E9%98%9F%E6%8E%A5%E6%B0%B4/">RQNOJ 255 排队接水</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-23T00:00:00+08:00" pubdate data-updated="true">Dec 23rd, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-255-%E6%8E%92%E9%98%9F%E6%8E%A5%E6%B0%B4/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>&nbsp;
+<pre class="brush:c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int t[901];
+int n;
+int findmin()
+{
+	int min=9999,i,minpos=0;
+	for(i=1;i&lt;=n;i++)
+	{
+		if(t[i]&lt;min)
+		{
+			min=t[i];
+			minpos=i;
+		}
+	}
+	return minpos;
+}
+int main()
+{
+	int wait=0;
+	int i;
+	scanf("%d",&amp;n);
+	for(i=1;i&lt;=n;i++)
+	scanf("%d",&amp;t[i]);
+	double ave;
+	for(i=1;i&lt;n;i++)
+	{
+		int pos=findmin();
+		wait+=t[pos]*(n-i);
+		printf("%d ",pos);
+		t[pos]=10000;
+	}
+//此处坑人，注意格式。只有“整个”输出末尾的空格、换行会被忽略。
+		int pos=findmin();
+		wait+=t[pos]*(n-i);
+		printf("%d",pos);
+//强制类型转换
+	ave=(double)wait/(double)n;
+	printf("\n%0.2f",ave);
+	return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -480,160 +703,6 @@ int main( int argc, char *argv[])
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/usaco%E8%AE%AD%E7%BB%83%E6%B5%8B%E8%AF%84%E5%88%9D%E4%BD%93%E9%AA%8C/">USACO训练测评初体验</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-12-03T00:00:00+08:00" pubdate data-updated="true">Dec 3rd, 2011</time>
-        
-        
-           | <a href="/blog/usaco%E8%AE%AD%E7%BB%83%E6%B5%8B%E8%AF%84%E5%88%9D%E4%BD%93%E9%AA%8C/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>USACO确实是一个不错的OJ，它提供了一张TODO表指引学习。但由于是初体验，走了不少弯路。比如出现这样的错误：
-<blockquote>&gt; Run 1: Execution error: Your program had this runtime error:<br />
-Illegal file open (/dev/tty). The program ran for 0.000 CPU seconds before the error. It used 1808 KB of memory.</blockquote>
-解决方法是把数组开大一点。（囧）</p>
-
-<p>还有：
-<blockquote>Note that your output did not end in a newline! This is an error and must be repaired.</blockquote>
-这种情况也比较容易出现。输出加上一个换行吧。</p>
-
-<p>USACO的测评有点奇葩，提交时还需要“Header comments”，不过习惯了就好了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-162-%E5%A5%96%E9%87%91/">RQNOJ 162 奖金</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-25T00:00:00+08:00" pubdate data-updated="true">Nov 25th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-162-%E5%A5%96%E9%87%91/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//这是一道完全背包。与0/1背包不同，空间优化后不必逆序，
-//以实现多次选取。
-//此外本题要求装满，所以f[j](j!=0)初始化为负无限大。
-//关于“装满”，参见jake1036的<a title="01背包问题总结（一）" href="http://www.cppblog.com/jake1036/archive/2011/06/27/149566.html" target="_blank">《01背包问题总结（一）》</a>。
-#include &lt;stdio.h&gt;
-#include &lt;limits.h&gt;
-int main()
-{
-	long int n,m,p[10001],v[10002],f[10001];
-	scanf("%ld%ld",&amp;n,&amp;m);
-	int i,j;
-	for(i=1;i&lt;=n;i++) scanf("%ld%ld",&amp;p[i],&amp;v[i]);
-	for(j=1;j&lt;=m;j++) f[j]=LONG_MIN;
-	for(i=1;i&lt;=n;i++)
-		for(j=p[i];j&lt;=m;j++)
-			if(f[j-p[i]]+v[i]&gt;f[j]) f[j]=f[j-p[i]]+v[i];
-	printf("%ld",f[m]);
-	return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">苦逼的NOIP复赛</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-18T00:00:00+08:00" pubdate data-updated="true">Nov 18th, 2011</time>
-        
-        
-           | <a href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>事先声明，鄙人OI水平确实不高。各位切勿吐槽。</p>
-
-<p>我是浙江的高一，初赛68.5分（？），用的是C，本来是刚好被分数线掐死，进不了复赛的。后来使用了杭州一个推荐名额（分数线以下可以多6人），进了。我记得这是我第一次进复赛，总共参赛两次。上次是初二，37分。初三那么空居然没被学校通知到参加培训。大大的遗憾。</p>
-
-<p>停课一周集训之后，就去了余姚。话说我一开始还拿不出报名费，问老师借了几百块，直到今天才还上。还的时候老师居然对我说谢谢，我顿时无语了。周五下午，急急忙忙上完那一周去上的唯一一节课后（去政治演讲，仅五分钟，貌似讲得不错），坐宁波的校车走了。到了余姚，6点左右，直奔余姚中学。实际上报到时间已经过了，我们万能的拥有瞬移技能的老师给组委会那边打了个电话以后，最终被允许迟到几分钟。领了证件，领了饭票（周五晚，六、日午），去吃饭。余姚中学的饭确实好吃，比余姚实验学校的好吃多了。可惜我是应去余姚实验学校比赛，这饭是没的吃了。吃完，便去银河宾馆。躺在床上看《骗分导论》。《骗分导论》是个好东西，具体不解释，嘿嘿。后悔没带电脑去，空闲时间真无聊。有人带了，玩了两天。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-18">&larr; 旧文</a>
@@ -666,6 +735,18 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF%EF%BC%9A%E9%9D%99%E5%A4%9C-lifeline%EF%BC%9Asilent-night/">玩过生命线：静夜 lifeline：Silent Night</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF2-lifeline-2/">玩过生命线2 Lifeline 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/sinking-into-the-deep-night/">沉落于真夜</a>
       </li>
     
@@ -673,23 +754,11 @@ int main()
         <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/">读过地铁</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/import-douban-rss-into-octopress/">导入豆瓣 RSS 至 Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/a-new-start-with-octopress/">博客迁移至 Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F/">看过GATE 奇幻自卫队</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (51)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (54)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

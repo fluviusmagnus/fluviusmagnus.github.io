@@ -9,7 +9,14 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="新春大礼，鄙人制作的人人网Linux准客户端脚本发布！ 一些情况详见上一个版本《人人消息提醒》。 不同的是，这回可是全终端操作哦。需要wget和w3m。首次使用只需用w3m -cookie访问3g.renren.com取得cookie，以后全部使用w3m保存的cookie。 增加了快速访问。 &hellip;">
+  <meta name="description" content="#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdlib.h&gt;
+int x=0,y=0;
+//dir方向：1是右，2是左，3是上，4是下。
+int dir=3;
+//未移动标记。
+int flag=0; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +82,247 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-137-%E6%89%BE%E8%AF%95%E5%9C%BA/">RQNOJ 137 找试场</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-10T00:00:00+08:00" pubdate data-updated="true">Feb 10th, 2012</time>
+        
+        
+           | <a href="/blog/rqnoj-137-%E6%89%BE%E8%AF%95%E5%9C%BA/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre class="brush:c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdlib.h&gt;
+int x=0,y=0;
+//dir方向：1是右，2是左，3是上，4是下。
+int dir=3;
+//未移动标记。
+int flag=0;
+void setdir(char a)
+{
+	if(a=='l')
+	{
+		switch(dir)
+		{
+			case 1:
+				dir=3;
+				break;
+			case 2:
+				dir=4;
+				break;
+			case 3:
+				dir=2;
+				break;
+			case 4:
+				dir=1;
+				break;
+		}
+	}
+	if(a=='r')
+	{
+		switch(dir)
+		{
+			case 1:
+				dir=4;
+				break;
+			case 2:
+				dir=3;
+				break;
+			case 3:
+				dir=1;
+				break;
+			case 4:
+				dir=2;
+				break;
+		}
+	}
+	return;
+}
+void go(int dis)
+{
+	if(dir==1) x+=dis;
+	if(dir==2) x-=dis;
+	if(dir==3) y+=dis;
+	if(dir==4) y-=dis;
+	flag=1;
+	printf("(%d,%d)\n",x,y);
+	return;
+}
+int main()
+{
+	int n;
+	scanf("%d",&amp;n);
+	int i;
+	for(i=1;i&lt;=n;i++)
+	{
+		char ins[20];
+		scanf("%s",ins);
+		if(isdigit(ins[0]))
+			go(atoi(ins));
+		if(ins[0]=='r')
+			setdir('r');
+		if(ins[0]=='l')
+			setdir('l');
+	}
+	if(flag==0) printf("(0,0)\n");
+	return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/">RQNOJ 143 巨型整数</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-06T00:00:00+08:00" pubdate data-updated="true">Feb 6th, 2012</time>
+        
+        
+           | <a href="/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre class="brush:cpp">#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main()
+{
+	string s;
+	char in[20001];
+	scanf("%s",in);
+	s=in;
+	reverse(s.begin(),s.end());
+	string::iterator it=s.begin();
+//此处需要注意，输入100须输出1。
+	while(*it=='0')
+		s.erase(it);
+	cout&lt;&lt;s&lt;&lt;endl;
+	long int sum=0;
+	for(it=s.begin();it!=s.end();it++)
+		sum+=(*it-'0');
+	cout&lt;&lt;sum;
+	return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-133-%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%AD%97/">RQNOJ 133 统计数字</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-01-27T00:00:00+08:00" pubdate data-updated="true">Jan 27th, 2012</time>
+        
+        
+           | <a href="/blog/rqnoj-133-%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%AD%97/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre class="brush:cpp">//第一次拙劣地使用了STL。以此纪念。
+#include &lt;stdio.h&gt;
+#include &lt;set&gt;
+using namespace std;
+int main()
+{
+	set&lt;int&gt; num;
+	multiset&lt;int&gt; time;
+	int n,i,t;
+	scanf("%d",&amp;n);
+	for(i=1;i&lt;=n;i++)
+	{
+		scanf("%d",&amp;t);
+		num.insert(t);
+		time.insert(t);
+	}
+	set&lt;int&gt;::iterator it;
+	for(it=num.begin();it!=num.end();it++)
+		printf("%d %d\n",*it,time.count(*it));
+	return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -456,229 +704,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/">人人消息提醒</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13th, 2012</time>
-        
-        
-           | <a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>本人致力于服务人人网上的Linux用户。时值寒假初始，热烈奉送一款运行于终端的消息提醒器。</p>
-
-<p>原理：wget读取cookie并登录手机人人，下载首页。grep分析有无新消息。终端响铃。</p>
-
-<p>提醒：cookie的取得可以通过各种途径。一般情况下使用浏览器正常登录一次，再导出为cookies.txt即可。如果下载下来的页面很小，多试几次即可。如home.htm一直不正常，请检查你的cookie是否正确，保证url已经修改为可以正确登录首页的url。此外，请开启你的终端响铃。
-<pre class="brush:bash">#!/bin/bash</pre></p>
-
-<p># Renren Messages Notifier<br />
-# 人人消息提醒<br />
-# Koc Zhang: zszth@126.com<br />
-# GPLv3 Licensed</p>
-
-<p># 仅识别手机人人<br />
-# 请在使用前自行修改首页url<br />
-# 放置已成功登录过手机人人的cookies.txt至当前目录</p>
-
-<p># url为自己登录后的首页<br />
-# ！！！请自行修改！！！<br />
-# 格式为http://http://3g.renren.com/home.do加上后面一长串<br />
-url=""</p>
-
-<p>note="新消息"<br />
-mes=0<br />
-while [ "1" = "1" ];<br />
-do<br />
-	wget -q --cookies=on --load-cookies=cookies.txt --keep-session-cookies --save-cookies=cookies.txt "$url" -O home.htm<br />
-	mes=`cat home.htm¦grep -c "$note"`<br />
-	if [ 1 = $mes ]; then<br />
-		date<br />
-		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
-		echo "$go"<br />
-		echo -e "\a"<br />
-		sleep 1<br />
-		echo -e "\a"<br />
-		sleep 1<br />
-		echo -e "\a"<br />
-		mes="0"<br />
-	fi<br />
-	sleep 60<br />
-done
-&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/">RQNOJ 262 游戏排行榜</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-12-31T00:00:00+08:00" pubdate data-updated="true">Dec 31st, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre class="brush:c">//稍微有点算是水题。吧。
-#include &lt;stdio.h&gt;
-#include &lt;limits.h&gt;
-int main()
-{
-        unsigned int list[51]={0};
-        list[0]=INT_MAX;
-        int p,s;
-        unsigned int n;
-        scanf("%d%d%d",&amp;p,&amp;s,&amp;n);
-        int i;
-        for(i=1;i&lt;=s;i++)
-                scanf("%d",&amp;list[i]);
-        for(i=1;i&lt;=p;i++)
-                if(n&gt;=list[i]&amp;&amp;n&gt;list[p]&amp;&amp;n&lt;list[i-1])
-                {
-                        printf("%d",i);
-                        return 0;
-                }
-        printf("-1");
-        return 0;
-}</pre>
-&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-255-%E6%8E%92%E9%98%9F%E6%8E%A5%E6%B0%B4/">RQNOJ 255 排队接水</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-12-23T00:00:00+08:00" pubdate data-updated="true">Dec 23rd, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-255-%E6%8E%92%E9%98%9F%E6%8E%A5%E6%B0%B4/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>&nbsp;
-<pre class="brush:c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int t[901];
-int n;
-int findmin()
-{
-	int min=9999,i,minpos=0;
-	for(i=1;i&lt;=n;i++)
-	{
-		if(t[i]&lt;min)
-		{
-			min=t[i];
-			minpos=i;
-		}
-	}
-	return minpos;
-}
-int main()
-{
-	int wait=0;
-	int i;
-	scanf("%d",&amp;n);
-	for(i=1;i&lt;=n;i++)
-	scanf("%d",&amp;t[i]);
-	double ave;
-	for(i=1;i&lt;n;i++)
-	{
-		int pos=findmin();
-		wait+=t[pos]*(n-i);
-		printf("%d ",pos);
-		t[pos]=10000;
-	}
-//此处坑人，注意格式。只有“整个”输出末尾的空格、换行会被忽略。
-		int pos=findmin();
-		wait+=t[pos]*(n-i);
-		printf("%d",pos);
-//强制类型转换
-	ave=(double)wait/(double)n;
-	printf("\n%0.2f",ave);
-	return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-17">&larr; 旧文</a>
@@ -711,6 +736,18 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF%EF%BC%9A%E9%9D%99%E5%A4%9C-lifeline%EF%BC%9Asilent-night/">玩过生命线：静夜 lifeline：Silent Night</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF2-lifeline-2/">玩过生命线2 Lifeline 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/sinking-into-the-deep-night/">沉落于真夜</a>
       </li>
     
@@ -718,23 +755,11 @@ int main()
         <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/">读过地铁</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/import-douban-rss-into-octopress/">导入豆瓣 RSS 至 Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/a-new-start-with-octopress/">博客迁移至 Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F/">看过GATE 奇幻自卫队</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (51)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (54)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

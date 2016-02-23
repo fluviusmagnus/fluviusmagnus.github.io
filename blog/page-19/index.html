@@ -9,14 +9,13 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//小心一点就好了。悲剧最近经常在小地方出错。做题三思！
+  <meta name="description" content="//此题坑人之处在于，明文密文必须“互相”对应，既不重复，也不遗漏。
+//从rq的测试数据来看，如果没有考虑这一点，就有一个点通不过。
 #include &lt;stdio.h&gt;
-int map[10][10];
-int tjx(int y)
+#include &lt;string.h&gt;
+int main()
 {
-        int stat[10]={0};
-        int i;
-        for(i=1;i&lt &hellip;">
+    char f[100],s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +81,215 @@ int tjx(int y)
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-518-noip09%E6%BD%9C%E4%BC%8F%E8%80%85/">RQNOJ 518 [NOIP09]潜伏者</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-518-noip09%E6%BD%9C%E4%BC%8F%E8%80%85/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//此题坑人之处在于，明文密文必须“互相”对应，既不重复，也不遗漏。
+//从rq的测试数据来看，如果没有考虑这一点，就有一个点通不过。
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main()
+{
+    char f[100],s[100];
+    scanf("%s",f);
+    scanf("%s",s);
+    char dy[26];  //保存对应表 
+    int i;
+    for(i=0;i&lt;26;i++) dy[i]=0;
+    int sta=1;   //保存退出状态 
+    for(i=0;i&lt;strlen(f);i++)
+    {
+        if(dy[f[i]-'A']==0)
+        {
+            dy[f[i]-'A']=s[i];
+        }
+        else
+        {
+            if(dy[f[i]-'A']!=s[i]) {sta=3;break;}
+        }
+    }
+    int stat[26]={0};
+    for(i=0;i&lt;strlen(f);i++) stat[dy[i]-'A']++;
+    for(i=0;i&lt;26;i++) if(stat[i]==0) sta=3;
+    for(i=0;i&lt;26;i++) if(dy[i]==0) sta=2;
+    char c[100];
+    scanf("%s",c);
+    if(sta!=1)
+    {
+        printf("Failed");
+    }
+    else
+    {
+        for(i=0;i&lt;strlen(c);i++) printf("%c",dy[c[i]-'A']);
+    }
+    return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/">RQNOJ 479 [NOIP2001]一元三次方程求解</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//扫一遍好了。规模不大。如果很大就要换种方法了。
+#include &lt;stdio.h&gt;
+float a,b,c,d;
+float f(float x)
+{
+        return a*x*x*x+b*x*x+c*x+d;
+}
+int main()
+{
+        float x;
+        int sum=0;
+        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
+        x=-100;
+        while(sum!=3)
+        {
+                if(f(x)*f(x+0.01)&lt;=0)
+                {
+                        printf("%0.2f ",x+0.01);
+                        sum++;</pre></p>
+
+<p>                }<br />
+                x+=0.01;<br />
+        }<br />
+        return 0;<br />
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-292-cantor%E8%A1%A8/">RQNOJ 292 Cantor表</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-292-cantor%E8%A1%A8/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//做着做着发现分子分母反了。所以输出时反一下。
+#include &lt;stdio.h&gt;
+int main()
+{
+        int n;
+        int c=1;
+        int zi=1,mu=1;
+        int i=1;
+        int pos;
+        scanf("%d",&amp;n);
+        for(c=1;c&lt;=n;c++)
+                if((c+1)*c/2&gt;=n&amp;&amp;c*(c-1)/2&lt;n) break;
+        if(c%2==1)
+        {
+                pos=(c-1)*c/2;
+                zi=n-pos;
+                mu=c+1-zi;
+        }
+        else
+        {
+                pos=(c-1)*c/2;
+                zi=n-pos+c-1;
+                mu=c+1-zi;
+        }
+        printf("%d/%d",mu,zi);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -577,190 +785,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-72-%E6%8B%94%E6%B2%B3%E6%AF%94%E8%B5%9B/">RQNOJ 72 拔河比赛</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-72-%E6%8B%94%E6%B2%B3%E6%AF%94%E8%B5%9B/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//这道题一开始还不知道怎么做，后来一想，要是两组体重差最小，
-//必然某一组极度接近总重的一半。显然又是一道背包。
-#include &lt;stdio.h&gt;
-int max(int a,int b)
-{
-        if(a&gt;b) return a;
-        else return b;
-}
-int main()
-{
-        int n,w[101]={0},allsum=0,i,r,f[10001];
-        scanf("%d",&amp;n);
-        for(i=1;i&lt;=n;i++)
-        {
-                scanf("%d",&amp;w[i]);
-                allsum+=w[i];
-        }
-        int top=allsum/2;
-        for(r=0;r&lt;=top;r++)
-                if(r&lt;w[1]) f[r]=0;
-                else f[r]=w[1];
-        for(i=2;i&lt;=n;i++)
-                for(r=0;r&lt;=top;r++)
-                        if(r&lt;w[i]) f[r]=f[r];
-                        else f[r]=max(f[r],f[r-w[i]]+w[i]);
-        printf("%d",allsum-2*f[top]);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/">RQNOJ 66 级数求和</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//特别注意要强制类型转换。
-//当然也可以不用。这是另一份参考：<a title="RQNOJP66　级数求和[2002NOIP普及组]" href="http://sfiction.blog.163.com/blog/static/199404010201110835749863/" target="_blank">http://sfiction.blog.163.com/blog/static/199404010201110835749863/</a>
-#include &lt;stdio.h&gt;
-int main()
-{
-        double sn=0;
-        int k;
-        int sum=0;
-        scanf("%d",&amp;k);
-        while(sn&lt;=k)
-        {
-                sum++;
-                sn+=1/(double)sum;
-        }
-        printf("%d",sum);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/">RQNOJ 602 [NOIP2010普及组]数字统计</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
-//水题，毕竟后来发现这是普及组的。
-#include &lt;stdio.h&gt;
-int sta[10]={0};
-void tj(int k)
-{
-        if(k&lt;10) sta[k]++;
-        else
-        {
-                sta[k%10]++;
-                tj(k/10);
-        }
-}
-int main()
-{
-        int l,r;
-        scanf("%d%d",&amp;l,&amp;r);
-        int i;
-        for(i=l;i&lt;=r;i++) tj(i);
-        printf("%d",sta[2]);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-20">&larr; 旧文</a>
@@ -793,6 +817,18 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF%EF%BC%9A%E9%9D%99%E5%A4%9C-lifeline%EF%BC%9Asilent-night/">玩过生命线：静夜 lifeline：Silent Night</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF2-lifeline-2/">玩过生命线2 Lifeline 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/sinking-into-the-deep-night/">沉落于真夜</a>
       </li>
     
@@ -800,23 +836,11 @@ int main()
         <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/">读过地铁</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/import-douban-rss-into-octopress/">导入豆瓣 RSS 至 Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/a-new-start-with-octopress/">博客迁移至 Octopress</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F/">看过GATE 奇幻自卫队</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (51)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (54)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
