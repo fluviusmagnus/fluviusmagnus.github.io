@@ -9,14 +9,7 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="#include &lt;stdio.h&gt;
-#include &lt;ctype.h&gt;
-#include &lt;stdlib.h&gt;
-int x=0,y=0;
-//dir方向：1是右，2是左，3是上，4是下。
-int dir=3;
-//未移动标记。
-int flag=0; &hellip;">
+  <meta name="description" content="在一个有关BF的网站上看到了一些资源，包含了一些编译器之类的东西，于是就下载下来玩一玩。 资源：http://esoteric.sange.fi/brainfuck/">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +75,99 @@ int flag=0; &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%8F%88%E6%98%AF%E5%85%B3%E4%BA%8Ebrainfck/">又是关于Brainf*ck</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-03-16T00:00:00+08:00" pubdate data-updated="true">Mar 16th, 2012</time>
+        
+        
+           | <a href="/blog/%E5%8F%88%E6%98%AF%E5%85%B3%E4%BA%8Ebrainfck/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在一个有关BF的网站上看到了一些资源，包含了一些编译器之类的东西，于是就下载下来玩一玩。</p>
+
+<p>资源：<a href="http://esoteric.sange.fi/brainfuck/">http://esoteric.sange.fi/brainfuck/</a></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%8F%88%E6%98%AF%E5%85%B3%E4%BA%8Ebrainfck/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%E6%88%8F%E5%89%A7%E5%B0%8F%E6%8A%A5%E5%88%B6%E4%BD%9C%E6%9C%89%E6%84%9F/">中国古典戏剧小报制作有感</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-10T00:00:00+08:00" pubdate data-updated="true">Feb 10th, 2012</time>
+        
+        
+           | <a href="/blog/%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%E6%88%8F%E5%89%A7%E5%B0%8F%E6%8A%A5%E5%88%B6%E4%BD%9C%E6%9C%89%E6%84%9F/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>早就领教过家庭伦理电视剧的威力，对于婚姻、爱情的理解可谓是越来越肤浅，以至于对于这类题材的作品失去兴趣，处于麻木的状态。</p>
+
+<p>也许是这样，这就是所谓现代都市化生活的副作用吧。我们有一大堆情景喜剧可看，已经很少有人会特意去看这样的古典戏剧了，更何况还是个悲剧。</p>
+
+<p>难得有这样一个机会，有去看这样的戏剧的动机。事实上也成为从繁忙之中脱身的一个借口。不管怎么说，我可以离开现实世界一会儿，哪怕是几个小时。</p>
+
+<p>欣赏完——或者说参与了——这部戏后，我才发现，原来这类悲剧都可以称得上是治愈系的了。世间人与人之间的关系原来还可以如此单纯！纯美？清新？无瑕？完美？这是一个桃花源。你该如何形容发现一个桃花源时的喜悦呢？</p>
+
+<p>每个人心中都有一个桃花源。不过，在奔跑的路上，有的已经被遗忘。只要再唤起对它的记忆，一样是美好的。尘世中美好的事，不过是心中留有一处桃花源。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -603,107 +689,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/kr-c-bible-exercises-1-2/">K&R C Bible Exercises 1-2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
-        
-        
-           | <a href="/blog/kr-c-bible-exercises-1-2/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Experiment to find out what happens when printf's argument string contains \c, where c is some character not listed above.</p>
-
-<p>Example: I try to understand how \t works.
-<pre class="brush:c">#include &lt;stdio.h&gt;
-int main()
-{
-	printf("Hello, World!\n\a");
-	printf("asdf56\tdfd\tsadfgg\nqe\tdfcvbnv\tdfafffffffsa\ndfdfaqerer\tdfa\tfdsab\n");
-	return 0;
-}</pre>
-&nbsp;</p>
-
-<p>&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/kr-c-bible-exercises-1-1/">K&R C Bible Exercises 1-1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
-        
-        
-           | <a href="/blog/kr-c-bible-exercises-1-1/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Run the "hello, world" program on your system. Experiment with leaving out parts of the program, to see what error messages you get.</p>
-
-<p>Example:
-<pre class="brush:c">#include &lt;stdio.h&gt;
-int main()
-{
-	printf("Hello, World!\n");
-	return 0;
-}</pre>
-&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-17">&larr; 旧文</a>
@@ -736,6 +721,14 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A%E7%88%B1%E4%B8%8E%E9%9D%92%E6%98%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%9B%9E/">看过路人女主的养成方法：爱与青春的服务回</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95/">看过路人女主的养成方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF%EF%BC%9A%E9%9D%99%E5%A4%9C-lifeline%EF%BC%9Asilent-night/">玩过生命线：静夜 lifeline：Silent Night</a>
       </li>
     
@@ -747,19 +740,11 @@ int main()
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/sinking-into-the-deep-night/">沉落于真夜</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/">读过地铁</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (54)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (56)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

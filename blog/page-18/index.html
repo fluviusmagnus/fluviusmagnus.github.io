@@ -9,9 +9,9 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="USACO确实是一个不错的OJ，它提供了一张TODO表指引学习。但由于是初体验，走了不少弯路。比如出现这样的错误：
-&gt; Run 1: Execution error: Your program had this runtime error:
-Illegal file open (/dev/ &hellip;">
+  <meta name="description" content="对应http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/ #include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+// &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -77,6 +77,136 @@ Illegal file open (/dev/ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/gtk-02-window-widget/">GTK+ 02 Window Widget</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
+        
+        
+           | <a href="/blog/gtk-02-window-widget/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解
+int main( int argc, char *argv[])
+{
+	GtkWidget *window;
+	gtk_init(&amp;argc, &amp;argv);
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);</pre></p>
+
+<p>	//本次的窗口构建内容<br />
+		<br />
+	//设置标题<br />
+	gtk_window_set_title(GTK_WINDOW(window),&quot;This is the TITLE&quot;);<br />
+	//设置大小<br />
+	gtk_window_set_default_size(GTK_WINDOW(window),400,300);<br />
+	//设置位置，又有一个常数<br />
+	gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);</p>
+
+<p>	gtk_widget_show(window);</p>
+
+<p>	//处理关闭的信号，此法方能正常退出<br />
+	g_signal_connect_swapped(G_OBJECT(window),&quot;destroy&quot;,G_CALLBACK(gtk_main_quit),NULL);</p>
+
+<p>	gtk_main();<br />
+	return 0;<br />
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/gtk-01-first/">GTK+ 01 First</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
+        
+        
+           | <a href="/blog/gtk-01-first/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本人要学GTK+啦！（囧）所以把各种感悟都写在这里。</p>
+
+<p>以<a title="GTK+程序设计教程" href="http://zetcode.com/tutorials/gtktutorial/chinese/" target="_blank">《GTK+程序设计教程》</a>为材料来学习。在此感谢zetcode.com和翻译卢名扬。（这话以后就不说了。。。）</p>
+
+<p>本篇对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解
+int main( int argc, char *argv[])
+{
+	//建立一个窗口对象
+	GtkWidget *window;
+	//初始化gtk，必须有
+	gtk_init(&amp;argc, &amp;argv);
+	//初始化window对象
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	//显示window
+	gtk_widget_show(window);
+	//启动gtk，必须有，从此进入主循环
+	gtk_main();
+	//事实上本程序不会结束
+	return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -691,136 +821,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-394-noip2008%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/">RQNOJ 394 [NOIP2008]火柴棒等式</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-394-noip2008%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//很忐忑地把1000以内的爆搜交上去了。结果万幸。
-#include &lt;stdio.h&gt;
-int stick[10]={6,2,5,5,4,5,6,3,7,6};
-int tj(int num)
-{
-        if(num&lt;10) return stick[num];
-        else return stick[num%10]+tj(num/10);
-}
-int main()
-{
-        int i,r;
-        int n;
-        scanf("%d",&amp;n);
-        int count=0;
-        for(i=0;i&lt;=1000;i++)
-                for(r=0;r&lt;=1000;r++)
-                        if(tj(i)+tj(r)+tj(i+r)==n-4) count++;
-        printf("%d",count);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-114-%E5%A4%A7%E5%90%88%E6%95%B0%E5%88%86%E8%A7%A3/">RQNOJ 114 大合数分解</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-114-%E5%A4%A7%E5%90%88%E6%95%B0%E5%88%86%E8%A7%A3/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//怕数字开的不够大。也怕超时。两难啊。只好猜范围了。
-#include &lt;stdio.h&gt;
-int main()
-{
-        char list[100001]={0};
-        unsigned long int i=2;
-        unsigned long int r;
-        unsigned long int n;
-        scanf("%d",&amp;n);
-        // 0 is prime;
-        while(i&lt;=100000)
-        {
-                if(list[i]==0)
-                {
-                        for(r=2*i;r&lt;=100000;r+=i)
-                                list[r]=1;
-                }
-                i++;
-        }
-        for(i=2;i&lt;=100000;i++)
-        {
-                if(list[i]==0)
-                {
-                        while(n%i==0)
-                        {
-                                printf("%d ",i);
-                                n/=i;
-                        }
-                }
-        }
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-19">&larr; 旧文</a>
@@ -853,6 +853,14 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A%E7%88%B1%E4%B8%8E%E9%9D%92%E6%98%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%9B%9E/">看过路人女主的养成方法：爱与青春的服务回</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95/">看过路人女主的养成方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF%EF%BC%9A%E9%9D%99%E5%A4%9C-lifeline%EF%BC%9Asilent-night/">玩过生命线：静夜 lifeline：Silent Night</a>
       </li>
     
@@ -864,19 +872,11 @@ int main()
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/sinking-into-the-deep-night/">沉落于真夜</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/">读过地铁</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (54)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (56)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

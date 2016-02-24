@@ -9,13 +9,12 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//此题坑人之处在于，明文密文必须“互相”对应，既不重复，也不遗漏。
-//从rq的测试数据来看，如果没有考虑这一点，就有一个点通不过。
+  <meta name="description" content="//很忐忑地把1000以内的爆搜交上去了。结果万幸。
 #include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int main()
+int stick[10]={6,2,5,5,4,5,6,3,7,6};
+int tj(int num)
 {
-    char f[100],s &hellip;">
+        if(num&lt;10) return stick[num &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +80,136 @@ int main()
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-394-noip2008%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/">RQNOJ 394 [NOIP2008]火柴棒等式</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-394-noip2008%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//很忐忑地把1000以内的爆搜交上去了。结果万幸。
+#include &lt;stdio.h&gt;
+int stick[10]={6,2,5,5,4,5,6,3,7,6};
+int tj(int num)
+{
+        if(num&lt;10) return stick[num];
+        else return stick[num%10]+tj(num/10);
+}
+int main()
+{
+        int i,r;
+        int n;
+        scanf("%d",&amp;n);
+        int count=0;
+        for(i=0;i&lt;=1000;i++)
+                for(r=0;r&lt;=1000;r++)
+                        if(tj(i)+tj(r)+tj(i+r)==n-4) count++;
+        printf("%d",count);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-114-%E5%A4%A7%E5%90%88%E6%95%B0%E5%88%86%E8%A7%A3/">RQNOJ 114 大合数分解</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-114-%E5%A4%A7%E5%90%88%E6%95%B0%E5%88%86%E8%A7%A3/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//怕数字开的不够大。也怕超时。两难啊。只好猜范围了。
+#include &lt;stdio.h&gt;
+int main()
+{
+        char list[100001]={0};
+        unsigned long int i=2;
+        unsigned long int r;
+        unsigned long int n;
+        scanf("%d",&amp;n);
+        // 0 is prime;
+        while(i&lt;=100000)
+        {
+                if(list[i]==0)
+                {
+                        for(r=2*i;r&lt;=100000;r+=i)
+                                list[r]=1;
+                }
+                i++;
+        }
+        for(i=2;i&lt;=100000;i++)
+        {
+                if(list[i]==0)
+                {
+                        while(n%i==0)
+                        {
+                                printf("%d ",i);
+                                n/=i;
+                        }
+                }
+        }
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -641,150 +770,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-144-%E4%BC%AF%E8%99%8E%E7%82%B9%E7%A7%8B%E9%A6%99/">RQNOJ 144 伯虎点秋香</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-144-%E4%BC%AF%E8%99%8E%E7%82%B9%E7%A7%8B%E9%A6%99/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//此题应当注意字符串的操作。
-//确保字符串函数不要用错！
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-void swap(char* a,char* b)
-{
-        char temp[1001];
-        strcpy(temp,a);
-        strcpy(a,b);
-        strcpy(b,temp);
-}
-int main()
-{
-        int n;
-        char name[1001][1001];
-        char nnn[1001];
-        scanf("%d",&amp;n);
-        int k;
-        scanf("%d",&amp;k);
-        int i,r;
-        for(i=1;i&lt;=n;i++)
-        {
-            scanf("%s",&amp;name[i][0]);
-        }
-        for(i=1;i&lt;=n;i++)
-                for(r=n;r&gt;=i+1;r--)
-                        if(strcmp(&amp;name[i][0],&amp;name[r][0])&gt;0) swap(&amp;name[i][0],&amp;name[r][0]);
-        printf("%s",&amp;name[k][0]);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-96-%E8%8B%B9%E6%9E%9C%E6%91%98%E9%99%B6%E9%99%B6/">RQNOJ 96 苹果摘陶陶</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-96-%E8%8B%B9%E6%9E%9C%E6%91%98%E9%99%B6%E9%99%B6/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//果然是一道恶俗的题目。这里强调一下我用的qsort函数。
-//貌似竞赛是可以用许多标准库的。（用C++福气更好，STL，汗）
-//对了，这道题很坑人，陶陶高度不能为0哦。
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int cmp(const void *a,const void *b)
-{
-        return *(int *)b-*(int *)a;
-}
-int main()
-{
-        int n,m;
-        int gh[2001]={0};
-        int th[2001]={0};
-        scanf("%d%d",&amp;n,&amp;m);
-        int i;
-        int y=m;
-        for(i=1;i&lt;=n;i++) scanf("%d",&amp;gh[i]);
-        for(i=1;i&lt;=m;i++) scanf("%d",&amp;th[i]);
-        qsort(&amp;th[1],m,sizeof(th[1]),cmp);
-        for(i=1;i&lt;=n;i++)
-        {
-                int r;
-                for(r=1;r&lt;=m;r++)
-                {
-                        if(gh[i]&gt;th[r]&amp;&amp;th[r]&gt;0)
-                        {
-                                y--;
-                                th[r]=-1;
-                                break;
-                        }
-                }
-        }
-        printf("%d",y);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-20">&larr; 旧文</a>
@@ -817,6 +802,14 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A%E7%88%B1%E4%B8%8E%E9%9D%92%E6%98%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%9B%9E/">看过路人女主的养成方法：爱与青春的服务回</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95/">看过路人女主的养成方法</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF%EF%BC%9A%E9%9D%99%E5%A4%9C-lifeline%EF%BC%9Asilent-night/">玩过生命线：静夜 lifeline：Silent Night</a>
       </li>
     
@@ -828,19 +821,11 @@ int main()
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/sinking-into-the-deep-night/">沉落于真夜</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%B0%E9%93%81/">读过地铁</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (54)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (56)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
