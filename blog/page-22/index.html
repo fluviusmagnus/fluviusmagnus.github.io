@@ -9,7 +9,9 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。 从winehq下载最近版本，解压。直接./configure， &hellip;">
+  <meta name="description" content="我的上一篇文章（《艰难曲折的wine经历》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
+[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib
+1 multilib/gcc-multilib 4.6.1-4 ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +77,64 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">关于multilib的补充说明</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14th, 2011</time>
+        
+        
+           | <a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我的上一篇文章（《<a title="艰难曲折的wine经历" href="http://koccn.net/wordpress/%e8%89%b0%e9%9a%be%e6%9b%b2%e6%8a%98%e7%9a%84wine%e7%bb%8f%e5%8e%86/" target="_blank">艰难曲折的wine经历</a>》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
+<blockquote>[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib<br />
+1 multilib/gcc-multilib 4.6.1-4 (multilib-devel)<br />
+The GNU Compiler Collection – C and C++ frontends for multilib<br />
+==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)<br />
+==&gt; ——————————————————-<br />
+==&gt; 1</blockquote></p>
+
+<p>密码：<br />
+正在解决依赖关系…<br />
+正在查找内部冲突…<br />
+:: gcc-libs-multilib 与 gcc-libs 有冲突。删除 gcc-libs 吗？ [y/N] y<br />
+:: binutils-multilib 与 binutils 有冲突。删除 binutils 吗？ [y/N] y<br />
+:: gcc-multilib 与 gcc 有冲突。删除 gcc 吗？ [y/N] y<br />
+（后面省略）
+最后我的做法是分别使用gcc-libs-multilib，binutils-multilib，gcc-multilib替换gcc-libs，binutils，gcc。确实，我当时犹豫了很久，经过一番臆测之后，得出这样的结论：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -496,50 +556,6 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/">你是Geek吗</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-01T00:00:00+08:00" pubdate data-updated="true">Aug 1st, 2011</time>
-        
-        
-           | <a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>NerdTests.com是一个Geek文化站，顾名思义提供了一些有趣的测试。比如说我刚刚参加的名为“Are you a Computer Geek?”的测试，结果为</p>
-
-<p><a href="http://www.nerdtests.com/ft_cg.php?im"><img src="http://www.nerdtests.com/images/ft/cg.php?val=7764" alt="My computer geek score is greater than 79% of all people in the world! How do you compare? Click here to find out!" /> </a>这是一个极高的分数。（也许吧==）</p>
-
-<p>想知道你是Geek吗，试试看吧。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-23">&larr; 旧文</a>
@@ -572,6 +588,10 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E6%98%A5%E5%AE%B5%E8%8B%A6%E7%9F%AD%EF%BC%8C%E5%B0%91%E5%A5%B3%E5%89%8D%E8%BF%9B%E5%90%A7%EF%BC%81/">读过春宵苦短，少女前进吧！</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A%E7%88%B1%E4%B8%8E%E9%9D%92%E6%98%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%9B%9E/">看过路人女主的养成方法：爱与青春的服务回</a>
       </li>
     
@@ -587,15 +607,11 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF2-lifeline-2/">玩过生命线2 Lifeline 2</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (56)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (57)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

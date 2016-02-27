@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="zh-CN"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>人人消息提醒 - 人間夜行</title>
+  <title>读过春宵苦短，少女前进吧！ - 人間夜行</title>
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="本人致力于服务人人网上的Linux用户。时值寒假初始，热烈奉送一款运行于终端的消息提醒器。 原理：wget读取cookie并登录手机人人，下载首页。grep分析有无新消息。终端响铃。 提醒：cookie的取得可以通过各种途径。一般情况下使用浏览器正常登录一次，再导出为cookies.txt即可。 &hellip;">
+  <meta name="description" content="推荐: 力荐 标签: 日本 小说 轻小说 备注: 我从未读过这样的书，大概是第一次的缘故，竟然感受到了漫溢的幸福感。双线视角切换虽然不是什么令人惊奇的首创，但每次衔接的都极为巧妙。故事中凡是提到的事物，必然以某种形式与其他的一切用有缘之线紧密联系在一起，最终从现实走向非现实的冒险的高潮， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://elephantus.moe/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92">
+  <link rel="canonical" href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E6%98%A5%E5%AE%B5%E8%8B%A6%E7%9F%AD%EF%BC%8C%E5%B0%91%E5%A5%B3%E5%89%8D%E8%BF%9B%E5%90%A7%EF%BC%81">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
@@ -78,7 +78,7 @@
   
   <header>
     
-      <h1 class="entry-title">人人消息提醒</h1>
+      <h1 class="entry-title">读过春宵苦短，少女前进吧！</h1>
     
     
       <p class="meta">
@@ -95,7 +95,7 @@
 
 
 
-<time datetime="2012-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13th, 2012</time>
+<time datetime="2016-02-26T00:00:00+08:00" pubdate data-updated="true">Feb 26th, 2016</time>
         
         
            | <a href="#comments">评论</a>
@@ -105,47 +105,14 @@
   </header>
 
 
-<div class="entry-content"><p>本人致力于服务人人网上的Linux用户。时值寒假初始，热烈奉送一款运行于终端的消息提醒器。</p>
-
-<p>原理：wget读取cookie并登录手机人人，下载首页。grep分析有无新消息。终端响铃。</p>
-
-<p>提醒：cookie的取得可以通过各种途径。一般情况下使用浏览器正常登录一次，再导出为cookies.txt即可。如果下载下来的页面很小，多试几次即可。如home.htm一直不正常，请检查你的cookie是否正确，保证url已经修改为可以正确登录首页的url。此外，请开启你的终端响铃。
-<pre class="brush:bash">#!/bin/bash</pre></p>
-
-<p># Renren Messages Notifier<br />
-# 人人消息提醒<br />
-# Koc Zhang: zszth@126.com<br />
-# GPLv3 Licensed</p>
-
-<p># 仅识别手机人人<br />
-# 请在使用前自行修改首页url<br />
-# 放置已成功登录过手机人人的cookies.txt至当前目录</p>
-
-<p># url为自己登录后的首页<br />
-# ！！！请自行修改！！！<br />
-# 格式为http://http://3g.renren.com/home.do加上后面一长串<br />
-url=""</p>
-
-<p>note="新消息"<br />
-mes=0<br />
-while [ "1" = "1" ];<br />
-do<br />
-	wget -q --cookies=on --load-cookies=cookies.txt --keep-session-cookies --save-cookies=cookies.txt "$url" -O home.htm<br />
-	mes=`cat home.htm¦grep -c "$note"`<br />
-	if [ 1 = $mes ]; then<br />
-		date<br />
-		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
-		echo "$go"<br />
-		echo -e "\a"<br />
-		sleep 1<br />
-		echo -e "\a"<br />
-		sleep 1<br />
-		echo -e "\a"<br />
-		mes="0"<br />
-	fi<br />
-	sleep 60<br />
-done
-&nbsp;</p>
+<div class="entry-content">    <table><tr>
+    <td width="80px"><a href="https://book.douban.com/subject/25829053/" title="春宵苦短，少女前进吧！">
+    <img src="https://img1.doubanio.com/spic/s27226548.jpg" alt="春宵苦短，少女前进吧！"></a></td>
+    <td>
+        <p>推荐: 力荐</p>
+        <p>标签: 日本 小说 轻小说</p>
+        <p>备注: 我从未读过这样的书，大概是第一次的缘故，竟然感受到了漫溢的幸福感。双线视角切换虽然不是什么令人惊奇的首创，但每次衔接的都极为巧妙。故事中凡是提到的事物，必然以某种形式与其他的一切用有缘之线紧密联系在一起，最终从现实走向非现实的冒险的高潮，全部收束于主角二人身上，这样便构成一个亲切可爱的世界。在这本书里很容易就能唤起所谓青春的共鸣之类的东西，各种五光十色的景色描写也是美得令人眼花缭乱，印象深刻。用书中的话总结一下我现在的感想的话，恐怕很可能是“尽人事，听天命”吧。</p>
+    </td></tr></table>
 </div>
 
 
@@ -169,12 +136,12 @@ done
 
 
 
-<time datetime="2012-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13th, 2012</time>
+<time datetime="2016-02-26T00:00:00+08:00" pubdate data-updated="true">Feb 26th, 2016</time>
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术</a>
+    <a class='category' href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏</a>
   
 </span>
 
@@ -190,10 +157,8 @@ done
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/" title="Previous Post: RQNOJ 262 游戏排行榜">&laquo; RQNOJ 262 游戏排行榜</a>
+        <a class="basic-alignment left" href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A%E7%88%B1%E4%B8%8E%E9%9D%92%E6%98%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%9B%9E/" title="Previous Post: 看过路人女主的养成方法：爱与青春的服务回">&laquo; 看过路人女主的养成方法：爱与青春的服务回</a>
       
-      
-        <a class="basic-alignment right" href="/blog/kr-c-bible-exercises-1-1/" title="Next Post: K&R C Bible Exercises 1-1">K&R C Bible Exercises 1-1 &raquo;</a>
       
     </p>
   </footer>
@@ -203,7 +168,7 @@ done
   <section>
     <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-title="人人消息提醒"></div>
+<div class="ds-thread" data-title="读过春宵苦短，少女前进吧！"></div>
 <script type="text/javascript">
   var duoshuoQuery = {short_name:"koccn"};
   (function() {

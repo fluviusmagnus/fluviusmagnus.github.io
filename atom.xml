@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-02-24T15:47:46+08:00</updated>
+  <updated>2016-02-27T15:38:41+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[读过春宵苦短，少女前进吧！]]></title>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E6%98%A5%E5%AE%B5%E8%8B%A6%E7%9F%AD%EF%BC%8C%E5%B0%91%E5%A5%B3%E5%89%8D%E8%BF%9B%E5%90%A7%EF%BC%81/"/>
+    <updated>2016-02-26T00:00:00+08:00</updated>
+    <id>https://elephantus.moe/blog/读过春宵苦短，少女前进吧！</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="https://book.douban.com/subject/25829053/" title="春宵苦短，少女前进吧！">
+    <img src="https://img1.doubanio.com/spic/s27226548.jpg" alt="春宵苦短，少女前进吧！"></a></td>
+    <td>
+        <p>推荐: 力荐</p>
+        <p>标签: 日本 小说 轻小说</p>
+        <p>备注: 我从未读过这样的书，大概是第一次的缘故，竟然感受到了漫溢的幸福感。双线视角切换虽然不是什么令人惊奇的首创，但每次衔接的都极为巧妙。故事中凡是提到的事物，必然以某种形式与其他的一切用有缘之线紧密联系在一起，最终从现实走向非现实的冒险的高潮，全部收束于主角二人身上，这样便构成一个亲切可爱的世界。在这本书里很容易就能唤起所谓青春的共鸣之类的东西，各种五光十色的景色描写也是美得令人眼花缭乱，印象深刻。用书中的话总结一下我现在的感想的话，恐怕很可能是“尽人事，听天命”吧。</p>
+    </td></tr></table>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[看过路人女主的养成方法：爱与青春的服务回]]></title>
@@ -359,22 +375,6 @@ rm ./_posts/*</code></pre></div>
         <p>推荐: 推荐</p>
         <p>标签: 德国 小说</p>
         <p>备注: 感受伟大灵魂，很容易形成认同感，简直是教我做人。这种精神价值取向其实已经并不陌生，但如此生动的再现就比较少了。时不时添入的幽默非常合我口味。个人认为不足的是，引用和叙述难以区分的风格使我在人称代词间迷路。</p>
-    </td></tr></table></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过こわぼん]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E3%81%93%E3%82%8F%E3%81%BC%E3%82%93/"/>
-    <updated>2016-01-15T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过こわぼん</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://movie.douban.com/subject/26426037/" title="こわぼん">
-    <img src="http://img3.douban.com/view/movie_poster_cover/ipst/public/p2261001891.jpg" alt="こわぼん" /></a></td>
-    <td>
-        <p>推荐: 还行</p>
-        <p>标签: 日本动画 惊悚 泡面番</p>
-        <p>备注: 画风合适。片尾用来中和气氛。这些故事告诉我们珍爱生命，远离摄像。</p>
     </td></tr></table></p>
 ]]></content>
   </entry>

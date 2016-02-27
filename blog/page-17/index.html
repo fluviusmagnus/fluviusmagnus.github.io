@@ -9,7 +9,9 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="Experiment to find out what happens when printf's argument string contains \c, where c is some character not listed above. Example: I try to &hellip;">
+  <meta name="description" content="Modify the temperature conversion program to print a heading above the table. Example:
+#include &lt;stdio.h&gt;
+/* print Fahrenheit-Celsius table */ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +77,69 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/kr-c-bible-exercises-1-3/">K&R C Bible Exercises 1-3</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
+        
+        
+           | <a href="/blog/kr-c-bible-exercises-1-3/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Modify the temperature conversion program to print a heading above the table.</p>
+
+<p>Example:
+<pre class="brush:c">#include &lt;stdio.h&gt;
+/* print Fahrenheit-Celsius table */
+int main()
+{
+	float fah,cel,upper;
+	int step;
+	step=10;
+	fah=0;
+	upper=120;
+	printf("Fahrenheit-Celsius Table\n");
+	printf("%6s %6s\n","F","C");
+	printf("---------------\n");
+	while(fah&lt;=upper)
+	{
+		cel=(fah-32)*5.0/9.0;
+		printf("%6.0f %6.1f\n",fah,cel);
+		fah+=step;
+	}
+	return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -601,79 +666,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/gtk-03-icon/">GTK+ 03 Icon</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
-        
-        
-           | <a href="/blog/gtk-03-icon/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
-
-<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
-//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
-//所有注释仅为我的理解</pre></p>
-
-<p>//实现对图片的访问。目前不甚理解。大概是读入缓冲。<br />
-GdkPixbuf *create_pixbuf(const gchar * filename)<br />
-{
-	GdkPixbuf *pixbuf;<br />
-	GError *error=NULL;<br />
-	pixbuf=gdk_pixbuf_new_from_file(filename,&amp;error);<br />
-	if(!pixbuf)<br />
-	{<br />
-		fprintf(stderr,&quot;%s\n&quot;,error-&gt;message);<br />
-		g_error_free(error);<br />
-	}<br />
-	return pixbuf;<br />
-}
-int main( int argc, char *argv[])<br />
-{
-	GtkWidget *window;<br />
-	gtk_init(&amp;argc, &amp;argv);<br />
-	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);<br />
-	gtk_window_set_title(GTK_WINDOW(window),&quot;This is the TITLE&quot;);<br />
-	gtk_window_set_default_size(GTK_WINDOW(window),400,300);<br />
-	gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);<br />
-	//设置图标<br />
-	gtk_window_set_icon(GTK_WINDOW(window),create_pixbuf(&quot;ra3.jpg&quot;));<br />
-	gtk_widget_show(window);<br />
-	g_signal_connect_swapped(G_OBJECT(window),&quot;destroy&quot;,G_CALLBACK(gtk_main_quit),NULL);<br />
-	gtk_main();<br />
-	return 0;<br />
-}</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-18">&larr; 旧文</a>
@@ -706,6 +698,10 @@ int main( int argc, char *argv[])<br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E6%98%A5%E5%AE%B5%E8%8B%A6%E7%9F%AD%EF%BC%8C%E5%B0%91%E5%A5%B3%E5%89%8D%E8%BF%9B%E5%90%A7%EF%BC%81/">读过春宵苦短，少女前进吧！</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%9C%8B%E8%BF%87%E8%B7%AF%E4%BA%BA%E5%A5%B3%E4%B8%BB%E7%9A%84%E5%85%BB%E6%88%90%E6%96%B9%E6%B3%95%EF%BC%9A%E7%88%B1%E4%B8%8E%E9%9D%92%E6%98%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%9B%9E/">看过路人女主的养成方法：爱与青春的服务回</a>
       </li>
     
@@ -721,15 +717,11 @@ int main( int argc, char *argv[])<br />
         <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF2-lifeline-2/">玩过生命线2 Lifeline 2</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%94%9F%E5%91%BD%E7%BA%BF-lifeline/">玩过生命线 Lifeline</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (56)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (48)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (57)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
