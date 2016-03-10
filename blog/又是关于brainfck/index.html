@@ -340,7 +340,14 @@ Not all programs have any notification of their ownership. If you find here a br
   });  
   });  
 </script>
-
+<script>
+(function(){
+    var bp = document.createElement('script');
+    bp.src = '//push.zhanzhang.baidu.com/push.js';
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
 
 </body>
 </html>
