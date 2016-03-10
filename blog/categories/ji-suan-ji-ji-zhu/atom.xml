@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-03-01T15:45:25+08:00</updated>
+  <updated>2016-03-10T20:21:19+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[出于某些原因移动了站点]]></title>
+    <link href="https://elephantus.moe/blog/moved-the-site-to-somewhere-else/"/>
+    <updated>2016-03-10T19:53:02+08:00</updated>
+    <id>https://elephantus.moe/blog/moved-the-site-to-somewhere-else</id>
+    <content type="html"><![CDATA[<p>之前提到过，作为静态页面的本站是由 GitHub Pages 提供托管服务的。这样做的好处很明显，可以节省自己维护的成本，但劣势也同样存在。</p>
+
+<p>今天偶然发现，百度无论如何都无法收录我的新版站点，经调查，乃是 GitHub 阻止百度爬虫之故。为了避免访问量的损失，以及获得自己个性化配置站点功能的条件，我决定把网站放到自己一台独立的机器上。虽然会加速消耗一定的流量，但好在基本都是静态页面，而且有 CDN 的帮助，应该能减少相当一部分负担。<!--more--></p>
+
+<p>自然，我们要使用优雅的方式（虽然还是很蠢），Github Webhooks 的功能得以使用。除了 Github 的一个奇怪之处（或许以后有机会再介绍），基本上整个流程写下来还是顺利的。唯独困扰我许久的问题竟然是一个权限问题，暂且在此记录下来。</p>
+
+<p>我喜欢 Python，所以用它来写 CGI，中间打算调用一下 <code>git pull</code>，然而每次都报错。通过 <code>os.system()</code> 得到的退出码是 256。一般情况，退出码的范围是 0~255，这个 256 就很奇怪，后来发现这是由 Python 特别转换过得到的，对应的实际退出码是 1。这样便明确了错误原因是没有权限。我们（我当时不）知道，网页服务器的权限是很低的，所以要把相应要处理的文件的组设置为 <code>www-data</code> 并给足权限才可以使用。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[导入豆瓣 RSS 至 Octopress]]></title>
@@ -168,262 +183,6 @@ rm ./_posts/*</code></pre></div></p>
 
 
 <p>PS：其实问题没有得到真正解决。Backupwp插件无法正常发送备份邮件。懒人只能选择换一个能用的插件。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux下的中文LaTeX实践]]></title>
-    <link href="https://elephantus.moe/blog/linux%E4%B8%8B%E7%9A%84%E4%B8%AD%E6%96%87latex%E5%AE%9E%E8%B7%B5/"/>
-    <updated>2014-08-27T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/linux下的中文latex实践</id>
-    <content type="html"><![CDATA[<p>LaTeX是优秀的跨平台计算机排版软件，具体就不多介绍。虽然我大概是不会有那种程度的科技类文章的排版需要的，不过作为一种技术本身，我还是愿意去涉猎一下。综合目前网上的各种教程，我发现最省心的配置还是xetex加ctex，这样可以省去配置中文编码、字体的种种麻烦。一步到位，轻松解决。<!--more-->
-<h2>安装</h2>
-有人说要专门下载一个Live CD，我觉得没这个必要。Ubuntu的软件源里同样有这些软件。即使不使用其自带的包管理器，使用新立得包管理器也可以方便地查找相关包的信息。一般情况，你可能只需要选择下载支持UTF-8的并能用xelatex直接生成PDF的texlive-xetex，和包含ctex的texlive-lang-cjk即可，其余的必需部件根据依赖关系就可以自动搞定。不过，如果你硬盘空间充足，我仍然建议你直接安装texlive-full，这样便将所有可能用到的包全部下载下来了，尽管你不会用到其中的大部分。</p>
-
-
-
-
-<p>终端下部分安装：
-<pre class="brush:bash">sudo apt-get install texlive-xetex texlive-lang-cjk</pre>
-全部安装：
-<pre class="brush:bash">sudo apt-get install texlive-full</pre>
-<h2>使用</h2>
-对于初学者，我推荐《一份不太简短的LaTex介绍》作为一般的入门教程。如果你希望获得更多的中文排版知识，《ctex 宏包说明》则是很好的参考资料，特别是对于使用ctex宏包的我们而言。以上两份资料网上都很容易获得。</p>
-
-
-
-
-<p>一般简单文件的模版如下（抱歉语法高亮目前不支持）：
-<pre>&#37; 关于文档的一些基本设置
-\documentclass[a4paper, adobefonts]{ctexart}
-\setCJKmainfont{SimSun}
-&#37; 设置标题信息
-\title{标题}
-\author{作者}
-\date{\today}
-\begin{document}
-&#37; 打印标题信息
-\maketitle
-&#37; 正文开始
-你好，世界。（或者其他什么内容）
-\end{document}</pre>
-关于字体，我推荐Linux用户设置adobefonts，虽然理论上可以从别的Windows复制宋体、黑体、楷体等等来使用，但总觉得不太好。</p>
-
-
-
-
-<p>文档编辑完后，保存为.tex文件，例如test.tex。LaTeX对后缀名还是比较敏感的，不喜欢后缀名的用户需要注意这一点。然后在终端下我们直接输出PDF：
-<pre class="brush:bash">xelatex test.tex</pre>
-得到test.pdf。虽然没有错误，但仍然有很多信息输出，感兴趣可以看一下。如果有错误，那就必须仔细研读了。
-<h2>编辑器</h2>
-Windows下有很多好用的编辑器，Linux下也有，不过稍微弱一些，但不至于非常影响使用就是了。虽然有专门为TeX设计的编辑器，如Gummi等，我还是推荐Gedit加上LaTeX插件来使用。但无论如何，它们都需要一定的配置。</p>
-
-
-
-
-<p>Gummi的亮点在于它提供了一个实时预览界面，你可以一边编辑一边查看结果。安装：
-<pre class="brush:bash">sudo apt-get install gummi</pre>
-Gummi中，要在设置里将编译器设置为xetex，因为默认的不可用，其他设置随意。</p>
-
-
-
-
-<p>Gedit虽然是GNOME环境默认的编辑器，依靠扩展它仍然可以变得很强大。安装：
-<pre class="brush:bash">sudo apt-get install gedit-latex-plugin</pre>
-然后打开gedit并启用此插件。在插件设置中添加一个编译命令：
-<pre>xelatex $filename</pre>
-调整到你喜欢的位置即可。在Gedit中，你可能还要在“查看”菜单中打开侧边栏、底部面板才能用个痛快，或许安装一个终端插件也不错。具体细节就交给大家自己去探索吧。
-<h2>与其他文件格式的关系</h2>
-<h3>HTML</h3>
-Tex文件自然是可以转换为PDF的，可惜一般来说是不可逆的，而HTML和它却能双向转换。但也许你也能猜到，显然tex变成HTML会损失许多细节，好在内容主体还算完好，修改一下应该不是很困难的事。我在源中发现了LaTeX2HTML和gnuhtml2latex，具体没用过，大家可以试一试。
-<h3>Markdown</h3>
-Markdown是最近知名度突然变高的语言。它是纯文本，却也是有格式的纯文本，格式的标记十分友好，在可读性和机器的可识别性上取得了极佳的平衡。许多人喜欢直接用它来写各种文档。使用pandoc可以把markdown文件转换为PDF。乍一看和LaTeX没什么关系，可它并不能直接生成PDF，必须使用tex来过渡。默认的tex模版并不适合中文文档，强行使用必然报错。我尝试折腾了一个中文模板，对付简单的文件似乎问题不大，大家可以根据自己的需要修改。（虽然貌似大部分看不太懂。我也是新手啊。）
-<pre>\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
-\usepackage[T1]{fontenc}
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} &#37; provides \textsubscript
-&#37; use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 &#37; if pdftex
- \usepackage[utf8]{inputenc}
-$if(euro)$
- \usepackage{eurosym}
-$endif$
-\else &#37; if luatex or xelatex
- \ifxetex
- \usepackage{mathspec}
- \usepackage{xltxtra,xunicode}
- \usepackage[adobefonts]{ctex}
- \setCJKmainfont{SimSun}
- \setCJKsansfont{SimHei}
- \setCJKmonofont{WenQuanYi Micro Hei Mono}
- \else
- \usepackage{fontspec}
- \fi
- &#37;\defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
- \newcommand{\euro}{€}
-\setmainfont{Times New Roman}
-$if(mainfont)$
- \setmainfont{$mainfont$}
-$endif$
-$if(sansfont)$
- \setsansfont{$sansfont$}
-$endif$
-$if(monofont)$
- \setmonofont[Mapping=tex-ansi]{$monofont$}
-$endif$
-$if(mathfont)$
- \setmathfont(Digits,Latin,Greek){$mathfont$}
-$endif$
-\fi
-&#37; use microtype if available
-\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
-$if(geometry)$
-\usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
-$endif$
-$if(natbib)$
-\usepackage{natbib}
-\bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$endif$
-$if(biblatex)$
-\usepackage{biblatex}
-$if(biblio-files)$
-\bibliography{$biblio-files$}
-$endif$
-$endif$
-$if(listings)$
-\usepackage{listings}
-$endif$
-$if(lhs)$
-\lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
-$endif$
-$if(highlighting-macros)$
-$highlighting-macros$
-$endif$
-$if(verbatim-in-note)$
-\usepackage{fancyvrb}
-$endif$
-$if(tables)$
-\usepackage{longtable,booktabs}
-$endif$
-$if(graphics)$
-\usepackage{graphicx}
-&#37; Redefine \includegraphics so that, unless explicit options are
-&#37; given, the image width will not exceed the width of the page.
-&#37; Images get their normal width if they fit onto the page, but
-&#37; are scaled down if they would overflow the margins.
-\makeatletter
-\def\ScaleIfNeeded{&#37;
- \ifdim\Gin@nat@width&gt;\linewidth
- \linewidth
- \else
- \Gin@nat@width
- \fi
-}
-\makeatother
-\let\Oldincludegraphics\includegraphics
-{&#37;
- \catcode`\@=11\relax&#37;
- \gdef\includegraphics{\@ifnextchar[{\Oldincludegraphics}{\Oldincludegraphics[width=\ScaleIfNeeded]}}&#37;
-}&#37;
-$endif$
-\ifxetex
- \usepackage[setpagesize=false, &#37; page size defined by xetex
- unicode=false, &#37; unicode breaks when used with xetex
- xetex]{hyperref}
-\else
- \usepackage[unicode=true]{hyperref}
-\fi
-\hypersetup{breaklinks=true,
- bookmarks=true,
- pdfauthor={$author-meta$},
- pdftitle={$title-meta$},
- colorlinks=true,
- citecolor=$if(citecolor)$$citecolor$$else$blue$endif$,
- urlcolor=$if(urlcolor)$$urlcolor$$else$blue$endif$,
- linkcolor=$if(linkcolor)$$linkcolor$$else$magenta$endif$,
- pdfborder={0 0 0}}
-\urlstyle{same} &#37; don't use monospace font for urls
-$if(links-as-notes)$
-&#37; Make links footnotes instead of hotlinks:
-\renewcommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
-$if(strikeout)$
-\usepackage[normalem]{ulem}
-&#37; avoid problems with \sout in headers with hyperref:
-\pdfstringdefDisableCommands{\renewcommand{\sout}{}}
-$endif$
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-\setlength{\emergencystretch}{3em} &#37; prevent overfull lines
-$if(numbersections)$
-\setcounter{secnumdepth}{5}
-$else$
-\setcounter{secnumdepth}{0}
-$endif$
-$if(verbatim-in-note)$
-\VerbatimFootnotes &#37; allows verbatim text in footnotes
-$endif$
-$if(lang)$
-\ifxetex
- \usepackage{polyglossia}
- \setmainlanguage{$mainlang$}
-\else
- \usepackage[$lang$]{babel}
-\fi
-$endif$
-$for(header-includes)$
-$header-includes$
-$endfor$
-$if(title)$
-\title{$title$}
-$endif$
-$if(subtitle)$
-\subtitle{$subtitle$}
-$endif$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-\date{$date$}
-\begin{document}
-$if(title)$
-\maketitle
-$endif$
-$for(include-before)$
-$include-before$
-$endfor$
-$if(toc)$
-{
-\hypersetup{linkcolor=black}
-\setcounter{tocdepth}{$toc-depth$}
-\tableofcontents
-}
-$endif$
-$body$
-$if(natbib)$
-$if(biblio-files)$
-$if(biblio-title)$
-$if(book-class)$
-\renewcommand\bibname{$biblio-title$}
-$else$
-\renewcommand\refname{$biblio-title$}
-$endif$
-$endif$
-\bibliography{$biblio-files$}
-$endif$
-$endif$
-$if(biblatex)$
-\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-$endif$
-$for(include-after)$
-$include-after$
-$endfor$
-\end{document}</pre>
-假如markdown文件为test.md，模版文件名为latex.template.cjk.tex，你可以用pandoc作如下转换：
-<pre class="brush:bash">pandoc test.md -o test.pdf --latex-engine=xelatex --template=latex.template.cjk.tex</pre>
-<h2>结语</h2>
-以上均是一些最基础的应用，实际使用过程中会出现各种各样复杂的需求。遇到问题先看文档，再好好搜索，实在不行问别人，这可谓是获取一切计算机知识的通径。就目前来说，我的需求基本已经得到满足，接下来就看你的了。</p>
 
 ]]></content>
   </entry>

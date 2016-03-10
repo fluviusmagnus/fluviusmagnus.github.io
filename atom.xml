@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-03-01T15:45:25+08:00</updated>
+  <updated>2016-03-10T20:21:19+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,21 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[出于某些原因移动了站点]]></title>
+    <link href="https://elephantus.moe/blog/moved-the-site-to-somewhere-else/"/>
+    <updated>2016-03-10T19:53:02+08:00</updated>
+    <id>https://elephantus.moe/blog/moved-the-site-to-somewhere-else</id>
+    <content type="html"><![CDATA[<p>之前提到过，作为静态页面的本站是由 GitHub Pages 提供托管服务的。这样做的好处很明显，可以节省自己维护的成本，但劣势也同样存在。</p>
+
+<p>今天偶然发现，百度无论如何都无法收录我的新版站点，经调查，乃是 GitHub 阻止百度爬虫之故。为了避免访问量的损失，以及获得自己个性化配置站点功能的条件，我决定把网站放到自己一台独立的机器上。虽然会加速消耗一定的流量，但好在基本都是静态页面，而且有 CDN 的帮助，应该能减少相当一部分负担。<!--more--></p>
+
+<p>自然，我们要使用优雅的方式（虽然还是很蠢），Github Webhooks 的功能得以使用。除了 Github 的一个奇怪之处（或许以后有机会再介绍），基本上整个流程写下来还是顺利的。唯独困扰我许久的问题竟然是一个权限问题，暂且在此记录下来。</p>
+
+<p>我喜欢 Python，所以用它来写 CGI，中间打算调用一下 <code>git pull</code>，然而每次都报错。通过 <code>os.system()</code> 得到的退出码是 256。一般情况，退出码的范围是 0~255，这个 256 就很奇怪，后来发现这是由 Python 特别转换过得到的，对应的实际退出码是 1。这样便明确了错误原因是没有权限。我们（我当时不）知道，网页服务器的权限是很低的，所以要把相应要处理的文件的组设置为 <code>www-data</code> 并给足权限才可以使用。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[看过日在校园]]></title>
@@ -359,22 +374,6 @@ rm ./_posts/*</code></pre></div>
         <p>推荐: 推荐</p>
         <p>标签: 德国 纪录片</p>
         <p>备注: 最喜欢里面表演的部分，跟看古装剧一样。</p>
-    </td></tr></table></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过希德尼娅的骑士 第二季 第九惑星战役]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%B8%8C%E5%BE%B7%E5%B0%BC%E5%A8%85%E7%9A%84%E9%AA%91%E5%A3%AB-%E7%AC%AC%E4%BA%8C%E5%AD%A3-%E7%AC%AC%E4%B9%9D%E6%83%91%E6%98%9F%E6%88%98%E5%BD%B9/"/>
-    <updated>2016-01-30T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过希德尼娅的骑士-第二季-第九惑星战役</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://movie.douban.com/subject/25915879/" title="シドニアの騎士 第九惑星戦役">
-    <img src="http://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2233783138.jpg" alt="シドニアの騎士 第九惑星戦役" /></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 日本动画 科幻</p>
-        <p>备注: 要什么有什么，不负期待，包括杀必死。什么都能萌的可以获得最大乐趣。价值观的问题慢慢浮出来了，本剧的选择相当合意。神作倾向。</p>
     </td></tr></table></p>
 ]]></content>
   </entry>
