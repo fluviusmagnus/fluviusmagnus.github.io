@@ -110,7 +110,7 @@
 
   <div class="entry-content"><p>之前提到过，作为静态页面的本站是由 GitHub Pages 提供托管服务的。这样做的好处很明显，可以节省自己维护的成本，但劣势也同样存在。</p>
 
-<p>今天偶然发现，百度无论如何都无法收录我的新版站点，经调查，乃是 GitHub 阻止百度爬虫之故。为了避免访问量的损失，以及获得自己个性化配置站点功能的条件，我决定把网站放到自己一台独立的机器上。虽然会加速消耗一定的流量，但好在基本都是静态页面，而且有 CDN 的帮助，应该能减少相当一部分负担。</div>
+<p>今天偶然发现，百度无论如何都无法收录我的新版站点，经调查，乃是 GitHub 阻止百度爬虫之故。为了避免访问量的损失，以及获得自己个性化配置站点功能的条件，我决定把网站放到自己一台独立的机器上。虽然会加速消耗一定的流量，但好在基本都是静态页面，而且有 CDN 的帮助，应该能减少相当一部分负担。此外，由于换了 DNS 服务，原来的提供的奇怪 SSL 干脆放弃，直接申请一个独立的安在服务器上，目前感觉还不错。</div>
   
   
     <footer>
@@ -676,14 +676,7 @@ PS：这家的游戏还真是喜欢绿怪呢。</p>
   });  
   });  
 </script>
-<script>
-(function(){
-    var bp = document.createElement('script');
-    bp.src = '//push.zhanzhang.baidu.com/push.js';
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(bp, s);
-})();
-</script>
+
 
 </body>
 </html>
