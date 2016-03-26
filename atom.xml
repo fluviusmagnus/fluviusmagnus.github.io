@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-03-11T14:32:37+08:00</updated>
+  <updated>2016-03-26T12:05:13+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[看过魔法少女小圆]]></title>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/"/>
+    <updated>2016-03-26T00:00:00+08:00</updated>
+    <id>https://elephantus.moe/blog/看过魔法少女小圆</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="https://movie.douban.com/subject/5349275/" title="魔法少女まどか★マギカ">
+    <img src="https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2088343031.jpg" alt="魔法少女まどか★マギカ"></a></td>
+    <td>
+        <p>推荐: 力荐</p>
+        <p>标签: 日本动画</p>
+        <p>备注: 虽说是魔法少女，但确实不是一般套路。不过许多 flag 太明显，有经验的观众很容易预计到会有一个神棍结局吧。凭借大阴谋、多时空以及对文明本质的（稚嫩）理解作出了史诗级的规模，解读视角自然众多。众多评论中我对那个浮士德的解释还是相当认可的。至于成神之道，似乎是典型的基督教风格了呢。</p>
+    </td></tr></table>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[看过再见，绝望先生]]></title>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%86%8D%E8%A7%81%EF%BC%8C%E7%BB%9D%E6%9C%9B%E5%85%88%E7%94%9F/"/>
+    <updated>2016-03-13T00:00:00+08:00</updated>
+    <id>https://elephantus.moe/blog/看过再见，绝望先生</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="https://movie.douban.com/subject/2950496/" title="さよなら絶望先生">
+    <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2154128134.jpg" alt="さよなら絶望先生"></a></td>
+    <td>
+        <p>推荐: 推荐</p>
+        <p>标签: 日本动画</p>
+        <p>备注: 我知道制作者们玩得很愉快，讽刺也算深切，自嘲大满足。就这样平稳地我觉得可以一直做下去。</p>
+    </td></tr></table>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[出于某些原因移动了站点]]></title>
@@ -342,38 +374,6 @@ rm ./_posts/*</code></pre></div>
         <p>推荐: 推荐</p>
         <p>标签: 日本动画</p>
         <p>备注: 忘记什么时候看过了。有趣的补充。</p>
-    </td></tr></table></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过十字路口]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%8D%81%E5%AD%97%E8%B7%AF%E5%8F%A3/"/>
-    <updated>2016-02-01T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过十字路口</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://movie.douban.com/subject/25834500/" title="クロスロード">
-    <img src="https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2172441219.jpg" alt="クロスロード" /></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 日本动画</p>
-        <p>备注: 这个分是给广告的。</p>
-    </td></tr></table></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过德国人 第一季]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%BE%B7%E5%9B%BD%E4%BA%BA-%E7%AC%AC%E4%B8%80%E5%AD%A3/"/>
-    <updated>2016-01-30T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过德国人-第一季</id>
-    <content type="html"><![CDATA[<p><table><tr>
-    <td width="80px"><a href="http://movie.douban.com/subject/5183318/" title="Die Deutschen">
-    <img src="https://img3.doubanio.com/spic/s4677548.jpg" alt="Die Deutschen" /></a></td>
-    <td>
-        <p>推荐: 推荐</p>
-        <p>标签: 德国 纪录片</p>
-        <p>备注: 最喜欢里面表演的部分，跟看古装剧一样。</p>
     </td></tr></table></p>
 ]]></content>
   </entry>
