@@ -9,12 +9,7 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//第一次拙劣地使用了STL。以此纪念。
-#include &lt;stdio.h&gt;
-#include &lt;set&gt;
-using namespace std;
-int main()
-{ set&lt;int&gt; num; multiset&lt;int&gt; time; &hellip;">
+  <meta name="description" content="在一个有关BF的网站上看到了一些资源，包含了一些编译器之类的东西，于是就下载下来玩一玩。 资源：http://esoteric.sange.fi/brainfuck/">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +75,279 @@ int main()
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%8F%88%E6%98%AF%E5%85%B3%E4%BA%8Ebrainfck/">又是关于Brainf*ck</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-03-16T00:00:00+08:00" pubdate data-updated="true">Mar 16th, 2012</time>
+        
+        
+           | <a href="/blog/%E5%8F%88%E6%98%AF%E5%85%B3%E4%BA%8Ebrainfck/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>在一个有关BF的网站上看到了一些资源，包含了一些编译器之类的东西，于是就下载下来玩一玩。</p>
+
+<p>资源：<a href="http://esoteric.sange.fi/brainfuck/">http://esoteric.sange.fi/brainfuck/</a></div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%8F%88%E6%98%AF%E5%85%B3%E4%BA%8Ebrainfck/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%E6%88%8F%E5%89%A7%E5%B0%8F%E6%8A%A5%E5%88%B6%E4%BD%9C%E6%9C%89%E6%84%9F/">中国古典戏剧小报制作有感</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-10T00:00:00+08:00" pubdate data-updated="true">Feb 10th, 2012</time>
+        
+        
+           | <a href="/blog/%E4%B8%AD%E5%9B%BD%E5%8F%A4%E5%85%B8%E6%88%8F%E5%89%A7%E5%B0%8F%E6%8A%A5%E5%88%B6%E4%BD%9C%E6%9C%89%E6%84%9F/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>早就领教过家庭伦理电视剧的威力，对于婚姻、爱情的理解可谓是越来越肤浅，以至于对于这类题材的作品失去兴趣，处于麻木的状态。</p>
+
+<p>也许是这样，这就是所谓现代都市化生活的副作用吧。我们有一大堆情景喜剧可看，已经很少有人会特意去看这样的古典戏剧了，更何况还是个悲剧。</p>
+
+<p>难得有这样一个机会，有去看这样的戏剧的动机。事实上也成为从繁忙之中脱身的一个借口。不管怎么说，我可以离开现实世界一会儿，哪怕是几个小时。</p>
+
+<p>欣赏完——或者说参与了——这部戏后，我才发现，原来这类悲剧都可以称得上是治愈系的了。世间人与人之间的关系原来还可以如此单纯！纯美？清新？无瑕？完美？这是一个桃花源。你该如何形容发现一个桃花源时的喜悦呢？</p>
+
+<p>每个人心中都有一个桃花源。不过，在奔跑的路上，有的已经被遗忘。只要再唤起对它的记忆，一样是美好的。尘世中美好的事，不过是心中留有一处桃花源。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-137-%E6%89%BE%E8%AF%95%E5%9C%BA/">RQNOJ 137 找试场</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-10T00:00:00+08:00" pubdate data-updated="true">Feb 10th, 2012</time>
+        
+        
+           | <a href="/blog/rqnoj-137-%E6%89%BE%E8%AF%95%E5%9C%BA/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre class="brush:c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdlib.h&gt;
+int x=0,y=0;
+//dir方向：1是右，2是左，3是上，4是下。
+int dir=3;
+//未移动标记。
+int flag=0;
+void setdir(char a)
+{
+	if(a=='l')
+	{
+		switch(dir)
+		{
+			case 1:
+				dir=3;
+				break;
+			case 2:
+				dir=4;
+				break;
+			case 3:
+				dir=2;
+				break;
+			case 4:
+				dir=1;
+				break;
+		}
+	}
+	if(a=='r')
+	{
+		switch(dir)
+		{
+			case 1:
+				dir=4;
+				break;
+			case 2:
+				dir=3;
+				break;
+			case 3:
+				dir=1;
+				break;
+			case 4:
+				dir=2;
+				break;
+		}
+	}
+	return;
+}
+void go(int dis)
+{
+	if(dir==1) x+=dis;
+	if(dir==2) x-=dis;
+	if(dir==3) y+=dis;
+	if(dir==4) y-=dis;
+	flag=1;
+	printf("(%d,%d)\n",x,y);
+	return;
+}
+int main()
+{
+	int n;
+	scanf("%d",&amp;n);
+	int i;
+	for(i=1;i&lt;=n;i++)
+	{
+		char ins[20];
+		scanf("%s",ins);
+		if(isdigit(ins[0]))
+			go(atoi(ins));
+		if(ins[0]=='r')
+			setdir('r');
+		if(ins[0]=='l')
+			setdir('l');
+	}
+	if(flag==0) printf("(0,0)\n");
+	return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/">RQNOJ 143 巨型整数</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-06T00:00:00+08:00" pubdate data-updated="true">Feb 6th, 2012</time>
+        
+        
+           | <a href="/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre class="brush:cpp">#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main()
+{
+	string s;
+	char in[20001];
+	scanf("%s",in);
+	s=in;
+	reverse(s.begin(),s.end());
+	string::iterator it=s.begin();
+//此处需要注意，输入100须输出1。
+	while(*it=='0')
+		s.erase(it);
+	cout&lt;&lt;s&lt;&lt;endl;
+	long int sum=0;
+	for(it=s.begin();it!=s.end();it++)
+		sum+=(*it-'0');
+	cout&lt;&lt;sum;
+	return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -421,249 +689,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/kr-c-bible-exercises-1-2/">K&R C Bible Exercises 1-2</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
-        
-        
-           | <a href="/blog/kr-c-bible-exercises-1-2/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Experiment to find out what happens when printf's argument string contains \c, where c is some character not listed above.</p>
-
-<p>Example: I try to understand how \t works.
-<pre class="brush:c">#include &lt;stdio.h&gt;
-int main()
-{
-	printf("Hello, World!\n\a");
-	printf("asdf56\tdfd\tsadfgg\nqe\tdfcvbnv\tdfafffffffsa\ndfdfaqerer\tdfa\tfdsab\n");
-	return 0;
-}</pre>
-&nbsp;</p>
-
-<p>&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/kr-c-bible-exercises-1-1/">K&R C Bible Exercises 1-1</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-01-19T00:00:00+08:00" pubdate data-updated="true">Jan 19th, 2012</time>
-        
-        
-           | <a href="/blog/kr-c-bible-exercises-1-1/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Run the "hello, world" program on your system. Experiment with leaving out parts of the program, to see what error messages you get.</p>
-
-<p>Example:
-<pre class="brush:c">#include &lt;stdio.h&gt;
-int main()
-{
-	printf("Hello, World!\n");
-	return 0;
-}</pre>
-&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/">人人消息提醒</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2012-01-13T00:00:00+08:00" pubdate data-updated="true">Jan 13th, 2012</time>
-        
-        
-           | <a href="/blog/%E4%BA%BA%E4%BA%BA%E6%B6%88%E6%81%AF%E6%8F%90%E9%86%92/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>本人致力于服务人人网上的Linux用户。时值寒假初始，热烈奉送一款运行于终端的消息提醒器。</p>
-
-<p>原理：wget读取cookie并登录手机人人，下载首页。grep分析有无新消息。终端响铃。</p>
-
-<p>提醒：cookie的取得可以通过各种途径。一般情况下使用浏览器正常登录一次，再导出为cookies.txt即可。如果下载下来的页面很小，多试几次即可。如home.htm一直不正常，请检查你的cookie是否正确，保证url已经修改为可以正确登录首页的url。此外，请开启你的终端响铃。
-<pre class="brush:bash">#!/bin/bash</pre></p>
-
-<p># Renren Messages Notifier<br />
-# 人人消息提醒<br />
-# Koc Zhang: zszth@126.com<br />
-# GPLv3 Licensed</p>
-
-<p># 仅识别手机人人<br />
-# 请在使用前自行修改首页url<br />
-# 放置已成功登录过手机人人的cookies.txt至当前目录</p>
-
-<p># url为自己登录后的首页<br />
-# ！！！请自行修改！！！<br />
-# 格式为http://http://3g.renren.com/home.do加上后面一长串<br />
-url=""</p>
-
-<p>note="新消息"<br />
-mes=0<br />
-while [ "1" = "1" ];<br />
-do<br />
-	wget -q --cookies=on --load-cookies=cookies.txt --keep-session-cookies --save-cookies=cookies.txt "$url" -O home.htm<br />
-	mes=`cat home.htm¦grep -c "$note"`<br />
-	if [ 1 = $mes ]; then<br />
-		date<br />
-		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
-		echo "$go"<br />
-		echo -e "\a"<br />
-		sleep 1<br />
-		echo -e "\a"<br />
-		sleep 1<br />
-		echo -e "\a"<br />
-		mes="0"<br />
-	fi<br />
-	sleep 60<br />
-done
-&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/">RQNOJ 262 游戏排行榜</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-12-31T00:00:00+08:00" pubdate data-updated="true">Dec 31st, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre class="brush:c">//稍微有点算是水题。吧。
-#include &lt;stdio.h&gt;
-#include &lt;limits.h&gt;
-int main()
-{
-        unsigned int list[51]={0};
-        list[0]=INT_MAX;
-        int p,s;
-        unsigned int n;
-        scanf("%d%d%d",&amp;p,&amp;s,&amp;n);
-        int i;
-        for(i=1;i&lt;=s;i++)
-                scanf("%d",&amp;list[i]);
-        for(i=1;i&lt;=p;i++)
-                if(n&gt;=list[i]&amp;&amp;n&gt;list[p]&amp;&amp;n&lt;list[i-1])
-                {
-                        printf("%d",i);
-                        return 0;
-                }
-        printf("-1");
-        return 0;
-}</pre>
-&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-18">&larr; 旧文</a>
@@ -696,30 +721,30 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%98%AD%E5%92%8C%E5%85%83%E7%A6%84%E8%90%BD%E8%AF%AD%E5%BF%83%E4%B8%AD/">看过昭和元禄落语心中</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%94%A8%E8%BF%87logeion-(iphone-ipad)/">用过Logeion (iPhone / iPad)</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%9C%8B%E8%BF%87%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/">看过魔法少女小圆</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%86%8D%E8%A7%81%EF%BC%8C%E7%BB%9D%E6%9C%9B%E5%85%88%E7%94%9F/">看过再见，绝望先生</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%89%A7%E5%9C%BA%E7%89%88%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86-%E6%96%B0%E7%AF%87-%E5%8F%9B%E9%80%86%E7%9A%84%E6%95%85%E4%BA%8B/">看过剧场版魔法少女小圆 新篇 叛逆的故事</a>
       </li>
     
       <li class="post">
-        <a href="/blog/moved-the-site-to-somewhere-else/">出于某些原因移动了站点</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%97%A5%E5%9C%A8%E6%A0%A1%E5%9B%AD/">看过日在校园</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%9C%A3%E5%93%A5%E4%BC%A0/">看过圣哥传</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F-%E7%82%8E%E9%BE%99%E7%AF%87/">看过GATE 奇幻自卫队 炎龙篇</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (49)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (61)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (49)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (65)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
