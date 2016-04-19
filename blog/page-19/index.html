@@ -83,6 +83,79 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/gtk-03-icon/">GTK+ 03 Icon</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
+        
+        
+           | <a href="/blog/gtk-03-icon/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解</pre></p>
+
+<p>//实现对图片的访问。目前不甚理解。大概是读入缓冲。<br />
+GdkPixbuf *create_pixbuf(const gchar * filename)<br />
+{
+	GdkPixbuf *pixbuf;<br />
+	GError *error=NULL;<br />
+	pixbuf=gdk_pixbuf_new_from_file(filename,&amp;error);<br />
+	if(!pixbuf)<br />
+	{<br />
+		fprintf(stderr,&quot;%s\n&quot;,error-&gt;message);<br />
+		g_error_free(error);<br />
+	}<br />
+	return pixbuf;<br />
+}
+int main( int argc, char *argv[])<br />
+{
+	GtkWidget *window;<br />
+	gtk_init(&amp;argc, &amp;argv);<br />
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);<br />
+	gtk_window_set_title(GTK_WINDOW(window),&quot;This is the TITLE&quot;);<br />
+	gtk_window_set_default_size(GTK_WINDOW(window),400,300);<br />
+	gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);<br />
+	//设置图标<br />
+	gtk_window_set_icon(GTK_WINDOW(window),create_pixbuf(&quot;ra3.jpg&quot;));<br />
+	gtk_widget_show(window);<br />
+	g_signal_connect_swapped(G_OBJECT(window),&quot;destroy&quot;,G_CALLBACK(gtk_main_quit),NULL);<br />
+	gtk_main();<br />
+	return 0;<br />
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/gtk-02-window-widget/">GTK+ 02 Window Widget</a></h1>
     
     
@@ -713,114 +786,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-399-noip2008%E7%AC%A8%E5%B0%8F%E7%8C%B4/">RQNOJ 399 [NOIP2008]笨小猴</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-399-noip2008%E7%AC%A8%E5%B0%8F%E7%8C%B4/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//有时候多写几个函数有助于调试。
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int stat[26];
-char word[101];
-int len;
-void cls()
-{
-        int i;
-        for(i=0;i&lt;26;i++) stat[i]=0;
-}
-void tj()
-{
-        cls();
-        int i;
-        for(i=0;i&lt;len;i++) stat[word[i]-'a']++;
-}
-int getmax()
-{
-        int max=0;
-        int i;
-        for(i=0;i&lt;26;i++)
-        {
-                if(stat[i]&gt;max)
-                {
-                        max=stat[i];
-                }
-        }
-        return max;
-}
-int getmin()
-{
-        int min=100;
-        int i;
-        for(i=0;i&lt;26;i++)
-        {
-                if(stat[i]&lt;min&amp;&amp;stat[i]!=0)
-                {
-                        min=stat[i];
-                }
-        }
-        return min;
-}
-int isprime(int num)
-{
-        int prime[25]={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
-        int i;
-        for(i=0;i&lt;25;i++) if(num==prime[i]) return 1;
-        return 0;
-}
-int main()
-{
-        gets(word);
-        len=strlen(word);
-        int a;
-        tj();
-        a=getmax()-getmin();
-        if(isprime(a))
-        {
-                printf("Lucky Word\n");
-                printf("%d",a);
-        }
-        else
-        {
-                printf("No Answer\n");
-                printf("0");
-        }
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-20">&larr; 旧文</a>
@@ -853,6 +818,10 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/backup-vps-to-dropbox/">备份 VPS 至 Dropbox</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%9C%8B%E8%BF%87%E6%98%AD%E5%92%8C%E5%85%83%E7%A6%84%E8%90%BD%E8%AF%AD%E5%BF%83%E4%B8%AD/">看过昭和元禄落语心中</a>
       </li>
     
@@ -868,15 +837,11 @@ int main()
         <a href="/blog/%E7%9C%8B%E8%BF%87%E5%89%A7%E5%9C%BA%E7%89%88%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86-%E6%96%B0%E7%AF%87-%E5%8F%9B%E9%80%86%E7%9A%84%E6%95%85%E4%BA%8B/">看过剧场版魔法少女小圆 新篇 叛逆的故事</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87gate-%E5%A5%87%E5%B9%BB%E8%87%AA%E5%8D%AB%E9%98%9F-%E7%82%8E%E9%BE%99%E7%AF%87/">看过GATE 奇幻自卫队 炎龙篇</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (49)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (65)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (71)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (65)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
