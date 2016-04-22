@@ -1,0 +1,21 @@
+---
+layout: post
+title: RQNOJ 238 火炬手之梦
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//此题需要一定的数学技巧。需要理解此函数的几何意义。
+//同时考察格式化输出。
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main()
+{
+        float a,b,c,d;
+        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
+        printf("%0.3f",sqrt((sqrt(b)+sqrt(d))*(sqrt(b)+sqrt(d))+(a-c)*(a-c)));
+        return 0;
+}</pre></p>

@@ -1,0 +1,29 @@
+---
+layout: post
+title: RQNOJ 162 奖金
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//这是一道完全背包。与0/1背包不同，空间优化后不必逆序，
+//以实现多次选取。
+//此外本题要求装满，所以f[j](j!=0)初始化为负无限大。
+//关于“装满”，参见jake1036的<a title="01背包问题总结（一）" href="http://www.cppblog.com/jake1036/archive/2011/06/27/149566.html" target="_blank">《01背包问题总结（一）》</a>。
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+int main()
+{
+	long int n,m,p[10001],v[10002],f[10001];
+	scanf("%ld%ld",&amp;n,&amp;m);
+	int i,j;
+	for(i=1;i&lt;=n;i++) scanf("%ld%ld",&amp;p[i],&amp;v[i]);
+	for(j=1;j&lt;=m;j++) f[j]=LONG_MIN;
+	for(i=1;i&lt;=n;i++)
+		for(j=p[i];j&lt;=m;j++)
+			if(f[j-p[i]]+v[i]&gt;f[j]) f[j]=f[j-p[i]]+v[i];
+	printf("%ld",f[m]);
+	return 0;
+}</pre></p>

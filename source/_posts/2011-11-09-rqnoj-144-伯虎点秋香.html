@@ -1,0 +1,40 @@
+---
+layout: post
+title: RQNOJ 144 伯虎点秋香
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//此题应当注意字符串的操作。
+//确保字符串函数不要用错！
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+void swap(char* a,char* b)
+{
+        char temp[1001];
+        strcpy(temp,a);
+        strcpy(a,b);
+        strcpy(b,temp);
+}
+int main()
+{
+        int n;
+        char name[1001][1001];
+        char nnn[1001];
+        scanf("%d",&amp;n);
+        int k;
+        scanf("%d",&amp;k);
+        int i,r;
+        for(i=1;i&lt;=n;i++)
+        {
+            scanf("%s",&amp;name[i][0]);
+        }
+        for(i=1;i&lt;=n;i++)
+                for(r=n;r&gt;=i+1;r--)
+                        if(strcmp(&amp;name[i][0],&amp;name[r][0])&gt;0) swap(&amp;name[i][0],&amp;name[r][0]);
+        printf("%s",&amp;name[k][0]);
+        return 0;
+}</pre></p>

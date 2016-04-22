@@ -1,0 +1,55 @@
+---
+layout: post
+title: RQNOJ 589 N皇后加强版
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//递归法。所幸规模小。
+#include &lt;stdio.h&gt;
+int n;
+int sum=0;
+int lie[14]={0};
+int zh[14]={0};
+int zzx[30]={0};
+int zfx[30]={0};
+void try(int i)
+{
+        if(i&gt;n)
+        {
+                if(sum&lt;3)
+                {
+                        int s;
+                        for(s=1;s&lt;n;s++) printf("%d ",lie[s]);
+                        printf("%d\n",lie[s]);
+                }
+                sum++;
+        }
+        else
+        {
+                int r;
+                for(r=1;r&lt;=n;r++)
+                        if(zh[r]==0&amp;&amp;zzx[i+r]==0&amp;&amp;zfx[i-r+n]==0)
+                        {
+                                lie[i]=r;
+                                zh[r]=1;
+                                zzx[i+r]=1;
+                                zfx[i-r+n]=1;
+                                try(i+1);
+                                zh[r]=0;
+                                zzx[i+r]=0;
+                                zfx[i-r+n]=0;
+                        }
+        }
+}</pre></p>
+
+<p>int main()<br />
+{
+        scanf("%d",&amp;n);<br />
+        try(1);<br />
+        printf("%d",sum);<br />
+        return 0;<br />
+}</p>

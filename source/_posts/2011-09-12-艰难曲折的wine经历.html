@@ -1,0 +1,67 @@
+---
+layout: post
+title: 艰难曲折的wine经历
+categories:
+- 计算机技术
+tags:
+- archlinux
+- linux
+- wine
+published: true
+comments: true
+---
+<p>话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。</p>
+
+<p>从winehq下载最近版本，解压。直接./configure，因为默认会编译成32位的版本。此时遇到错误：
+<blockquote>checking whether gcc -m32 works... no<br />
+configure: error: Cannot build a 32-bit program, you need to install 32-bit development libraries.</blockquote>
+<!--more-->这就十分郁闷了。我记得好像是有32位库的，为什么没有用？然后用yaourt一检查，发现确实没有装上带有development标签的包。这样问题就来了。我以前装一些软件的时候总是提示说要装这些，但我都被冲突提示吓跑了，一直没敢装。这次大胆一点，终于鼓足勇气装了下去：
+<blockquote>[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib<br />
+1 multilib/gcc-multilib 4.6.1-4 (multilib-devel)<br />
+The GNU Compiler Collection - C and C++ frontends for multilib<br />
+==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)<br />
+==&gt; -------------------------------------------------------<br />
+==&gt; 1</blockquote></p>
+
+<p>密码：<br />
+正在解决依赖关系...<br />
+正在查找内部冲突...<br />
+:: gcc-libs-multilib 与 gcc-libs 有冲突。删除 gcc-libs 吗？ [y/N] y<br />
+:: binutils-multilib 与 binutils 有冲突。删除 binutils 吗？ [y/N] y<br />
+:: gcc-multilib 与 gcc 有冲突。删除 gcc 吗？ [y/N] y<br />
+（后面省略）
+就这样，把那三样装上了。./configure也终于能通过了，只是输出如下信息：
+<blockquote>configure: libxinerama 32-bit development files not found, multi-monitor setups won't be supported.<br />
+configure: libxcomposite 32-bit development files not found, Xcomposite won't be supported.<br />
+configure: OpenCL 32-bit development files not found, OpenCL won't be supported.<br />
+configure: libhal/libdbus 32-bit development files not found, no dynamic device support.<br />
+configure: libgnutls 32-bit development files not found, no schannel support.<br />
+configure: lib(n)curses 32-bit development files not found, curses won't be supported.<br />
+configure: libsane 32-bit development files not found, scanners won't be supported.<br />
+configure: libv4l 32-bit development files not found.<br />
+configure: libgphoto2 32-bit development files not found, digital cameras won't be supported.<br />
+configure: liblcms 32-bit development files not found, Color Management won't be supported.<br />
+configure: gstreamer-0.10 base plugins 32-bit development files not found, gstreamer support disabled<br />
+configure: OSS sound system found but too old (OSSv4 needed), OSS won't be supported.<br />
+configure: libcapi20 32-bit development files not found, ISDN won't be supported.<br />
+configure: libcups 32-bit development files not found, CUPS won't be supported.<br />
+configure: libgsm 32-bit development files not found, gsm 06.10 codec won't be supported.<br />
+configure: libopenal 32-bit development files not found (or too old), OpenAL won't be supported.<br />
+configure: libldap (OpenLDAP) 32-bit development files not found, LDAP won't be supported.</blockquote></p>
+
+<p>configure: WARNING: prelink not found, base address of core dlls won't be set correctly.</p>
+
+<p>configure: WARNING: libxml2 32-bit development files not found (or too old), XML won't be supported.</p>
+
+<p>configure: WARNING: libxslt 32-bit development files not found, xslt won't be supported.</p>
+
+<p>configure: WARNING: GetText 32-bit development files not found (or too old). Internationalization won't be fully supported.</p>
+
+<p>configure: Finished.  Do 'make' to compile Wine.
+无奈之下把提示缺少的包都装上。好在大多数都可以找到并且是multilib的，一些没有的就忽略算了。（事实证明这可能是大隐患。）</p>
+
+<p>重新./configure，然后make，sudo make install。完成。</p>
+
+<p>但是后来发现一个巨大问题，虽然很多程序都能“正常”运行，但右键不能弹出菜单，提示说某个组件（OLE？）找不到，中文有时也显示不正常。我regedit检查了一下字体配置，一切正常。莫非是编译时的问题？我X环境的问题（最近pacman -Syu升级后X下字体隐约有问题）？这样一个GEEK觉得很吃力，于是一想，啊！果断放弃。</p>
+
+<p><em>GNU/Linux做不了的事情，就是不需要做的事情。</em>这句话可以安慰一下。（语出王珢《摒弃Windows，完全用GNU/Linux工作》？无奈啊）</p>

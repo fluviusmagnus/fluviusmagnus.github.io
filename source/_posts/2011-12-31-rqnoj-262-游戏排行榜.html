@@ -1,0 +1,33 @@
+---
+layout: post
+title: RQNOJ 262 游戏排行榜
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre class="brush:c">//稍微有点算是水题。吧。
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+int main()
+{
+        unsigned int list[51]={0};
+        list[0]=INT_MAX;
+        int p,s;
+        unsigned int n;
+        scanf("%d%d%d",&amp;p,&amp;s,&amp;n);
+        int i;
+        for(i=1;i&lt;=s;i++)
+                scanf("%d",&amp;list[i]);
+        for(i=1;i&lt;=p;i++)
+                if(n&gt;=list[i]&amp;&amp;n&gt;list[p]&amp;&amp;n&lt;list[i-1])
+                {
+                        printf("%d",i);
+                        return 0;
+                }
+        printf("-1");
+        return 0;
+}</pre>
+&nbsp;</p>

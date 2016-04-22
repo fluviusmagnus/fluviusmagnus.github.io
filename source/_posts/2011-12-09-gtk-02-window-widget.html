@@ -1,0 +1,38 @@
+---
+layout: post
+title: GTK+ 02 window widget
+categories:
+- 边学边讲
+tags:
+- gtk
+published: true
+comments: true
+---
+<p>对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解
+int main( int argc, char *argv[])
+{
+	GtkWidget *window;
+	gtk_init(&amp;argc, &amp;argv);
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);</pre></p>
+
+<p>	//本次的窗口构建内容<br />
+		<br />
+	//设置标题<br />
+	gtk_window_set_title(GTK_WINDOW(window),&quot;This is the TITLE&quot;);<br />
+	//设置大小<br />
+	gtk_window_set_default_size(GTK_WINDOW(window),400,300);<br />
+	//设置位置，又有一个常数<br />
+	gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);</p>
+
+<p>	gtk_widget_show(window);</p>
+
+<p>	//处理关闭的信号，此法方能正常退出<br />
+	g_signal_connect_swapped(G_OBJECT(window),&quot;destroy&quot;,G_CALLBACK(gtk_main_quit),NULL);</p>
+
+<p>	gtk_main();<br />
+	return 0;<br />
+}</p>

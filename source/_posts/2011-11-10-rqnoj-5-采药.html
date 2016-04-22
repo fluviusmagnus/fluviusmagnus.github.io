@@ -1,0 +1,62 @@
+---
+layout: post
+title: RQNOJ 5 采药
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//本次将讨论0/1背包的空间优化问题。
+//这是未优化的。显然数组开不大。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+    if(a&gt;b) return a;
+    else return b;
+}
+int main()
+{
+    int t,m;
+    int v[101],c[101],f[101][1001];
+    int i,r;
+    scanf("%d%d",&amp;t,&amp;m);
+    for(i=1;i&lt;=m;i++) scanf("%d%d",&amp;c[i],&amp;v[i]);
+    for(r=0;r&lt;=t;r++) if(r&lt;c[1]) f[1][r]=0; else f[1][r]=v[1];
+    for(i=2;i&lt;=m;i++)
+        for(r=0;r&lt;=t;r++) 
+            if(r&gt;=c[i])
+                f[i][r]=max(f[i-1][r],f[i-1][r-c[i]]+v[i]);
+            else
+                f[i][r]=f[i-1][r];
+    printf("%d",f[m][t]);
+    return 0;
+}
+/*------------------------华丽丽----------------------------*/
+//优化过的。
+//事实上f[i][r]一开始用的还是f[i-1][r]的值，因此实际上只需要一个数组。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+	if(a&gt;b) return a;
+	else return b;
+}
+int main()
+{
+	int t,m;
+	int v[101],c[101],f[1001];
+	int i,r;
+	scanf("%d%d",&amp;t,&amp;m);
+	for(i=1;i&lt;=m;i++) scanf("%d%d",&amp;c[i],&amp;v[i]);
+	for(r=0;r&lt;=t;r++) if(r&lt;c[1]) f[r]=0; else f[r]=v[1];
+	for(i=2;i&lt;=m;i++)
+//关键！为保证本次所需要的未用数据不改变，令r递减。
+		for(r=t;r&gt;=0;r--) 
+			if(r&gt;=c[i])
+				f[r]=max(f[r],f[r-c[i]]+v[i]);
+			else
+				f[r]=f[r];
+	printf("%d",f[t]);
+	return 0;
+}</pre></p>

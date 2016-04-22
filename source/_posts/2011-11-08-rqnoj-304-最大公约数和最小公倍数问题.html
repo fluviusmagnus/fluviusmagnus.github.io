@@ -1,0 +1,31 @@
+---
+layout: post
+title: RQNOJ 304 最大公约数和最小公倍数问题
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//这道题的数学技巧比较强。
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+long int gcd(long int a,long int b)
+{
+        if(a%b!=0) return gcd(b,a%b);
+        else return b;
+}
+int main()
+{
+        long int x,y;
+        scanf("%ld%ld",&amp;x,&amp;y);
+        long int i,num;
+        num=0;
+        for(i=x;i&lt;=y;i++)
+        {
+                if(x*y%i==0&amp;&amp;x==gcd(i,x*y/i)) num++;
+        }
+        printf("%ld",num);
+        return 0;
+}</pre></p>

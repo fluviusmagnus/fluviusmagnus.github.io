@@ -1,0 +1,51 @@
+---
+layout: post
+title: 毫无意义的神秘转换
+categories:
+- 计算机技术
+tags:
+- python
+- 编程
+published: true
+comments: true
+---
+<p>文如其名。因为很简单，所以直接上代码。e2f.py和f2e.py成对使用。</p>
+
+<p>因为要求Python 3，所以就不制作Elephantus版本了。</p>
+
+<p>e2f.py:
+<pre class="brush:python">#!/usr/bin/env python3
+# coding: utf8
+CONS = 'BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz'
+e = input()
+for i in range(len(e)):
+    ch = e[i]
+    if ch in 'EIOUeiou':
+        print(ch, end = '')
+    elif ch == 'a':
+        print('æ', end = '')
+    elif ch == 'A':
+        print('Æ', end = '')
+    elif i != len(e) - 1 and e[i + 1] not in 'AEIOUaeiou' and e[i] in CONS:
+        print(ch + 'a', end = '')
+    elif i == len(e) - 1 and e[i] in CONS:
+        print(ch + 'a', end = '')
+    else:
+        print(ch, end = '')
+print()</pre>
+f2e.py:
+<pre class="brush:python">#!/usr/bin/env python3
+# coding: utf8
+e = input()
+for i in range(len(e)):
+    ch = e[i]
+    if ch == 'æ':
+        print('a', end = '')
+    elif ch == 'Æ':
+        print('A', end = '')
+    elif ch == 'a':
+        pass
+    else:
+        print(ch, end = '')
+print()</pre>
+&nbsp;</p>

@@ -1,0 +1,43 @@
+---
+layout: post
+title: RQNOJ 20 不高兴的津津
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//模拟全过程就行了。
+#include &lt;stdio.h&gt;
+int main()
+{
+        int hp[8]={0,0,0,0,0,0,0,0};
+        int i;
+        for(i=1;i&lt;=7;i++)
+        {
+                int a,b;
+                scanf("%d%d",&amp;a,&amp;b);
+                hp[i]=a+b;
+        }
+        for(i=1;i&lt;=6;i++)
+        {
+                if(hp[i]&gt;8) hp[i]-=8;
+                else hp[i]=0;
+     //           hp[i+1]+=hp[i];
+        }
+        if(hp[7]&gt;8) hp[7]-=9;
+        else hp[7]=0;
+        int t=0,h=0;
+        for(i=1;i&lt;=7;i++)
+        {
+               if(hp[i]&gt;h)
+               {
+                        t=i;
+                        h=hp[i];
+               }
+        }
+        printf("%d",t);
+//        while(1);
+        return 0;
+}</pre></p>

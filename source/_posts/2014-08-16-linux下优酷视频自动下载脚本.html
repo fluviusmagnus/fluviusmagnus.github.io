@@ -1,0 +1,106 @@
+---
+layout: post
+title: Linux下优酷视频自动下载脚本
+categories:
+- 计算机技术
+tags:
+- linux
+- python
+- 互联网
+- 优酷
+- 编程
+- 自由软件
+- 视频
+published: true
+comments: true
+---
+<p><span style="color: #ff0000;">20150408再更新：发现github上有个叫作you-get的项目，可以比我这个脚本更出色地完成这种任务。于是以下内容就仅供参考好了。</span></p>
+
+<p><del>提示：由于flvcd.com不再正常提供有解析结果的网页，本脚本只剩下参考价值。此非我力所能及，敬请谅解。<span style="color: #ff0000;">
+</span></del><span style="color: #ff0000;">20150217更新：flvcd.com服务恢复，源脚本稍作修改可用。具体见代码。下载处链接已更新。</span></p>
+
+<p>今天在网上看到一篇题为《<a style="color: #000000;" title="python3自动下载优酷视频小程序" href="http://blog.csdn.net/littlethunder/article/details/18230859" target="_blank">python3自动下载优酷视频小程序</a>》的文章，赶紧试用了一下，发现已经失效了。可能是优酷已经改变了其策略，导致经常性403错误。而且，原作者竟然通过直接拼接的方式合并视频，相当于：
+<blockquote>
+<pre class="brush:bash">cat 1.flv 2.flv &gt; 3.flv</pre>
+</blockquote>
+众所周知，如此合并是行不通的，至少是有隐患的。于是，我尝试使用了新方法来实现这个程序的功能。<!--more-->
+<h2>原理</h2>
+本脚本youkudownloader.py由Python3写成，使用了相对脆弱的正则表达式来通过flvcd.com来获取较为稳定的视频地址，同时使用了mencoder作为合并视频的工具，并且为图方便省事，排除了对其他操作系统的支持。
+<h2>使用方法</h2>
+在终端中输入：
+<pre class="brush:bash">chmod +x youkudownloader.py    #此步骤在第一次使用前做一次即可。
+python3 youkudownloader.py video_url</pre>
+把video_url替换成优酷视频id页，有如http://v.youku.com/v_show/id_XMzA2NTM4NDQ0.html。或者你也可以先留空，留待脚本运行时输入。 需要注意的是，mencode必须已经安装好，否则就白忙活了。
+<h2>代码</h2>
+<pre class="brush:python">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+'''youkudownloader.py</pre></p>
+
+<p>Author: Tianhu Zhang &lt;zszth@126.com&gt;<br />
+License: GPLv3</p>
+
+<p>A python3 script for downloading videos from youku.com.<br />
+Using flvcd.com to get source urls.<br />
+Using mencoder to merge files.</p>
+
+<p>IMPORTANT!!<br />
+1. This script works ONLY under LINUX (or other unix-like systems).<br />
+2. Please make sure that you have mencoder installed.<br />
+In Ubuntu (or other similar linux distributions), enter this in your<br />
+shell to install mencoder:<br />
+    sudo apt-get install mencoder<br />
+Installations on other systems may vary.</p>
+
+<p>Usage:<br />
+    In shell enter:<br />
+        chmod +x youkudownloader.py #Do this for the first time.<br />
+        python3 youkudownloader.py video_url<br />
+    And video_url should be replaced by the url of Youku video id page,<br />
+    such as http://v.youku.com/v_show/id_XMzA2NTM4NDQ0.html<br />
+    Or you can leave it empty and type the url in when asked.<br />
+'''<br />
+__author__ = 'Tianhu Zhang'<br />
+import urllib.request<br />
+import re<br />
+import os<br />
+FLVCD_URL = 'http://www.flvcd.com/parse.php?kw='<br />
+# video_id_page = 'http://v.youku.com/v_show/id_XMzA2NTM4NDQ0.html'</p>
+
+<p>def get_info(video_id_page):<br />
+    parse_page = urllib.request.urlopen(FLVCD_URL+video_id_page).read().decode('gb2312')<br />
+    # print(parse_page)<br />
+    # urls_unparsed = re.findall(r'&lt;a href=".*?" target="_blank" onclick="_alert\(\);return false;"&gt;', parse_page)<br />
+    urls_unparsed = re.findall(r'&lt;a href=".*?" target="_blank" onclick=\'_alert\(\);return false;\'&gt;', parse_page)<br />
+    urls = []<br />
+    for url in urls_unparsed:<br />
+        urls.append(url[9:-51])<br />
+    # print(urls)<br />
+    # print(len(urls))<br />
+    title = re.findall(r'&lt;strong&gt;当前解析视频：&lt;/strong&gt;.*?&lt;strong&gt;', parse_page)[0][24:-8].strip(' ')<br />
+    title = re.sub(r'[ /#$&amp;()-\\\t*?+.,\'"_`~|&lt;&gt;{}^]', "", title)<br />
+    # print(title)<br />
+    return [urls, title]</p>
+
+<p>def download(info):<br />
+    para = ''<br />
+    for i in range(len(info[0])):<br />
+        with open(info[1]+'_{0}.flv'.format(i), mode='wb') as f:<br />
+            print('Downloading part {0} of {1}...'.format(i+1, len(info[0])))<br />
+            data = urllib.request.urlopen(info[0][i]+'&amp;referer=www.youku.com').read()<br />
+            f.write(data)<br />
+        para = para + ' ' + info[1]+'_{0}.flv'.format(i)<br />
+    cmd = 'mencoder -ovc copy -oac mp3lame' + para + ' -o ' +info[1] +'.flv'<br />
+    print('Merging...')<br />
+    if os.system(cmd) == 0:<br />
+        print('Done. File saved to ' + info[1] +'.flv successfully.')<br />
+        os.system('rm ' + info[1] + '_*.flv')</p>
+
+<p>if __name__ == '__main__':<br />
+    if len(os.sys.argv)&lt;2:<br />
+        video_id_page = input('Input video id page full url: &gt;')<br />
+    else:<br />
+        video_id_page = os.sys.argv[1]<br />
+    video = get_info(video_id_page)<br />
+    download(video)
+<h2>附注</h2>
+9月26日发现Bug一个，当优酷未将一个较短视频分割为多部分时，即只有一段时，下载失败。目前水平不够，不敢对此轻举妄动。 另外，事实上也可以用此脚本下载别的视频网站的视频，只要提供的url符合flvcd.com的要求即可。 祝大家使用愉快。</p>

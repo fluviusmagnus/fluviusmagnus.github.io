@@ -1,0 +1,46 @@
+---
+layout: post
+title: RQNOJ 96 苹果摘陶陶
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//果然是一道恶俗的题目。这里强调一下我用的qsort函数。
+//貌似竞赛是可以用许多标准库的。（用C++福气更好，STL，汗）
+//对了，这道题很坑人，陶陶高度不能为0哦。
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int cmp(const void *a,const void *b)
+{
+        return *(int *)b-*(int *)a;
+}
+int main()
+{
+        int n,m;
+        int gh[2001]={0};
+        int th[2001]={0};
+        scanf("%d%d",&amp;n,&amp;m);
+        int i;
+        int y=m;
+        for(i=1;i&lt;=n;i++) scanf("%d",&amp;gh[i]);
+        for(i=1;i&lt;=m;i++) scanf("%d",&amp;th[i]);
+        qsort(&amp;th[1],m,sizeof(th[1]),cmp);
+        for(i=1;i&lt;=n;i++)
+        {
+                int r;
+                for(r=1;r&lt;=m;r++)
+                {
+                        if(gh[i]&gt;th[r]&amp;&amp;th[r]&gt;0)
+                        {
+                                y--;
+                                th[r]=-1;
+                                break;
+                        }
+                }
+        }
+        printf("%d",y);
+        return 0;
+}</pre></p>

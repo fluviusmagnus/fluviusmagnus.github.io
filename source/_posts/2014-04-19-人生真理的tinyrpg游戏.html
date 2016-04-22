@@ -1,0 +1,151 @@
+---
+layout: post
+title: 人生真理的TinyRPG游戏
+categories:
+- 计算机技术
+tags:
+- python
+- 游戏
+- 编程
+published: true
+comments: true
+---
+<p>自制了一个无比真理的神经病游戏。游戏中会经常莫名其妙地死掉，防不胜防。</p>
+
+<p>建议玩之前不要阅读源码。</p>
+
+<p>源码如下：<!--more-->
+<pre class="brush:python">#!/usr/bin/env python
+#coding: UTF-8
+from __future__ import print_function
+from random import random</pre></p>
+
+<p>COL = 20<br />
+ROW = 10<br />
+world = [\<br />
+    ['.','H','.','.','.','H','.','.','.','.','.','.','.','.','.','.','.','.','.','.'],\<br />
+    ['.','.','.','.','.','.','.','.','H','.','.','.','.','.','.','.','H','.','.','.'],\<br />
+    ['.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.'],\<br />
+    ['.','.','.','H','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.'],\<br />
+    ['.','.','.','.','.','.','.','.','.','.','H','.','.','.','.','.','.','.','H','.'],\<br />
+    ['.','H','.','.','.','.','H','.','.','.','.','.','.','.','.','.','.','.','.','.'],\<br />
+    ['.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.'],\<br />
+    ['.','.','.','H','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.'],\<br />
+    ['.','.','.','.','.','.','.','.','.','.','.','.','.','H','.','.','.','.','.','.'],\<br />
+    ['.','.','.','.','.','.','.','.','H','.','.','.','.','.','.','.','.','.','.','F']\<br />
+    ]<br />
+world_showed = [[False for col in range(COL)] for row in range(ROW)] <br />
+p_row = 3<br />
+p_col = 3<br />
+p_type = 'H'<br />
+hp = 2</p>
+
+<p>def print_world():<br />
+    for w_row in range(ROW):<br />
+        for w_col in range(COL):<br />
+            if p_row == w_row and p_col == w_col:<br />
+                print('@', end='')<br />
+            elif world_showed[w_row][w_col]:<br />
+                print(world[w_row][w_col], end='')<br />
+            else:<br />
+                print('?', end='')<br />
+        print()</p>
+
+<p>def print_world_debug():<br />
+    for w_row in range(ROW):<br />
+        for w_col in range(COL):<br />
+#            if p_row == w_row and p_col == w_col:<br />
+#                print('@', end='')<br />
+#            elif world_showed[w_row][w_col]:<br />
+                print(world[w_row][w_col], end='')<br />
+#            else:<br />
+#                print('?', end='')<br />
+        print()</p>
+
+<p>def move(direction):<br />
+    global p_col, p_row, hp<br />
+    if direction == 'h':<br />
+        p_col = p_col - 1<br />
+    elif direction == 'l':<br />
+        p_col = p_col + 1<br />
+    elif direction == 'j':<br />
+        p_row = p_row + 1<br />
+    else:<br />
+        p_row = p_row - 1<br />
+    p_col = p_col % COL<br />
+    p_row = p_row % ROW<br />
+    hp = hp - 0.1<br />
+    refresh()<br />
+    do_pos()</p>
+
+<p>def do_pos():<br />
+    global hp<br />
+    if p_type == 'H':<br />
+        print('Oasis! HP +2. ')<br />
+        hp = hp + 2<br />
+        if hp &gt;= 5:<br />
+            hp = 5<br />
+            print('HP max reached. ')<br />
+        print('HP: ' + str(hp))<br />
+        world[p_row][p_col] = 'O'<br />
+    elif p_type == 'O':<br />
+        print('Nothing left here. \nBut free from monster attack. ')<br />
+    elif random() &lt; 0.02:<br />
+        print('Bomb. HP -3. ')<br />
+        hp = hp - 3<br />
+        print('HP: ' + str(hp))<br />
+    elif random() &lt; 0.35:<br />
+        print('Monster appears. HP -1. ')<br />
+        hp = hp - 1<br />
+        print('HP: ' + str(hp))</p>
+
+<p>def make_sight():<br />
+    for w_row in range(ROW):<br />
+        for w_col in range(COL):<br />
+            if abs(w_row - p_row) + abs(w_col - p_col) &lt;=2:<br />
+                world_showed[w_row][w_col] = True<br />
+def refresh():<br />
+    global p_type<br />
+    p_type = world[p_row][p_col]<br />
+    make_sight()<br />
+    print_world()<br />
+    print('POS: ' + p_type + '\t' + 'HP: ' + str(hp))</p>
+
+<p>def check_input(input_string):<br />
+    valid_input = ['h', 'j', 'k', 'l', 'q', 'c']<br />
+    if input_string == '':<br />
+        return False<br />
+    elif input_string[0] in valid_input:<br />
+        return True<br />
+    else:<br />
+        return False</p>
+
+<p># Main loop starts here<br />
+print('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')<br />
+print('TinyRPG\n\n\<br />
+by Tianhu Zhang &lt;zszth@126.com&gt;\n\<br />
+Commands: h, j, k, l to move;\n\<br />
+          q to quit.\n\<br />
+Goal:     to find the flag F\n')<br />
+refresh()<br />
+cmd = 'EMPTY'<br />
+while cmd[0] != 'q' and p_type != 'F' and hp &gt; 0:<br />
+    cmd = raw_input('Enter command: ')<br />
+    print()<br />
+    if check_input(cmd):<br />
+        if cmd[0] in ['h', 'j', 'k', 'l']:<br />
+            move(cmd[0])<br />
+        if cmd == 'cheat':<br />
+            print_world_debug()<br />
+    else:<br />
+        print("Invalid command!")<br />
+        cmd = 'EMPTY'</p>
+
+<p># Quit status check<br />
+if cmd[0] == 'q':<br />
+    print('Give up. Exit. ')<br />
+elif p_type == 'F':<br />
+    print('End. You WIN. ')<br />
+elif hp &lt;= 0: <br />
+    print('You DIE. Game over. ')
+&nbsp;</p>

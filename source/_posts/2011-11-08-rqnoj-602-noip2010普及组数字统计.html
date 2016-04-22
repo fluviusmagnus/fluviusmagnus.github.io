@@ -1,0 +1,32 @@
+---
+layout: post
+title: RQNOJ 602 [NOIP2010普及组]数字统计
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
+{
+        if(k&lt;10) sta[k]++;
+        else
+        {
+                sta[k%10]++;
+                tj(k/10);
+        }
+}
+int main()
+{
+        int l,r;
+        scanf("%d%d",&amp;l,&amp;r);
+        int i;
+        for(i=l;i&lt;=r;i++) tj(i);
+        printf("%d",sta[2]);
+        return 0;
+}</pre></p>

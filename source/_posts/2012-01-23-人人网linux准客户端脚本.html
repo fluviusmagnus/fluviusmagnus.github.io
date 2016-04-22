@@ -1,0 +1,75 @@
+---
+layout: post
+title: 人人网Linux准客户端脚本
+categories:
+- 计算机技术
+tags:
+- linux
+- 互联网
+- 人人
+- 编程
+- 自由软件
+published: true
+comments: true
+---
+<p>新春大礼，鄙人制作的人人网Linux准客户端脚本发布！</p>
+
+<p>一些情况详见上一个版本<a title="人人消息提醒" href="http://koccn.net/wordpress/%e4%ba%ba%e4%ba%ba%e6%b6%88%e6%81%af%e6%8f%90%e9%86%92/">《人人消息提醒》</a>。</p>
+
+<p>不同的是，这回可是全终端操作哦。需要wget和w3m。首次使用只需用w3m -cookie访问3g.renren.com取得cookie，以后全部使用w3m保存的cookie。</p>
+
+<p>增加了快速访问。一旦有新消息，按下y便会启动w3m。</p>
+
+<p>废话少说，上码！<!--more-->
+<pre class="brush:bash">#!/bin/bash</pre></p>
+
+<p># Renren Messages Notifier<br />
+# 人人消息提醒<br />
+# Koc Zhang: zszth@126.com<br />
+# GPLv3 Licensed</p>
+
+<p># 需要w3m和wget<br />
+# 仅识别手机人人<br />
+# 请在使用前自行修改首页url</p>
+
+<p># url为自己登录后的首页<br />
+url=""</p>
+
+<p>echo "输入q退出："<br />
+note="新消息"<br />
+mes=0<br />
+stat=0<br />
+ckp="~/.w3m/cookie"<br />
+while [ "1" = "1" ];<br />
+do<br />
+	wget -q --cookies=on --load-cookies=$ckp --keep-session-cookies --save-cookies=$ckp "$url" -O home.htm<br />
+	mes=`cat home.htm¦grep -c "$note"`<br />
+	if [ 1 = $mes ]; then<br />
+		date<br />
+		go=`cat home.htm¦grep -Eo '"http://3g.renren.com/news/home.do.{45}新消息&lt;'`<br />
+		des=${go%\"&gt;新消息&lt;}<br />
+		des=${des#\"}<br />
+		echo $des<br />
+		echo -n "新消息，输入y查看："<br />
+		echo -e -n "\a"<br />
+		sleep 1<br />
+		echo -e -n "\a"<br />
+		sleep 1<br />
+		echo -e -n "\a"<br />
+	fi<br />
+	if read -n 1 -t 60 stat<br />
+	then<br />
+		if [ $stat = "y" ];<br />
+		then<br />
+			w3m -cookie $url<br />
+			echo<br />
+		fi<br />
+		if [ $stat = "q" ];<br />
+		then<br />
+			echo<br />
+			exit 0<br />
+		fi<br />
+	fi<br />
+	mes="0"<br />
+done
+&nbsp;</p>

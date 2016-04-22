@@ -1,0 +1,35 @@
+---
+layout: post
+title: 交换两个变量的值
+categories:
+- 计算机技术
+tags:
+- 编程
+published: true
+comments: true
+---
+<p>要求：交换两个整数a和b的值。方法新奇好。
+<ol>
+	<li>普通方法<br />
+很好理解的，开一个临时变量。
+<pre class="brush:c">t=a;
+a=b;
+b=t;</pre>
+缺点，临时变量也要空间。<!--more--></li>
+	<li>加了又减<br />
+人工脑演就知道是对的。
+<pre class="brush:c">a=a+b;
+b=a-b;
+a=a-b;</pre>
+缺点：溢出怎么办？</li>
+	<li>位运算<br />
+不信你就试试看。
+<pre class="brush:c">a^=b;
+b^=a;
+a^=b;</pre>
+缺点：也是位运算的普遍缺点。万一是负数怎么办？</li>
+	<li>指针法<br />
+指针换一换，有时效率也挺高的。<br />
+缺点：指针什么的最讨厌了。大家都懂的。</li>
+</ol>
+显然，以上方法各有利弊，大家根据自己需要选择。</p>

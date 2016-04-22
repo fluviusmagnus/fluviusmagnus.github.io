@@ -1,0 +1,189 @@
+---
+layout: post
+title: 搜索引擎shell：goosh.org
+categories:
+- 计算机技术
+tags:
+- Geek
+- 互联网
+- 自由软件
+published: true
+comments: true
+---
+<p>发现一个酷站：<a title="goosh.org" href="http://goosh.org" target="_blank">goosh.org</a>。它是一个搜索引擎，准确地说，应该是一个搜索引擎的shell。它以google的服务为基础，我们可以像使用命令行一样使用它。</p>
+
+<p>进入之后，会有这样一个提示符：
+<blockquote>guest@goosh.org:/web&gt;</blockquote>
+这时你只要输入关键词，然后回车即可。此时前4个搜索结果就会显示出来。直接输入序号并回车，即能在新窗口中打开你想要的url。如果对搜索结果不满意，直接回车便会再给出4个结果。<!--more--></p>
+
+<p>查看更多功能请使用help命令。我们可以看到这样一张列表：
+<blockquote>
+<table border="0">
+<tbody>
+<tr>
+<td><strong>command</strong></td>
+<td><strong>aliases</strong></td>
+<td><strong>parameters</strong></td>
+<td><strong>function</strong></td>
+</tr>
+<tr>
+<td>web</td>
+<td>(search,s,w)</td>
+<td>[keywords]</td>
+<td>google web search</td>
+</tr>
+<tr>
+<td>news</td>
+<td>(n)</td>
+<td>[keywords]</td>
+<td>google news search</td>
+</tr>
+<tr>
+<td>more</td>
+<td>(m)</td>
+<td>get more results</td>
+</tr>
+<tr>
+<td>blogs</td>
+<td>(blog,b)</td>
+<td>[keywords]</td>
+<td>google blog search</td>
+</tr>
+<tr>
+<td>read</td>
+<td>(rss,r)</td>
+<td>&lt;url&gt;</td>
+<td>read feed of url</td>
+</tr>
+<tr>
+<td>feeds</td>
+<td>(feed,f)</td>
+<td>[keywords]</td>
+<td>google feed search</td>
+</tr>
+<tr>
+<td>place</td>
+<td>(places,map,p)</td>
+<td>[address]</td>
+<td>google maps search</td>
+</tr>
+<tr>
+<td>translate</td>
+<td>(trans,t)</td>
+<td>[lang1] [lang2] &lt;words&gt;</td>
+<td>google translation</td>
+</tr>
+<tr>
+<td>images</td>
+<td>(image,i)</td>
+<td>[keywords]</td>
+<td>google image search</td>
+</tr>
+<tr>
+<td>video</td>
+<td>(videos,v)</td>
+<td>[keywords]</td>
+<td>google video search</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>(c)</td>
+<td>clear the screen</td>
+</tr>
+<tr>
+<td>wiki</td>
+<td>(wikipedia)</td>
+<td>[keywords]</td>
+<td>wikipedia search</td>
+</tr>
+<tr>
+<td>help</td>
+<td>(man,h,?)</td>
+<td>[command]</td>
+<td>displays help text</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>&lt;command&gt;</td>
+<td>change mode</td>
+</tr>
+<tr>
+<td>site</td>
+<td>(in)</td>
+<td>&lt;url&gt; &lt;keywords&gt;</td>
+<td>search in a specific website</td>
+</tr>
+<tr>
+<td>open</td>
+<td>(o)</td>
+<td>&lt;url&gt;</td>
+<td>open url in new window</td>
+</tr>
+<tr>
+<td>go</td>
+<td>(g)</td>
+<td>&lt;url&gt;</td>
+<td>open url</td>
+</tr>
+<tr>
+<td>lucky</td>
+<td>(l)</td>
+<td>[keywords]</td>
+<td>go directly to first result</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>[command]</td>
+<td>lists commands</td>
+</tr>
+<tr>
+<td>addengine</td>
+<td>add goosh to firefox search box</td>
+</tr>
+<tr>
+<td>load</td>
+<td>&lt;extension_url&gt;</td>
+<td>load an extension</td>
+</tr>
+<tr>
+<td>calculate</td>
+<td>(calc)</td>
+<td>[mathematical expression]</td>
+<td>evaluate a mathematical expression</td>
+</tr>
+<tr>
+<td>settings</td>
+<td>(set)</td>
+<td>[name] [value]</td>
+<td>edit settings</td>
+</tr>
+<tr>
+<td>gmail</td>
+<td>(mail)</td>
+<td>[compose]</td>
+<td>read &amp; write mail in gmail *</td>
+</tr>
+<tr>
+<td>login</td>
+<td>login with your google account *</td>
+</tr>
+<tr>
+<td>logout</td>
+<td>log out of goosh *</td>
+</tr>
+</tbody>
+</table>
+- Enter green commands without parameters to change default mode.<br />
+- Anything that's not a command will search in current default mode.<br />
+- Aliases will expand to commands. Numbers will expand to corresponding search results.<br />
+- Use cursor up and down for command history.<br />
+- Enter keyword and hit the tab-key for tab-completion.<br />
+- Commands marked with * are experimental, use them with care and please report any bugs.</blockquote>
+已经很详细了，应该不用多解释了吧？</p>
+
+<p>这种shell的设计好处在于，它避免了鼠标与键盘切换过于频繁的麻烦（这同样是CLI的优势），而且我发现比起直接使用google搜索，其速度稍有提升。于是我就把它设为主页了。但正如其声明中所说，它毕竟是开发中的产品，可能还有许多不足之处，如果有兴趣，也请参与贡献。</p>
+
+<p>项目主页<a title="goosh home" href="http://code.google.com/p/goosh/" target="_blank">http://code.google.com/p/goosh/</a>
+Goosh is written by Stefan Grothkopp &lt;<a href="mailto:grothkopp@gmail.com?subject=goosh.org">grothkopp@gmail.com</a>&gt;<br />
+It is NOT an official google product!<br />
+Goosh is open source under the Artistic License/GPL.</p>

@@ -1,0 +1,97 @@
+---
+layout: post
+title: Unknown 钓鱼
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><h3>题目描述</h3>
+约翰是个垂钓谜，星期天他决定外出钓鱼h小时（1≤h≤16），约翰家附近共有n个池塘（2≤n≤25），这些池塘分布在一条直线上，约翰将这些池塘按离家的距离编上号，依次为L1,L2,…,Ln，他从湖1出发，向右走，有选择性地在一些湖停留一定的时间钓鱼，最后在某一个湖结束钓鱼。</p>
+
+<p>约翰家门外就是第一个池塘，所以他到第一个池塘是不用花时间的，约翰可以任选若干个池塘垂钓，并且在每个池塘他都可以呆上任意长的时间，但呆的时间必须为5分钟的倍数，（5分钟为一个单位时间），已知从池塘Li到池塘Li+1要化去约翰ti个单位时间，每个池塘的上鱼率预先也是已知的，池塘Li在第一个单位时间内能钓到的鱼为Fi（0≤Fi≤100），并且每过一个单位时间在单位时间内能钓到的鱼将减少一个常数di（0≤di≤100），现在请你编一个程序计算约翰最多能钓到多少鱼。<!--more-->
+<h3>输入</h3>
+输入文件第一行为一个整数n，第二行为一个整数h，第三行为n个用空格隔开的整数，表示Fi（i=1,2,…,n），第四行为n个用空格隔开的整数，表示di（i=1,2,…,n），第五行为n-1个用空格隔开的整数，表示ti（i=1,2,…,n-1）
+<h3>输出</h3>
+输出一个整数，表示约翰最多能钓到的鱼的数量。
+<h3>样例输入</h3>
+2<br />
+1
+10 1<br />
+2 5<br />
+2
+<h3>样例输出</h3>
+31
+<h3>Code</h3>
+<pre class="brush:c">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#define MS 26</pre></p>
+
+<p>int f[MS],fb[MS],d[MS];<br />
+int t[MS]={0};<br />
+int res[MS]={0};<br />
+int n,k;<br />
+int fx[MS]={0};</p>
+
+<p>void init()<br />
+{
+        scanf(&quot;%d%d&quot;,&amp;n,&amp;k);<br />
+        k=k*12;<br />
+        int i;<br />
+        for(i=1;i&lt;=n;i++)<br />
+                scanf(&quot;%d&quot;,&amp;f[i]);<br />
+        for(i=1;i&lt;=n;i++)<br />
+                scanf(&quot;%d&quot;,&amp;fb[i]);<br />
+        for(i=2;i&lt;=n;i++)<br />
+                scanf(&quot;%d&quot;,&amp;d[i]);<br />
+        for(i=2;i&lt;=n;i++)<br />
+                t[i]=t[i-1]+d[i];<br />
+}</p>
+
+<p>int findmax(int pool)<br />
+{
+        int i,max=0,maxi=0;<br />
+        for(i=1;i&lt;=pool;i++)<br />
+        {<br />
+                if(fx[i]&gt;max)<br />
+                {<br />
+                        max=fx[i];<br />
+                        maxi=i;<br />
+                }<br />
+        }<br />
+        return maxi;<br />
+}</p>
+
+<p>void stopat(int pool)<br />
+{
+//      memcpy(fx,f,MS*sizeof(f[0]));<br />
+        int i;<br />
+        for(i=1;i&lt;=n;i++) fx[i]=f[i];<br />
+        int kx=k;<br />
+        kx=kx-t[pool];<br />
+        while(kx&gt;0)<br />
+        {<br />
+                int pos=findmax(pool);<br />
+                if(pos!=0)<br />
+                {<br />
+                        res[pool]+=fx[pos];<br />
+                        fx[pos]-=fb[pos];<br />
+                }<br />
+                kx--;<br />
+        }<br />
+}
+int main()<br />
+{
+        init();<br />
+        int i;<br />
+        for(i=1;i&lt;=n;i++)<br />
+                stopat(i);<br />
+        int max=0;<br />
+        for(i=1;i&lt;=n;i++)<br />
+                max=res[i]&gt;max?res[i]:max;<br />
+//              printf(&quot;%d\n&quot;,res[i]);<br />
+        printf(&quot;%d&quot;,max);<br />
+        return 0;<br />
+}</p>

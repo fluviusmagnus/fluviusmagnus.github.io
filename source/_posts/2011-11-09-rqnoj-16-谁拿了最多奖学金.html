@@ -1,0 +1,52 @@
+---
+layout: post
+title: RQNOJ 16 谁拿了最多奖学金
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//读取数据时要极度小心。
+#include &lt;stdio.h&gt;
+int main()
+{
+        struct Student {
+                char name[21];
+                int score;
+                int class;
+                char gb;
+                char west;
+                int art;
+                int money;
+        } stu[101];
+        int n;
+        int i;
+        scanf("%d",&amp;n);
+        for(i=1;i&lt;=n;i++) scanf("%s %d %d %c %c %d",stu[i].name,&amp;stu[i].score,&amp;stu[i].class,&amp;stu[i].gb,&amp;stu[i].west,&amp;stu[i].art);
+        for(i=1;i&lt;=n;i++)
+        {
+                stu[i].money=0;
+                if(stu[i].score&gt;80&amp;&amp;stu[i].art&gt;0) stu[i].money+=8000;
+                if(stu[i].score&gt;85&amp;&amp;stu[i].class&gt;80) stu[i].money+=4000;
+                if(stu[i].score&gt;90) stu[i].money+=2000;
+                if(stu[i].west=='Y'&amp;&amp;stu[i].score&gt;85) stu[i].money+=1000;
+                if(stu[i].gb=='Y'&amp;&amp;stu[i].class&gt;80) stu[i].money+=850;
+        }
+        int max=0;
+        int pos=0;
+        int sum=0;
+        for(i=1;i&lt;=n;i++)
+                if(stu[i].money&gt;max)
+                {
+                        max=stu[i].money;
+                        pos=i;
+                        sum+=stu[i].money;
+                }
+                else sum+=stu[i].money;
+        printf("%s\n",stu[pos].name);
+        printf("%d\n",stu[pos].money);
+        printf("%d",sum);
+        return 0;
+}</pre></p>

@@ -1,0 +1,100 @@
+---
+layout: post
+title: 降低成本的头文件
+categories:
+- 计算机技术
+tags:
+- C
+- solvequad
+published: true
+comments: true
+---
+<p>对于那个高精度计算觉得太复杂了，于是在下一版本不会使用。</p>
+
+<p>于是直接开始写基本运算库了。虽然写的不太好，但也能用。</p>
+
+<p>#ifndef __CALC_H__<br />
+#define __CALC_H__<!--more--></p>
+
+<p>//For all of the functions here: check before call.</p>
+
+<p>//Get GCD. Avoid a==0||b==0.<br />
+int gcd(int a, int b)<br />
+{
+int max,i;<br />
+if(a&lt;0) a=-a;<br />
+if(b&lt;0) b=-b;<br />
+max=0;<br />
+for(i=1;i&lt;=a;i++)<br />
+{
+if((a%i==0)&amp;&amp;(b%i==0)) max=i;<br />
+}
+return(max);<br />
+}</p>
+
+<p>//Reduction of a fraction. Output c,d.<br />
+void rof(int *a, int *b, int *c, int *d)<br />
+{
+//Do nothing when *a==0.<br />
+if (*a==0) {}<br />
+else<br />
+{
+int x,y;<br />
+x=*a;<br />
+y=*b;<br />
+*c=x/gcd(x,y);<br />
+*d=y/gcd(x,y);<br />
+if(*c&lt;0&amp;&amp;*d&lt;0)<br />
+{
+*c=-*c;<br />
+*d=-*d;<br />
+}
+}<br />
+}</p>
+
+<p>//Sqrt in the form of a*root(b). Avoid b&lt;0. Output c,d.<br />
+void finesqrt(int *a, int *b, int *c, int *d)<br />
+{
+if(*b==0)<br />
+{
+*c=0;<br />
+*d=0;<br />
+}
+else<br />
+{
+int root,i,x,y;<br />
+//a must be 1 when use this void.<br />
+y=*b;<br />
+for(i=1;i&lt;=y;i++)<br />
+{
+if(y%(i*i)==0) root=i;<br />
+}
+x=y/root/root;<br />
+*c=root;<br />
+*d=x;<br />
+}
+}</p>
+
+<p>//Fraction add. Output e,f.<br />
+void fracadd(int *a, int *b, int *c, int *d, int *e, int *f)<br />
+{
+int x,y,m,n;<br />
+x=(*a)*(*d)+(*b)*(*c);<br />
+y=(*b)*(*d);<br />
+rof(&amp;x,&amp;y,&amp;m,&amp;n);<br />
+*e=m;<br />
+*f=n;<br />
+}</p>
+
+<p>//Fraction multiplication. Output e,f.<br />
+void fracmul(int *a, int *b, int *c, int *d, int *e, int *f)<br />
+{
+int x,y,m,n;<br />
+x=(*a)*(*c);<br />
+y=(*b)*(*d);<br />
+rof(&amp;x,&amp;y,&amp;m,&amp;n);<br />
+*e=m;<br />
+*f=n;<br />
+}</p>
+
+<p>#endif</p>

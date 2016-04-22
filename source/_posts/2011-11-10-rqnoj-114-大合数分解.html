@@ -1,0 +1,42 @@
+---
+layout: post
+title: RQNOJ 114 大合数分解
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//怕数字开的不够大。也怕超时。两难啊。只好猜范围了。
+#include &lt;stdio.h&gt;
+int main()
+{
+        char list[100001]={0};
+        unsigned long int i=2;
+        unsigned long int r;
+        unsigned long int n;
+        scanf("%d",&amp;n);
+        // 0 is prime;
+        while(i&lt;=100000)
+        {
+                if(list[i]==0)
+                {
+                        for(r=2*i;r&lt;=100000;r+=i)
+                                list[r]=1;
+                }
+                i++;
+        }
+        for(i=2;i&lt;=100000;i++)
+        {
+                if(list[i]==0)
+                {
+                        while(n%i==0)
+                        {
+                                printf("%d ",i);
+                                n/=i;
+                        }
+                }
+        }
+        return 0;
+}</pre></p>

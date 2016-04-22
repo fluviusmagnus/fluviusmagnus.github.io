@@ -1,0 +1,28 @@
+---
+layout: post
+title: Cygwin中上人人
+categories:
+- 计算机技术
+tags:
+- cygwin
+- Geek
+- 互联网
+- 人人
+- 自由软件
+published: true
+comments: true
+---
+<p>由于工作需要，最近要使用Windows机器。但是有割舍不了*nix风格操作方式，于是使用了大名鼎鼎的cygwin，另外还装了w3m。</p>
+
+<p>想想就知道，人人是几乎不可能会有cygwin的客户端的，要用就得自己做！因为我常常是看帖不回的（除了无聊时），所以设想通过开关w3m的方式来实现定时刷新。写出如下bash脚本：
+<blockquote>while [ "d" = "d" ]<br />
+do<br />
+w3m -cookie wap.renren.com&amp;<br />
+sleep 60<br />
+pkill w3m<br />
+done</blockquote>
+本人bash属于现学，所以写得不好请见谅（确实不太好= =）。通过这样的方式便能实现人人的自动刷新。</p>
+
+<p>其中sleep定为60秒，你可以自己改。当然如果你想在linux上用这个，理论上应该也可以。</p>
+
+<p>ps：cygwin需要安装非默认的procps软件包。</p>

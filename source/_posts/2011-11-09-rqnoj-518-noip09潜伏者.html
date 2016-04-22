@@ -1,0 +1,50 @@
+---
+layout: post
+title: RQNOJ 518 [NOIP09]潜伏者
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//此题坑人之处在于，明文密文必须“互相”对应，既不重复，也不遗漏。
+//从rq的测试数据来看，如果没有考虑这一点，就有一个点通不过。
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main()
+{
+    char f[100],s[100];
+    scanf("%s",f);
+    scanf("%s",s);
+    char dy[26];  //保存对应表 
+    int i;
+    for(i=0;i&lt;26;i++) dy[i]=0;
+    int sta=1;   //保存退出状态 
+    for(i=0;i&lt;strlen(f);i++)
+    {
+        if(dy[f[i]-'A']==0)
+        {
+            dy[f[i]-'A']=s[i];
+        }
+        else
+        {
+            if(dy[f[i]-'A']!=s[i]) {sta=3;break;}
+        }
+    }
+    int stat[26]={0};
+    for(i=0;i&lt;strlen(f);i++) stat[dy[i]-'A']++;
+    for(i=0;i&lt;26;i++) if(stat[i]==0) sta=3;
+    for(i=0;i&lt;26;i++) if(dy[i]==0) sta=2;
+    char c[100];
+    scanf("%s",c);
+    if(sta!=1)
+    {
+        printf("Failed");
+    }
+    else
+    {
+        for(i=0;i&lt;strlen(c);i++) printf("%c",dy[c[i]-'A']);
+    }
+    return 0;
+}</pre></p>

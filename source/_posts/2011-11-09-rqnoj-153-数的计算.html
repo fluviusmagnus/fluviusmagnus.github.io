@@ -1,0 +1,29 @@
+---
+layout: post
+title: RQNOJ 153 数的计算
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>#include &lt;stdio.h&gt;
+int ff(int now)
+{
+        if(now==0) return 1;
+        else
+        {
+                int i,sum=0;
+                for(i=now/2;i&gt;=0;i--)
+                        sum+=ff(i);
+                return sum;
+        }
+}
+int main()
+{
+        int n;
+        scanf("%d",&amp;n);
+        printf("%d",ff(n));
+        return 0;
+}</pre></p>

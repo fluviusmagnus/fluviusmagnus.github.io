@@ -1,0 +1,34 @@
+---
+layout: post
+title: GTK+ 01 first
+categories:
+- 边学边讲
+tags:
+- gtk
+published: true
+comments: true
+---
+<p>本人要学GTK+啦！（囧）所以把各种感悟都写在这里。</p>
+
+<p>以<a title="GTK+程序设计教程" href="http://zetcode.com/tutorials/gtktutorial/chinese/" target="_blank">《GTK+程序设计教程》</a>为材料来学习。在此感谢zetcode.com和翻译卢名扬。（这话以后就不说了。。。）</p>
+
+<p>本篇对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解
+int main( int argc, char *argv[])
+{
+	//建立一个窗口对象
+	GtkWidget *window;
+	//初始化gtk，必须有
+	gtk_init(&amp;argc, &amp;argv);
+	//初始化window对象
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	//显示window
+	gtk_widget_show(window);
+	//启动gtk，必须有，从此进入主循环
+	gtk_main();
+	//事实上本程序不会结束
+	return 0;
+}</pre></p>

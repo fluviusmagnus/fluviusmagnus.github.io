@@ -1,0 +1,67 @@
+---
+layout: post
+title: 神经病的ELEPHANTVS操作系统
+categories:
+- 计算机技术
+tags:
+- Geek
+- gnu
+- linux
+- python
+- 编程
+- 自由软件
+published: true
+comments: true
+---
+<p>注：下载与安装的说明见最后。</p>
+
+<p>我制作这个操作系统（伪）的目的只是为了感受一下在功能及其有限的环境下奇怪的用户体验，并且体会一下将系统功能一点一点增加的乐趣（通过系统更新实现）。由于从头开始比较麻烦，而且本人水平有限，因此我决定通过修改现有的GNU/Linux版本来实现，况且也只有GNU的东西能让我随便改了。<!--more--></p>
+
+<p>我使用的是<a title="Ttylinux Official Site" href="http://ttylinux.net/" target="_blank">ttylinux</a>，因为它比较小巧，去除了大部分我不需要的功能，仅保留了最基本的系统环境。首先，保险起见，我在vbox虚拟机上安装了ttylinux，这些都是按照<a title="Ttylinux Official Documents" href="http://ttylinux.net/docs.html" target="_blank">官方的文档</a>来的。之后，修改网络配置/etc/sysconfig/network-scripts/ifcfg-eth0使其自动连网。为了营造奇怪的用户体验，原来会显示出ttylinux特征的配置都必须去掉，修改的内容包括lilo必须静默、内核必须静默、登陆banner更换、主机名更换。前两项可以通过在lilo.conf中append后添加quiet console=/dev/null CONSOLE=/dev/null来完成，修改banner涉及motd和issue，主机名则是hosts和HOSTNAME。这些配置文件大多在/etc中。</p>
+
+<p>系统级别的修改差不多就是这样，用户体验已经非常神经病了。然后就是软件部分。我的设想是要让用户不要接触Linux的部分，而将一些操作限定在我提供的功能中，于是写一个开机登陆即通过.bash_profile自动运行的软件则是再合适不过了。处于某些原因，我选择Python。Ttylinux对于软件包的支持近乎鸡肋，因此Python需要编译安装，幸好编译没出什么依赖问题，可见ttylinux的五脏俱全。编译安装的Python路径不太对，需要手动修改环境变量，即程序的位置。自己模块的位置默认是当前目录，我则又加入了一个特殊的文件夹。这个文件夹很关键，以后所有新添加的我自己编写的东西都放在这里。</p>
+
+<p>这个系统其实是有亮点的，那就是软件更新系统update脚本。
+<pre class="brush:bash">#!/bin/bash
+if ifconfig|grep -q "UP BROADCAST MULTICAST"; then
+    echo "NO INTERNET CONNECTION"
+else
+    if [ -f "elever-server" ]; then
+        rm elever-server
+    fi
+    echo "CONNECTING TO SERVER"
+    wget http://elephantvs-system-software.googlecode.com/svn/trunk/elever-server
+    echo "YOUR CURRENT VERSION IS"
+    cat elever-local
+    echo "THE LATEST VERSION IS"
+    cat elever-server
+    declare -i old
+    declare -i new
+    read old&lt;elever-local
+    read new&lt;elever-server
+    if [ $new -gt $old ]; then
+        echo "START UPDATING"
+        if [ -f "elesoft.tar.bz2" ]; then
+            rm elesoft.tar.bz2
+        fi
+        echo "DOWNLOADING"
+        wget http://elephantvs-system-software.googlecode.com/svn/trunk/elesoft.tar.bz2
+        tar -xvf elesoft.tar.bz2
+        echo $new&gt;elever-local
+        echo "FINISHED"
+    else
+        echo "LATEST VERSION ALREADY"
+    fi
+fi</pre>
+这个脚本还是很好理解的。首先测试有没有网络连接（这段代码估计不太可靠），然后到Googlecode的svn上检查更新（当然也为此开了一个<a title="Elephantvs-system-software at Googlecode" href="http://elephantvs-system-software.googlecode.com" target="_blank">项目</a>），用取得的版本号与本地的版本号比较，如果有更新就下载压缩包解压覆盖。代码不好看，见谅。</p>
+
+<p>自此系统部分就制作好了，基本上是再也不必更改。以后若是有什么更新就可以通过更新来完成。检查更新在每次用户登录时进行。</p>
+
+<p>目前R2（无软件版本）制作已经完成，用户可以使用Clonezilla的Live CD进行全盘毁灭性克隆安装，使用时请务必小心。关于Clonezilla的使用方法，百度一下很容易获得。需要注意的是，镜像文件需要解压后才能使用，在进入Clonezilla之前，就将其放在可靠的介质上。</p>
+
+<p>下载地址：
+<ul>
+	<li>elesys-img.tar.bz2（镜像文件需解压）：<a title="elesys-img.tar.bz2" href="http://pan.baidu.com/s/1c0kpkkw" target="_blank">http://pan.baidu.com/s/1c0kpkkw</a></li>
+	<li>clonezilla-live-2.2.1-25-i486.iso（Clonezilla的CD，刻录后使用，我担心这个国内下载会比较慢于是也上传到百度网盘了）：<a title="clonezilla-live-2.2.1-25-i486.iso" href="http://pan.baidu.com/s/1c0rGLVE" target="_blank">http://pan.baidu.com/s/1c0rGLVE</a></li>
+	<li>elephantvs.ova（你可以只下载这个虚拟机导出文件通过<a title="Oracle VM VirtualBox" href="https://www.virtualbox.org/" target="_blank">vbox</a>尝试，这样对你的电脑不会有任何影响）：<a title="elephantvs.ova" href="http://pan.baidu.com/s/1pJk8IJT" target="_blank">http://pan.baidu.com/s/1pJk8IJT</a></li>
+</ul></p>

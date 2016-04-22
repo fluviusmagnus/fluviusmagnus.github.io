@@ -1,0 +1,52 @@
+---
+layout: post
+title: RQNOJ 255 排队接水
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p>&nbsp;
+<pre class="brush:c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int t[901];
+int n;
+int findmin()
+{
+	int min=9999,i,minpos=0;
+	for(i=1;i&lt;=n;i++)
+	{
+		if(t[i]&lt;min)
+		{
+			min=t[i];
+			minpos=i;
+		}
+	}
+	return minpos;
+}
+int main()
+{
+	int wait=0;
+	int i;
+	scanf("%d",&amp;n);
+	for(i=1;i&lt;=n;i++)
+	scanf("%d",&amp;t[i]);
+	double ave;
+	for(i=1;i&lt;n;i++)
+	{
+		int pos=findmin();
+		wait+=t[pos]*(n-i);
+		printf("%d ",pos);
+		t[pos]=10000;
+	}
+//此处坑人，注意格式。只有“整个”输出末尾的空格、换行会被忽略。
+		int pos=findmin();
+		wait+=t[pos]*(n-i);
+		printf("%d",pos);
+//强制类型转换
+	ave=(double)wait/(double)n;
+	printf("\n%0.2f",ave);
+	return 0;
+}</pre></p>

@@ -1,0 +1,34 @@
+---
+layout: post
+title: K&R C Bible Exercises 1-4
+categories:
+- 边学边讲
+tags:
+- C
+published: true
+comments: true
+---
+<p>Write a program to print the corresponding Celsius to Fahrenheit table.</p>
+
+<p>Example:
+<pre class="brush:c">#include &lt;stdio.h&gt;
+/* print Celsius-Fahrenheit table */
+int main()
+{
+	float fah,cel,upper;
+	int step;
+	step=5;
+	cel=-20;
+	upper=50;
+	printf("Celsius-Fahrenheit Table\n");
+	printf("%6s %6s\n","C","F");
+	printf("---------------\n");
+	while(cel&lt;=upper)
+	{
+		fah=cel*9.0/5.0+32;
+		printf("%6.0f %6.1f\n",cel,fah);
+		cel+=step;
+	}
+	return 0;
+}</pre>
+&nbsp;</p>

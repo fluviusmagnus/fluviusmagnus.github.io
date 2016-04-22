@@ -1,0 +1,35 @@
+---
+layout: post
+title: RQNOJ 479 [NOIP2001]一元三次方程求解
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//扫一遍好了。规模不大。如果很大就要换种方法了。
+#include &lt;stdio.h&gt;
+float a,b,c,d;
+float f(float x)
+{
+        return a*x*x*x+b*x*x+c*x+d;
+}
+int main()
+{
+        float x;
+        int sum=0;
+        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
+        x=-100;
+        while(sum!=3)
+        {
+                if(f(x)*f(x+0.01)&lt;=0)
+                {
+                        printf("%0.2f ",x+0.01);
+                        sum++;</pre></p>
+
+<p>                }<br />
+                x+=0.01;<br />
+        }<br />
+        return 0;<br />
+}</p>

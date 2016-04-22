@@ -1,0 +1,36 @@
+---
+layout: post
+title: 万网虚拟主机Wordpress配置技巧
+categories:
+- 计算机技术
+tags:
+- php
+- wordpress
+- 互联网
+- 编程
+published: true
+comments: true
+---
+<p>众所周知，Wordpress如果运行不正常很可能是由于php的配置有误。本来只需要修改一下配置，但对于虚拟主机来说，这个问题确实相当棘手的。现在就来分享一下我目前遇到的两个问题及其解决办法。Wordpress版本4.1，从其他网站迁移过来的，php版本5.3.23。<!--more--></p>
+
+<p>首先遇到的是登录问题，由于headers无法rewrite，wp就没法写cookies。这个问题的解决其实很简单，良心的万网在后台提供了打开输出缓冲区数据块的php设置项。只要启用，问题就解决。真是踏破铁鞋无觅处，得来全不费工夫。</p>
+
+<p>另一个是邮件无法发送的问题。和国内大多数虚拟主机一样，php的邮件函数是被禁用的，所以只能考虑smtp。但是smtp试了一下还是不成功，WP Mail Bank等插件的返回是“smtp error failed to connect to server (0)”。这个问题我研究了很久，网上都没有直接的资料，最后终于发现是wp-includes/class-smtp.php出现问题。</p>
+
+<p>通过<a title="fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案" href="http://leo108.com/pid-1497.asp" target="_blank">《fsockopen、pfsockopen函数被禁用导致WordPress无法SMTP发信解决方案 | leo108's blog》</a>可以得知，要在fsockopen上动手脚才能解决问题。但是仔细一看，4.1的wp里已经默认使用了作为“解决方案”的stream_socket_client函数。此时，回到万网后台一看，发现fsockopen恰恰可以选择打开。于是打开后，抱着试试看的心态逆着wp开发者的想法把函数改了回去。如下：
+<pre class="brush:php">        //$this-&gt;smtp_conn = @stream_socket_client(
+        $this-&gt;smtp_conn = @fsockopen(
+        //    $host . ":" . $port,
+            $host, //added
+            $port, //added
+            $errno,
+            $errstr,
+            $timeout
+        //    STREAM_CLIENT_CONNECT,
+        //    $socket_context
+        );</pre>
+注释掉的为原来的部分。经测试成功。</p>
+
+<p>如此奇怪的方法只能在这里记一下，免得到时候升级程序时又挂了。</p>
+
+<p>PS：其实问题没有得到真正解决。Backupwp插件无法正常发送备份邮件。懒人只能选择换一个能用的插件。</p>

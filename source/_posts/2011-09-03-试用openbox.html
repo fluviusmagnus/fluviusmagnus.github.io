@@ -1,0 +1,22 @@
+---
+layout: post
+title: 试用openbox
+categories:
+- 计算机技术
+tags:
+- linux
+- openbox
+- 窗口管理器
+- 自由软件
+published: true
+comments: true
+---
+<p>一直都比较喜欢简洁快速干净的东西。在使用了一段时间的gnome3之后，渐渐觉得它还是有点臃肿的感觉。听说openbox还不错，于是就试用了一下。</p>
+
+<p>openbox的配置还算简单，但是功能却不简单。我比较懒，不想手工修改配置，于是装了obconf（总体感觉的配置），obmenu（菜单编辑），obtheme（主题编辑）。这三个图形化配置工具非常容易使用，很适合新手。另外还装了tint2和conky，这样就像一个桌面的样子了。</p>
+
+<p>实际上，我在.xinitrc中写exec openbox还是exec openbox-session斟酌了很久，因为我需要在openbox启动时运行一段脚本。我看过网上的autostart.sh的方法，但是这就需要openbox-session。然而，这样就会将gnome的daemon（也许？）运行起来，这不是我想要的。所以目前采用的方法是直接启动openbox，然后将一个快捷键绑定到那个脚本即可。</p>
+
+<p>To be honest，本人也有使用过fvwm和awesome的经历。fvwm的配置太难理解，awesome的瓦片式也不习惯。经过比较，我觉得还是openbox方便，它更适合我。</p>
+
+<p>你找到了适合你的窗口管理器吗？</p>

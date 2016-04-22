@@ -1,0 +1,104 @@
+---
+layout: post
+title: 伪文言文编程
+categories:
+- 计算机技术
+tags:
+- C
+- Geek
+- 编程
+- 自由软件
+published: true
+comments: true
+---
+<p>实际上还是基于C++的，功能极为简单（仅10个变量，不过组合性强），一一替换而已。耍人不错。</p>
+
+<p>一个程序的例子：
+<blockquote>天 为 今有甲与乙兮 乙予以〇兮 请将甲予以一兮甲不胜于一〇〇兮甲益则为 乙并以甲兮哉 曰乙兮曰止兮 归曰善兮哉</blockquote>
+运行结果为：5050。</p>
+
+<p>上转换代码，求高人继续改进！<!--more-->
+<pre class="brush:bash">#!/bin/bash
+if [ -n "$1" ]
+then</pre></p>
+
+<p>cf="$1.cpp"<br />
+touch $cf<br />
+fl=`cat $1`<br />
+echo $fl<br />
+echo -e "#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nint main() "&gt;$cf<br />
+fl=${fl//不逊于/ &gt;= }<br />
+fl=${fl//不胜于/ &lt;= }<br />
+fl=${fl//予以/ = }<br />
+fl=${fl//同于/ == }<br />
+fl=${fl//异于/ != }<br />
+fl=${fl//胜于/ &gt; }<br />
+fl=${fl//逊于/ &lt; }<br />
+fl=${fl//今有/ int }<br />
+fl=${fl//或云/ string }<br />
+fl=${fl//均以/ \/= }<br />
+fl=${fl//倍以/ *= }<br />
+fl=${fl//并以/ += }<br />
+fl=${fl//去以/ -= }<br />
+fl=${fl//其实/ * }<br />
+fl=${fl//其地/ &amp; }<br />
+fl=${fl//取以/ \\ }<br />
+fl=${fl//请将/ for(}<br />
+fl=${fl//归曰/ return(}<br />
+fl=${fl//一/1}<br />
+fl=${fl//二/2}<br />
+fl=${fl//三/3}<br />
+fl=${fl//四/4}<br />
+fl=${fl//五/5}<br />
+fl=${fl//六/6}<br />
+fl=${fl//七/7}<br />
+fl=${fl//八/8}<br />
+fl=${fl//九/9}<br />
+fl=${fl//〇/0}<br />
+fl=${fl//甲/a}<br />
+fl=${fl//乙/b}<br />
+fl=${fl//丙/c}<br />
+fl=${fl//丁/d}<br />
+fl=${fl//戊/e}<br />
+fl=${fl//己/f}<br />
+fl=${fl//庚/g}<br />
+fl=${fl//辛/h}<br />
+fl=${fl//壬/i}<br />
+fl=${fl//癸/j}<br />
+fl=${fl//天/}<br />
+fl=${fl//与/ , }<br />
+fl=${fl//为/ \{ }<br />
+fl=${fl//哉/ \} }<br />
+fl=${fl//兮/; }<br />
+fl=${fl//且/ &amp;&amp; }<br />
+fl=${fl//或/ || }<br />
+fl=${fl//曰/ cout&lt;&lt;}<br />
+fl=${fl//听/ cin&gt;&gt;}<br />
+fl=${fl//止/endl}<br />
+fl=${fl//若/if(}<br />
+fl=${fl//可/) }<br />
+fl=${fl//道/ \"}<br />
+fl=${fl//也/\" }<br />
+fl=${fl//益/++ }<br />
+fl=${fl//损/-- }<br />
+fl=${fl//并/ + }<br />
+fl=${fl//去/ - }<br />
+fl=${fl//倍/ * }<br />
+fl=${fl//均/ \/ }<br />
+fl=${fl//剩/ % }<br />
+fl=${fl//乾/1}<br />
+fl=${fl//坤/0}<br />
+fl=${fl//当/while(}<br />
+fl=${fl//试/do }<br />
+fl=${fl//则/) }<br />
+fl=${fl//善/0)}<br />
+fl=${fl//之/.}<br />
+fl=${fl//又/.}<br />
+fl=${fl//第/[}<br />
+fl=${fl//个/]}</p>
+
+<p>echo $fl&gt;&gt;$cf<br />
+g++ -o "$1.run" $cf<br />
+fi<br />
+exit 0
+&nbsp;</p>

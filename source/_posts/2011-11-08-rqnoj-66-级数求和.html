@@ -1,0 +1,27 @@
+---
+layout: post
+title: RQNOJ 66 级数求和
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//特别注意要强制类型转换。
+//当然也可以不用。这是另一份参考：<a title="RQNOJP66　级数求和[2002NOIP普及组]" href="http://sfiction.blog.163.com/blog/static/199404010201110835749863/" target="_blank">http://sfiction.blog.163.com/blog/static/199404010201110835749863/</a>
+#include &lt;stdio.h&gt;
+int main()
+{
+        double sn=0;
+        int k;
+        int sum=0;
+        scanf("%d",&amp;k);
+        while(sn&lt;=k)
+        {
+                sum++;
+                sn+=1/(double)sum;
+        }
+        printf("%d",sum);
+        return 0;
+}</pre></p>

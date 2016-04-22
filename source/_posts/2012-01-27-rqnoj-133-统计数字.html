@@ -1,0 +1,32 @@
+---
+layout: post
+title: RQNOJ 133 统计数字
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre class="brush:cpp">//第一次拙劣地使用了STL。以此纪念。
+#include &lt;stdio.h&gt;
+#include &lt;set&gt;
+using namespace std;
+int main()
+{
+	set&lt;int&gt; num;
+	multiset&lt;int&gt; time;
+	int n,i,t;
+	scanf("%d",&amp;n);
+	for(i=1;i&lt;=n;i++)
+	{
+		scanf("%d",&amp;t);
+		num.insert(t);
+		time.insert(t);
+	}
+	set&lt;int&gt;::iterator it;
+	for(it=num.begin();it!=num.end();it++)
+		printf("%d %d\n",*it,time.count(*it));
+	return 0;
+}</pre>
+&nbsp;</p>

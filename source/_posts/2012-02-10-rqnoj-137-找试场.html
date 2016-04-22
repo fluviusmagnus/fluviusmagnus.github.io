@@ -1,0 +1,88 @@
+---
+layout: post
+title: RQNOJ 137 找试场
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre class="brush:c">#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;stdlib.h&gt;
+int x=0,y=0;
+//dir方向：1是右，2是左，3是上，4是下。
+int dir=3;
+//未移动标记。
+int flag=0;
+void setdir(char a)
+{
+	if(a=='l')
+	{
+		switch(dir)
+		{
+			case 1:
+				dir=3;
+				break;
+			case 2:
+				dir=4;
+				break;
+			case 3:
+				dir=2;
+				break;
+			case 4:
+				dir=1;
+				break;
+		}
+	}
+	if(a=='r')
+	{
+		switch(dir)
+		{
+			case 1:
+				dir=4;
+				break;
+			case 2:
+				dir=3;
+				break;
+			case 3:
+				dir=1;
+				break;
+			case 4:
+				dir=2;
+				break;
+		}
+	}
+	return;
+}
+void go(int dis)
+{
+	if(dir==1) x+=dis;
+	if(dir==2) x-=dis;
+	if(dir==3) y+=dis;
+	if(dir==4) y-=dis;
+	flag=1;
+	printf("(%d,%d)\n",x,y);
+	return;
+}
+int main()
+{
+	int n;
+	scanf("%d",&amp;n);
+	int i;
+	for(i=1;i&lt;=n;i++)
+	{
+		char ins[20];
+		scanf("%s",ins);
+		if(isdigit(ins[0]))
+			go(atoi(ins));
+		if(ins[0]=='r')
+			setdir('r');
+		if(ins[0]=='l')
+			setdir('l');
+	}
+	if(flag==0) printf("(0,0)\n");
+	return 0;
+}</pre>
+&nbsp;</p>

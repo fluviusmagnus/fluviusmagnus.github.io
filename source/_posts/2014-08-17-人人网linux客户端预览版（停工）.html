@@ -1,0 +1,351 @@
+---
+layout: post
+title: 人人网Linux客户端预览版（停工）
+categories:
+- 计算机技术
+tags:
+- firefox
+- linux
+- python
+- 互联网
+- 人人
+- 编程
+published: true
+comments: true
+---
+<p>想必大家一定还记得，我写过两个和人人网有关的脚本。一个是利用bash、w3m和wget制作的<a title="人人网Linux准客户端脚本" href="http://koccn.net/wordpress/%e4%ba%ba%e4%ba%ba%e7%bd%91linux%e5%87%86%e5%ae%a2%e6%88%b7%e7%ab%af%e8%84%9a%e6%9c%ac/" target="_blank">《人人网LINUX准客户端脚本》</a>，主要功能为终端下的消息提醒和快速访问。（终端响铃很NB吧？）另一个则是其前身<a title="人人消息提醒" href="http://koccn.net/wordpress/%e4%ba%ba%e4%ba%ba%e6%b6%88%e6%81%af%e6%8f%90%e9%86%92/" target="_blank">《人人消息提醒》</a>，功能也不算完备，而且还需自行处理cookie。</p>
+
+<p><!--more--></p>
+
+<p>现在看来，这种玩弄网页的方式实在是不稳定，万一人人改版，那就几乎要重写一个了。随着知识水平的提高，我也能够不断尝试新的方法。既然人人已经提供了api，那就干脆用一下好了。</p>
+
+<p>在这里不得不再吐槽人人一下。其python版本的sdk简直不忍直视，而且万年无人更新。新版本的api干脆就没有python的sdk了。果然我小众群体是不被关注的。没办法，只能自力更生，从头写起。本人精力有限，仅试图实现了有限的功能（发状态和回复，无提醒），供大家参考。代码质量什么的就不要吐槽了。
+<h2>程序说明</h2>
+本程序由python3写成，使用了selenium控制浏览器（主要是为了获取各种token，已经假设你使用firefox），easygui提供图形界面和pil显示图片。使用前除了标准库之外，需要将这些库安装到位。安装方法请自行搜索。</p>
+
+<p>程序分三部分。freerr.py主要管理登陆和基本流程控制，也是用户直接运行的main部分。它能在主目录下创建配置文件夹以保存access_token、用户id和图片缓存。renrenobj.py则发挥了一个劣质sdk的作用。freerr.php放在你的服务器端以获取各种token并被本地读取。不要问我为什么需要这个文件，去问人人oauth机制为什么一定要是这样的。总之这样可以把secret_key保护好。</p>
+
+<p>本人尝试了把客户端提交给人人，可是被退回了，理由是不能安装（是你不会用吧？为什么不看README？）。所以，本程序就不能作为第三方应用的制成品发布了。可以说这篇文章是面向开发者的（为什么现在才说！？）。各位试用时需要先获得人人开放平台的应用api_key和secret_key，修改好php文件后放在自己服务器上，然后改好本地文件的redirect_url和api_key之后方能使用。需要改的内容大多在字符串中，周围的注释有五个感叹号（=_=!），大家仔细寻找，不要漏掉。
+<h2>代码</h2>
+<h3>freerr.py</h3>
+<pre class="brush:python">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+'''freerr.py</pre></p>
+
+<p>This is an attempt to make a client for Renren on Linux using Python3.<br />
+Author: Tianhu Zhang &lt;zszth@126.com&gt; (A beginner to Python3)<br />
+renren.py is the main file which includes the very basic auth work.<br />
+And all the editable constants are listed in this file for convenience.<br />
+More useful classes are in renrenobj.py and should be imported before use.<br />
+'''<br />
+from selenium import webdriver<br />
+from selenium.webdriver.common.keys import Keys<br />
+import urllib.request<br />
+import json<br />
+import renrenobj<br />
+import os<br />
+# import getpass<br />
+import easygui as g<br />
+# import glob<br />
+import webbrowser</p>
+
+<p>REFRESH_TOKEN = ''<br />
+ACCESS_TOKEN = ''<br />
+USER_ID = 0</p>
+
+<p>if os.path.isfile(os.path.join(os.path.expanduser('~/.freerr'), '.freerr')):<br />
+    with open(os.path.join(os.path.expanduser('~/.freerr'), '.freerr'), mode='r', encoding='UTF-8') as conf_file:<br />
+        ACCESS_TOKEN = conf_file.readline()<br />
+        USER_ID = int(conf_file.readline())<br />
+else:<br />
+    # user_email = input('Input Email to login: &gt;')<br />
+    # user_password = getpass.unix_getpass('Input password: &gt;')<br />
+    user_email = g.enterbox('Input Email to login:', 'Login')<br />
+    user_password = g.passwordbox('Input password:', 'Login')<br />
+    browser = webdriver.Firefox()<br />
+    #！！！！！以下修改两处。client_id后面加上api_key，redirect_uri后加上php文件的url。<br />
+    browser.get(<br />
+        'https://graph.renren.com/oauth/authorize?client_id=&amp;redirect_uri=&amp;response_type=code')<br />
+    username = browser.find_element_by_name('username')<br />
+    username.send_keys(user_email)<br />
+    password = browser.find_element_by_name('password')<br />
+    password.send_keys(user_password)<br />
+    password.send_keys(Keys.ENTER)<br />
+    json_inputbox = browser.find_element_by_tag_name('textarea')<br />
+    a_t_data = json.loads(json_inputbox.text, encoding='UTF-8')<br />
+    browser.close()<br />
+    # REFRESH_TOKEN = a_t_data['refresh_token']<br />
+    ACCESS_TOKEN = a_t_data['access_token']<br />
+    USER_ID = a_t_data['user']['id']<br />
+    os.mkdir(os.path.expanduser('~/.freerr'))<br />
+    with open(os.path.join(os.path.expanduser('~/.freerr'), '.freerr'), mode='w', encoding='utf-8') as conf_file:<br />
+        conf_file.writelines(ACCESS_TOKEN + '\n')<br />
+        conf_file.writelines(str(USER_ID))<br />
+renrenobj.A_T = ACCESS_TOKEN<br />
+renrenobj.USER_ID = USER_ID</p>
+
+<p>f = renrenobj.Feed()</p>
+
+<p>flag_exit = False<br />
+i = 0<br />
+while not flag_exit:<br />
+    if f.feed_list[i]['attachment'] and f.feed_list[i]['attachment'][0]['orginalUrl']:<br />
+        if not os.path.isfile(<br />
+                os.path.join(os.path.expanduser('~/.freerr'), '.freerr_' + str(f.feed_list[i]['resource']['id']))):<br />
+            img_data = urllib.request.urlopen(f.feed_list[i]['attachment'][0]['orginalUrl']).read()<br />
+            with open(os.path.join(os.path.expanduser('~/.freerr'), '.freerr_' + str(f.feed_list[i]['resource']['id'])),<br />
+                      mode='wb') as img_file:<br />
+                img_file.write(img_data)<br />
+        choice = g.buttonbox('{0} {1} {2}\n    {3}\n    source: {4}\n            {5}'.format(i, f.feed_list[i]['time'],<br />
+                                                                                             f.feed_list[i][<br />
+                                                                                                 'sourceUser'][<br />
+                                                                                                 'name'],<br />
+                                                                                             f.feed_list[i]['message'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'title'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'content']),<br />
+                             'Feed List ' + str(i),<br />
+                             ['Next', 'Comment', 'Open Browser', 'Update Status', 'Refresh', 'Exit', 'Prev'],<br />
+                             image=os.path.join(os.path.expanduser('~/.freerr'),<br />
+                                                '.freerr_' + str(f.feed_list[i]['resource']['id'])))<br />
+    else:<br />
+        choice = g.buttonbox('{0} {1} {2}\n    {3}\n    source: {4}\n            {5}'.format(i, f.feed_list[i]['time'],<br />
+                                                                                             f.feed_list[i][<br />
+                                                                                                 'sourceUser'][<br />
+                                                                                                 'name'],<br />
+                                                                                             f.feed_list[i]['message'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'title'],<br />
+                                                                                             f.feed_list[i]['resource'][<br />
+                                                                                                 'content']),<br />
+                             'Feed List ' + str(i),<br />
+                             ['Next', 'Comment', 'Update Status', 'Refresh', 'Exit', 'Prev'])<br />
+    if choice == 'Prev':<br />
+        if i == 0:<br />
+            g.msgbox('No Prev!', 'Error')<br />
+        else:<br />
+            i = i - 1<br />
+    elif choice == 'Exit':<br />
+        flag_exit = True<br />
+    elif choice == 'Next':<br />
+        if i == len(f.feed_list) - 1:<br />
+            g.msgbox('No Next!', 'Error')<br />
+        else:<br />
+            i = i + 1<br />
+    elif choice == 'Comment':<br />
+        c = renrenobj.Comment(f.feed_list[i]['type'], f.feed_list[i]['sourceUser']['id'],<br />
+                              f.feed_list[i]['resource']['id'])<br />
+        cl = []<br />
+        for j in range(len(c.comment_list)):<br />
+            cl.append('{0} {1} {2}\n    {3}'.format(j, c.comment_list[j]['time'],<br />
+                                                    renrenobj.User.get_user_name(renrenobj.User,<br />
+                                                                                 c.comment_list[j]['authorId']),<br />
+                                                    c.comment_list[j]['content']))<br />
+        cl.append('-1 Make a comment without replying to anyone')<br />
+        reply_choice = g.choicebox('Choose a person to reply:', 'Comments List', cl)<br />
+        if reply_choice:<br />
+            c.make_comment(int(reply_choice.split(' ')[0]))<br />
+    elif choice == 'Update Status':<br />
+        renrenobj.status_pub()<br />
+    elif choice == 'Refresh':<br />
+        del f<br />
+        f = renrenobj.Feed()<br />
+        i = 0<br />
+    elif choice == 'Open Browser':<br />
+        webbrowser.open(f.feed_list[i]['attachment'][0]['url'])
+<h3> renrenobj.py</h3>
+<pre class="brush:python">#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+'''renrenobj.py</pre></p>
+
+<p>Renren defines a lot of special types.<br />
+This is a library of types returned in JSON.<br />
+'''<br />
+import json<br />
+import urllib.request<br />
+import urllib.parse<br />
+import easygui as g</p>
+
+<p>A_T = ''<br />
+USER_ID = 0</p>
+
+<p>def get_json_get(url_in):<br />
+    '''Function get_json_get<br />
+    GET mode.<br />
+    This returns an object loaded from json.<br />
+    When error return None.<br />
+    Make sure the end of url_in and the beginning of a_t are correct.<br />
+    If url_in is with a parameter, add a '&amp;' after it.<br />
+    '''<br />
+    data = urllib.request.urlopen(url_in + 'access_token=' + A_T).read()<br />
+    json_data = data.decode('UTF-8')<br />
+    obj = json.loads(json_data, encoding='UTF-8')<br />
+    if 'error' in obj:<br />
+        g.msgbox(str(obj), 'Error')<br />
+        return None<br />
+    else:<br />
+        return obj['response']</p>
+
+<p>def get_json_post(url_in, para):<br />
+    '''Function get_json_post<br />
+    POST mode.<br />
+    para should be a dict.<br />
+    This returns an object loaded from json.<br />
+    When error return None.<br />
+    Make sure the end of url_no_a_t and the beginning of a_t are correct.<br />
+    '''<br />
+    postdata = urllib.parse.urlencode(para).encode(encoding='UTF-8')<br />
+    json_data = urllib.request.urlopen(url_in + 'access_token=' + A_T, postdata).read().decode('UTF-8')<br />
+    obj = json.loads(json_data, encoding='UTF-8')<br />
+    if 'error' in obj:<br />
+        g.msgbox(str(obj), 'Error')<br />
+        return None<br />
+    else:<br />
+        return obj['response']</p>
+
+<p>class Feed:<br />
+    '''Class Feed</p>
+
+<p>    This deals with the feed list.<br />
+    a_t should be passed in when init.<br />
+    '''<br />
+    URL_GET_FEED_LIST = 'https://api.renren.com/v2/feed/list?'</p>
+
+<p>    def __init__(self):<br />
+        self.feed_list = get_json_get(self.URL_GET_FEED_LIST)<br />
+        if self.feed_list:<br />
+            self.feed_list = list(self.feed_list)<br />
+            # If the list is None then do nothing.<br />
+            # Abandoned.<br />
+            # if self.feed_list:<br />
+            # for feed in self.feed_list['response']:<br />
+            # self.simplist.append(<br />
+            #             {'id': feed['id'], 'time': feed['time'], 'resource_content': feed['resource']['content'],<br />
+            #              'user': feed['sourceUser']['name'], 'message': feed['message'],<br />
+            #              'resource_title': feed['resource']['title'], 'resource_id': feed['resource']['id'], 'type': feed['type'], 'user_id': feed['sourceUser']['id'],})</p>
+
+<p>    def show_feed_list(self):<br />
+        for i in range(len(self.feed_list)):<br />
+            print('{0} {1} {2}\n    {3}\n    source: {4}\n            {5}'.format(i, self.feed_list[i]['time'],<br />
+                                                                                  self.feed_list[i]['sourceUser'][<br />
+                                                                                      'name'],<br />
+                                                                                  self.feed_list[i]['message'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'title'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'content']),<br />
+                  end='\n\n\n')</p>
+
+<p>    def show_comment(self):<br />
+        i = int(input('Input id to enter: &gt;'))<br />
+        c = Comment(self.feed_list[i]['type'],<br />
+                    self.feed_list[i]['sourceUser']['id'],<br />
+                    self.feed_list[i]['resource']['id'])<br />
+        cl = c.comment_list<br />
+        print('|{0} {1} {2}\n|    {3}\n|    source: {4}\n|            {5}'.format(i, self.feed_list[i]['time'],<br />
+                                                                                  self.feed_list[i]['sourceUser'][<br />
+                                                                                      'name'],<br />
+                                                                                  self.feed_list[i]['message'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'title'],<br />
+                                                                                  self.feed_list[i]['resource'][<br />
+                                                                                      'content']),<br />
+              end='\n\n\n')<br />
+        for j in range(len(cl)):<br />
+            print('{0} {1} {2}\n    {3}'.format(j, cl[j]['time'], User.get_user_name(User, cl[j]['authorId']),<br />
+                                                cl[j]['content']), end='\n\n')<br />
+            # ctrl = int(input('Input a positive number to comment: &gt;'))<br />
+            # if ctrl &gt; 0:<br />
+            # c.make_comment()</p>
+
+<p>class Comment:<br />
+    URL_GET_COMMENT_LIST = 'https://api.renren.com/v2/comment/list?'</p>
+
+<p>    def __init__(self, commentType, entryOwnerId, entryId):<br />
+        '''Function __init__</p>
+
+<p>        entryId should be resource id.<br />
+        '''<br />
+        self.entryOwnerId = entryOwnerId<br />
+        self.entryId = entryId<br />
+        if 'SHARE' in commentType:<br />
+            self.commentType = 'SHARE'<br />
+        if 'UPDATE' in commentType:<br />
+            self.commentType = commentType[7:]<br />
+        para = 'commentType={0}&amp;entryOwnerId={1}&amp;entryId={2}&amp;'.format(self.commentType, self.entryOwnerId, self.entryId)<br />
+        self.comment_list = get_json_get(self.URL_GET_COMMENT_LIST + para)<br />
+        if self.comment_list:<br />
+            self.comment_list = list(self.comment_list)</p>
+
+<p>    def make_comment(self, i):<br />
+        URL_MAKE_COMMENT = 'https://api.renren.com/v2/comment/put?'<br />
+        # i = int(input('Input id to send to,\nNegative number not to specify: &gt;'))<br />
+        if i &gt;= 0 and self.comment_list[i]['authorId'] == USER_ID:<br />
+            g.msgbox('Cannot reply to yourself!', 'Error')<br />
+            return<br />
+        text = g.enterbox('Input the content:', 'Comment')<br />
+        if text:<br />
+            if i &lt; 0:<br />
+                para = {'content': text,<br />
+                        'commentType': self.commentType,<br />
+                        'entryOwnerId': self.entryOwnerId,<br />
+                        'entryId': self.entryId}<br />
+                obj = get_json_post(URL_MAKE_COMMENT, para)<br />
+                if obj:<br />
+                    g.msgbox('Done.', 'Comment')<br />
+            else:<br />
+                para = {'content': text,<br />
+                        'commentType': self.commentType,<br />
+                        'entryOwnerId': self.entryOwnerId,<br />
+                        'entryId': self.entryId,<br />
+                        'targetUserId': self.comment_list[i]['authorId']}<br />
+                obj = get_json_post(URL_MAKE_COMMENT, para)<br />
+                if obj:<br />
+                    g.msgbox('Done.', 'Comment')</p>
+
+<p>def status_pub():<br />
+    text = g.enterbox('Input status:', 'Update Status')<br />
+    if text:<br />
+        URL_STATUS_PUB = 'https://api.renren.com/v2/status/put?'<br />
+        obj = get_json_post(URL_STATUS_PUB, {'content': text})<br />
+        if obj:<br />
+            g.msgbox('Done.', 'Update Status')</p>
+
+<p>class User:<br />
+    '''Class User</p>
+
+<p>    This deals with user info.<br />
+    '''<br />
+    user_id = 0<br />
+    user_name = ''</p>
+
+<p>    def __init__(self, user_id):<br />
+        self.user_id = user_id</p>
+
+<p>    def get_user_name(self, user_id):<br />
+        URL_GET_USER_NAME = 'https://api.renren.com/v2/user/get?'<br />
+        obj = get_json_get(URL_GET_USER_NAME + 'userId={0}'.format(user_id) + '&amp;')<br />
+        if obj:<br />
+            self.user_name = obj['name']<br />
+            return self.user_name
+<h3> freerr.php</h3>
+<pre class="brush:php">&lt;html&gt;
+&lt;head&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;?php
+$code = $_GET["code"];
+//！！！！！以下修改三处。client_id后面加上api_key，redirect_uri后加上php文件的url，client_secret后加上secret_key。
+$url = "https://graph.renren.com/oauth/token?grant_type=authorization_code&amp;client_id=&amp;redirect_uri=&amp;client_secret=&amp;code=".$code;
+$json = file_get_contents($url);
+?&gt;
+&lt;textarea name="json"&gt;
+&lt;?php
+echo $json;
+?&gt;
+&lt;/textarea&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+&nbsp;</p>

@@ -1,0 +1,42 @@
+<?php
+
+$dict = array(
+"noun 1st fem sing nom"=>"-a", 
+"noun 1st fem sing voc"=>"-a", 
+"noun 1st fem sing acc"=>"-am", 
+"noun 1st fem sing gen"=>"-ae", 
+"noun 1st fem sing dat"=>"-ae", 
+"noun 1st fem sing abl"=>"-ā", 
+"noun 1st fem pl nom"=>"-ae", 
+"noun 1st fem pl voc"=>"-ae", 
+"noun 1st fem pl acc"=>"-ās", 
+"noun 1st fem pl gen"=>"-ārum", 
+"noun 1st fem pl dat"=>"-īs", 
+"noun 1st fem pl abl"=>"-īs"
+);
+$anspool = array(
+"-a", "-am", "-ae", "-ā", "-ās", "-ārum", "-īs"
+);
+
+/*
+$dict = array(
+"noun 1st fem sing nom"=>"-a", 
+"noun 1st fem sing voc"=>"-a", 
+"noun 1st fem sing acc"=>"-am", 
+"noun 1st fem sing gen"=>"-ae", 
+"noun 1st fem sing dat"=>"-ae", 
+"noun 1st fem sing abl"=>"-a", 
+"noun 1st fem pl nom"=>"-ae", 
+"noun 1st fem pl voc"=>"-ae", 
+"noun 1st fem pl acc"=>"-as", 
+"noun 1st fem pl gen"=>"-arum", 
+"noun 1st fem pl dat"=>"-is", 
+"noun 1st fem pl abl"=>"-is"
+);
+
+$anspool = array(
+"-a", "-am", "-ae", "-as", "-arum", "-is"
+);
+*/
+
+?>

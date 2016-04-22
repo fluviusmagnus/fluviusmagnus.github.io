@@ -1,0 +1,33 @@
+---
+layout: post
+title: RQNOJ 2 开心的金明
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//本来是可以用动规做的，但是也提供另一种方法
+#include &lt;stdio.h&gt;
+long int n,m;
+int i,v[30],p[30];
+long int maxget(int free,int now)
+{
+     if(now==-1) return 0;
+     if(free-p[now]&lt;0) return maxget(free,now-1);
+     long int max1,max2;
+     max1=maxget(free,now-1);
+     max2=maxget(free-p[now],now-1)+v[now]*p[now];
+     if(max1&gt;max2)
+     return max1;
+     else
+     return max2;
+}
+int main()
+{
+    scanf("%d %d",&amp;n,&amp;m);
+    for(i=0;i&lt;m;i++) scanf("%d %d",&amp;p[i],&amp;v[i]);
+    printf("%d",maxget(n,m-1));
+    return 0;
+}</pre></p>

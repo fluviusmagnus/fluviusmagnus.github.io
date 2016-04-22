@@ -1,0 +1,38 @@
+---
+layout: post
+title: RQNOJ 72 拔河比赛
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//这道题一开始还不知道怎么做，后来一想，要是两组体重差最小，
+//必然某一组极度接近总重的一半。显然又是一道背包。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else return b;
+}
+int main()
+{
+        int n,w[101]={0},allsum=0,i,r,f[10001];
+        scanf("%d",&amp;n);
+        for(i=1;i&lt;=n;i++)
+        {
+                scanf("%d",&amp;w[i]);
+                allsum+=w[i];
+        }
+        int top=allsum/2;
+        for(r=0;r&lt;=top;r++)
+                if(r&lt;w[1]) f[r]=0;
+                else f[r]=w[1];
+        for(i=2;i&lt;=n;i++)
+                for(r=0;r&lt;=top;r++)
+                        if(r&lt;w[i]) f[r]=f[r];
+                        else f[r]=max(f[r],f[r-w[i]]+w[i]);
+        printf("%d",allsum-2*f[top]);
+        return 0;
+}</pre></p>

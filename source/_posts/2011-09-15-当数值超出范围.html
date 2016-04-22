@@ -1,0 +1,59 @@
+---
+layout: post
+title: 当数值超出范围
+categories:
+- 计算机技术
+tags:
+- C
+- 编程
+published: true
+comments: true
+---
+<p>这两天在学校的Windows机器上捣鼓C语言的程序，无意中编了这样一个程序。要命的是，它的运行结果是出人意料的。
+<blockquote>#include &lt;stdio.h&gt;<br />
+int main()<br />
+{
+    int a=1;<br />
+    for(;;)<br />
+    {<br />
+           a*=2;<br />
+           printf("%d\n",a);<br />
+           if(a==0)<br />
+           {<br />
+                   printf("Top reached.\n");<br />
+                   getchar();<br />
+           }<br />
+    }<br />
+    return 0;<br />
+}</blockquote>
+<!--more-->这段代码是经过调整的，便于说明问题。</p>
+
+<p> 可以看出，整数a的值会超出int所定义的范围。由于C语言是低级语言，所以不会报错。但问题在于为什么后来a会等于0？！目前没有得到解释。可能是因为32位机器的限制吧。</p>
+
+<p>实验环境：Windows XP SP3，Dev-C++ 4.9.9.2，gcc 3.4.2-20040916-1。</p>
+
+<p>实际输出：
+<blockquote>（前略）</blockquote></p>
+
+<p>8192<br />
+16384<br />
+32768<br />
+65536<br />
+131072<br />
+262144<br />
+524288<br />
+1048576<br />
+2097152<br />
+4194304<br />
+8388608<br />
+16777216<br />
+33554432<br />
+67108864<br />
+134217728<br />
+268435456<br />
+536870912<br />
+1073741824<br />
+-2147483648<br />
+0
+Top reached.
+实在是太有趣了。</p>

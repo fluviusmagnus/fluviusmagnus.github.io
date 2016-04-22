@@ -1,0 +1,53 @@
+---
+layout: post
+title: 安装Archlinux小记
+categories:
+- 计算机技术
+tags:
+- archlinux
+- linux
+published: true
+comments: true
+---
+<p>正如之前的某一篇文章所说，我的Ubuntu已经不堪重负了，所以我作了一个艰难的决定，就是放弃Ubuntu，叛逃至Archlinux。原因是这个发行版具有高度定制性，坚持KISS原则，后期的使用十分省心。于是我就开始装了。</p>
+
+<p>从163的镜像站上下载了201005的本地安装版本。为什么要用这个版本而不选择netinstall呢？事实上我之前在虚拟机上试装过一遍，网络安装常常出错。毕竟安装程序是旧的，而软件包是新的，而要纠正错误得花很大的力气。</p>
+
+<p>刻盘，安装。原来/home内容已经备份，所以挂载时问(re)create filesystem就选yes，也就是格式化。安装过程还算是顺利，只要一步一步按照官方文档来就可以了。Archlinux的官方文档制作得还算是不错的。但是，毕竟每个人的具体情况不一样，所以baidu、google永远是我们的好朋友。<!--more--></p>
+
+<p>装好之后重启，只有字符界面。这很正常，因为没装x。但在装x之前要创建一个权利比较大的非root用户。如果你是root敢死队当然可以跳过。然后把x装上。还有桌面环境或者窗口管理器也要装。</p>
+
+<p>我选择了gnome，是3。Archlinux的源里面的软件总是新的。看看，这就是平滑升级的优势，至于稳定性，我们普通用户就不必多虑了。当然，要想建立适合自己的桌面系统，还要装上适合的软件。下面是我所喜欢的一些软件的列表：
+<ul>
+	<li>wine</li>
+	<li>libreoffice</li>
+	<li>gvim</li>
+	<li>chmsee</li>
+	<li>pidgin (with libqq)</li>
+	<li>filezilla</li>
+	<li>firefox</li>
+	<li>multiget</li>
+	<li>jre</li>
+	<li>gimp</li>
+	<li>evince</li>
+	<li>eog (maybe is already installed with gnome)</li>
+	<li>virtualbox</li>
+	<li>audacity</li>
+	<li>avidemux</li>
+	<li>brasero</li>
+	<li>easytag (别笑我)</li>
+	<li>rhythmbox</li>
+	<li>totem</li>
+	<li>VBA (同样别笑我)</li>
+	<li>samba</li>
+	<li>gparted</li>
+	<li>ufw</li>
+	<li>fish (比较喜欢这个shell)</li>
+</ul>
+如果你不知道某个软件是做什么的尽管搜索。也许其中的软件并不适合你，这仅仅是一个参考。</p>
+
+<p>最后就是解决打印机驱动的问题了。我用的是HP Deskjet 2000。驱动比较难找。安装cups和hplip，还有一些附加的驱动列表包。具体是那哪些我自己已经忘了，反正像的就装上，我充分相信大家的英语水平足以看懂那些说明。顺便提一句hplip用源里的，如果用官网上的可能会装不上。貌似部分是因为python2和python3的不兼容，也许还有其他的原因。</p>
+
+<p>装完了一定要重启，否则可能检测不到你的打印机。一般进行过对linux内核的操作后一定要重启，不然效果可能体现不出来。重启后打印一张测试页，发现是黑白的，大伤脑筋，暂且不管了，可怜我彩打。</p>
+
+<p>好了，到这里安装过程就结束了。这篇文章并不能当作新手指南，就当是useful tips吧。做过的事情记录一下总是好的。</p>

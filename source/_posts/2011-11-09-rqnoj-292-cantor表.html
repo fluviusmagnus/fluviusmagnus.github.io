@@ -1,0 +1,37 @@
+---
+layout: post
+title: RQNOJ 292 Cantor表
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//做着做着发现分子分母反了。所以输出时反一下。
+#include &lt;stdio.h&gt;
+int main()
+{
+        int n;
+        int c=1;
+        int zi=1,mu=1;
+        int i=1;
+        int pos;
+        scanf("%d",&amp;n);
+        for(c=1;c&lt;=n;c++)
+                if((c+1)*c/2&gt;=n&amp;&amp;c*(c-1)/2&lt;n) break;
+        if(c%2==1)
+        {
+                pos=(c-1)*c/2;
+                zi=n-pos;
+                mu=c+1-zi;
+        }
+        else
+        {
+                pos=(c-1)*c/2;
+                zi=n-pos+c-1;
+                mu=c+1-zi;
+        }
+        printf("%d/%d",mu,zi);
+        return 0;
+}</pre></p>

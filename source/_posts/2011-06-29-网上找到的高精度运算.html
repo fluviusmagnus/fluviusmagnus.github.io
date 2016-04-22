@@ -1,0 +1,422 @@
+---
+layout: post
+title: 网上找到的高精度运算
+categories:
+- 计算机技术
+tags:
+- C
+- solvequad
+- 日记
+published: true
+comments: true
+---
+<p>编译通过。稍微改了一下。可能将被用于solvequad。</p>
+
+<p>//本文件所有代码来自于pucn.com的chenying。由于未注明所用的协议，请原作者速速与本项目取得联系。本文件的部分内容可能将用作头文件。<br />
+//高精度整数除法是高精度加减乘的综合！<br />
+#include &lt;stdio.h&gt;<br />
+#include &lt;stdlib.h&gt;<br />
+#include &lt;string.h&gt;<br />
+#include &lt;ctype.h&gt;<!--more--></p>
+
+<p>int cchkdig(char *r)<br />
+{
+int i=0;<br />
+while(r[i]!='\0')<br />
+{
+if(isdigit(r[i++])==0)<br />
+return (0);<br />
+}
+return (1);<br />
+}
+//去掉整数串表示前面多余的零，最后结果为空串时置为"0"<br />
+void cdel0(char *r)<br />
+{
+unsigned int lr;<br />
+int i=0, j;<br />
+lr=strlen(r);<br />
+while(r[i]=='0')<br />
+++i;<br />
+if(i&gt;0)<br />
+{
+for(j=0; j&lt;(lr-i); ++j)<br />
+r[j]=r[j+i];<br />
+for(j=lr-i; j&lt;lr; ++j)<br />
+{
+r[j]='\0';<br />
+}
+}</p>
+
+<p>if(r[0]=='\0')<br />
+{
+r[0]='0';<br />
+}
+}</p>
+
+<p>int scmp(char *r, char *u)<br />
+{
+unsigned int lr, lu;<br />
+cdel0(r);<br />
+cdel0(u);</p>
+
+<p>lr=strlen(r);<br />
+lu=strlen(u);</p>
+
+<p>if(lr&gt;lu)<br />
+{
+return 1;<br />
+}
+else if (lr&lt;lu)<br />
+{
+return -1;<br />
+}
+return (strcmp(r, u));</p>
+
+<p>}//end scmp()</p>
+
+<p>//两个串表示数的减法<br />
+char *ssub(char *r, char *u)<br />
+{
+unsigned int i,lr, lu, lp,c=0;<br />
+char h,hc;<br />
+char *p;<br />
+if(scmp(r, u)&lt;0)<br />
+return NULL;<br />
+lr=strlen(r);<br />
+lu=strlen(u);<br />
+p=(char *)malloc((unsigned int)(lr+1)*sizeof(char));<br />
+for(i=0; i&lt;lu; ++i)<br />
+{
+h=r[lr-i-1]-u[lu-i-1]-c;<br />
+if(h&lt;0)<br />
+{
+c=1;<br />
+h=h+10;<br />
+}
+else<br />
+c=0;<br />
+p[i]=h+'0';<br />
+hc=h+'0';<br />
+}
+for (i=lu; i&lt;lr; ++i)<br />
+{
+h=r[lr-i-1]-'0'-c;<br />
+if(h&lt;0)<br />
+{
+c=1;<br />
+h=h+10;<br />
+}
+else<br />
+c=0;<br />
+p[i]='0'+h;<br />
+hc='0'+h;<br />
+}
+p[i]='\0';<br />
+lp=i-1;</p>
+
+<p>while(p[lp]=='0'&amp;&amp;lp!=0)<br />
+{
+p[lp]='\0';<br />
+lp--;<br />
+}</p>
+
+<p>for(i=0; i&lt;(lp+1)/2; ++i)<br />
+{
+hc=p[i];<br />
+p[i]=p[lp-i];<br />
+p[lp-i]=hc;<br />
+}
+return (p);<br />
+}//end ssub()</p>
+
+<p>//两个串表示数的加法<br />
+char *sadd(char *r, char *u)<br />
+{
+unsigned int lr, lu, lp;<br />
+int i, h, c=0;<br />
+char hc, *p;<br />
+lr=strlen(r);<br />
+lu=strlen(u);<br />
+if(lu&gt;lr)<br />
+{
+p=r;<br />
+r=u;<br />
+u=p;<br />
+h=lr;<br />
+lr=lu;<br />
+lu=h;<br />
+}
+p=(char *)malloc((unsigned int)(lr+2)*sizeof(char));<br />
+for(i=0; i&lt;lu; ++i)<br />
+{
+h=r[lr-i-1]-'0'+u[lu-i-1]-'0'+c;<br />
+if(h&gt;9)<br />
+{
+c=1;<br />
+h=h-10;<br />
+}
+else<br />
+c=0;<br />
+p[i]=h+'0';<br />
+}
+for(i=lu; i&lt;lr; ++i)<br />
+{
+h=r[lr-i-1]-'0'+c;<br />
+if(h&gt;9)<br />
+{
+c=1;<br />
+h=h-10;<br />
+}
+else<br />
+c=0;<br />
+p[i]='0'+h;<br />
+}
+if(c&gt;0)<br />
+{
+p[i]=c+'0';<br />
+lp=i;<br />
+}
+else<br />
+lp=i-1;<br />
+for(i=lp+1; i&lt;lr+2; ++i)<br />
+p[i]='\0';<br />
+for(i=0; i&lt;(lp+1)/2; ++i)<br />
+{
+hc=p[i];<br />
+p[i]=p[lp-i];<br />
+p[lp-i]=hc;<br />
+}
+return (p);<br />
+}//end sadd()</p>
+
+<p>//两个串表示数的乘法<br />
+char *smut(char *r, char *u)<br />
+{
+unsigned int lr, lu, lp;<br />
+int i, j, c, h;<br />
+char *p;<br />
+lr=strlen(r);<br />
+lu=strlen(u);<br />
+p=(char *)malloc((unsigned int)(lr+lu+1)*sizeof(char));<br />
+for(i=0; i&lt;lr+lu; ++i)<br />
+p[i]='0';<br />
+p[lr+lu]='\0';<br />
+for(i=lr-1; i&gt;=0; --i)<br />
+{
+c=0;<br />
+for(j=lu-1; j&gt;=0; --j)<br />
+{
+lp=i+j+1;<br />
+h=(r[i]-'0')*(u[j]-'0')+p[lp]-'0'+c;<br />
+c=h/10;<br />
+h=h%10;<br />
+p[lp]=h+'0';<br />
+}
+if(c&gt;0)p[i+j+1]=c+'0';<br />
+}
+cdel0(p);<br />
+return p;<br />
+}//end smut()</p>
+
+<p>//两个串表示数的除法，结果精确到小数点后第n位<br />
+char *sdivf(char *u, char *v, int n)<br />
+{
+char *p, *f, *r,*q;<br />
+unsigned int i, lu, lv, lr, iw, c, h;<br />
+int kh, j;<br />
+lu=strlen(u);<br />
+lv=strlen(v);<br />
+f=(char *)malloc((unsigned int)(lu+n+3)*sizeof(char));<br />
+q=(char *)malloc(sizeof(char));<br />
+for(i=0; i&lt;lu+n+3; ++i)<br />
+f[i]='\0';<br />
+r=(char *)malloc((unsigned int)(lv+2)*sizeof(char));<br />
+for(i=0; i&lt;lv+2; ++i)<br />
+r[i]='\0';<br />
+for(iw=0; iw&lt;lu+n+2; ++iw)<br />
+{
+if(iw&lt;lu)<br />
+{
+cdel0(r);<br />
+lr=strlen(r);<br />
+r[lr]=u[iw];<br />
+r[lr+1]='\0';<br />
+}</p>
+
+<p>else if(iw&gt;lu)<br />
+{
+cdel0(r);<br />
+q[0]='0';<br />
+if(scmp(r, q)==0)<br />
+{
+break;<br />
+}
+lr=strlen(r);<br />
+r[lr]='0';<br />
+r[lr+1]='\0';<br />
+}
+else<br />
+{
+f[lu]='.';<br />
+continue;<br />
+}
+kh=0;<br />
+while(scmp(r, v)&gt;=0)<br />
+{
+p=r;<br />
+r=ssub(p, v);<br />
+++kh;<br />
+}
+f[iw]=kh+'0';<br />
+}
+if(iw==lu+n+2)<br />
+{
+if(f[lu+n+1]&gt;='5')<br />
+{
+f[lu+n+1]='\0';<br />
+c=1;<br />
+for(j=lu+n; j&gt;=0; --j)<br />
+{
+if(c==0)<br />
+{
+break;<br />
+}
+if(f[j]=='.')<br />
+{
+continue;<br />
+}
+h=f[j]-'0'+c;<br />
+if(h&gt;9)<br />
+{
+h=h-10;<br />
+c=1;<br />
+}
+else<br />
+c='\0';<br />
+f[j]=h+'0';<br />
+}
+}<br />
+else<br />
+f[lu+n+1]='\0';</p>
+
+<p>}<br />
+free(r);<br />
+free(p);<br />
+q=NULL;<br />
+free(q);<br />
+cdel0(f);<br />
+return(f);<br />
+}//end sdivf()</p>
+
+<p>//两个串表示数的除法，结果分别用整商与余数表示<br />
+char *sdivkr(char *u, char *v, char **rout)<br />
+{
+char *f, *r;<br />
+unsigned int i, lu, lv, lr, iw;<br />
+int kh;<br />
+lu=strlen(u);<br />
+lv=strlen(v);</p>
+
+<p>f=(char *)malloc((unsigned int)(lu+1)*sizeof(char));<br />
+for(i=0; i&lt;lu+1; ++i) f[i]='\0';<br />
+r=(char *)malloc((unsigned int)(lv+2)*sizeof(char));<br />
+for(i=0; i&lt;lv+2; ++i) r[i]='\0';</p>
+
+<p>for(iw=0; iw&lt;lu; ++iw)<br />
+{
+cdel0(r);<br />
+lr=strlen(r);<br />
+r[lr]=u[iw];<br />
+r[lr+1]='\0';<br />
+kh=0;<br />
+while(scmp(r, v)&gt;=0)<br />
+{
+r=ssub(r, v);<br />
+++kh;<br />
+}
+f[iw]=kh+'0';<br />
+}
+cdel0(r);<br />
+*rout=r;<br />
+cdel0(f);<br />
+return(f);<br />
+}//end *sdivkr()</p>
+
+<p>//调用上述函数实现两任意长正整数任意指定精度的算术计算器程序<br />
+void main(int argc, char *argv[])<br />
+{
+char *p, *r;<br />
+int n;<br />
+if(argc!=4)<br />
+{
+if(argc!=3)<br />
+printf("&gt;&gt;\"order n1 op n2\" or n ! \n");<br />
+exit(0);<br />
+}
+cdel0(argv[1]);<br />
+if(cchkdig(argv[1])==0)<br />
+{
+printf("Input data error, Input again!");<br />
+exit(0);<br />
+}
+cdel0(argv[3]);<br />
+if(cchkdig(argv[3])==0)<br />
+{
+printf("Input data error, Input again!");<br />
+exit(0);<br />
+}</p>
+
+<p>if(strcmp(argv[2], "+")==0)<br />
+{
+printf("%s", p=sadd(argv[1], argv[3]));<br />
+free(p);<br />
+}
+else if(strcmp(argv[2], "-")==0)<br />
+{
+printf("%s", p=ssub(argv[1], argv[3]));<br />
+free(p);<br />
+}
+else if(strcmp(argv[2], "*")==0)<br />
+{
+printf("%s", p=smut(argv[1], argv[3]));<br />
+free(p);<br />
+}
+else if(argv[2][0]=='/' &amp;&amp; strlen(argv[2])==1)<br />
+{
+if(argv[3][0]=='0')<br />
+{
+printf("error!devided by zero!!\n");<br />
+exit(0);<br />
+}
+p=sdivkr(argv[1], argv[3], &amp;r);<br />
+printf("k=%s r=%s", p, r);<br />
+free(p);<br />
+free(r);<br />
+}</p>
+
+<p>else if(argv[2][0]=='/'&amp;&amp;strlen(argv[2])&gt;1)<br />
+{
+if(argv[3][0]=='0')<br />
+{
+printf("error!devided by zero!!\n");<br />
+exit(0);<br />
+}</p>
+
+<p>argv[2][0]='\0';<br />
+cdel0(argv[2]);<br />
+if(cchkdig(argv[2])==0)<br />
+{
+printf("Input data error, Input again!");<br />
+exit (0);<br />
+}
+n=atoi(argv[2]);<br />
+printf("%s", p=sdivf(argv[1], argv[3], n));<br />
+free(p);<br />
+}
+printf("\n");<br />
+}</p>
+
+<p>&nbsp;</p>
+
+<p>话说考试考完了，放假了，初中毕业了。考得一般。心情一般。<br />
+还是应该向前看啊。</p>

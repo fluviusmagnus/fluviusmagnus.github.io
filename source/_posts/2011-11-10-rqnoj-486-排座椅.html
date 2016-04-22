@@ -1,0 +1,81 @@
+---
+layout: post
+title: RQNOJ 486 排座椅
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//统计每一排的对数，即拆散后可得对数。然后从大的开始取。（贪心一道）
+//注意输出排数时要从小到大。
+//同时注意输出时的格式。换行、空格之类的。
+#include &lt;stdio.h&gt;
+int map[2001][5];
+int hang[1001]={0};
+int lie[1001]={0};
+int m,n,k,l,d;
+int cmp(const void *a,const void *b)
+{
+        return *(int *)a-*(int *)b;
+}
+int maxhpos()
+{
+        int i;
+        int max=0;
+        int maxpos=0;
+        for(i=1;i&lt;=m;i++)
+                if(hang[i]&gt;max)
+                {
+                        max=hang[i];
+                        maxpos=i;
+                }
+        hang[maxpos]=0;
+        return maxpos;
+}
+int maxlpos()
+{
+        int i;
+        int max=0;
+        int maxpos=0;
+        for(i=1;i&lt;=n;i++)
+                if(lie[i]&gt;max)
+                {
+                        max=lie[i];
+                        maxpos=i;
+                }
+        lie[maxpos]=0;
+        return maxpos;
+}
+int min(int a,int b)
+{
+        if(a&lt;b) return a;
+        else return b;
+}
+int main()
+{
+        scanf("%d%d%d%d%d",&amp;m,&amp;n,&amp;k,&amp;l,&amp;d);
+        int i,r;
+        int chu1[1001],chu2[1001];
+        for(i=1;i&lt;=d;i++)
+        {
+                scanf("%d%d%d%d",&amp;map[i][1],&amp;map[i][2],&amp;map[i][3],&amp;map[i][4]);
+                if(map[i][1]==map[i][3]) lie[min(map[i][2],map[i][4])]++;
+                if(map[i][2]==map[i][4]) hang[min(map[i][1],map[i][3])]++;
+        }
+        for(i=1;i&lt;=k;i++)
+        {
+                chu1[i]=maxhpos();
+        }
+        for(i=1;i&lt;=l;i++)
+        {
+                chu2[i]=maxlpos();
+        }
+        qsort(&amp;chu1[1],k,sizeof(chu1[1]),cmp);
+        qsort(&amp;chu2[1],l,sizeof(chu2[1]),cmp);
+        for(i=1;i&lt;k;i++) printf("%d ",chu1[i]);printf("%d",chu1[i]);
+        printf("\n");
+        for(i=1;i&lt;l;i++) printf("%d ",chu2[i]);printf("%d",chu2[i]);
+        return 0;
+}</pre></p>

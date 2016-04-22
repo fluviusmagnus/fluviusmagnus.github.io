@@ -1,0 +1,79 @@
+---
+layout: post
+title: RQNOJ 399 [NOIP2008]笨小猴
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//有时候多写几个函数有助于调试。
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int stat[26];
+char word[101];
+int len;
+void cls()
+{
+        int i;
+        for(i=0;i&lt;26;i++) stat[i]=0;
+}
+void tj()
+{
+        cls();
+        int i;
+        for(i=0;i&lt;len;i++) stat[word[i]-'a']++;
+}
+int getmax()
+{
+        int max=0;
+        int i;
+        for(i=0;i&lt;26;i++)
+        {
+                if(stat[i]&gt;max)
+                {
+                        max=stat[i];
+                }
+        }
+        return max;
+}
+int getmin()
+{
+        int min=100;
+        int i;
+        for(i=0;i&lt;26;i++)
+        {
+                if(stat[i]&lt;min&amp;&amp;stat[i]!=0)
+                {
+                        min=stat[i];
+                }
+        }
+        return min;
+}
+int isprime(int num)
+{
+        int prime[25]={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
+        int i;
+        for(i=0;i&lt;25;i++) if(num==prime[i]) return 1;
+        return 0;
+}
+int main()
+{
+        gets(word);
+        len=strlen(word);
+        int a;
+        tj();
+        a=getmax()-getmin();
+        if(isprime(a))
+        {
+                printf("Lucky Word\n");
+                printf("%d",a);
+        }
+        else
+        {
+                printf("No Answer\n");
+                printf("0");
+        }
+        return 0;
+}</pre></p>

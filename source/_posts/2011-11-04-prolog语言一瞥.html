@@ -1,0 +1,56 @@
+---
+layout: post
+title: Prolog语言一瞥
+categories:
+- 计算机技术
+tags:
+- Geek
+- 编程
+published: true
+comments: true
+---
+<p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
+<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
+
+<p>&nbsp;</p>
+
+<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
+
+<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
+
+<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
+
+<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
+
+<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
+
+<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
+
+<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
+
+<p>ordered([]). /* 表empty list視為排序好的list */</p>
+
+<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
+
+<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
+
+<p>:- initialization(q). /* 啟動q處goals */
+排序居然可以如此简单。还有如下：<!--more-->
+<blockquote>示范罗素悖论在Prolog下会导致Stack Overflow：</blockquote></p>
+
+<p>&nbsp;</p>
+
+<p>/* tstpx.pl */</p>
+
+<p>/* 羅素佯謬(羅素悖論)（皇帝新腦 羅杰.彭羅斯 p.120）會導致不停機(使得gprolog產生 stack overflow) */</p>
+
+<p>/* 在gprolog下之編譯例：gplc --min-size tstpx.pl　*/</p>
+
+<p>q:- px(_). /* 找尋任何可使 px() rule 成立的方式 */</p>
+
+<p>px(1) :- \+ px(1). /* 規定此rule不成立。 i.e. 此rule為假時此rule才為真 (佯謬）*/</p>
+
+<p>:- initialization(q). /* 啟動q處goal */
+简直就是神一样的语言。</p>
+
+<p>现在一想也不奇怪，只是我们接触的语言大多是面向过程的命令式语言，如C；或是面向对象的。而有时看点别的可以打开思路，领略另一个世界的风采。</p>

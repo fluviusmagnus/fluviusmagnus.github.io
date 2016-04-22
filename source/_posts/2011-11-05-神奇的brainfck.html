@@ -1,0 +1,96 @@
+---
+layout: post
+title: 神奇的Brainf*ck
+categories:
+- 计算机技术
+tags:
+- C
+- Geek
+- 编程
+published: true
+comments: true
+---
+<p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
+
+<p>八个图灵机状态：
+<blockquote>
+<table width="464">
+<tbody>
+<tr>
+<td width="100">字符</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>指针加一</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>指针减一</td>
+</tr>
+<tr>
+<td>+</td>
+<td>指针指向的字节的值加一</td>
+</tr>
+<tr>
+<td>-</td>
+<td>指针指向的字节的值减一</td>
+</tr>
+<tr>
+<td>.</td>
+<td>输出指针指向的单元内容（ASCII码）</td>
+</tr>
+<tr>
+<td>,</td>
+<td>输入内容到指针指向的单元（ASCII码）</td>
+</tr>
+<tr>
+<td>[</td>
+<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
+</tr>
+<tr>
+<td>]</td>
+<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!--more-->于是简简单单的Hello World变成：
+<blockquote>&gt;+++++++++[&lt;++++++++&gt;-]&lt;.&gt;+++++++[&lt;++++&gt;-]&lt;+.+++++++..+++.&gt;&gt;&gt;++++++++[&lt;++++&gt;-]&lt;.&gt;&gt;&gt;++++++++++[&lt;+++++++++&gt;-]&lt;---.&lt;&lt;&lt;&lt;.+++.------.--------.&gt;&gt;+.</blockquote>
+很不可思议吧？这个语言果然名实如一。</p>
+
+<p>为了自己验证一下，这个语言的编译器，我也去找了。
+<blockquote>[koc@koc-desktop ~]$ yaourt brainfuck</blockquote></p>
+
+<p>1 aur/awib 0.3-2 (22)</p>
+
+<p>A brainfuck compiler written in brainfuck, able to generate x86 linux</p>
+
+<p>binaries, C code, Ruby code, Go code and Tcl code.</p>
+
+<p>2 aur/bfc 1-3 [installed] (37)</p>
+
+<p>A minimalistic brainfuck compiler.</p>
+
+<p>3 aur/brainfuck-git 9999-1 (6)</p>
+
+<p>A simple brainfuck interpreter</p>
+
+<p>4 aur/brainfuck-parser 20110601-1 (3)</p>
+
+<p>Brainfuck interpretor in C</p>
+
+<p>5 aur/brainspell-git 20101215-2 (1)</p>
+
+<p>logical game for programmers: write on Brainfuck for speed!</p>
+
+<p>6 aur/cpbrainfuck 1.1-3 (7)</p>
+
+<p>A simple Brainfuck interpretter.</p>
+
+<p>==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)</p>
+
+<p>==&gt; -------------------------------------------------------</p>
+
+<p>==&gt; 2
+应该选第二个（我已经装了:-)）。在安装过程中发现它依赖于nasm——一个为可移植性与模块化而设计的一个80x86的汇编器。关于nasm就不多提了，有兴趣的自己去搜吧。值得一提的是，这个编译器源代码只有两百多行，更加显出其神奇之处，以至于我觉得用C编一个简单的小程序就可以模拟这个图灵机了。</p>

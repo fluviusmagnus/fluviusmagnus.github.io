@@ -1,0 +1,32 @@
+---
+layout: post
+title: RQNOJ 224 [JSOI2007]手机
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//打个表。虽然我承认这个表并不太好。
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int sum;
+void tj(char ch)
+{
+        if(ch=='a'||ch=='d'||ch=='g'||ch=='j'||ch=='m'||ch=='p'||ch=='t'||ch=='w'||ch==' ') sum++;
+        if(ch=='b'||ch=='e'||ch=='h'||ch=='k'||ch=='n'||ch=='q'||ch=='u'||ch=='x') sum+=2;
+        if(ch=='c'||ch=='f'||ch=='i'||ch=='l'||ch=='o'||ch=='r'||ch=='v'||ch=='y') sum+=3;
+        if(ch=='s'||ch=='z') sum+=4;
+}
+int main()
+{
+        sum=0;
+        char in[201]={0};
+        gets(in);
+        int i;
+        for(i=0;in[i]!=0;i++)
+                tj(in[i]);
+        printf("%d",sum);
+        return 0;
+}</pre></p>

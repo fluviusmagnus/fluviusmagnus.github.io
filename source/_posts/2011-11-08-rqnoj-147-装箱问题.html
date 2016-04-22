@@ -1,0 +1,38 @@
+---
+layout: post
+title: RQNOJ 147 装箱问题
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//简单的01背包，可以参考饮食问题。（几乎一样，汗==）
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else return b;
+}
+int main()
+{
+        int ca[31]={0};
+        int f[31][20001];
+        int i,r;
+        int b;
+        int up;
+        scanf("%d%d",&amp;up,&amp;b);
+        for(i=1;i&lt;=b;i++) scanf("%d",&amp;ca[i]);
+        for(r=0;r&lt;=up;r++)
+                if(r&lt;ca[1]) f[1][r]=0;
+                else f[1][r]=ca[1];
+        for(i=2;i&lt;=b;i++)
+                for(r=0;r&lt;=up;r++)
+                {
+                        if(r&lt;ca[i]) f[i][r]=f[i-1][r];
+                        else f[i][r]=max(f[i-1][r],f[i-1][r-ca[i]]+ca[i]);
+                }
+        printf("%d",up-f[b][up]);
+        return 0;
+}</pre></p>

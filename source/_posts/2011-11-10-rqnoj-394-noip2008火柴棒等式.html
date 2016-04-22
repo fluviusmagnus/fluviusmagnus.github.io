@@ -1,0 +1,30 @@
+---
+layout: post
+title: RQNOJ 394 [NOIP2008]火柴棒等式
+categories:
+- AC代码
+tags:
+- OI
+published: true
+comments: true
+---
+<p><pre>//很忐忑地把1000以内的爆搜交上去了。结果万幸。
+#include &lt;stdio.h&gt;
+int stick[10]={6,2,5,5,4,5,6,3,7,6};
+int tj(int num)
+{
+        if(num&lt;10) return stick[num];
+        else return stick[num%10]+tj(num/10);
+}
+int main()
+{
+        int i,r;
+        int n;
+        scanf("%d",&amp;n);
+        int count=0;
+        for(i=0;i&lt;=1000;i++)
+                for(r=0;r&lt;=1000;r++)
+                        if(tj(i)+tj(r)+tj(i+r)==n-4) count++;
+        printf("%d",count);
+        return 0;
+}</pre></p>
