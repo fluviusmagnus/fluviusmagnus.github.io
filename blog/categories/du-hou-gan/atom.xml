@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 读后感 | 人間夜行]]></title>
-  <link href="https://elephantus.moe/blog/categories/du-hou-gan/atom.xml" rel="self"/>
-  <link href="https://elephantus.moe/"/>
-  <updated>2016-04-21T23:23:51+08:00</updated>
-  <id>https://elephantus.moe/</id>
+  <link href="http://elephantus.moe/blog/categories/du-hou-gan/atom.xml" rel="self"/>
+  <link href="http://elephantus.moe/"/>
+  <updated>2016-04-22T09:32:27+08:00</updated>
+  <id>http://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
     <email><![CDATA[ich@elephantus.moe]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[关于共产主义想像的误解的讨论]]></title>
-    <link href="https://elephantus.moe/blog/%E5%85%B3%E4%BA%8E%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E6%83%B3%E5%83%8F%E7%9A%84%E8%AF%AF%E8%A7%A3%E7%9A%84%E8%AE%A8%E8%AE%BA/"/>
+    <link href="http://elephantus.moe/blog/%E5%85%B3%E4%BA%8E%E5%85%B1%E4%BA%A7%E4%B8%BB%E4%B9%89%E6%83%B3%E5%83%8F%E7%9A%84%E8%AF%AF%E8%A7%A3%E7%9A%84%E8%AE%A8%E8%AE%BA/"/>
     <updated>2015-11-22T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/关于共产主义想像的误解的讨论</id>
+    <id>http://elephantus.moe/blog/关于共产主义想像的误解的讨论</id>
     <content type="html"><![CDATA[<p><em>注：此文是读《共产党宣言》后作业。</em></p>
 
 
@@ -55,9 +55,9 @@
   
   <entry>
     <title type="html"><![CDATA[谈《超越西方思想》]]></title>
-    <link href="https://elephantus.moe/blog/%E8%B0%88%E3%80%8A%E8%B6%85%E8%B6%8A%E8%A5%BF%E6%96%B9%E6%80%9D%E6%83%B3%E3%80%8B/"/>
+    <link href="http://elephantus.moe/blog/%E8%B0%88%E3%80%8A%E8%B6%85%E8%B6%8A%E8%A5%BF%E6%96%B9%E6%80%9D%E6%83%B3%E3%80%8B/"/>
     <updated>2015-10-22T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/谈《超越西方思想》</id>
+    <id>http://elephantus.moe/blog/谈《超越西方思想》</id>
     <content type="html"><![CDATA[<p><h2>目录</h2>
 <ul>
     <li><a title="导言" href="#导言">导言</a></li>
@@ -254,9 +254,9 @@
   
   <entry>
     <title type="html"><![CDATA[《超越西方思想》笔记]]></title>
-    <link href="https://elephantus.moe/blog/%E3%80%8A%E8%B6%85%E8%B6%8A%E8%A5%BF%E6%96%B9%E6%80%9D%E6%83%B3%E3%80%8B%E7%AC%94%E8%AE%B0/"/>
+    <link href="http://elephantus.moe/blog/%E3%80%8A%E8%B6%85%E8%B6%8A%E8%A5%BF%E6%96%B9%E6%80%9D%E6%83%B3%E3%80%8B%E7%AC%94%E8%AE%B0/"/>
     <updated>2015-10-06T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/《超越西方思想》笔记</id>
+    <id>http://elephantus.moe/blog/《超越西方思想》笔记</id>
     <content type="html"><![CDATA[<p><p style="text-align: right;">刘立群 著<br />
 社会科学文献出版社<br />
 2008年11月第2版</p>
@@ -314,9 +314,9 @@
   
   <entry>
     <title type="html"><![CDATA[关于人工智能的一些想法]]></title>
-    <link href="https://elephantus.moe/blog/%E5%85%B3%E4%BA%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/"/>
+    <link href="http://elephantus.moe/blog/%E5%85%B3%E4%BA%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/"/>
     <updated>2015-08-02T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/关于人工智能的一些想法</id>
+    <id>http://elephantus.moe/blog/关于人工智能的一些想法</id>
     <content type="html"><![CDATA[<p>最近读了日本作家山本弘的号称“日本赛伯朋克最佳作”、“补完‘机器人三定律’超越阿莫西夫”的<a href="http://koccn.net/wordpress/%e8%af%bb%e8%bf%87%e8%89%be%e6%af%94%e6%96%af%e4%b9%8b%e6%a2%a6/" target="_blank">《艾比斯之梦》</a> （アイの物語），颇有感慨。我原本就对人工智能有很大的兴趣，这或许属于某种技术迷恋，但是出于它不断发展成为我们的期望的现实考虑，这种关注应该是不为过的。另外，人工智能的开发如若成功，它必将成为所有人造物中最复杂的一种，有如我们人自身的心灵，它最终将复杂到我们不可理解的程度，这也就是其必然成为无法绕过的重大话题的原因。在这里，我不想过多讨论其技术实现的种种细节，我将直接假定人工智能已经实现且进入自我维持发展的最终阶段，将重心放在它与人、与人类社会的关系上，简单地谈一些我的看法。<!--more--></p>
 
 
@@ -369,9 +369,9 @@
   
   <entry>
     <title type="html"><![CDATA[为了自己的愿望我们究竟能走多远——读《旷代的忧伤》]]></title>
-    <link href="https://elephantus.moe/blog/%E4%B8%BA%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84%E6%84%BF%E6%9C%9B%E6%88%91%E4%BB%AC%E7%A9%B6%E7%AB%9F%E8%83%BD%E8%B5%B0%E5%A4%9A%E8%BF%9C-%E8%AF%BB%E3%80%8A%E6%97%B7%E4%BB%A3%E7%9A%84/"/>
+    <link href="http://elephantus.moe/blog/%E4%B8%BA%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84%E6%84%BF%E6%9C%9B%E6%88%91%E4%BB%AC%E7%A9%B6%E7%AB%9F%E8%83%BD%E8%B5%B0%E5%A4%9A%E8%BF%9C-%E8%AF%BB%E3%80%8A%E6%97%B7%E4%BB%A3%E7%9A%84/"/>
     <updated>2014-02-16T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/为了自己的愿望我们究竟能走多远-读《旷代的</id>
+    <id>http://elephantus.moe/blog/为了自己的愿望我们究竟能走多远-读《旷代的</id>
     <content type="html"><![CDATA[<p>平稳的叙述下，这本书竟然蕴含着这样沉重的话题，这是我万万没有想到的。众多人物的小传中，最震撼我的当是薇依（西蒙娜·薇依，Simone Weil，1909-1943）的事迹。<!--more--></p>
 
 

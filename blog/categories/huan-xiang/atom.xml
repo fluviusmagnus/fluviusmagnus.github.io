@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 幻想 | 人間夜行]]></title>
-  <link href="https://elephantus.moe/blog/categories/huan-xiang/atom.xml" rel="self"/>
-  <link href="https://elephantus.moe/"/>
-  <updated>2016-04-21T23:23:51+08:00</updated>
-  <id>https://elephantus.moe/</id>
+  <link href="http://elephantus.moe/blog/categories/huan-xiang/atom.xml" rel="self"/>
+  <link href="http://elephantus.moe/"/>
+  <updated>2016-04-22T09:32:27+08:00</updated>
+  <id>http://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
     <email><![CDATA[ich@elephantus.moe]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[沉落于真夜]]></title>
-    <link href="https://elephantus.moe/blog/sinking-into-the-deep-night/"/>
+    <link href="http://elephantus.moe/blog/sinking-into-the-deep-night/"/>
     <updated>2016-02-19T18:27:04+08:00</updated>
-    <id>https://elephantus.moe/blog/sinking-into-the-deep-night</id>
+    <id>http://elephantus.moe/blog/sinking-into-the-deep-night</id>
     <content type="html"><![CDATA[<h2>宣言</h2>
 
 <p>现在开始，此处就要将现实抹消，任不羁的幻想如点入清水的墨汁，爬行、生长、扩散，最终以自身占领整个世界，夺取本应归于他的国。<!--more--></p>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 转发及备忘 | 人間夜行]]></title>
-  <link href="https://elephantus.moe/blog/categories/zhuan-fa-ji-bei-wang/atom.xml" rel="self"/>
-  <link href="https://elephantus.moe/"/>
-  <updated>2016-04-21T23:23:51+08:00</updated>
-  <id>https://elephantus.moe/</id>
+  <link href="http://elephantus.moe/blog/categories/zhuan-fa-ji-bei-wang/atom.xml" rel="self"/>
+  <link href="http://elephantus.moe/"/>
+  <updated>2016-04-22T09:32:27+08:00</updated>
+  <id>http://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
     <email><![CDATA[ich@elephantus.moe]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[【转】渔父]]></title>
-    <link href="https://elephantus.moe/blog/%E3%80%90%E8%BD%AC%E3%80%91%E6%B8%94%E7%88%B6/"/>
+    <link href="http://elephantus.moe/blog/%E3%80%90%E8%BD%AC%E3%80%91%E6%B8%94%E7%88%B6/"/>
     <updated>2012-06-08T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/【转】渔父</id>
+    <id>http://elephantus.moe/blog/【转】渔父</id>
     <content type="html"><![CDATA[<p>屈原既放，游於江潭，行吟泽畔，<br />
 颜色憔悴，形容枯槁。<br />
 渔父见而问之曰：<br />
@@ -43,9 +43,9 @@
   
   <entry>
     <title type="html"><![CDATA[我的.vimrc]]></title>
-    <link href="https://elephantus.moe/blog/%E6%88%91%E7%9A%84-vimrc/"/>
+    <link href="http://elephantus.moe/blog/%E6%88%91%E7%9A%84-vimrc/"/>
     <updated>2011-11-06T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/我的-vimrc</id>
+    <id>http://elephantus.moe/blog/我的-vimrc</id>
     <content type="html"><![CDATA[<p>留个档案，以备不时之需。
 <blockquote>syntax on<br />
 set cindent<br />
@@ -67,9 +67,9 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
   
   <entry>
     <title type="html"><![CDATA[俄罗斯方块可以永无止境地玩下去吗？]]></title>
-    <link href="https://elephantus.moe/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/"/>
+    <link href="http://elephantus.moe/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/"/>
     <updated>2011-10-30T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/俄罗斯方块可以永无止境地玩下去吗？</id>
+    <id>http://elephantus.moe/blog/俄罗斯方块可以永无止境地玩下去吗？</id>
     <content type="html"><![CDATA[<p>近日，看到一同学玩俄罗斯方块持久不死，便与其讨论，得出只要程序不耍人就可以无限玩下去的结论。现在看来，貌似是被证实了。</p>
 
 

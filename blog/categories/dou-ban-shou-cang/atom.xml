@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: 豆瓣收藏 | 人間夜行]]></title>
-  <link href="https://elephantus.moe/blog/categories/dou-ban-shou-cang/atom.xml" rel="self"/>
-  <link href="https://elephantus.moe/"/>
-  <updated>2016-04-21T23:23:51+08:00</updated>
-  <id>https://elephantus.moe/</id>
+  <link href="http://elephantus.moe/blog/categories/dou-ban-shou-cang/atom.xml" rel="self"/>
+  <link href="http://elephantus.moe/"/>
+  <updated>2016-04-22T09:32:27+08:00</updated>
+  <id>http://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
     <email><![CDATA[ich@elephantus.moe]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[看过历物语]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%8E%86%E7%89%A9%E8%AF%AD/"/>
+    <link href="http://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%8E%86%E7%89%A9%E8%AF%AD/"/>
     <updated>2016-04-08T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过历物语</id>
+    <id>http://elephantus.moe/blog/看过历物语</id>
     <content type="html"><![CDATA[<pre><code>&lt;table&gt;&lt;tr&gt;
 &lt;td width="80px"&gt;&lt;a href="https://movie.douban.com/subject/26609134/" title="暦物語"&gt;
 &lt;img src="https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2300977210.jpg" alt="暦物語"&gt;&lt;/a&gt;&lt;/td&gt;
@@ -32,9 +32,9 @@
   
   <entry>
     <title type="html"><![CDATA[看过昭和元禄落语心中]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%98%AD%E5%92%8C%E5%85%83%E7%A6%84%E8%90%BD%E8%AF%AD%E5%BF%83%E4%B8%AD/"/>
+    <link href="http://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%98%AD%E5%92%8C%E5%85%83%E7%A6%84%E8%90%BD%E8%AF%AD%E5%BF%83%E4%B8%AD/"/>
     <updated>2016-04-02T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过昭和元禄落语心中</id>
+    <id>http://elephantus.moe/blog/看过昭和元禄落语心中</id>
     <content type="html"><![CDATA[<pre><code>&lt;table&gt;&lt;tr&gt;
 &lt;td width="80px"&gt;&lt;a href="https://movie.douban.com/subject/26277363/" title="昭和元禄落語心中"&gt;
 &lt;img src="https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2306710470.jpg" alt="昭和元禄落語心中"&gt;&lt;/a&gt;&lt;/td&gt;
@@ -49,9 +49,9 @@
   
   <entry>
     <title type="html"><![CDATA[用过Logeion (iPhone / iPad)]]></title>
-    <link href="https://elephantus.moe/blog/%E7%94%A8%E8%BF%87logeion-(iphone-ipad)/"/>
+    <link href="http://elephantus.moe/blog/%E7%94%A8%E8%BF%87logeion-(iphone-ipad)/"/>
     <updated>2016-03-30T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/用过logeion-(iphone-ipad)</id>
+    <id>http://elephantus.moe/blog/用过logeion-(iphone-ipad)</id>
     <content type="html"><![CDATA[<pre><code>&lt;table&gt;&lt;tr&gt;
 &lt;td width="80px"&gt;&lt;a href="https://www.douban.com/subject/25918083/" title="Logeion (iPhone / iPad)"&gt;
 &lt;img src="https://img1.doubanio.com/mpic/s27700318.jpg" alt="Logeion (iPhone / iPad)"&gt;&lt;/a&gt;&lt;/td&gt;
@@ -66,9 +66,9 @@
   
   <entry>
     <title type="html"><![CDATA[看过魔法少女小圆]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/"/>
+    <link href="http://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86/"/>
     <updated>2016-03-26T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过魔法少女小圆</id>
+    <id>http://elephantus.moe/blog/看过魔法少女小圆</id>
     <content type="html"><![CDATA[<pre><code>&lt;table&gt;&lt;tr&gt;
 &lt;td width="80px"&gt;&lt;a href="https://movie.douban.com/subject/5349275/" title="魔法少女まどか★マギカ"&gt;
 &lt;img src="https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2088343031.jpg" alt="魔法少女まどか★マギカ"&gt;&lt;/a&gt;&lt;/td&gt;
@@ -83,9 +83,9 @@
   
   <entry>
     <title type="html"><![CDATA[看过剧场版魔法少女小圆 新篇 叛逆的故事]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%89%A7%E5%9C%BA%E7%89%88%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86-%E6%96%B0%E7%AF%87-%E5%8F%9B%E9%80%86%E7%9A%84%E6%95%85%E4%BA%8B/"/>
+    <link href="http://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%89%A7%E5%9C%BA%E7%89%88%E9%AD%94%E6%B3%95%E5%B0%91%E5%A5%B3%E5%B0%8F%E5%9C%86-%E6%96%B0%E7%AF%87-%E5%8F%9B%E9%80%86%E7%9A%84%E6%95%85%E4%BA%8B/"/>
     <updated>2016-03-26T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过剧场版魔法少女小圆-新篇-叛逆的故事</id>
+    <id>http://elephantus.moe/blog/看过剧场版魔法少女小圆-新篇-叛逆的故事</id>
     <content type="html"><![CDATA[<pre><code>&lt;table&gt;&lt;tr&gt;
 &lt;td width="80px"&gt;&lt;a href="https://movie.douban.com/subject/10569151/" title="劇場版 魔法少女まどか☆マギカ [新編] 叛逆の物語"&gt;
 &lt;img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p2151582333.jpg" alt="劇場版 魔法少女まどか☆マギカ [新編] 叛逆の物語"&gt;&lt;/a&gt;&lt;/td&gt;

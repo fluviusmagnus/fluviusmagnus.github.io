@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://elephantus.moe/sitemap.xml 
+Sitemap: http://elephantus.moe/sitemap.xml 
