@@ -9,8 +9,7 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="近日，看到一同学玩俄罗斯方块持久不死，便与其讨论，得出只要程序不耍人就可以无限玩下去的结论。现在看来，貌似是被证实了。 原文《俄罗斯方块可以永无止境地玩下去吗？》http://www.cnbeta.com/articles/160207.htm
-大家在玩俄罗斯方块的时候有没有想过这样一个问题： &hellip;">
+  <meta name="description" content="曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +75,75 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">Prolog语言一瞥</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-04T00:00:00+08:00" pubdate data-updated="true">Nov 4th, 2011</time>
+        
+        
+           | <a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
+<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
+
+<p>&nbsp;</p>
+
+<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
+
+<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
+
+<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
+
+<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
+
+<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
+
+<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
+
+<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
+
+<p>ordered([]). /* 表empty list視為排序好的list */</p>
+
+<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
+
+<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
+
+<p>:- initialization(q). /* 啟動q處goals */
+排序居然可以如此简单。还有如下：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -524,51 +592,6 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">为什么《聊斋》如此受人欢迎</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-24T00:00:00+08:00" pubdate data-updated="true">Aug 24th, 2011</time>
-        
-        
-           | <a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>距清人蒲松龄录《聊斋》成书已有二百多年了，可《聊斋》却仍为人所津津乐道，说它是文学史上一大作也不为过。我们知道，一部作品要能打动人，一方面可以是反映现实，另一方面则可以是表达愿望。由此看来，《聊斋》之所以受人欢迎，无非是在上述两方面有所长，与受众亲近。</p>
-
-<p>从内容上来说，《聊斋》故事主要可分为爱情、友情、社会、道德几大类，其核心基本都与人有关。爱情、友情，人之常情，一个正常人绝对是可以理解且无法拒绝的。社会、道德，众人之常情，是社会性的人类所必需的。这样的题材贴近生活，有血有肉，而不像是高高在上的“作文”。从这个角度来写，便是良好的基础，在这基础之上，人们可以广泛地接受，正如接受现实一样。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-24">&larr; 旧文</a>
@@ -601,6 +624,10 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/factors-of-things/">事物的条件</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/impressions-of-a-lecture-about-cultural-industry/">听某文化产业讲座有感（作业）</a>
       </li>
     
@@ -616,15 +643,11 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
         <a href="/blog/backup-vps-to-dropbox/">备份 VPS 至 Dropbox</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%8E%86%E7%89%A9%E8%AF%AD/">看过历物语</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (2)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

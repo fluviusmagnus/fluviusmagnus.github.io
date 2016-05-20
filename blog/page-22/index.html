@@ -9,16 +9,13 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="#include &lt;stdio.h&gt;
-int max(int a,int b)
+  <meta name="description" content="//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
 {
-        if(a&gt;b) return a;
-        else return b;
-}
-int main()
-{
-        int ca[22]={0};
-         &hellip;">
+        if(k&lt;10) sta[k &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +81,67 @@ int main()
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/">RQNOJ 602 [NOIP2010普及组]数字统计</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
+{
+        if(k&lt;10) sta[k]++;
+        else
+        {
+                sta[k%10]++;
+                tj(k/10);
+        }
+}
+int main()
+{
+        int l,r;
+        scanf("%d%d",&amp;l,&amp;r);
+        int i;
+        for(i=l;i&lt;=r;i++) tj(i);
+        printf("%d",sta[2]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -688,75 +746,6 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">Prolog语言一瞥</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-04T00:00:00+08:00" pubdate data-updated="true">Nov 4th, 2011</time>
-        
-        
-           | <a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
-<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
-
-<p>&nbsp;</p>
-
-<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
-
-<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
-
-<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
-
-<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
-
-<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
-
-<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
-
-<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
-
-<p>ordered([]). /* 表empty list視為排序好的list */</p>
-
-<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
-
-<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
-
-<p>:- initialization(q). /* 啟動q處goals */
-排序居然可以如此简单。还有如下：</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-23">&larr; 旧文</a>
@@ -789,6 +778,10 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/factors-of-things/">事物的条件</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/impressions-of-a-lecture-about-cultural-industry/">听某文化产业讲座有感（作业）</a>
       </li>
     
@@ -804,15 +797,11 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
         <a href="/blog/backup-vps-to-dropbox/">备份 VPS 至 Dropbox</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%8E%86%E7%89%A9%E8%AF%AD/">看过历物语</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (1)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (2)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
