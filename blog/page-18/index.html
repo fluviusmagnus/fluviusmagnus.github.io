@@ -9,12 +9,13 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//第一次拙劣地使用了STL。以此纪念。
-#include &lt;stdio.h&gt;
-#include &lt;set&gt;
+  <meta name="description" content="#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
 using namespace std;
 int main()
-{ set&lt;int&gt; num; multiset&lt;int&gt; time; &hellip;">
+{ string s; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +81,69 @@ int main()
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/">RQNOJ 143 巨型整数</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2012-02-06T00:00:00+08:00" pubdate data-updated="true">Feb 6th, 2012</time>
+        
+        
+           | <a href="/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre class="brush:cpp">#include &lt;stdio.h&gt;
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+int main()
+{
+	string s;
+	char in[20001];
+	scanf("%s",in);
+	s=in;
+	reverse(s.begin(),s.end());
+	string::iterator it=s.begin();
+//此处需要注意，输入100须输出1。
+	while(*it=='0')
+		s.erase(it);
+	cout&lt;&lt;s&lt;&lt;endl;
+	long int sum=0;
+	for(it=s.begin();it!=s.end();it++)
+		sum+=(*it-'0');
+	cout&lt;&lt;sum;
+	return 0;
+}</pre>
+&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -602,68 +666,6 @@ done
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/">RQNOJ 262 游戏排行榜</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-12-31T00:00:00+08:00" pubdate data-updated="true">Dec 31st, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre class="brush:c">//稍微有点算是水题。吧。
-#include &lt;stdio.h&gt;
-#include &lt;limits.h&gt;
-int main()
-{
-        unsigned int list[51]={0};
-        list[0]=INT_MAX;
-        int p,s;
-        unsigned int n;
-        scanf("%d%d%d",&amp;p,&amp;s,&amp;n);
-        int i;
-        for(i=1;i&lt;=s;i++)
-                scanf("%d",&amp;list[i]);
-        for(i=1;i&lt;=p;i++)
-                if(n&gt;=list[i]&amp;&amp;n&gt;list[p]&amp;&amp;n&lt;list[i-1])
-                {
-                        printf("%d",i);
-                        return 0;
-                }
-        printf("-1");
-        return 0;
-}</pre>
-&nbsp;</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-19">&larr; 旧文</a>
@@ -696,6 +698,10 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/was-war-was-ist-was-bleibt/">Was War, Was Ist, Was Bleibt?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/factors-of-things/">事物的条件</a>
       </li>
     
@@ -711,15 +717,11 @@ int main()
         <a href="/blog/leibniz-magic-world/">莱布尼兹的奇幻世界</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/backup-vps-to-dropbox/">备份 VPS 至 Dropbox</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (2)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

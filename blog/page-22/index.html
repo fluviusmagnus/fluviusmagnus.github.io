@@ -9,13 +9,12 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
-//水题，毕竟后来发现这是普及组的。
+  <meta name="description" content="//特别注意要强制类型转换。
+//当然也可以不用。这是另一份参考：http://sfiction.blog.163.com/blog/static/199404010201110835749863/
 #include &lt;stdio.h&gt;
-int sta[10]={0};
-void tj(int k)
+int main()
 {
-        if(k&lt;10) sta[k &hellip;">
+         &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +80,62 @@ void tj(int k)
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/">RQNOJ 66 级数求和</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//特别注意要强制类型转换。
+//当然也可以不用。这是另一份参考：<a title="RQNOJP66　级数求和[2002NOIP普及组]" href="http://sfiction.blog.163.com/blog/static/199404010201110835749863/" target="_blank">http://sfiction.blog.163.com/blog/static/199404010201110835749863/</a>
+#include &lt;stdio.h&gt;
+int main()
+{
+        double sn=0;
+        int k;
+        int sum=0;
+        scanf("%d",&amp;k);
+        while(sn&lt;=k)
+        {
+                sum++;
+                sn+=1/(double)sum;
+        }
+        printf("%d",sum);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -658,94 +713,6 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">神奇的Brainf*ck</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
-        
-        
-           | <a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
-
-<p>八个图灵机状态：
-<blockquote>
-<table width="464">
-<tbody>
-<tr>
-<td width="100">字符</td>
-<td>含义</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>指针加一</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>指针减一</td>
-</tr>
-<tr>
-<td>+</td>
-<td>指针指向的字节的值加一</td>
-</tr>
-<tr>
-<td>-</td>
-<td>指针指向的字节的值减一</td>
-</tr>
-<tr>
-<td>.</td>
-<td>输出指针指向的单元内容（ASCII码）</td>
-</tr>
-<tr>
-<td>,</td>
-<td>输入内容到指针指向的单元（ASCII码）</td>
-</tr>
-<tr>
-<td>[</td>
-<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
-</tr>
-<tr>
-<td>]</td>
-<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
-</tr>
-</tbody>
-</table>
-</blockquote>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-23">&larr; 旧文</a>
@@ -778,6 +745,10 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/was-war-was-ist-was-bleibt/">Was War, Was Ist, Was Bleibt?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/factors-of-things/">事物的条件</a>
       </li>
     
@@ -793,15 +764,11 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
         <a href="/blog/leibniz-magic-world/">莱布尼兹的奇幻世界</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/backup-vps-to-dropbox/">备份 VPS 至 Dropbox</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (2)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

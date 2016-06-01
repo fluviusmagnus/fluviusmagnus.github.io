@@ -9,7 +9,12 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼： &hellip;">
+  <meta name="description" content="Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（Prolog语言一瞥）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。 八个图灵机状态： 字符
+含义 &gt;
+指针加一 &lt;
+指针减一 +
+指针指向的字节的值加一 -
+指针指向的字节的值减一 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -75,6 +80,94 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">神奇的Brainf*ck</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
+        
+        
+           | <a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
+
+<p>八个图灵机状态：
+<blockquote>
+<table width="464">
+<tbody>
+<tr>
+<td width="100">字符</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>指针加一</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>指针减一</td>
+</tr>
+<tr>
+<td>+</td>
+<td>指针指向的字节的值加一</td>
+</tr>
+<tr>
+<td>-</td>
+<td>指针指向的字节的值减一</td>
+</tr>
+<tr>
+<td>.</td>
+<td>输出指针指向的单元内容（ASCII码）</td>
+</tr>
+<tr>
+<td>,</td>
+<td>输入内容到指针指向的单元（ASCII码）</td>
+</tr>
+<tr>
+<td>[</td>
+<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
+</tr>
+<tr>
+<td>]</td>
+<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -547,51 +640,6 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">《围城》中之“围城”</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-26T00:00:00+08:00" pubdate data-updated="true">Aug 26th, 2011</time>
-        
-        
-           | <a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>初读此书，看到“围城”一词就觉得奇怪，故事中丝毫没有提到什么与“城”有关的事，这个标题的意义更是无从考据。直到故事中好友几人亲口提到“围城”一词才有所理解。他们说：“结而离，离而结，没有了局”，又说“城外的人想冲进去，城里的人想逃出来”。于是便想到这城可能与婚姻有关。</p>
-
-<p>这故事的主角方鸿渐的爱情故事可谓是颇为曲折。一开始他苦心地追求苏小姐，可不 久他又远离苏小姐而去，去追求唐小姐。可惜他又没能把握住这段爱情。后来他又爱上孙小姐，还与她结婚。可是他们之间关系并不好。好不容易得来的爱情就这样 又远去了，实在是一个令人绝望的无止尽的循环。也许这就是“围城”，没有爱情就追求爱情，拥有了爱情却又想抛弃它，就像是人在城内城外出来进去一样。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-24">&larr; 旧文</a>
@@ -624,6 +672,10 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/was-war-was-ist-was-bleibt/">Was War, Was Ist, Was Bleibt?</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/factors-of-things/">事物的条件</a>
       </li>
     
@@ -639,15 +691,11 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
         <a href="/blog/leibniz-magic-world/">莱布尼兹的奇幻世界</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/backup-vps-to-dropbox/">备份 VPS 至 Dropbox</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (2)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (73)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (67)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
