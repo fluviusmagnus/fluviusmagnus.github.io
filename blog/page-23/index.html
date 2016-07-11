@@ -9,12 +9,13 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//先一次快排。以后挪一挪。
-//贪心。
-//又想起WJMZBMR曾经用这道题演示C++的STL。这样不就几乎不用做了吗？
-#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-int comp(const void *p1,const void *p2 &hellip;">
+  <meta name="description" content="//这道题一开始还不知道怎么做，后来一想，要是两组体重差最小，
+//必然某一组极度接近总重的一半。显然又是一道背包。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else  &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -89,6 +90,316 @@ int comp(const void *p1,const void *p2 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-72-%E6%8B%94%E6%B2%B3%E6%AF%94%E8%B5%9B/">RQNOJ 72 拔河比赛</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-72-%E6%8B%94%E6%B2%B3%E6%AF%94%E8%B5%9B/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//这道题一开始还不知道怎么做，后来一想，要是两组体重差最小，
+//必然某一组极度接近总重的一半。显然又是一道背包。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else return b;
+}
+int main()
+{
+        int n,w[101]={0},allsum=0,i,r,f[10001];
+        scanf("%d",&amp;n);
+        for(i=1;i&lt;=n;i++)
+        {
+                scanf("%d",&amp;w[i]);
+                allsum+=w[i];
+        }
+        int top=allsum/2;
+        for(r=0;r&lt;=top;r++)
+                if(r&lt;w[1]) f[r]=0;
+                else f[r]=w[1];
+        for(i=2;i&lt;=n;i++)
+                for(r=0;r&lt;=top;r++)
+                        if(r&lt;w[i]) f[r]=f[r];
+                        else f[r]=max(f[r],f[r-w[i]]+w[i]);
+        printf("%d",allsum-2*f[top]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/">RQNOJ 66 级数求和</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//特别注意要强制类型转换。
+//当然也可以不用。这是另一份参考：<a title="RQNOJP66　级数求和[2002NOIP普及组]" href="http://sfiction.blog.163.com/blog/static/199404010201110835749863/" target="_blank">http://sfiction.blog.163.com/blog/static/199404010201110835749863/</a>
+#include &lt;stdio.h&gt;
+int main()
+{
+        double sn=0;
+        int k;
+        int sum=0;
+        scanf("%d",&amp;k);
+        while(sn&lt;=k)
+        {
+                sum++;
+                sn+=1/(double)sum;
+        }
+        printf("%d",sum);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/">RQNOJ 602 [NOIP2010普及组]数字统计</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
+{
+        if(k&lt;10) sta[k]++;
+        else
+        {
+                sta[k%10]++;
+                tj(k/10);
+        }
+}
+int main()
+{
+        int l,r;
+        scanf("%d%d",&amp;l,&amp;r);
+        int i;
+        for(i=l;i&lt;=r;i++) tj(i);
+        printf("%d",sta[2]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-39-%E9%A5%AE%E9%A3%9F%E9%97%AE%E9%A2%98/">RQNOJ 39 饮食问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-39-%E9%A5%AE%E9%A3%9F%E9%97%AE%E9%A2%98/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else return b;
+}
+int main()
+{
+        int ca[22]={0};
+        int f[22][35001];
+        int i,r;
+        int b;
+        int up;
+        scanf("%d%d",&amp;up,&amp;b);
+        for(i=1;i&lt;=b;i++) scanf("%d",&amp;ca[i]);
+        for(r=0;r&lt;=up;r++)
+                if(r&lt;ca[1]) f[1][r]=0;
+                else f[1][r]=ca[1];
+        for(i=2;i&lt;=b;i++)
+                for(r=0;r&lt;=up;r++)
+                {
+                        if(r&lt;ca[i]) f[i][r]=f[i-1][r];
+                        else f[i][r]=max(f[i-1][r],f[i-1][r-ca[i]]+ca[i]);
+                }
+        printf("%d",f[b][up]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/">RQNOJ 304 最大公约数和最小公倍数问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//这道题的数学技巧比较强。
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+long int gcd(long int a,long int b)
+{
+        if(a%b!=0) return gcd(b,a%b);
+        else return b;
+}
+int main()
+{
+        long int x,y;
+        scanf("%ld%ld",&amp;x,&amp;y);
+        long int i,num;
+        num=0;
+        for(i=x;i&lt;=y;i++)
+        {
+                if(x*y%i==0&amp;&amp;x==gcd(i,x*y/i)) num++;
+        }
+        printf("%ld",num);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -425,316 +736,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%88%91%E7%9A%84-vimrc/">我的.vimrc</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-06T00:00:00+08:00" pubdate data-updated="true">Nov 6th, 2011</time>
-        
-        
-           | <a href="/blog/%E6%88%91%E7%9A%84-vimrc/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>留个档案，以备不时之需。
-<blockquote>syntax on<br />
-set cindent<br />
-set number<br />
-set smartindent<br />
-set autoindent<br />
-set showmatch<br />
-set langmenu=zh_CN.UTF-8<br />
-set helplang=cn<br />
-set ruler<br />
-set shortmess=atI<br />
-set fileencodings=utf-8,chinese<br />
-colorscheme evening<br />
-source $VIMRUNTIME/delmenu.vim<br />
-source $VIMRUNTIME/menu.vim</blockquote></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">神奇的Brainf*ck</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
-        
-        
-           | <a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
-
-<p>八个图灵机状态：
-<blockquote>
-<table width="464">
-<tbody>
-<tr>
-<td width="100">字符</td>
-<td>含义</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>指针加一</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>指针减一</td>
-</tr>
-<tr>
-<td>+</td>
-<td>指针指向的字节的值加一</td>
-</tr>
-<tr>
-<td>-</td>
-<td>指针指向的字节的值减一</td>
-</tr>
-<tr>
-<td>.</td>
-<td>输出指针指向的单元内容（ASCII码）</td>
-</tr>
-<tr>
-<td>,</td>
-<td>输入内容到指针指向的单元（ASCII码）</td>
-</tr>
-<tr>
-<td>[</td>
-<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
-</tr>
-<tr>
-<td>]</td>
-<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
-</tr>
-</tbody>
-</table>
-</blockquote>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">Prolog语言一瞥</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-04T00:00:00+08:00" pubdate data-updated="true">Nov 4th, 2011</time>
-        
-        
-           | <a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
-<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
-
-<p>&nbsp;</p>
-
-<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
-
-<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
-
-<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
-
-<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
-
-<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
-
-<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
-
-<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
-
-<p>ordered([]). /* 表empty list視為排序好的list */</p>
-
-<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
-
-<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
-
-<p>:- initialization(q). /* 啟動q處goals */
-排序居然可以如此简单。还有如下：</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">俄罗斯方块可以永无止境地玩下去吗？</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-10-30T00:00:00+08:00" pubdate data-updated="true">Oct 30th, 2011</time>
-        
-        
-           | <a href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>近日，看到一同学玩俄罗斯方块持久不死，便与其讨论，得出只要程序不耍人就可以无限玩下去的结论。现在看来，貌似是被证实了。</p>
-
-<p>原文《俄罗斯方块可以永无止境地玩下去吗？》<a href="http://www.cnbeta.com/articles/160207.htm">http://www.cnbeta.com/articles/160207.htm</a>
-<blockquote>大家在玩俄罗斯方块的时候有没有想过这样一个问题：如果玩家足够牛B的话，是不是永远也不可能玩死？换句话说，假设你是万恶的游戏机，你打算害死你面前的玩家；你知道任意时刻游戏的状态，并可以有针对性地给出一些明显不合适的方块，尽量迫使玩家面对最坏情况。那么，你有没有一种算法能保证害死玩家，或者玩家无论如何都存在一种必胜策略呢？</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/">Cygwin中上人人</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-10-01T00:00:00+08:00" pubdate data-updated="true">Oct 1st, 2011</time>
-        
-        
-           | <a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>由于工作需要，最近要使用Windows机器。但是有割舍不了*nix风格操作方式，于是使用了大名鼎鼎的cygwin，另外还装了w3m。</p>
-
-<p>想想就知道，人人是几乎不可能会有cygwin的客户端的，要用就得自己做！因为我常常是看帖不回的（除了无聊时），所以设想通过开关w3m的方式来实现定时刷新。写出如下bash脚本：
-<blockquote>while [ "d" = "d" ]<br />
-do<br />
-w3m -cookie wap.renren.com&amp;<br />
-sleep 60<br />
-pkill w3m<br />
-done</blockquote>
-本人bash属于现学，所以写得不好请见谅（确实不太好= =）。通过这样的方式便能实现人人的自动刷新。</p>
-
-<p>其中sleep定为60秒，你可以自己改。当然如果你想在linux上用这个，理论上应该也可以。</p>
-
-<p>ps：cygwin需要安装非默认的procps软件包。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-24">&larr; 旧文</a>
@@ -767,30 +768,30 @@ done</blockquote>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%88%98%E6%96%97%E5%A6%96%E7%B2%BE%E9%9B%AA%E9%A3%8E/">看过战斗妖精雪风</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E4%B8%8A%E5%B8%9D/">读过计算中的上帝</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%9D%92%E4%B9%8B%E5%85%AD%E5%8F%B7/">看过青之六号</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%B8%9D%E5%9B%BD%E7%9A%84%E6%AF%81%E7%81%AD/">看过帝国的毁灭</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87the-curious-incident-of-the-dog-in-the-night-time/">读过the Curious Incident of the Dog in the Night-Time</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B5%AE%E5%A3%AB%E5%BE%B7/">看过浮士德</a>
       </li>
     
       <li class="post">
-        <a href="/blog/the-meaning-of-physical-education/">体育之意义所在（作业）</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E7%90%86%E6%83%B3%E5%9B%BD/">读过理想国</a>
       </li>
     
       <li class="post">
-        <a href="/blog/was-war-was-ist-was-bleibt/">Was War, Was Ist, Was Bleibt?</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%B9%B3%E9%9D%A2%E5%9B%BD/">读过平面国</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (74)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (72)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (74)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (77)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
