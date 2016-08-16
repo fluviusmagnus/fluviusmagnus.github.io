@@ -9,7 +9,7 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="读过《巴黎圣母院》的一定会被其凄美悲壮的结局所震撼。这种感觉，就像是看到了美好的事物在自己眼前毁灭，简直或是本来就是个悲剧。从看客的角度来说，无非就是受了冲击。而这冲击的主要内容，就是善恶观念的颠覆。 故事的开始给出了这么两个人物：貌美的吉普赛女艾斯梅达拉和奇丑的加西莫多。 &hellip;">
+  <meta name="description" content="由于工作需要，最近要使用Windows机器。但是有割舍不了*nix风格操作方式，于是使用了大名鼎鼎的cygwin，另外还装了w3m。 想想就知道，人人是几乎不可能会有cygwin的客户端的，要用就得自己做！因为我常常是看帖不回的（除了无聊时），所以设想通过开关w3m的方式来实现定时刷新。 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,317 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/">Cygwin中上人人</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-10-01T00:00:00+08:00" pubdate data-updated="true">Oct 1st, 2011</time>
+        
+        
+           | <a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>由于工作需要，最近要使用Windows机器。但是有割舍不了*nix风格操作方式，于是使用了大名鼎鼎的cygwin，另外还装了w3m。</p>
+
+<p>想想就知道，人人是几乎不可能会有cygwin的客户端的，要用就得自己做！因为我常常是看帖不回的（除了无聊时），所以设想通过开关w3m的方式来实现定时刷新。写出如下bash脚本：
+<blockquote>while [ "d" = "d" ]<br />
+do<br />
+w3m -cookie wap.renren.com&amp;<br />
+sleep 60<br />
+pkill w3m<br />
+done</blockquote>
+本人bash属于现学，所以写得不好请见谅（确实不太好= =）。通过这样的方式便能实现人人的自动刷新。</p>
+
+<p>其中sleep定为60秒，你可以自己改。当然如果你想在linux上用这个，理论上应该也可以。</p>
+
+<p>ps：cygwin需要安装非默认的procps软件包。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/">小小地吐一个</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-24T00:00:00+08:00" pubdate data-updated="true">Sep 24th, 2011</time>
+        
+        
+           | <a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我不过是下一个游戏罢了，用得着给这种速度吗？</p>
+
+<p>[caption id="attachment_194" align="aligncenter" width="300" caption="下载0ad时的速度，sf不给力"]<a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1.png"><img class="size-medium wp-image-194" title="下载0ad时的速度" src="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1-300x209.png" alt="下载0ad时的速度，sf不给力" width="300" height="209" /></a>[/caption]</p>
+
+<p>Sourceforge每次都自动跳转到那个镜像。慢啊。:-(也许下次该设法配置一下了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">当数值超出范围</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-15T00:00:00+08:00" pubdate data-updated="true">Sep 15th, 2011</time>
+        
+        
+           | <a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这两天在学校的Windows机器上捣鼓C语言的程序，无意中编了这样一个程序。要命的是，它的运行结果是出人意料的。
+<blockquote>#include &lt;stdio.h&gt;<br />
+int main()<br />
+{
+    int a=1;<br />
+    for(;;)<br />
+    {<br />
+           a*=2;<br />
+           printf("%d\n",a);<br />
+           if(a==0)<br />
+           {<br />
+                   printf("Top reached.\n");<br />
+                   getchar();<br />
+           }<br />
+    }<br />
+    return 0;<br />
+}</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">关于multilib的补充说明</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14th, 2011</time>
+        
+        
+           | <a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我的上一篇文章（《<a title="艰难曲折的wine经历" href="http://koccn.net/wordpress/%e8%89%b0%e9%9a%be%e6%9b%b2%e6%8a%98%e7%9a%84wine%e7%bb%8f%e5%8e%86/" target="_blank">艰难曲折的wine经历</a>》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
+<blockquote>[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib<br />
+1 multilib/gcc-multilib 4.6.1-4 (multilib-devel)<br />
+The GNU Compiler Collection – C and C++ frontends for multilib<br />
+==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)<br />
+==&gt; ——————————————————-<br />
+==&gt; 1</blockquote></p>
+
+<p>密码：<br />
+正在解决依赖关系…<br />
+正在查找内部冲突…<br />
+:: gcc-libs-multilib 与 gcc-libs 有冲突。删除 gcc-libs 吗？ [y/N] y<br />
+:: binutils-multilib 与 binutils 有冲突。删除 binutils 吗？ [y/N] y<br />
+:: gcc-multilib 与 gcc 有冲突。删除 gcc 吗？ [y/N] y<br />
+（后面省略）
+最后我的做法是分别使用gcc-libs-multilib，binutils-multilib，gcc-multilib替换gcc-libs，binutils，gcc。确实，我当时犹豫了很久，经过一番臆测之后，得出这样的结论：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">艰难曲折的wine经历</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-12T00:00:00+08:00" pubdate data-updated="true">Sep 12th, 2011</time>
+        
+        
+           | <a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。</p>
+
+<p>从winehq下载最近版本，解压。直接./configure，因为默认会编译成32位的版本。此时遇到错误：
+<blockquote>checking whether gcc -m32 works... no<br />
+configure: error: Cannot build a 32-bit program, you need to install 32-bit development libraries.</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%AF%95%E7%94%A8openbox/">试用openbox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-03T00:00:00+08:00" pubdate data-updated="true">Sep 3rd, 2011</time>
+        
+        
+           | <a href="/blog/%E8%AF%95%E7%94%A8openbox/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一直都比较喜欢简洁快速干净的东西。在使用了一段时间的gnome3之后，渐渐觉得它还是有点臃肿的感觉。听说openbox还不错，于是就试用了一下。</p>
+
+<p>openbox的配置还算简单，但是功能却不简单。我比较懒，不想手工修改配置，于是装了obconf（总体感觉的配置），obmenu（菜单编辑），obtheme（主题编辑）。这三个图形化配置工具非常容易使用，很适合新手。另外还装了tint2和conky，这样就像一个桌面的样子了。</p>
+
+<p>实际上，我在.xinitrc中写exec openbox还是exec openbox-session斟酌了很久，因为我需要在openbox启动时运行一段脚本。我看过网上的autostart.sh的方法，但是这就需要openbox-session。然而，这样就会将gnome的daemon（也许？）运行起来，这不是我想要的。所以目前采用的方法是直接启动openbox，然后将一个快捷键绑定到那个脚本即可。</p>
+
+<p>To be honest，本人也有使用过fvwm和awesome的经历。fvwm的配置太难理解，awesome的瓦片式也不习惯。经过比较，我觉得还是openbox方便，它更适合我。</p>
+
+<p>你找到了适合你的窗口管理器吗？</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -267,280 +578,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">审美的变化</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-21T00:00:00+08:00" pubdate data-updated="true">Aug 21st, 2011</time>
-        
-        
-           | <a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>《美的历程》读后感</p>
-
-<p>中国历史源远流长，以至于人的审美也可以如历史一般有自己的历程。这一点在读完全书之后是深有体会的。但对此，也有一些疑问。</p>
-
-<p>可以看出，历史上人们的审美情绪是发生过很大的变化的。比如说在初唐诗中，经常可以发现一些抒发建功立业壮志的题材。而在宋词中却较多的看到一些咏叹个人命运的一些内容，且感情色彩也大不相同。究竟是什么使人的审美发生这样的变化呢？难道是唐代的大漠孤烟全都变成了宋代的落花流水吗？虽然说生活环境可以决定一个人的审美，但是像这样夸张的环境变化显然是不可能的。那么就要从人的内心寻找原因。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%97%A0%E8%AF%AD%E7%9A%84unicode%E5%AD%97%E7%AC%A6%E4%BB%8B%E7%BB%8D/">无语的Unicode字符介绍</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-19T00:00:00+08:00" pubdate data-updated="true">Aug 19th, 2011</time>
-        
-        
-           | <a href="/blog/%E6%97%A0%E8%AF%AD%E7%9A%84unicode%E5%AD%97%E7%AC%A6%E4%BB%8B%E7%BB%8D/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在使用GNOME Character Map 3.0.1（Based on the Unicode Character Database 6.0.0）查询字符时，会给出字符的含义等信息。比如“市”一字，它就给出了“market, fair; city, town; trade”这些解释。再比如这种生僻字“甂”都能NB地给出“(Cant.) 打甂爐, to instant-boil thin slices of meat and vegetables in a chafing dish at a dining table“这样漂亮的解释。</p>
-
-<p>令人哭笑不得的是，连六十四卦都有。<br />
-䷀䷁䷂䷃䷄䷅䷆䷇䷈䷉䷊䷋䷌䷍䷎䷏䷐䷑䷒䷓䷔䷕䷖䷗䷘䷙䷚䷛䷜䷝䷞䷟䷠䷡䷢䷣䷤䷥䷦䷧䷨䷩䷪䷫䷬䷭䷮䷯䷰䷱䷲䷳䷴䷵䷶䷷䷸䷹䷺䷻䷼䷽䷾䷿<br />
-如果你看不到，请确认你的Unicode支持是否完整。</p>
-
-<p>其中“乾”解释为HEXAGRAM FOR THE CREATIVE HEAVEN，“坤”则是HEXAGRAM FOR THE RECEPTIVE EARTH。话说翻译的人简直就是。。。（说不出来了）。。。</p>
-
-<p>想看更多的，使用charmap自己看吧。所有字符都有分类，查询十分方便。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/">安装Archlinux小记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-17T00:00:00+08:00" pubdate data-updated="true">Aug 17th, 2011</time>
-        
-        
-           | <a href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>正如之前的某一篇文章所说，我的Ubuntu已经不堪重负了，所以我作了一个艰难的决定，就是放弃Ubuntu，叛逃至Archlinux。原因是这个发行版具有高度定制性，坚持KISS原则，后期的使用十分省心。于是我就开始装了。</p>
-
-<p>从163的镜像站上下载了201005的本地安装版本。为什么要用这个版本而不选择netinstall呢？事实上我之前在虚拟机上试装过一遍，网络安装常常出错。毕竟安装程序是旧的，而软件包是新的，而要纠正错误得花很大的力气。</p>
-
-<p>刻盘，安装。原来/home内容已经备份，所以挂载时问(re)create filesystem就选yes，也就是格式化。安装过程还算是顺利，只要一步一步按照官方文档来就可以了。Archlinux的官方文档制作得还算是不错的。但是，毕竟每个人的具体情况不一样，所以baidu、google永远是我们的好朋友。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/">你是Geek吗</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-01T00:00:00+08:00" pubdate data-updated="true">Aug 1st, 2011</time>
-        
-        
-           | <a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>NerdTests.com是一个Geek文化站，顾名思义提供了一些有趣的测试。比如说我刚刚参加的名为“Are you a Computer Geek?”的测试，结果为</p>
-
-<p><a href="http://www.nerdtests.com/ft_cg.php?im"><img src="http://www.nerdtests.com/images/ft/cg.php?val=7764" alt="My computer geek score is greater than 79% of all people in the world! How do you compare? Click here to find out!" /> </a>这是一个极高的分数。（也许吧==）</p>
-
-<p>想知道你是Geek吗，试试看吧。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/">测试用其它客户端发布</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-30T00:00:00+08:00" pubdate data-updated="true">Jul 30th, 2011</time>
-        
-        
-           | <a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>大名鼎鼎的wordpress自然有许多第三方客户端，在后台开启支持后，就可使用。这篇文章从android发布，用以测试。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/">Wine出来的人人桌面</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-25T00:00:00+08:00" pubdate data-updated="true">Jul 25th, 2011</time>
-        
-        
-           | <a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>基本功能正常，外观有点难看，不过不要紧。</p>
-
-<p>有意思的是，它会躲避鼠标到其它工作区。</p>
-
-<p>有视频有真相！</p>
-
-<p><a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv">人人桌面躲避鼠标</a></p>
-
-<p>http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-26">&larr; 旧文</a>
@@ -573,30 +610,30 @@
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E4%B8%8A%E5%B8%9D/">读过计算中的上帝</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%A8%E8%BD%AE%E4%B8%8B/">读过在轮下</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%B8%9D%E5%9B%BD%E7%9A%84%E6%AF%81%E7%81%AD/">看过帝国的毁灭</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%B0%91%E5%A5%B3%E4%B8%8E%E6%88%98%E8%BD%A6/">看过少女与战车</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B5%AE%E5%A3%AB%E5%BE%B7/">看过浮士德</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87tari-tari/">看过TARI TARI</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E7%90%86%E6%83%B3%E5%9B%BD/">读过理想国</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%B8%95%E8%8E%AB%C2%B7%E8%89%BE%E5%BE%B7%E9%87%8C%E5%A5%87%E7%9A%84%E4%B8%89%E5%A4%84%E5%9C%A3%E7%97%95/">读过帕莫·艾德里奇的三处圣痕</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%B9%B3%E9%9D%A2%E5%9B%BD/">读过平面国</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%AD%A4%E6%97%B6%E6%AD%A4%E5%88%BB%E7%9A%84%E6%88%91/">看过此时此刻的我</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (74)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (77)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (74)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (83)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
