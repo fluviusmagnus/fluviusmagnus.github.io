@@ -9,15 +9,11 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="#include &lt;stdio.h&gt;
-int max(int a,int b)
-{
-        if(a&gt;b) return a;
-        else return b;
-}
+  <meta name="description" content="//特别注意要强制类型转换。
+//当然也可以不用。这是另一份参考：http://sfiction.blog.163.com/blog/static/199404010201110835749863/
+#include &lt;stdio.h&gt;
 int main()
 {
-        int ca[22]={0};
          &hellip;">
   
 
@@ -93,6 +89,123 @@ int main()
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/">RQNOJ 66 级数求和</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-66-%E7%BA%A7%E6%95%B0%E6%B1%82%E5%92%8C/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//特别注意要强制类型转换。
+//当然也可以不用。这是另一份参考：<a title="RQNOJP66　级数求和[2002NOIP普及组]" href="http://sfiction.blog.163.com/blog/static/199404010201110835749863/" target="_blank">http://sfiction.blog.163.com/blog/static/199404010201110835749863/</a>
+#include &lt;stdio.h&gt;
+int main()
+{
+        double sn=0;
+        int k;
+        int sum=0;
+        scanf("%d",&amp;k);
+        while(sn&lt;=k)
+        {
+                sum++;
+                sn+=1/(double)sum;
+        }
+        printf("%d",sum);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/">RQNOJ 602 [NOIP2010普及组]数字统计</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
+{
+        if(k&lt;10) sta[k]++;
+        else
+        {
+                sta[k%10]++;
+                tj(k/10);
+        }
+}
+int main()
+{
+        int l,r;
+        scanf("%d%d",&amp;l,&amp;r);
+        int i;
+        for(i=l;i&lt;=r;i++) tj(i);
+        printf("%d",sta[2]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -609,163 +722,6 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">神奇的Brainf*ck</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
-        
-        
-           | <a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
-
-<p>八个图灵机状态：
-<blockquote>
-<table width="464">
-<tbody>
-<tr>
-<td width="100">字符</td>
-<td>含义</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>指针加一</td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>指针减一</td>
-</tr>
-<tr>
-<td>+</td>
-<td>指针指向的字节的值加一</td>
-</tr>
-<tr>
-<td>-</td>
-<td>指针指向的字节的值减一</td>
-</tr>
-<tr>
-<td>.</td>
-<td>输出指针指向的单元内容（ASCII码）</td>
-</tr>
-<tr>
-<td>,</td>
-<td>输入内容到指针指向的单元（ASCII码）</td>
-</tr>
-<tr>
-<td>[</td>
-<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
-</tr>
-<tr>
-<td>]</td>
-<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
-</tr>
-</tbody>
-</table>
-</blockquote>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">Prolog语言一瞥</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-04T00:00:00+08:00" pubdate data-updated="true">Nov 4th, 2011</time>
-        
-        
-           | <a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
-<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
-
-<p>&nbsp;</p>
-
-<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
-
-<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
-
-<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
-
-<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
-
-<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
-
-<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
-
-<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
-
-<p>ordered([]). /* 表empty list視為排序好的list */</p>
-
-<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
-
-<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
-
-<p>:- initialization(q). /* 啟動q處goals */
-排序居然可以如此简单。还有如下：</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-25">&larr; 旧文</a>
@@ -798,6 +754,14 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%9C%80%E7%BB%88%E6%B5%81%E6%94%BE~%E9%93%B6%E7%BF%BC%E4%B9%8B%E6%B3%95%E5%A7%86~/">看过最终流放~银翼之法姆~</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%9C%80%E7%BB%88%E6%B5%81%E6%94%BE/">看过最终流放</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%9C%8B%E8%BF%87%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">看过只有我不存在的城市</a>
       </li>
     
@@ -809,19 +773,11 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
         <a href="/blog/%E7%9C%8B%E8%BF%87%E5%B0%91%E5%A5%B3%E4%B8%8E%E6%88%98%E8%BD%A6/">看过少女与战车</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87tari-tari/">看过TARI TARI</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%B8%95%E8%8E%AB%C2%B7%E8%89%BE%E5%BE%B7%E9%87%8C%E5%A5%87%E7%9A%84%E4%B8%89%E5%A4%84%E5%9C%A3%E7%97%95/">读过帕莫·艾德里奇的三处圣痕</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (74)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (84)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (74)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (86)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
