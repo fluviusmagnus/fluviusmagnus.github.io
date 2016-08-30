@@ -9,7 +9,7 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="读过《巴黎圣母院》的一定会被其凄美悲壮的结局所震撼。这种感觉，就像是看到了美好的事物在自己眼前毁灭，简直或是本来就是个悲剧。从看客的角度来说，无非就是受了冲击。而这冲击的主要内容，就是善恶观念的颠覆。 故事的开始给出了这么两个人物：貌美的吉普赛女艾斯梅达拉和奇丑的加西莫多。 &hellip;">
+  <meta name="description" content="话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。 从winehq下载最近版本，解压。直接./configure， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -84,6 +84,102 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">艰难曲折的wine经历</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-12T00:00:00+08:00" pubdate data-updated="true">Sep 12th, 2011</time>
+        
+        
+           | <a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。</p>
+
+<p>从winehq下载最近版本，解压。直接./configure，因为默认会编译成32位的版本。此时遇到错误：
+<blockquote>checking whether gcc -m32 works... no<br />
+configure: error: Cannot build a 32-bit program, you need to install 32-bit development libraries.</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%AF%95%E7%94%A8openbox/">试用openbox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-03T00:00:00+08:00" pubdate data-updated="true">Sep 3rd, 2011</time>
+        
+        
+           | <a href="/blog/%E8%AF%95%E7%94%A8openbox/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一直都比较喜欢简洁快速干净的东西。在使用了一段时间的gnome3之后，渐渐觉得它还是有点臃肿的感觉。听说openbox还不错，于是就试用了一下。</p>
+
+<p>openbox的配置还算简单，但是功能却不简单。我比较懒，不想手工修改配置，于是装了obconf（总体感觉的配置），obmenu（菜单编辑），obtheme（主题编辑）。这三个图形化配置工具非常容易使用，很适合新手。另外还装了tint2和conky，这样就像一个桌面的样子了。</p>
+
+<p>实际上，我在.xinitrc中写exec openbox还是exec openbox-session斟酌了很久，因为我需要在openbox启动时运行一段脚本。我看过网上的autostart.sh的方法，但是这就需要openbox-session。然而，这样就会将gnome的daemon（也许？）运行起来，这不是我想要的。所以目前采用的方法是直接启动openbox，然后将一个快捷键绑定到那个脚本即可。</p>
+
+<p>To be honest，本人也有使用过fvwm和awesome的经历。fvwm的配置太难理解，awesome的瓦片式也不习惯。经过比较，我觉得还是openbox方便，它更适合我。</p>
+
+<p>你找到了适合你的窗口管理器吗？</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -453,94 +549,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/">测试用其它客户端发布</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-30T00:00:00+08:00" pubdate data-updated="true">Jul 30th, 2011</time>
-        
-        
-           | <a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>大名鼎鼎的wordpress自然有许多第三方客户端，在后台开启支持后，就可使用。这篇文章从android发布，用以测试。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/">Wine出来的人人桌面</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-25T00:00:00+08:00" pubdate data-updated="true">Jul 25th, 2011</time>
-        
-        
-           | <a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>基本功能正常，外观有点难看，不过不要紧。</p>
-
-<p>有意思的是，它会躲避鼠标到其它工作区。</p>
-
-<p>有视频有真相！</p>
-
-<p><a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv">人人桌面躲避鼠标</a></p>
-
-<p>http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-27">&larr; 旧文</a>
@@ -573,6 +581,14 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/a-post/">一篇文章</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E4%BD%A0%E4%B8%80%E5%AE%9A%E7%88%B1%E8%AF%BB%E7%9A%84%E6%9E%81%E7%AE%80%E6%AC%A7%E6%B4%B2%E5%8F%B2/">读过你一定爱读的极简欧洲史</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E8%AF%BB%E8%BF%87%E5%BD%BC%E5%BE%97%C2%B7%E5%8D%A1%E9%97%A8%E9%9D%92/">读过彼得·卡门青</a>
       </li>
     
@@ -584,19 +600,11 @@
         <a href="/blog/%E7%9C%8B%E8%BF%87%E6%9C%80%E7%BB%88%E6%B5%81%E6%94%BE/">看过最终流放</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%8F%AA%E6%9C%89%E6%88%91%E4%B8%8D%E5%AD%98%E5%9C%A8%E7%9A%84%E5%9F%8E%E5%B8%82/">看过只有我不存在的城市</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%9C%A8%E8%BD%AE%E4%B8%8B/">读过在轮下</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (74)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (87)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (88)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
@@ -635,8 +643,8 @@
     </div>
   </div>
   <footer role="contentinfo"><p>
-  本站所有作品除非特殊说明均采用<strong><a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="license">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a></strong>进行许可。<br />
-  Copyright &copy; 2016 - 人間夜行 -
+  本站所有作品除非特殊说明均采用 <strong><a href="https://creativecommons.org/licenses/by-nc-sa/3.0/cn/" rel="license">知识共享署名-非商业性使用-相同方式共享 3.0 中国大陆许可协议</a></strong> 进行许可。<br />
+  Copyright &copy; 2011-2016 - 人間夜行 -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 

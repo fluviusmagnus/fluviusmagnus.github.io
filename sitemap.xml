@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://elephantus.moe/blog/a-post/</loc>
+<lastmod>2016-08-30T22:32:00+08:00</lastmod>
+</url>
+<url>
+<loc>https://elephantus.moe/blog/%25E8%25AF%25BB%25E8%25BF%2587%25E4%25BD%25A0%25E4%25B8%2580%25E5%25AE%259A%25E7%2588%25B1%25E8%25AF%25BB%25E7%259A%2584%25E6%259E%2581%25E7%25AE%2580%25E6%25AC%25A7%25E6%25B4%25B2%25E5%258F%25B2/</loc>
+<lastmod>2016-08-30T00:00:00+08:00</lastmod>
+</url>
+<url>
 <loc>https://elephantus.moe/blog/%25E8%25AF%25BB%25E8%25BF%2587%25E5%25BD%25BC%25E5%25BE%2597%25C2%25B7%25E5%258D%25A1%25E9%2597%25A8%25E9%259D%2592/</loc>
 <lastmod>2016-08-25T00:00:00+08:00</lastmod>
 </url>
@@ -1267,7 +1275,7 @@
 </url>
 <url>
 <loc>https://elephantus.moe/work/index.htm</loc>
-<lastmod>2016-03-10T20:21:03+08:00</lastmod>
+<lastmod>2016-08-30T22:25:53+08:00</lastmod>
 </url>
 <url>
 <loc>https://elephantus.moe/google214a8eda010100a1.html</loc>
