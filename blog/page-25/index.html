@@ -9,14 +9,12 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//简单的01背包，可以参考饮食问题。（几乎一样，汗==）
-#include &lt;stdio.h&gt;
-int max(int a,int b)
-{
-        if(a&gt;b) return a;
-        else return b;
-}
-int main &hellip;">
+  <meta name="description" content="//先一次快排。以后挪一挪。
+//贪心。
+//又想起WJMZBMR曾经用这道题演示C++的STL。这样不就几乎不用做了吗？
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int comp(const void *p1,const void *p2 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -93,6 +91,208 @@ int main &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-25-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/">RQNOJ 25 合并果子</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-25-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//先一次快排。以后挪一挪。
+//贪心。
+//又想起WJMZBMR曾经用这道题演示C++的STL。这样不就几乎不用做了吗？
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int comp(const void *p1,const void *p2)
+    {
+return *((int *)p1)-*((int *)p2);
+}
+int main()
+{
+int i,n,j,a[10001]={0},s=0,t;
+scanf("%d",&amp;n);
+for(i=0;i&lt;=n-1;i++) scanf("%d",&amp;a[i]);
+qsort(a,n,sizeof(int),comp);
+for(i=0;i&lt;=n-2;i++)
+{
+    a[i+1]=a[i]+a[i+1];
+    s+=a[i+1];
+    for(j=i+1;j&lt;=n-2;j++) if(a[j]&gt;a[j+1]) 
+{
+t=a[j];
+        a[j]=a[j+1];
+     a[j+1]=t;
+}
+}
+printf("%d",s);
+         return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-20-%E4%B8%8D%E9%AB%98%E5%85%B4%E7%9A%84%E6%B4%A5%E6%B4%A5/">RQNOJ 20 不高兴的津津</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-20-%E4%B8%8D%E9%AB%98%E5%85%B4%E7%9A%84%E6%B4%A5%E6%B4%A5/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//模拟全过程就行了。
+#include &lt;stdio.h&gt;
+int main()
+{
+        int hp[8]={0,0,0,0,0,0,0,0};
+        int i;
+        for(i=1;i&lt;=7;i++)
+        {
+                int a,b;
+                scanf("%d%d",&amp;a,&amp;b);
+                hp[i]=a+b;
+        }
+        for(i=1;i&lt;=6;i++)
+        {
+                if(hp[i]&gt;8) hp[i]-=8;
+                else hp[i]=0;
+     //           hp[i+1]+=hp[i];
+        }
+        if(hp[7]&gt;8) hp[7]-=9;
+        else hp[7]=0;
+        int t=0,h=0;
+        for(i=1;i&lt;=7;i++)
+        {
+               if(hp[i]&gt;h)
+               {
+                        t=i;
+                        h=hp[i];
+               }
+        }
+        printf("%d",t);
+//        while(1);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-2-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/">RQNOJ 2 开心的金明</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-2-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//本来是可以用动规做的，但是也提供另一种方法
+#include &lt;stdio.h&gt;
+long int n,m;
+int i,v[30],p[30];
+long int maxget(int free,int now)
+{
+     if(now==-1) return 0;
+     if(free-p[now]&lt;0) return maxget(free,now-1);
+     long int max1,max2;
+     max1=maxget(free,now-1);
+     max2=maxget(free-p[now],now-1)+v[now]*p[now];
+     if(max1&gt;max2)
+     return max1;
+     else
+     return max2;
+}
+int main()
+{
+    scanf("%d %d",&amp;n,&amp;m);
+    for(i=0;i&lt;m;i++) scanf("%d %d",&amp;p[i],&amp;v[i]);
+    printf("%d",maxget(n,m-1));
+    return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -537,168 +737,6 @@ done</blockquote>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/">小小地吐一个</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-24T00:00:00+08:00" pubdate data-updated="true">Sep 24th, 2011</time>
-        
-        
-           | <a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>我不过是下一个游戏罢了，用得着给这种速度吗？</p>
-
-<p>[caption id="attachment_194" align="aligncenter" width="300" caption="下载0ad时的速度，sf不给力"]<a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1.png"><img class="size-medium wp-image-194" title="下载0ad时的速度" src="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1-300x209.png" alt="下载0ad时的速度，sf不给力" width="300" height="209" /></a>[/caption]</p>
-
-<p>Sourceforge每次都自动跳转到那个镜像。慢啊。:-(也许下次该设法配置一下了。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">当数值超出范围</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-15T00:00:00+08:00" pubdate data-updated="true">Sep 15th, 2011</time>
-        
-        
-           | <a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>这两天在学校的Windows机器上捣鼓C语言的程序，无意中编了这样一个程序。要命的是，它的运行结果是出人意料的。
-<blockquote>#include &lt;stdio.h&gt;<br />
-int main()<br />
-{
-    int a=1;<br />
-    for(;;)<br />
-    {<br />
-           a*=2;<br />
-           printf("%d\n",a);<br />
-           if(a==0)<br />
-           {<br />
-                   printf("Top reached.\n");<br />
-                   getchar();<br />
-           }<br />
-    }<br />
-    return 0;<br />
-}</blockquote>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">关于multilib的补充说明</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14th, 2011</time>
-        
-        
-           | <a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>我的上一篇文章（《<a title="艰难曲折的wine经历" href="http://koccn.net/wordpress/%e8%89%b0%e9%9a%be%e6%9b%b2%e6%8a%98%e7%9a%84wine%e7%bb%8f%e5%8e%86/" target="_blank">艰难曲折的wine经历</a>》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
-<blockquote>[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib<br />
-1 multilib/gcc-multilib 4.6.1-4 (multilib-devel)<br />
-The GNU Compiler Collection – C and C++ frontends for multilib<br />
-==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)<br />
-==&gt; ——————————————————-<br />
-==&gt; 1</blockquote></p>
-
-<p>密码：<br />
-正在解决依赖关系…<br />
-正在查找内部冲突…<br />
-:: gcc-libs-multilib 与 gcc-libs 有冲突。删除 gcc-libs 吗？ [y/N] y<br />
-:: binutils-multilib 与 binutils 有冲突。删除 binutils 吗？ [y/N] y<br />
-:: gcc-multilib 与 gcc 有冲突。删除 gcc 吗？ [y/N] y<br />
-（后面省略）
-最后我的做法是分别使用gcc-libs-multilib，binutils-multilib，gcc-multilib替换gcc-libs，binutils，gcc。确实，我当时犹豫了很久，经过一番臆测之后，得出这样的结论：</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-26">&larr; 旧文</a>
@@ -731,6 +769,18 @@ The GNU Compiler Collection – C and C++ frontends for multilib<br />
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B2%89%E9%BB%98%E7%9A%84%E6%9C%AA%E7%9F%A5/">看过沉默的未知</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%9A%97%E8%8A%9D%E5%B1%85-%E7%AC%AC%E4%B8%89%E5%AD%A3/">看过暗芝居 第三季</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%88%87%E8%85%B9/">看过切腹</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/a-post/">一篇文章</a>
       </li>
     
@@ -738,23 +788,11 @@ The GNU Compiler Collection – C and C++ frontends for multilib<br />
         <a href="/blog/%E8%AF%BB%E8%BF%87%E4%BD%A0%E4%B8%80%E5%AE%9A%E7%88%B1%E8%AF%BB%E7%9A%84%E6%9E%81%E7%AE%80%E6%AC%A7%E6%B4%B2%E5%8F%B2/">读过你一定爱读的极简欧洲史</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E5%BD%BC%E5%BE%97%C2%B7%E5%8D%A1%E9%97%A8%E9%9D%92/">读过彼得·卡门青</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%9C%80%E7%BB%88%E6%B5%81%E6%94%BE~%E9%93%B6%E7%BF%BC%E4%B9%8B%E6%B3%95%E5%A7%86~/">看过最终流放~银翼之法姆~</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%9C%80%E7%BB%88%E6%B5%81%E6%94%BE/">看过最终流放</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (88)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (91)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
