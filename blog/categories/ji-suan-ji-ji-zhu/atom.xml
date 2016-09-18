@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-09-10T10:41:47+08:00</updated>
+  <updated>2016-09-18T12:48:03+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,31 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[German Keyboard Layout Optimized for Simplified Chinese Keyboard]]></title>
+    <link href="https://elephantus.moe/blog/german-keyboard-layout-optimized-for-simplified-chinese-keyboard/"/>
+    <updated>2016-09-18T12:39:47+08:00</updated>
+    <id>https://elephantus.moe/blog/german-keyboard-layout-optimized-for-simplified-chinese-keyboard</id>
+    <content type="html"><![CDATA[<p>GitHub Project: <a href="https://github.com/fluviusmagnus/DeT3Zh">DeT3Zh</a></p>
+
+<h2>Why?</h2>
+
+<p>Typical Chinese keyboards lack the <code>&lt;</code> key between LShift and Y, which appears commonly on European keyboards. As a result, Germanists in China have to keep switching frequently from one keyboard layout to another. Therefore, I tried to create a special modified German keyboard layout for those who are using a Chinese keyboard. All the modification works fine on my Manjaro machine, and should work also on Archlinux or other Linux systems. <!--more--></p>
+
+<h2>What has been changed?</h2>
+
+<p>This customized keyboard layout is modified on the basis of T3 (Tastaturbelegung 3, „Expertentastatur“), which is the most powerful and also compatible with T1 and T2. For more information about German keyboard please see <a href="https://de.wikipedia.org/wiki/Tastaturbelegung#Deutschland_und_.C3.96sterreich">Tastaturbelegung</a> on Wikipedia or <a href="http://www.pentzlin.com/ErweiterungDeutscheTastatur2.pdf">Karl Pentzlin: Vorschlag zur Erweiterung der deutschen PC-Standardtastatur (PDF; 1,2 MB)</a>. There are also illustrations showing the position of each key in both links.</p>
+
+<p>My modification is simple. Group 1 i.e. <code>&lt; &gt; |</code> on the <code>&lt;</code> key is moved to Group 2 of key <code>ß</code>, and Group 2 i.e. <code>ŉ ¦ ♪</code> on it is moved to Group 2 of key <code>+</code>. This should be safe because the overwritten groups are actually duplicate.</p>
+
+<h2>How to use?</h2>
+
+<p>For Manjaro or Archlinux, place the layout file <code>de_zhkb</code> into <code>/usr/share/X11/xkb/symbols/</code>. And then modify <code>base.lst</code>, <code>evdev.lst</code> and <code>evdev.xml</code> in <code>/usr/share/X11/xkb/rules/</code>. This won&rsquo;t be difficult as these files are quite self-explanatory. After a reboot the German (T3 Modified for ZhKB) layout should appear on the list of a selector.</p>
+
+<p><strong>Honestly speaking, I do not know very well how to deal with these files. So please tell me if there is anything wrong.</strong></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[备份 VPS 至 Dropbox]]></title>
@@ -140,26 +165,6 @@ rm ./_posts/*</code></pre></div></p>
 
 
 <p>然而问题是无线网信号还是很差。反正出门基本就不用无线了，室内就用路由器，日子照样好好过。</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[我的行为艺术]]></title>
-    <link href="https://elephantus.moe/blog/%E6%88%91%E7%9A%84%E8%A1%8C%E4%B8%BA%E8%89%BA%E6%9C%AF/"/>
-    <updated>2015-04-06T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/我的行为艺术</id>
-    <content type="html"><![CDATA[<p>我用假文制作了一个看似有内容的站点：<a title="人间夜行的行为艺术" href="http://art.koccn.net" target="_blank">人间夜行的行为艺术</a>。</p>
-
-
-
-
-<p>大家可以通过<a title="人间夜行的行为艺术" href="http://art.koccn.net" target="_blank">art.koccn.net</a>或<a title="人间夜行的行为艺术" href="http://art.koccn.net" target="_blank">art.elephantus.tk</a>来访问。</p>
-
-
-
-
-<p>其不能称内容的内容来源于 <a title="MoreText.js" href="http://more.handlino.com/?corpus=xuzhimo" target="_blank">MoreText.js: 一用就愛上的中文假文產生器</a>。当然，语料库还是徐志摩的比较好看。</p>
 
 ]]></content>
   </entry>

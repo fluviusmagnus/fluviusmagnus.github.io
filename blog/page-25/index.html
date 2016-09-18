@@ -9,12 +9,13 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//先一次快排。以后挪一挪。
-//贪心。
-//又想起WJMZBMR曾经用这道题演示C++的STL。这样不就几乎不用做了吗？
-#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-int comp(const void *p1,const void *p2 &hellip;">
+  <meta name="description" content="//这道题的数学技巧比较强。
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+long int gcd(long int a,long int b)
+{
+        if(a%b!=0) return gcd(b,a%b);
+         &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,6 +92,66 @@ int comp(const void *p1,const void *p2 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/">RQNOJ 304 最大公约数和最小公倍数问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//这道题的数学技巧比较强。
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+long int gcd(long int a,long int b)
+{
+        if(a%b!=0) return gcd(b,a%b);
+        else return b;
+}
+int main()
+{
+        long int x,y;
+        scanf("%ld%ld",&amp;x,&amp;y);
+        long int i,num;
+        num=0;
+        for(i=x;i&lt;=y;i++)
+        {
+                if(x*y%i==0&amp;&amp;x==gcd(i,x*y/i)) num++;
+        }
+        printf("%ld",num);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -684,59 +745,6 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/">Cygwin中上人人</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-10-01T00:00:00+08:00" pubdate data-updated="true">Oct 1st, 2011</time>
-        
-        
-           | <a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>由于工作需要，最近要使用Windows机器。但是有割舍不了*nix风格操作方式，于是使用了大名鼎鼎的cygwin，另外还装了w3m。</p>
-
-<p>想想就知道，人人是几乎不可能会有cygwin的客户端的，要用就得自己做！因为我常常是看帖不回的（除了无聊时），所以设想通过开关w3m的方式来实现定时刷新。写出如下bash脚本：
-<blockquote>while [ "d" = "d" ]<br />
-do<br />
-w3m -cookie wap.renren.com&amp;<br />
-sleep 60<br />
-pkill w3m<br />
-done</blockquote>
-本人bash属于现学，所以写得不好请见谅（确实不太好= =）。通过这样的方式便能实现人人的自动刷新。</p>
-
-<p>其中sleep定为60秒，你可以自己改。当然如果你想在linux上用这个，理论上应该也可以。</p>
-
-<p>ps：cygwin需要安装非默认的procps软件包。</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-26">&larr; 旧文</a>
@@ -769,6 +777,10 @@ done</blockquote>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/german-keyboard-layout-optimized-for-simplified-chinese-keyboard/">German Keyboard Layout Optimized for Simplified Chinese Keyboard</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B2%89%E9%BB%98%E7%9A%84%E6%9C%AA%E7%9F%A5/">看过沉默的未知</a>
       </li>
     
@@ -784,15 +796,11 @@ done</blockquote>
         <a href="/blog/a-post/">一篇文章</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E4%BD%A0%E4%B8%80%E5%AE%9A%E7%88%B1%E8%AF%BB%E7%9A%84%E6%9E%81%E7%AE%80%E6%AC%A7%E6%B4%B2%E5%8F%B2/">读过你一定爱读的极简欧洲史</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (91)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (51)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (91)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

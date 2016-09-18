@@ -9,13 +9,14 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//打个表。虽然我承认这个表并不太好。
+  <meta name="description" content="//此题需要一定的数学技巧。需要理解此函数的几何意义。
+//同时考察格式化输出。
 #include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int sum;
-void tj(char ch)
+#include &lt;math.h&gt;
+int main()
 {
-        if(ch=='a'||ch=='d'||ch=='g'||ch=='j'||ch &hellip;">
+        float a,b,c,d;
+        scanf("%f%f%f%f &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -92,6 +93,56 @@ void tj(char ch)
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/">RQNOJ 238 火炬手之梦</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//此题需要一定的数学技巧。需要理解此函数的几何意义。
+//同时考察格式化输出。
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+int main()
+{
+        float a,b,c,d;
+        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
+        printf("%0.3f",sqrt((sqrt(b)+sqrt(d))*(sqrt(b)+sqrt(d))+(a-c)*(a-c)));
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -687,66 +738,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/">RQNOJ 304 最大公约数和最小公倍数问题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//这道题的数学技巧比较强。
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-long int gcd(long int a,long int b)
-{
-        if(a%b!=0) return gcd(b,a%b);
-        else return b;
-}
-int main()
-{
-        long int x,y;
-        scanf("%ld%ld",&amp;x,&amp;y);
-        long int i,num;
-        num=0;
-        for(i=x;i&lt;=y;i++)
-        {
-                if(x*y%i==0&amp;&amp;x==gcd(i,x*y/i)) num++;
-        }
-        printf("%ld",num);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-25">&larr; 旧文</a>
@@ -779,6 +770,10 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/german-keyboard-layout-optimized-for-simplified-chinese-keyboard/">German Keyboard Layout Optimized for Simplified Chinese Keyboard</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B2%89%E9%BB%98%E7%9A%84%E6%9C%AA%E7%9F%A5/">看过沉默的未知</a>
       </li>
     
@@ -794,15 +789,11 @@ int main()
         <a href="/blog/a-post/">一篇文章</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E4%BD%A0%E4%B8%80%E5%AE%9A%E7%88%B1%E8%AF%BB%E7%9A%84%E6%9E%81%E7%AE%80%E6%AC%A7%E6%B4%B2%E5%8F%B2/">读过你一定爱读的极简欧洲史</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (50)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (91)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (51)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (91)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
