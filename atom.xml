@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-09-18T12:48:03+08:00</updated>
+  <updated>2016-09-20T09:50:48+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,38 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[读过乌托邦]]></title>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E4%B9%8C%E6%89%98%E9%82%A6/"/>
+    <updated>2016-09-20T00:00:00+08:00</updated>
+    <id>https://elephantus.moe/blog/读过乌托邦</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="https://book.douban.com/subject/1927487/" title="乌托邦">
+    <img src="https://img3.doubanio.com/spic/s1991672.jpg" alt="乌托邦"></a></td>
+    <td>
+        <p>推荐: 推荐</p>
+        <p>标签: 社会科学 英国</p>
+        <p>备注: 讨论乌托邦是否可能其实是很无聊的事情，但这至少是对苦难人间的一种关怀。人为的设计几乎总是意味着缺憾，这一方面是因为对事物的认识不足，另一方面则是为不可逾越的时空障碍。然而幻想乃是现实的原则，这一点必要在时间的维度上成立，因此我们不可能过原始社会的生活、中世纪的生活，以及现在的生活。莫尔坚实的幻想是全部人类幻想中极富历史意义的一部分。</p>
+    </td></tr></table>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[看过帝都物语]]></title>
+    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%B8%9D%E9%83%BD%E7%89%A9%E8%AF%AD/"/>
+    <updated>2016-09-19T00:00:00+08:00</updated>
+    <id>https://elephantus.moe/blog/看过帝都物语</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="https://movie.douban.com/subject/3286429/" title="帝都物語">
+    <img src="https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2242075255.jpg" alt="帝都物語"></a></td>
+    <td>
+        <p>推荐: 还行</p>
+        <p>标签: 日本动画</p>
+        <p>备注: 猎奇，各路神仙巨大混乱，颇多暗示，设定的狂欢。忽略诡异的剧情似乎能感受到一种霸气浪漫。菩萨慈悲。</p>
+    </td></tr></table>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[German Keyboard Layout Optimized for Simplified Chinese Keyboard]]></title>
@@ -35,6 +67,22 @@
 <p>For Manjaro or Archlinux, place the layout file <code>de_zhkb</code> into <code>/usr/share/X11/xkb/symbols/</code>. And then modify <code>base.lst</code>, <code>evdev.lst</code> and <code>evdev.xml</code> in <code>/usr/share/X11/xkb/rules/</code>. This won&rsquo;t be difficult as these files are quite self-explanatory. After a reboot the German (T3 Modified for ZhKB) layout should appear on the list of a selector.</p>
 
 <p><strong>Honestly speaking, I do not know very well how to deal with these files. So please tell me if there is anything wrong.</strong></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[玩过逃脱解谜：古董旅店 逃脫解謎：古董旅店]]></title>
+    <link href="https://elephantus.moe/blog/%E7%8E%A9%E8%BF%87%E9%80%83%E8%84%B1%E8%A7%A3%E8%B0%9C%EF%BC%9A%E5%8F%A4%E8%91%A3%E6%97%85%E5%BA%97-%E9%80%83%E8%84%AB%E8%A7%A3%E8%AC%8E%EF%BC%9A%E5%8F%A4%E8%91%A3%E6%97%85%E5%BA%97/"/>
+    <updated>2016-09-11T00:00:00+08:00</updated>
+    <id>https://elephantus.moe/blog/玩过逃脱解谜：古董旅店-逃脫解謎：古董旅店</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="https://www.douban.com/game/26864863/" title="逃脱解谜：古董旅店 逃脫解謎：古董旅店">
+    <img src="https://img1.doubanio.com/mpic/s29015388.jpg" alt="逃脱解谜：古董旅店 逃脫解謎：古董旅店"></a></td>
+    <td>
+        <p>推荐: 推荐</p>
+        <p>标签: 密室</p>
+        <p>备注: AVG 玩家表示喜欢。故事很动人啊，结构很完整的。我也看了很多评论，最后只能得出不同类型的游戏玩家群体之间理解困难的结论。</p>
+    </td></tr></table>
 ]]></content>
   </entry>
   
@@ -120,7 +168,7 @@
   <entry>
     <title type="html"><![CDATA[读过彼得·卡门青]]></title>
     <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E5%BD%BC%E5%BE%97%C2%B7%E5%8D%A1%E9%97%A8%E9%9D%92/"/>
-    <updated>2016-08-25T00:00:00+08:00</updated>
+    <updated>2016-08-24T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/读过彼得·卡门青</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://book.douban.com/subject/2978933/" title="彼得·卡门青">
@@ -291,54 +339,6 @@
         <p>备注: 正如其标题，本书讨论了很多科学与宗教信仰的矛盾。但需要指出的是，神学的上帝与书中实际客观存在着的某种意识并不是在同一个领域能讨论的问题，因此任何证明都归为无效。更何况有个叫做人择原理的东西并未提及，应该是被忽略掉了，否则故事就无法进行。
 本书的外星文明设计足够外星，即使给定了如此多的共同点之后仍然不觉得像人类，可以看出这是作者有意识努力的成果。这里有相当多的点子，可以成为他山之石，反思我们的来由和特质。
 也许是由于主角将死之身的设定，全作散发出一种淡淡的忧伤（？），有血有肉的情感代入感超强。故事本身就是这样的视角，要批评说格局太小我是不能认同的。</p>
-    </td></tr></table>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过帝国的毁灭]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%B8%9D%E5%9B%BD%E7%9A%84%E6%AF%81%E7%81%AD/"/>
-    <updated>2016-07-05T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过帝国的毁灭</id>
-    <content type="html"><![CDATA[    <table><tr>
-    <td width="80px"><a href="https://movie.douban.com/subject/1309115/" title="Der Untergang">
-    <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p453463177.jpg" alt="Der Untergang"></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 德国 二战</p>
-        <p>备注: 悲剧。几乎看得要动摇。人类历史的进程显然不仅仅是经济政治的庸俗利益能完全解释的，其背后必然是以某种形式发展的精神。意识形态不同根本没有对话的可能。</p>
-    </td></tr></table>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过浮士德]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%B5%AE%E5%A3%AB%E5%BE%B7/"/>
-    <updated>2016-07-03T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/看过浮士德</id>
-    <content type="html"><![CDATA[    <table><tr>
-    <td width="80px"><a href="https://movie.douban.com/subject/1305235/" title="Faust - Eine deutsche Volkssage">
-    <img src="https://img1.doubanio.com/view/movie_poster_cover/ipst/public/p1649361608.jpg" alt="Faust - Eine deutsche Volkssage"></a></td>
-    <td>
-        <p>推荐: 推荐</p>
-        <p>标签: 德国</p>
-        <p>备注: 不甚满意。把原著改成这样似乎显得俗气？固然仍旧可以作一番解读，不过能说的还是有限。特别值得注意的地方是签订契约的原因。当然许多处理有历史性的价值，专业解读不会。</p>
-    </td></tr></table>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[读过理想国]]></title>
-    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E7%90%86%E6%83%B3%E5%9B%BD/"/>
-    <updated>2016-07-01T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/读过理想国</id>
-    <content type="html"><![CDATA[    <table><tr>
-    <td width="80px"><a href="https://book.douban.com/subject/1004821/" title="理想国">
-    <img src="https://img3.doubanio.com/spic/s1068535.jpg" alt="理想国"></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 哲学</p>
-        <p>备注: 源头。但对话体真的很苦手。</p>
     </td></tr></table>
 ]]></content>
   </entry>
