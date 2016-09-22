@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2016-09-20T09:50:48+08:00</updated>
+  <updated>2016-09-22T15:55:14+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,22 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[读过上帝的图书馆]]></title>
+    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E4%B8%8A%E5%B8%9D%E7%9A%84%E5%9B%BE%E4%B9%A6%E9%A6%86/"/>
+    <updated>2016-09-21T00:00:00+08:00</updated>
+    <id>https://elephantus.moe/blog/读过上帝的图书馆</id>
+    <content type="html"><![CDATA[    <table><tr>
+    <td width="80px"><a href="https://book.douban.com/subject/26656291/" title="上帝的图书馆">
+    <img src="https://img3.doubanio.com/spic/s28828126.jpg" alt="上帝的图书馆"></a></td>
+    <td>
+        <p>推荐: 推荐</p>
+        <p>标签: 美国 奇幻</p>
+        <p>备注: 我并未尝试过很多奇幻类型，但这次的体验确实令人感到畅快。书很好读，谋篇布局的节奏感控制得相当成熟，不愧是发达产业环境中诞生的作品。细节的精妙呼应常常带来惊喜。自我牺牲的殉道者的形象明显和希腊式的众神形成有趣的对比，以此差异来解释最终似乎强行温暖的结局或许能够使人释怀。当然本作可以说是用了黑暗的方式讲述了一个本质上温暖的故事。然而疑问：为何这个世界要设定得如此残酷？公设只做到这一步总觉得不甘心。我能理解要做设定的想法，但以目前的逻辑明明可以把事情弄成温和的样子。果然对于诸神的世界我们还是缺乏理解。</p>
+    </td></tr></table>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[读过乌托邦]]></title>
@@ -321,24 +337,6 @@
         <p>推荐: 力荐</p>
         <p>标签: 摇滚 音乐</p>
         <p>备注: 西式末世纪迷惘。音乐电影。虽说无明显剧情，但其中意思以音画表达得很清楚。明显的意识流。</p>
-    </td></tr></table>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[读过计算中的上帝]]></title>
-    <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E8%AE%A1%E7%AE%97%E4%B8%AD%E7%9A%84%E4%B8%8A%E5%B8%9D/"/>
-    <updated>2016-07-11T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/读过计算中的上帝</id>
-    <content type="html"><![CDATA[    <table><tr>
-    <td width="80px"><a href="https://book.douban.com/subject/1140726/" title="计算中的上帝">
-    <img src="https://img3.doubanio.com/spic/s28708221.jpg" alt="计算中的上帝"></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 科幻 加拿大</p>
-        <p>备注: 正如其标题，本书讨论了很多科学与宗教信仰的矛盾。但需要指出的是，神学的上帝与书中实际客观存在着的某种意识并不是在同一个领域能讨论的问题，因此任何证明都归为无效。更何况有个叫做人择原理的东西并未提及，应该是被忽略掉了，否则故事就无法进行。
-本书的外星文明设计足够外星，即使给定了如此多的共同点之后仍然不觉得像人类，可以看出这是作者有意识努力的成果。这里有相当多的点子，可以成为他山之石，反思我们的来由和特质。
-也许是由于主角将死之身的设定，全作散发出一种淡淡的忧伤（？），有血有肉的情感代入感超强。故事本身就是这样的视角，要批评说格局太小我是不能认同的。</p>
     </td></tr></table>
 ]]></content>
   </entry>
