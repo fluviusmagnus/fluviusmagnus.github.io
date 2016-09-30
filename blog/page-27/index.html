@@ -9,7 +9,14 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="读过《巴黎圣母院》的一定会被其凄美悲壮的结局所震撼。这种感觉，就像是看到了美好的事物在自己眼前毁灭，简直或是本来就是个悲剧。从看客的角度来说，无非就是受了冲击。而这冲击的主要内容，就是善恶观念的颠覆。 故事的开始给出了这么两个人物：貌美的吉普赛女艾斯梅达拉和奇丑的加西莫多。 &hellip;">
+  <meta name="description" content="这两天在学校的Windows机器上捣鼓C语言的程序，无意中编了这样一个程序。要命的是，它的运行结果是出人意料的。
+#include &lt;stdio.h&gt;
+int main()
+{
+    int a=1;
+    for(;;)
+    {
+           a*=2 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +93,220 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">当数值超出范围</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-15T00:00:00+08:00" pubdate data-updated="true">Sep 15th, 2011</time>
+        
+        
+           | <a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这两天在学校的Windows机器上捣鼓C语言的程序，无意中编了这样一个程序。要命的是，它的运行结果是出人意料的。
+<blockquote>#include &lt;stdio.h&gt;<br />
+int main()<br />
+{
+    int a=1;<br />
+    for(;;)<br />
+    {<br />
+           a*=2;<br />
+           printf("%d\n",a);<br />
+           if(a==0)<br />
+           {<br />
+                   printf("Top reached.\n");<br />
+                   getchar();<br />
+           }<br />
+    }<br />
+    return 0;<br />
+}</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">关于multilib的补充说明</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14th, 2011</time>
+        
+        
+           | <a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我的上一篇文章（《<a title="艰难曲折的wine经历" href="http://koccn.net/wordpress/%e8%89%b0%e9%9a%be%e6%9b%b2%e6%8a%98%e7%9a%84wine%e7%bb%8f%e5%8e%86/" target="_blank">艰难曲折的wine经历</a>》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
+<blockquote>[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib<br />
+1 multilib/gcc-multilib 4.6.1-4 (multilib-devel)<br />
+The GNU Compiler Collection – C and C++ frontends for multilib<br />
+==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)<br />
+==&gt; ——————————————————-<br />
+==&gt; 1</blockquote></p>
+
+<p>密码：<br />
+正在解决依赖关系…<br />
+正在查找内部冲突…<br />
+:: gcc-libs-multilib 与 gcc-libs 有冲突。删除 gcc-libs 吗？ [y/N] y<br />
+:: binutils-multilib 与 binutils 有冲突。删除 binutils 吗？ [y/N] y<br />
+:: gcc-multilib 与 gcc 有冲突。删除 gcc 吗？ [y/N] y<br />
+（后面省略）
+最后我的做法是分别使用gcc-libs-multilib，binutils-multilib，gcc-multilib替换gcc-libs，binutils，gcc。确实，我当时犹豫了很久，经过一番臆测之后，得出这样的结论：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">艰难曲折的wine经历</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-12T00:00:00+08:00" pubdate data-updated="true">Sep 12th, 2011</time>
+        
+        
+           | <a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。</p>
+
+<p>从winehq下载最近版本，解压。直接./configure，因为默认会编译成32位的版本。此时遇到错误：
+<blockquote>checking whether gcc -m32 works... no<br />
+configure: error: Cannot build a 32-bit program, you need to install 32-bit development libraries.</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%AF%95%E7%94%A8openbox/">试用openbox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-03T00:00:00+08:00" pubdate data-updated="true">Sep 3rd, 2011</time>
+        
+        
+           | <a href="/blog/%E8%AF%95%E7%94%A8openbox/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一直都比较喜欢简洁快速干净的东西。在使用了一段时间的gnome3之后，渐渐觉得它还是有点臃肿的感觉。听说openbox还不错，于是就试用了一下。</p>
+
+<p>openbox的配置还算简单，但是功能却不简单。我比较懒，不想手工修改配置，于是装了obconf（总体感觉的配置），obmenu（菜单编辑），obtheme（主题编辑）。这三个图形化配置工具非常容易使用，很适合新手。另外还装了tint2和conky，这样就像一个桌面的样子了。</p>
+
+<p>实际上，我在.xinitrc中写exec openbox还是exec openbox-session斟酌了很久，因为我需要在openbox启动时运行一段脚本。我看过网上的autostart.sh的方法，但是这就需要openbox-session。然而，这样就会将gnome的daemon（也许？）运行起来，这不是我想要的。所以目前采用的方法是直接启动openbox，然后将一个快捷键绑定到那个脚本即可。</p>
+
+<p>To be honest，本人也有使用过fvwm和awesome的经历。fvwm的配置太难理解，awesome的瓦片式也不习惯。经过比较，我觉得还是openbox方便，它更适合我。</p>
+
+<p>你找到了适合你的窗口管理器吗？</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -364,185 +585,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/">安装Archlinux小记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-17T00:00:00+08:00" pubdate data-updated="true">Aug 17th, 2011</time>
-        
-        
-           | <a href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>正如之前的某一篇文章所说，我的Ubuntu已经不堪重负了，所以我作了一个艰难的决定，就是放弃Ubuntu，叛逃至Archlinux。原因是这个发行版具有高度定制性，坚持KISS原则，后期的使用十分省心。于是我就开始装了。</p>
-
-<p>从163的镜像站上下载了201005的本地安装版本。为什么要用这个版本而不选择netinstall呢？事实上我之前在虚拟机上试装过一遍，网络安装常常出错。毕竟安装程序是旧的，而软件包是新的，而要纠正错误得花很大的力气。</p>
-
-<p>刻盘，安装。原来/home内容已经备份，所以挂载时问(re)create filesystem就选yes，也就是格式化。安装过程还算是顺利，只要一步一步按照官方文档来就可以了。Archlinux的官方文档制作得还算是不错的。但是，毕竟每个人的具体情况不一样，所以baidu、google永远是我们的好朋友。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/">你是Geek吗</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-01T00:00:00+08:00" pubdate data-updated="true">Aug 1st, 2011</time>
-        
-        
-           | <a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>NerdTests.com是一个Geek文化站，顾名思义提供了一些有趣的测试。比如说我刚刚参加的名为“Are you a Computer Geek?”的测试，结果为</p>
-
-<p><a href="http://www.nerdtests.com/ft_cg.php?im"><img src="http://www.nerdtests.com/images/ft/cg.php?val=7764" alt="My computer geek score is greater than 79% of all people in the world! How do you compare? Click here to find out!" /> </a>这是一个极高的分数。（也许吧==）</p>
-
-<p>想知道你是Geek吗，试试看吧。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/">测试用其它客户端发布</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-30T00:00:00+08:00" pubdate data-updated="true">Jul 30th, 2011</time>
-        
-        
-           | <a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>大名鼎鼎的wordpress自然有许多第三方客户端，在后台开启支持后，就可使用。这篇文章从android发布，用以测试。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/">Wine出来的人人桌面</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-25T00:00:00+08:00" pubdate data-updated="true">Jul 25th, 2011</time>
-        
-        
-           | <a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>基本功能正常，外观有点难看，不过不要紧。</p>
-
-<p>有意思的是，它会躲避鼠标到其它工作区。</p>
-
-<p>有视频有真相！</p>
-
-<p><a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv">人人桌面躲避鼠标</a></p>
-
-<p>http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-28">&larr; 旧文</a>
@@ -575,30 +617,30 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E7%A6%8F%E9%9F%B3%E6%88%98%E5%A3%AB%E6%96%B0%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9Aq/">看过福音战士新剧场版：Q</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%94%A8%E8%BF%87%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B7-(iphone-ipad)/">用过纪念碑谷 (iPhone / iPad)</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%8E%A9%E8%BF%87the-swords-%E8%AF%B4%E5%89%91/">玩过the Swords 说剑</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%80%86%E8%BD%AC%E8%A3%81%E5%88%A4-%E3%80%9C%E5%AF%B9%E8%BF%99%E4%B8%AA%E2%80%9C%E7%9C%9F%E5%AE%9E%E2%80%9D%EF%BC%8C%E6%9C%89%E5%BC%82%E8%AE%AE%EF%BC%81%E3%80%9C/">看过逆转裁判 〜对这个“真实”，有异议！〜</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/%E8%AF%BB%E8%BF%87%E4%B8%8A%E5%B8%9D%E7%9A%84%E5%9B%BE%E4%B9%A6%E9%A6%86/">读过上帝的图书馆</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E4%B9%8C%E6%89%98%E9%82%A6/">读过乌托邦</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E5%B8%9D%E9%83%BD%E7%89%A9%E8%AF%AD/">看过帝都物语</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/german-keyboard-layout-optimized-for-simplified-chinese-keyboard/">German Keyboard Layout Optimized for Simplified Chinese Keyboard</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/%E7%8E%A9%E8%BF%87%E9%80%83%E8%84%B1%E8%A7%A3%E8%B0%9C%EF%BC%9A%E5%8F%A4%E8%91%A3%E6%97%85%E5%BA%97-%E9%80%83%E8%84%AB%E8%A7%A3%E8%AC%8E%EF%BC%9A%E5%8F%A4%E8%91%A3%E6%97%85%E5%BA%97/">玩过逃脱解谜：古董旅店 逃脫解謎：古董旅店</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (51)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (95)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (51)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (23)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (99)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
