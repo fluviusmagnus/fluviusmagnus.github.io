@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="zh-CN"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>C语言课部分资料共享 - 人間夜行</title>
+  <title>普通 Linux 用户的方法论 - 人間夜行</title>
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="这是关于C和Linux的资料：
-http://115.com/folder/fc3ppx16# 这是特别针对在Linux上C编程的资料：
-http://115.com/folder/fbg777m4# 由于这是鄙人多年辛苦收集，数量比较大（还有一些我知道你们现在还用不着所以没发）， &hellip;">
+  <meta name="description" content="我只简单谈一谈普通用户的方法论吧。 （以下 Linux 主要是指发行版，不是专指内核） 从 2009 年开始算 Linux 的坑我已经入了八年，这八年来最大的变化就是心态。有些看起来是老生常谈，经过考察证实了确实是人生的经验。但是同时我们也要考虑到历史的进程，发现所谓经验中具有普遍价值的真理， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ http://115.com/folder/fbg777m4# 由于这是鄙人多年辛苦收集，数量比
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="https://elephantus.moe/blog/c%E8%AF%AD%E8%A8%80%E8%AF%BE%E9%83%A8%E5%88%86%E8%B5%84%E6%96%99%E5%85%B1%E4%BA%AB">
+  <link rel="canonical" href="https://elephantus.moe/blog/methodology-of-an-ordinary-linux-user">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="人間夜行" type="application/atom+xml">
@@ -91,7 +89,7 @@ http://115.com/folder/fbg777m4# 由于这是鄙人多年辛苦收集，数量比
   
   <header>
     
-      <h1 class="entry-title">C语言课部分资料共享</h1>
+      <h1 class="entry-title">普通 Linux 用户的方法论</h1>
     
     
       <p class="meta">
@@ -108,7 +106,7 @@ http://115.com/folder/fbg777m4# 由于这是鄙人多年辛苦收集，数量比
 
 
 
-<time datetime="2012-03-24T00:00:00+08:00" pubdate data-updated="true">Mar 24th, 2012</time>
+<time datetime="2017-01-06T20:27:25+08:00" pubdate data-updated="true">Jan 6th, 2017</time>
         
         
            | <a href="#comments">评论</a>
@@ -118,15 +116,31 @@ http://115.com/folder/fbg777m4# 由于这是鄙人多年辛苦收集，数量比
   </header>
 
 
-<div class="entry-content"><p>这是关于C和Linux的资料：<br />
-http://115.com/folder/fc3ppx16#</p>
+<div class="entry-content"><p>我只简单谈一谈普通用户的方法论吧。</p>
 
-<p>这是特别针对在Linux上C编程的资料：<br />
-http://115.com/folder/fbg777m4#</p>
+<p>（以下 Linux 主要是指发行版，不是专指内核）</p>
 
-<p>由于这是鄙人多年辛苦收集，数量比较大（还有一些我知道你们现在还用不着所以没发），一口气看完可能性较小。所以，大家就选择适合自己兴趣和水平的来看吧。</p>
+<p>从 2009 年开始算 Linux 的坑我已经入了八年，这八年来最大的变化就是心态。有些看起来是老生常谈，经过考察证实了确实是人生的经验。但是同时我们也要考虑到历史的进程，发现所谓经验中具有普遍价值的真理，将其从时常变化的意见中分离出来。这应该就是我在与 Linux 相伴的八年里学会的东西。<!--more--></p>
 
-<p>PS：如果有问题可以直接找我。联系方式么……会有的。</p>
+<p>说得这么玄乎究竟是什么意思？我觉得还是应该先谈一下我对待计算机及其相关技术的原则。</p>
+
+<p>计算机其实在大多数情况下只是工具，不是玩具。固然可以把它当作玩具，但这终究不是人生的常态。我其实只是一个普通用户，我会写一些小程序，但我不是程序员，有时玩玩游戏，至于我的专业则与计算机毫无关联。因此，我对计算机的要求其实很简单，不过是要它总能按照我的意思工作而已（我坦言我很懒，能自动化处理的事情总想交给计算机，毕竟计算机是适合处理这类事情的）。但是就算是这样一种看起来很简单的要求，实现起来确实是有点困难。操作系统发展到今天，已经变得非常用户友好，但这种友好并不总是足够的，正如一切不完美的人工事物，很多时候还是会出现各种问题。这种时候，为了用户友好而被隐藏起来的技术细节就显得尤为重要，考察技术细节的能力似乎成为了判断用户水平的依据。我不认为这个问题短期内能够解决，但至少在这个时代，多一些这方面能力总归是能便利自己的，而且多少可以在这个特殊的信息技术时代对我们生存的世界掌握一些主动权，这基本上也就是普通用户学习技术的目标界限。这是好的。</p>
+
+<p>言归正传。事实上我已经很难再想起 2009 年尝试 Ubuntu 的确切原因了，可以确定的是我当时对 Windows XP 已经十分厌倦了。容易中毒，处处得小心谨慎，为了一件小事下一大堆软件，而且我家机器也有点旧了，拖着 XP 又卡又慢，当然更重要的是当时我喜欢自己改系统，好奇心强，于是一听说我们其实也有其他选择时，Linux 自然吸引了我。而其中 Ubuntu 是最有名的，新手最多尝试的，用户群体相对大的，支持相对好的。关于 Linux 普遍意义上的优点，我只提它的开放性和可控制性。这个系统的每一个部分都毫无秘密可言，所有的“秘笈”都是公开的信息，每个部件都是相对独立的，每个软件的开发者都是大活人（与冷冰冰的大公司相对），这当然和它社区的程序员文化有关。有时如果想自己动手写点什么解决非常独特的问题，Linux 下是有正常方便的门路可走的，各种文档都可以去看。结果就是每个用户都被允许拥有一个最适合自己使用的系统（总觉得这句话宗教性很强，简直像传福音）。总之在使用上，弄明白想做什么和怎么去做之后，基本上就是直来直往的坦途。这多少有点共产主义的味道，我们没有被奴役，并且与生产工具的关系是和谐的。不过自己必须对自己负责也正是自由的代价了。</p>
+
+<p>后来换掉了 Ubuntu 原因也正是它与我的观念背道而驰。经常折腾 Linux 的朋友一定懂得，每次配置新系统总是希望这是最后一次了。但是很多时候还是无法避免不停地重装。这很烦。有这个精力还不如干点别的。由于 Ubuntu 众所周知的跨版本升级问题我的机器挂了，并且此前为了我的“方便”以我难以理解的方式预先配置好的东西总给我制造麻烦，是时候换成 Archlinux 了。Arch 可以不停滚，保持最新，简直一劳永逸，特别适合向我这样的懒人。而且可以做到里面所有的软件都是我的选择。后来换了电脑，人越来越懒了，精神洁癖也没有了，就装了 Manjaro。可以滚，可以新，享用充分测试后的软件，不容易挂，我甚至开始觉得历史要终结了。其实此前也用过 Lubuntu、Deepin，不过时间不长，而且也没有什么能给我留下深刻的印象的特点，所以就略过不谈了。</p>
+
+<p>感觉有点偏题……</p>
+
+<p>如果说体验的话，除却那些系统本身带来的轻松愉快的感觉之外，令人不爽的折腾其实主要还是由软件的生态环境造成的。QQ 的故事其实很典型。QQ 一度是刚需，因为大家都用，不能不用。有人就分析了协议自己写了名为 eva 的客户端，这曾经是 Linux 上最好用的 QQ 客户端，没有之一。但是腾讯不喜欢，而且对 Linux 上客户端的开发基本无视（别提那个官方的客户端了，很好笑）。总之长久来都是不能用的，那时我总是开着虚拟机。但与此同时，wine 变得越来越好用，最终使得 wine QQ 也成为一个可选的方案了。然而如今我也不用 QQ 了。类似的还有网银的需求被支付宝替代、WPS 最终推出 Linux 版的事情。讲这些故事是为了说明具体的应用软件其实变更很快，一方面是因为新的软件被开发出来，新的解决方案被研究出来，另一方面需求同样也会发生变化，这是沧海桑田的事。因此用陈旧的印象评判现在的环境其实并不合理，有些时候只是耐心问题。当然我作为普通用户持这种观点没问题，行业一线的朋友可能就需要多一些担当了。这几年的经验倒是训练了我敏锐的判断，即什么事是可行的，什么现在还不行，什么新项目很有前途，可进可退才是明智之举。</p>
+
+<p>谈哪些软件好用可能没什么意思，最后总结一下经验教训吧。
+1. 精简系统和软件配置
+2. 不要做完全不理解的事
+3. 备份重要文件，工作环境和玩具环境分开，区分保守和激进两种策略
+4. 提前了解麻烦的事和不可能的事 （例如买机器时避免奇怪的硬件）
+5. <strong>关心真正要做的事</strong> （工作时别折腾，珍惜时间）
+6. <em>装个 Windows 10 救急用 （我好坏啊 捂脸）</em></p>
 </div>
 
 
@@ -150,7 +164,7 @@ http://115.com/folder/fbg777m4#</p>
 
 
 
-<time datetime="2012-03-24T00:00:00+08:00" pubdate data-updated="true">Mar 24th, 2012</time>
+<time datetime="2017-01-06T20:27:25+08:00" pubdate data-updated="true">Jan 6th, 2017</time>
       
 
 <span class="categories">
@@ -171,10 +185,8 @@ http://115.com/folder/fbg777m4#</p>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/%E5%8F%88%E6%98%AF%E5%85%B3%E4%BA%8Ebrainfck/" title="上一篇：又是关于Brainf*ck">&laquo; 又是关于Brainf*ck</a>
+        <a class="basic-alignment left" href="/blog/comments-on-three-science-fictions/" title="上一篇：幻评三篇">&laquo; 幻评三篇</a>
       
-      
-        <a class="basic-alignment right" href="/blog/%E6%88%91%E5%BF%83%E9%A3%9E%E5%8E%BB/" title="下一篇：我心飞去">我心飞去 &raquo;</a>
       
     </p>
   </footer>
@@ -184,7 +196,7 @@ http://115.com/folder/fbg777m4#</p>
   <section>
     <h1>评论</h1>
     <div id="comments" aria-live="polite"><!-- Duoshuo Comment BEGIN -->
-<div class="ds-thread" data-title="C语言课部分资料共享"></div>
+<div class="ds-thread" data-title="普通 Linux 用户的方法论"></div>
 <script type="text/javascript">
   var duoshuoQuery = {short_name:"koccn"};
   (function() {
