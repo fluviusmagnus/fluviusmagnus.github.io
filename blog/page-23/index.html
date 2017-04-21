@@ -9,7 +9,7 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="好吧，我承认这样的需求是真的恶俗了。就当是练练手，同时希望对于一些有同样需求的人有所帮助。 试验环境：Archlinux。需要grep，装了Launch Clipboard插件的Firefox。 方法：先访问人人，登录，见到新鲜事。保证之后开浏览器上人人无须登录即可。将页面源代码另存。 &hellip;">
+  <meta name="description" content="某君有一个爱好，就是走路。据某君自己所说，他从小时候开始就爱上了走路。那时，他偶然发现走路走的多了就会双腿酸胀。而一旦停下休息便会感到无比舒服。并且走的越多，休息时就越舒服。从此，它一有空便去走路。 某君最喜欢这样一句话：“这世上本没有路，走的人多了，也就成了路。”他常常将这话挂在嘴边， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,51 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E6%9F%90%E5%90%9B/">某君</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-17T00:00:00+01:00" pubdate data-updated="true">Dec 17th, 2011</time>
+        
+        
+           | <a href="/blog/%E6%9F%90%E5%90%9B/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>某君有一个爱好，就是走路。据某君自己所说，他从小时候开始就爱上了走路。那时，他偶然发现走路走的多了就会双腿酸胀。而一旦停下休息便会感到无比舒服。并且走的越多，休息时就越舒服。从此，它一有空便去走路。</p>
+
+<p>某君最喜欢这样一句话：“这世上本没有路，走的人多了，也就成了路。”他常常将这话挂在嘴边，也常常讲给别人听。用他的话说，这叫“座前铭”，不光要对自己有用，也要让别人知道。久而久之，他周围的人都以为这句话是他的标志，对于其由来，也不再多过问。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E6%9F%90%E5%90%9B/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -600,90 +645,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/">RQNOJ 589 N皇后加强版</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-11T00:00:00+01:00" pubdate data-updated="true">Nov 11th, 2011</time>
-        
-        
-           | <a href="/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//递归法。所幸规模小。
-#include &lt;stdio.h&gt;
-int n;
-int sum=0;
-int lie[14]={0};
-int zh[14]={0};
-int zzx[30]={0};
-int zfx[30]={0};
-void try(int i)
-{
-        if(i&gt;n)
-        {
-                if(sum&lt;3)
-                {
-                        int s;
-                        for(s=1;s&lt;n;s++) printf("%d ",lie[s]);
-                        printf("%d\n",lie[s]);
-                }
-                sum++;
-        }
-        else
-        {
-                int r;
-                for(r=1;r&lt;=n;r++)
-                        if(zh[r]==0&amp;&amp;zzx[i+r]==0&amp;&amp;zfx[i-r+n]==0)
-                        {
-                                lie[i]=r;
-                                zh[r]=1;
-                                zzx[i+r]=1;
-                                zfx[i-r+n]=1;
-                                try(i+1);
-                                zh[r]=0;
-                                zzx[i+r]=0;
-                                zfx[i-r+n]=0;
-                        }
-        }
-}</pre></p>
-
-<p>int main()<br />
-{
-        scanf("%d",&amp;n);<br />
-        try(1);<br />
-        printf("%d",sum);<br />
-        return 0;<br />
-}</p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-24">&larr; 旧文</a>
@@ -716,6 +677,10 @@ void try(int i)
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/some-questions/">我的一些问题</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/methodology-of-an-ordinary-linux-user/">普通 Linux 用户的方法论</a>
       </li>
     
@@ -731,15 +696,11 @@ void try(int i)
         <a href="/blog/%E7%94%A8%E8%BF%87%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B7-(iphone-ipad)/">用过纪念碑谷 (iPhone / iPad)</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%8E%A9%E8%BF%87the-swords-%E8%AF%B4%E5%89%91/">玩过the Swords 说剑</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (75)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (52)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (99)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (52)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (99)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
