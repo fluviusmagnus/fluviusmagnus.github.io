@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 边学边讲 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/bian-xue-bian-jiang/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2017-04-21T22:42:40+02:00</updated>
+  <updated>2017-06-26T21:42:56+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[K&R C Bible Exercises 1-5]]></title>
     <link href="https://elephantus.moe/blog/kr-c-bible-exercises-1-5/"/>
-    <updated>2012-01-19T00:00:00+01:00</updated>
+    <updated>2012-01-19T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/kr-c-bible-exercises-1-5</id>
     <content type="html"><![CDATA[<p>Modify the temperature conversion program to print the table in reverse order, that is, from 300 degrees to 0.</p>
 
@@ -44,7 +44,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[K&R C Bible Exercises 1-4]]></title>
     <link href="https://elephantus.moe/blog/kr-c-bible-exercises-1-4/"/>
-    <updated>2012-01-19T00:00:00+01:00</updated>
+    <updated>2012-01-19T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/kr-c-bible-exercises-1-4</id>
     <content type="html"><![CDATA[<p>Write a program to print the corresponding Celsius to Fahrenheit table.</p>
 
@@ -80,7 +80,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[K&R C Bible Exercises 1-3]]></title>
     <link href="https://elephantus.moe/blog/kr-c-bible-exercises-1-3/"/>
-    <updated>2012-01-19T00:00:00+01:00</updated>
+    <updated>2012-01-19T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/kr-c-bible-exercises-1-3</id>
     <content type="html"><![CDATA[<p>Modify the temperature conversion program to print a heading above the table.</p>
 
@@ -116,7 +116,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[K&R C Bible Exercises 1-2]]></title>
     <link href="https://elephantus.moe/blog/kr-c-bible-exercises-1-2/"/>
-    <updated>2012-01-19T00:00:00+01:00</updated>
+    <updated>2012-01-19T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/kr-c-bible-exercises-1-2</id>
     <content type="html"><![CDATA[<p>Experiment to find out what happens when printf's argument string contains \c, where c is some character not listed above.</p>
 
@@ -144,7 +144,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[K&R C Bible Exercises 1-1]]></title>
     <link href="https://elephantus.moe/blog/kr-c-bible-exercises-1-1/"/>
-    <updated>2012-01-19T00:00:00+01:00</updated>
+    <updated>2012-01-19T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/kr-c-bible-exercises-1-1</id>
     <content type="html"><![CDATA[<p>Run the "hello, world" program on your system. Experiment with leaving out parts of the program, to see what error messages you get.</p>
 

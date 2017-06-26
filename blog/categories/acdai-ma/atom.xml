@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Ac代码 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/acdai-ma/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2017-04-21T22:42:40+02:00</updated>
+  <updated>2017-06-26T21:42:56+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[RQNOJ 137 找试场]]></title>
     <link href="https://elephantus.moe/blog/rqnoj-137-%E6%89%BE%E8%AF%95%E5%9C%BA/"/>
-    <updated>2012-02-10T00:00:00+01:00</updated>
+    <updated>2012-02-10T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/rqnoj-137-找试场</id>
     <content type="html"><![CDATA[<p><pre class="brush:c">#include &lt;stdio.h&gt;
 #include &lt;ctype.h&gt;
@@ -103,7 +103,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[RQNOJ 143 巨型整数]]></title>
     <link href="https://elephantus.moe/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/"/>
-    <updated>2012-02-06T00:00:00+01:00</updated>
+    <updated>2012-02-06T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/rqnoj-143-巨型整数</id>
     <content type="html"><![CDATA[<p><pre class="brush:cpp">#include &lt;stdio.h&gt;
 #include &lt;iostream&gt;
@@ -136,7 +136,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[RQNOJ 133 统计数字]]></title>
     <link href="https://elephantus.moe/blog/rqnoj-133-%E7%BB%9F%E8%AE%A1%E6%95%B0%E5%AD%97/"/>
-    <updated>2012-01-27T00:00:00+01:00</updated>
+    <updated>2012-01-27T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/rqnoj-133-统计数字</id>
     <content type="html"><![CDATA[<p><pre class="brush:cpp">//第一次拙劣地使用了STL。以此纪念。
 #include &lt;stdio.h&gt;
@@ -167,7 +167,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[RQNOJ 262 游戏排行榜]]></title>
     <link href="https://elephantus.moe/blog/rqnoj-262-%E6%B8%B8%E6%88%8F%E6%8E%92%E8%A1%8C%E6%A6%9C/"/>
-    <updated>2011-12-31T00:00:00+01:00</updated>
+    <updated>2011-12-31T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/rqnoj-262-游戏排行榜</id>
     <content type="html"><![CDATA[<p><pre class="brush:c">//稍微有点算是水题。吧。
 #include &lt;stdio.h&gt;
@@ -199,7 +199,7 @@ int main()
   <entry>
     <title type="html"><![CDATA[RQNOJ 255 排队接水]]></title>
     <link href="https://elephantus.moe/blog/rqnoj-255-%E6%8E%92%E9%98%9F%E6%8E%A5%E6%B0%B4/"/>
-    <updated>2011-12-23T00:00:00+01:00</updated>
+    <updated>2011-12-23T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/rqnoj-255-排队接水</id>
     <content type="html"><![CDATA[<p>&nbsp;
 <pre class="brush:c">#include &lt;stdio.h&gt;

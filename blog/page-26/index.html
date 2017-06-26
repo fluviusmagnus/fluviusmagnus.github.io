@@ -9,16 +9,13 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="#include &lt;stdio.h&gt;
-int max(int a,int b)
+  <meta name="description" content="//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
 {
-        if(a&gt;b) return a;
-        else return b;
-}
-int main()
-{
-        int ca[22]={0};
-         &hellip;">
+        if(k&lt;10) sta[k &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -101,6 +98,67 @@ int main()
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/">RQNOJ 602 [NOIP2010普及组]数字统计</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+        
+           | <a href="/blog/rqnoj-602-noip2010%E6%99%AE%E5%8F%8A%E7%BB%84%E6%95%B0%E5%AD%97%E7%BB%9F%E8%AE%A1/#comments">评论</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//对对，我知道那个tj函数不用这样，但是这样代码就有重用的可能性了。
+//水题，毕竟后来发现这是普及组的。
+#include &lt;stdio.h&gt;
+int sta[10]={0};
+void tj(int k)
+{
+        if(k&lt;10) sta[k]++;
+        else
+        {
+                sta[k%10]++;
+                tj(k/10);
+        }
+}
+int main()
+{
+        int l,r;
+        scanf("%d%d",&amp;l,&amp;r);
+        int i;
+        for(i=l;i&lt;=r;i++) tj(i);
+        printf("%d",sta[2]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/rqnoj-39-%E9%A5%AE%E9%A3%9F%E9%97%AE%E9%A2%98/">RQNOJ 39 饮食问题</a></h1>
     
     
@@ -118,7 +176,7 @@ int main()
 
 
 
-<time datetime="2011-11-08T00:00:00+01:00" pubdate data-updated="true">Nov 8th, 2011</time>
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
         
         
            | <a href="/blog/rqnoj-39-%E9%A5%AE%E9%A3%9F%E9%97%AE%E9%A2%98/#comments">评论</a>
@@ -184,7 +242,7 @@ int main()
 
 
 
-<time datetime="2011-11-08T00:00:00+01:00" pubdate data-updated="true">Nov 8th, 2011</time>
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
         
         
            | <a href="/blog/rqnoj-304-%E6%9C%80%E5%A4%A7%E5%85%AC%E7%BA%A6%E6%95%B0%E5%92%8C%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B0%E9%97%AE%E9%A2%98/#comments">评论</a>
@@ -244,7 +302,7 @@ int main()
 
 
 
-<time datetime="2011-11-08T00:00:00+01:00" pubdate data-updated="true">Nov 8th, 2011</time>
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
         
         
            | <a href="/blog/rqnoj-25-%E5%90%88%E5%B9%B6%E6%9E%9C%E5%AD%90/#comments">评论</a>
@@ -312,7 +370,7 @@ printf("%d",s);
 
 
 
-<time datetime="2011-11-08T00:00:00+01:00" pubdate data-updated="true">Nov 8th, 2011</time>
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
         
         
            | <a href="/blog/rqnoj-20-%E4%B8%8D%E9%AB%98%E5%85%B4%E7%9A%84%E6%B4%A5%E6%B4%A5/#comments">评论</a>
@@ -384,7 +442,7 @@ int main()
 
 
 
-<time datetime="2011-11-08T00:00:00+01:00" pubdate data-updated="true">Nov 8th, 2011</time>
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
         
         
            | <a href="/blog/rqnoj-2-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/#comments">评论</a>
@@ -446,7 +504,7 @@ int main()
 
 
 
-<time datetime="2011-11-08T00:00:00+01:00" pubdate data-updated="true">Nov 8th, 2011</time>
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
         
         
            | <a href="/blog/rqnoj-147-%E8%A3%85%E7%AE%B1%E9%97%AE%E9%A2%98/#comments">评论</a>
@@ -513,7 +571,7 @@ int main()
 
 
 
-<time datetime="2011-11-08T00:00:00+01:00" pubdate data-updated="true">Nov 8th, 2011</time>
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
         
         
            | <a href="/blog/rqnoj-138-%E7%9B%91%E8%80%83%E8%80%81%E5%B8%88/#comments">评论</a>
@@ -579,7 +637,7 @@ int main()
 
 
 
-<time datetime="2011-11-06T00:00:00+01:00" pubdate data-updated="true">Nov 6th, 2011</time>
+<time datetime="2011-11-06T00:00:00+08:00" pubdate data-updated="true">Nov 6th, 2011</time>
         
         
            | <a href="/blog/%E6%88%91%E7%9A%84-vimrc/#comments">评论</a>
@@ -633,7 +691,7 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
 
 
 
-<time datetime="2011-11-05T00:00:00+01:00" pubdate data-updated="true">Nov 5th, 2011</time>
+<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
         
         
            | <a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/#comments">评论</a>
@@ -699,75 +757,6 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">Prolog语言一瞥</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-04T00:00:00+01:00" pubdate data-updated="true">Nov 4th, 2011</time>
-        
-        
-           | <a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/#comments">评论</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
-<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
-
-<p>&nbsp;</p>
-
-<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
-
-<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
-
-<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
-
-<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
-
-<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
-
-<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
-
-<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
-
-<p>ordered([]). /* 表empty list視為排序好的list */</p>
-
-<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
-
-<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
-
-<p>:- initialization(q). /* 啟動q處goals */
-排序居然可以如此简单。还有如下：</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-27">&larr; 旧文</a>
@@ -800,6 +789,10 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/export-goldendict-history-into-anki-deck/">导出 Goldendict 记录至 Anki Deck</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/some-questions/">我的一些问题</a>
       </li>
     
@@ -815,15 +808,11 @@ source $VIMRUNTIME/menu.vim</blockquote></p>
         <a href="/blog/%E7%9C%8B%E8%BF%87%E7%A6%8F%E9%9F%B3%E6%88%98%E5%A3%AB%E6%96%B0%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9Aq/">看过福音战士新剧场版：Q</a>
       </li>
     
-      <li class="post">
-        <a href="/blog/%E7%94%A8%E8%BF%87%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B7-(iphone-ipad)/">用过纪念碑谷 (iPhone / iPad)</a>
-      </li>
-    
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (52)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (99)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (53)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (99)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

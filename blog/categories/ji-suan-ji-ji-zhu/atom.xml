@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2017-04-21T22:42:40+02:00</updated>
+  <updated>2017-06-26T21:42:56+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,45 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[导出 Goldendict 记录至 Anki Deck]]></title>
+    <link href="https://elephantus.moe/blog/export-goldendict-history-into-anki-deck/"/>
+    <updated>2017-06-26T21:15:08+08:00</updated>
+    <id>https://elephantus.moe/blog/export-goldendict-history-into-anki-deck</id>
+    <content type="html"><![CDATA[<p>自从开始使用 Anki，往里面添加词汇数据就变成了一件辛苦的工作。英语日语学习者可能已经有了比较好的自动化工具可以使用，而其他一些语言则相对匮乏。另一方面，Goldendict 是比较好用的桌面词典程序，是我的日常主力，内置了非常朴实的历史查询记录的功能，最新的版本还有手动收藏生词的功能，不过大同小异，选择普通的文本导出即可。文件格式很简单，一行一个词，处理难度很小。因此，我考虑从这里入手。<!--more--></p>
+
+<p>我之前也参考了 <a href="https://www.reddit.com/r/Anki/comments/34imaw/export_from_goldendict_to_anki_deck_working_method/">这篇文章</a> 提供的思路，但是 XDXF 格式的词典所用的转换工具似乎已经无人维护，编译失败，我不得不考虑自己重新写一个工具。</p>
+
+<p>我先利用支持多种格式转换的 <a href="https://github.com/ilius/pyglossary">PyGlossary</a> 将词典转换为 SQL，再用其他工具转换为 SQLite3 格式。（不直接转是因为似乎有 BUG，不能成功。）然后利用以下 Python3 脚本得到可以导入 Anki 的 CSV 文件。代码中文件名仅作为示例，你应该根据自己的情况替换。</p>
+
+<pre><code class="python">#!/usr/bin/env python3
+import sqlite3
+import csv
+
+conn = sqlite3.connect('Langenscheidt e-Großwörterbuch Deutsch als Fremdsprache.sqlite3')
+c = conn.cursor()
+
+with open('favlist.txt') as inf:
+    words = inf.read().split('\n')
+words[0] = words[0].replace('\ufeff', '')
+
+print('If error occurs, check if the broken entry can be found in dictionary.')
+with open('favlist.csv', 'w') as outf:
+    listwriter = csv.writer(outf)
+    for wd in words:
+        print('Adding: ' + wd)
+        c.execute('SELECT m FROM word WHERE w=?', (wd,))
+        result = c.fetchone()
+        listwriter.writerow([wd, result[0]])
+
+conn.close()
+print('Done')
+</code></pre>
+
+<p>编写过程中被那个 BOM 阻碍，很久查不出错误，非常感谢微软。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[普通 Linux 用户的方法论]]></title>
@@ -111,63 +150,6 @@ rm $bak_dir/*
 <p>自然，我们要使用优雅的方式（虽然还是很蠢），Github Webhooks 的功能得以使用。除了 Github 的一个奇怪之处（或许以后有机会再介绍），基本上整个流程写下来还是顺利的。唯独困扰我许久的问题竟然是一个权限问题，暂且在此记录下来。</p>
 
 <p>我喜欢 Python，所以用它来写 CGI，中间打算调用一下 <code>git pull</code>，然而每次都报错。通过 <code>os.system()</code> 得到的退出码是 256。一般情况，退出码的范围是 0~255，这个 256 就很奇怪，后来发现这是由 Python 特别转换过得到的，对应的实际退出码是 1。这样便明确了错误原因是没有权限。我们（我当时不）知道，网页服务器的权限是很低的，所以要把相应要处理的文件的组设置为 <code>www-data</code> 并给足权限才可以使用。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[导入豆瓣 RSS 至 Octopress]]></title>
-    <link href="https://elephantus.moe/blog/import-douban-rss-into-octopress/"/>
-    <updated>2016-02-14T14:14:30+08:00</updated>
-    <id>https://elephantus.moe/blog/import-douban-rss-into-octopress</id>
-    <content type="html"><![CDATA[<p>大家也许已经熟悉了本站最近的运作风格，即发表的文章中有许多来自我在 <a href="http://www.douban.com/people/elephantus/">豆瓣</a> 上的短评。之前在使用 WordPress 的时候，我使用了一个插件来导入 RSS 文件，虽然能用，但是并不稳定。<!-- more --></p>
-
-<p>如今我使用了 Octopress，这就意味着如果还要做这样一件事，就必须自己动手写一些东西了。非常幸运，这件事情可以还原为<strong>从 RSS 迁移博客</strong>，简单搜索便得到了 <a href="http://import.jekyllrb.com/docs/rss/">官方指南</a>。由于避免重复劳动是美德，我便写了如下脚本放在 Octopress 目录下新建的 <code>douban</code> 文件夹中。</p>
-
-<p>使用前除了注意脚本位置外，还应更改你所需的 URL 等信息，另外如果是第一次使用，可能还需要运行 <code>gem install jekyll-import</code> 安装相应依赖。</p>
-
-<hr />
-
-<p>2016-02-22 更新</p>
-
-<p>被友人刺激，我下决心改善一下本站 https 崩掉的情况。除了那个令人束手无策的评论框，想来大概也就是豆瓣的问题。本想做个查找替换，却无意间发现 RSS 文件本身如果用 https 调用，则里面的资源也都会相应改变。这下只要稍作修改，便一劳永逸。当然以前发布了的还是要手动改。</p>
-
-<p>仔细看发现 http 版的 RSS 中豆瓣的图片资源有两类位置，其一类似于 <code>imgX.douban.com</code>，其二 <code>imgX.doubanio.com</code>，<code>X</code> 是一个数字。其中后者可以直接支持 https。而在 https 版的 RSS 中，所有资源都是后者形式。图片文件名虽然相同，但服务器的对应关系（主要是那个数字）我尚不明确，欢迎各位讨论。我觉得说不定豆瓣也要开始做全站 https 化了呢。</p>
-
-<p>总之，下方代码也作出更新。</p>
-
-<p><div class="highlight"><pre><code class="language-bash" data-lang="bash">&lt;/p&gt;
-
-&lt;h1&gt;!/bin/bash&lt;/h1&gt;
-
-&lt;h1&gt;get_douban.sh&lt;/h1&gt;
-
-&lt;p&gt;#&lt;/p&gt;
-
-&lt;h1&gt;This script gets <span class="m">10</span> latest items in your collection in douban.com via its RSS file offered, and converts them to octopress posts.&lt;/h1&gt;
-
-&lt;h1&gt;This script works in a subdirectory <span class="o">(</span>you can create a new one<span class="o">)</span> which has the same position as the directory <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="nb">source</span><span class="p">&amp;</span>rsquo<span class="p">;</span>.&lt;/h1&gt;
-
-&lt;h1&gt;Before you run this, make sure that <span class="p">&amp;</span>lsquo<span class="p">;</span>jekyll-import<span class="p">&amp;</span>rsquo<span class="p">;</span> is installed by gem.&lt;/h1&gt;
-
-&lt;h1&gt;You must change the URL below to your own feed. You can also customize the category name.&lt;/h1&gt;
-
-&lt;h1&gt;Change the URL below!&lt;/h1&gt;
-
-&lt;p&gt;wget &lt;a <span class="nv">href</span><span class="o">=</span><span class="s2">&quot;https://www.douban.com/feed/people/elephantus/interests&quot;</span>&gt;https://www.douban.com/feed/people/elephantus/interests&lt;/a&gt; -O douban.xml&lt;/p&gt;
-
-&lt;p&gt;ruby -rubygems -e <span class="p">&amp;</span>lsquo<span class="p">;</span>require <span class="p">&amp;</span>ldquo<span class="p">;</span>jekyll-import<span class="p">&amp;</span>rdquo<span class="p">;;</span>
-    JekyllImport::Importers::RSS.run<span class="o">({</span>
-      <span class="p">&amp;</span>ldquo<span class="p">;</span><span class="nb">source</span><span class="p">&amp;</span>rdquo<span class="p">;</span> <span class="o">=</span>&gt; <span class="p">&amp;</span>ldquo<span class="p">;</span>douban.xml<span class="p">&amp;</span>rdquo<span class="p">;</span>
-    <span class="o">})</span><span class="p">&amp;</span>rsquo<span class="p">;</span>&lt;/p&gt;
-
-&lt;p&gt;for f in ./_posts/*
-<span class="k">do</span>
-    <span class="c"># Maybe change this line. Check &amp;lsquo;man sed&amp;rsquo; to know more about this.</span>
-    sed -i <span class="p">&amp;</span>lsquo<span class="p">;</span><span class="m">3</span> acategories:<span class="se">\n</span>-<span class="se">\ </span>豆瓣收藏<span class="se">\n</span>published:<span class="se">\ </span><span class="nb">true</span><span class="se">\n</span>comments:<span class="se">\ </span><span class="nb">true</span><span class="p">&amp;</span>rsquo<span class="p">;</span> <span class="nv">$f</span>
-<span class="k">done</span>&lt;/p&gt;
-
-&lt;p&gt;mv -nv ./&lt;em&gt;posts/* ../source/&lt;/em&gt;posts/
-rm ./_posts/*</code></pre></div></p>
 ]]></content>
   </entry>
   

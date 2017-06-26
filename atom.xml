@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2017-04-21T22:42:40+02:00</updated>
+  <updated>2017-06-26T21:42:56+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,68 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[导出 Goldendict 记录至 Anki Deck]]></title>
+    <link href="https://elephantus.moe/blog/export-goldendict-history-into-anki-deck/"/>
+    <updated>2017-06-26T21:15:08+08:00</updated>
+    <id>https://elephantus.moe/blog/export-goldendict-history-into-anki-deck</id>
+    <content type="html"><![CDATA[<p>自从开始使用 Anki，往里面添加词汇数据就变成了一件辛苦的工作。英语日语学习者可能已经有了比较好的自动化工具可以使用，而其他一些语言则相对匮乏。另一方面，Goldendict 是比较好用的桌面词典程序，是我的日常主力，内置了非常朴实的历史查询记录的功能，最新的版本还有手动收藏生词的功能，不过大同小异，选择普通的文本导出即可。文件格式很简单，一行一个词，处理难度很小。因此，我考虑从这里入手。<!--more--></p>
+
+<p>我之前也参考了 <a href="https://www.reddit.com/r/Anki/comments/34imaw/export_from_goldendict_to_anki_deck_working_method/">这篇文章</a> 提供的思路，但是 XDXF 格式的词典所用的转换工具似乎已经无人维护，编译失败，我不得不考虑自己重新写一个工具。</p>
+
+<p>我先利用支持多种格式转换的 <a href="https://github.com/ilius/pyglossary">PyGlossary</a> 将词典转换为 SQL，再用其他工具转换为 SQLite3 格式。（不直接转是因为似乎有 BUG，不能成功。）然后利用以下 Python3 脚本得到可以导入 Anki 的 CSV 文件。代码中文件名仅作为示例，你应该根据自己的情况替换。</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="c">#!/usr/bin/env python3</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">sqlite3</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">csv</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&#39;Langenscheidt e-Großwörterbuch Deutsch als Fremdsprache.sqlite3&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">c</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;favlist.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">inf</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">words</span> <span class="o">=</span> <span class="n">inf</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;</span><span class="se">\ufeff</span><span class="s">&#39;</span><span class="p">,</span> <span class="s">&#39;&#39;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;If error occurs, check if the broken entry can be found in dictionary.&#39;</span><span class="p">)</span>
+</span><span class='line'><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;favlist.csv&#39;</span><span class="p">,</span> <span class="s">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outf</span><span class="p">:</span>
+</span><span class='line'>    <span class="n">listwriter</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">outf</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">wd</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">print</span><span class="p">(</span><span class="s">&#39;Adding: &#39;</span> <span class="o">+</span> <span class="n">wd</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s">&#39;SELECT m FROM word WHERE w=?&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">wd</span><span class="p">,))</span>
+</span><span class='line'>        <span class="n">result</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+</span><span class='line'>        <span class="n">listwriter</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">wd</span><span class="p">,</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">conn</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span><span class='line'><span class="k">print</span><span class="p">(</span><span class="s">&#39;Done&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>编写过程中被那个 BOM 阻碍，很久查不出错误，非常感谢微软。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[我的一些问题]]></title>
@@ -119,7 +181,7 @@
   <entry>
     <title type="html"><![CDATA[看过福音战士新剧场版：Q]]></title>
     <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E7%A6%8F%E9%9F%B3%E6%88%98%E5%A3%AB%E6%96%B0%E5%89%A7%E5%9C%BA%E7%89%88%EF%BC%9Aq/"/>
-    <updated>2016-09-29T00:00:00+02:00</updated>
+    <updated>2016-09-29T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/看过福音战士新剧场版：q</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://movie.douban.com/subject/2567647/" title="ヱヴァンゲリヲン新劇場版：Q">
@@ -135,7 +197,7 @@
   <entry>
     <title type="html"><![CDATA[用过纪念碑谷 (iPhone / iPad)]]></title>
     <link href="https://elephantus.moe/blog/%E7%94%A8%E8%BF%87%E7%BA%AA%E5%BF%B5%E7%A2%91%E8%B0%B7-(iphone-ipad)/"/>
-    <updated>2016-09-25T00:00:00+02:00</updated>
+    <updated>2016-09-25T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/用过纪念碑谷-(iphone-ipad)</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://www.douban.com/app/25858750/" title="纪念碑谷 (iPhone / iPad)">
@@ -151,7 +213,7 @@
   <entry>
     <title type="html"><![CDATA[玩过the Swords 说剑]]></title>
     <link href="https://elephantus.moe/blog/%E7%8E%A9%E8%BF%87the-swords-%E8%AF%B4%E5%89%91/"/>
-    <updated>2016-09-25T00:00:00+02:00</updated>
+    <updated>2016-09-25T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/玩过the-swords-说剑</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://www.douban.com/game/26732939/" title="The Swords 说剑">
@@ -167,7 +229,7 @@
   <entry>
     <title type="html"><![CDATA[看过逆转裁判 〜对这个“真实”，有异议！〜]]></title>
     <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E9%80%86%E8%BD%AC%E8%A3%81%E5%88%A4-%E3%80%9C%E5%AF%B9%E8%BF%99%E4%B8%AA%E2%80%9C%E7%9C%9F%E5%AE%9E%E2%80%9D%EF%BC%8C%E6%9C%89%E5%BC%82%E8%AE%AE%EF%BC%81%E3%80%9C/"/>
-    <updated>2016-09-24T00:00:00+02:00</updated>
+    <updated>2016-09-24T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/看过逆转裁判-〜对这个“真实”，有异议！〜</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://movie.douban.com/subject/26614134/" title="逆転裁判 〜その「真実」、異議あり!〜">
@@ -183,7 +245,7 @@
   <entry>
     <title type="html"><![CDATA[读过上帝的图书馆]]></title>
     <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E4%B8%8A%E5%B8%9D%E7%9A%84%E5%9B%BE%E4%B9%A6%E9%A6%86/"/>
-    <updated>2016-09-21T00:00:00+02:00</updated>
+    <updated>2016-09-21T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/读过上帝的图书馆</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://book.douban.com/subject/26656291/" title="上帝的图书馆">
@@ -199,7 +261,7 @@
   <entry>
     <title type="html"><![CDATA[读过乌托邦]]></title>
     <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E4%B9%8C%E6%89%98%E9%82%A6/"/>
-    <updated>2016-09-20T00:00:00+02:00</updated>
+    <updated>2016-09-20T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/读过乌托邦</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://book.douban.com/subject/1927487/" title="乌托邦">
@@ -215,7 +277,7 @@
   <entry>
     <title type="html"><![CDATA[看过帝都物语]]></title>
     <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%B8%9D%E9%83%BD%E7%89%A9%E8%AF%AD/"/>
-    <updated>2016-09-19T00:00:00+02:00</updated>
+    <updated>2016-09-19T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/看过帝都物语</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://movie.douban.com/subject/3286429/" title="帝都物語">
@@ -256,7 +318,7 @@
   <entry>
     <title type="html"><![CDATA[玩过逃脱解谜：古董旅店 逃脫解謎：古董旅店]]></title>
     <link href="https://elephantus.moe/blog/%E7%8E%A9%E8%BF%87%E9%80%83%E8%84%B1%E8%A7%A3%E8%B0%9C%EF%BC%9A%E5%8F%A4%E8%91%A3%E6%97%85%E5%BA%97-%E9%80%83%E8%84%AB%E8%A7%A3%E8%AC%8E%EF%BC%9A%E5%8F%A4%E8%91%A3%E6%97%85%E5%BA%97/"/>
-    <updated>2016-09-11T00:00:00+02:00</updated>
+    <updated>2016-09-11T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/玩过逃脱解谜：古董旅店-逃脫解謎：古董旅店</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://www.douban.com/game/26864863/" title="逃脱解谜：古董旅店 逃脫解謎：古董旅店">
@@ -272,7 +334,7 @@
   <entry>
     <title type="html"><![CDATA[看过沉默的未知]]></title>
     <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%B2%89%E9%BB%98%E7%9A%84%E6%9C%AA%E7%9F%A5/"/>
-    <updated>2016-09-09T00:00:00+02:00</updated>
+    <updated>2016-09-09T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/看过沉默的未知</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://movie.douban.com/subject/1926342/" title="アルジェントソーマ">
@@ -288,7 +350,7 @@
   <entry>
     <title type="html"><![CDATA[看过暗芝居 第三季]]></title>
     <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%9A%97%E8%8A%9D%E5%B1%85-%E7%AC%AC%E4%B8%89%E5%AD%A3/"/>
-    <updated>2016-09-03T00:00:00+02:00</updated>
+    <updated>2016-09-03T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/看过暗芝居-第三季</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://movie.douban.com/subject/26662234/" title="闇芝居 第3期">
@@ -304,7 +366,7 @@
   <entry>
     <title type="html"><![CDATA[看过切腹]]></title>
     <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E5%88%87%E8%85%B9/"/>
-    <updated>2016-08-31T00:00:00+02:00</updated>
+    <updated>2016-08-31T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/看过切腹</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://movie.douban.com/subject/1304920/" title="切腹">
@@ -335,7 +397,7 @@
   <entry>
     <title type="html"><![CDATA[读过你一定爱读的极简欧洲史]]></title>
     <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E4%BD%A0%E4%B8%80%E5%AE%9A%E7%88%B1%E8%AF%BB%E7%9A%84%E6%9E%81%E7%AE%80%E6%AC%A7%E6%B4%B2%E5%8F%B2/"/>
-    <updated>2016-08-30T00:00:00+02:00</updated>
+    <updated>2016-08-30T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/读过你一定爱读的极简欧洲史</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://book.douban.com/subject/5366248/" title="你一定爱读的极简欧洲史">
@@ -351,7 +413,7 @@
   <entry>
     <title type="html"><![CDATA[读过彼得·卡门青]]></title>
     <link href="https://elephantus.moe/blog/%E8%AF%BB%E8%BF%87%E5%BD%BC%E5%BE%97%C2%B7%E5%8D%A1%E9%97%A8%E9%9D%92/"/>
-    <updated>2016-08-24T00:00:00+02:00</updated>
+    <updated>2016-08-24T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/读过彼得·卡门青</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://book.douban.com/subject/2978933/" title="彼得·卡门青">
@@ -367,7 +429,7 @@
   <entry>
     <title type="html"><![CDATA[看过最终流放~银翼之法姆~]]></title>
     <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%9C%80%E7%BB%88%E6%B5%81%E6%94%BE~%E9%93%B6%E7%BF%BC%E4%B9%8B%E6%B3%95%E5%A7%86~/"/>
-    <updated>2016-08-23T00:00:00+02:00</updated>
+    <updated>2016-08-23T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/看过最终流放~银翼之法姆~</id>
     <content type="html"><![CDATA[    <table><tr>
     <td width="80px"><a href="https://movie.douban.com/subject/5962272/" title="ラストエグザイル―銀翼のファム―">
@@ -376,22 +438,6 @@
         <p>推荐: 还行</p>
         <p>标签: 日本动画</p>
         <p>备注: 我这种观众都差点弃番，前半乏善可陈，几乎没有进展或成长，处处是模仿前作的痕迹。但后期发力，政治外交人物错综复杂，大有超过前作之势，然而主角幼稚依然，推荐无视戏份自选主角。若说前作主题是自由，本作则是和平，此处似能反映时代变迁，探讨虽深入却老套，无爱。结局胜利莫名其妙，疑烂尾。</p>
-    </td></tr></table>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[看过最终流放]]></title>
-    <link href="https://elephantus.moe/blog/%E7%9C%8B%E8%BF%87%E6%9C%80%E7%BB%88%E6%B5%81%E6%94%BE/"/>
-    <updated>2016-08-23T00:00:00+02:00</updated>
-    <id>https://elephantus.moe/blog/看过最终流放</id>
-    <content type="html"><![CDATA[    <table><tr>
-    <td width="80px"><a href="https://movie.douban.com/subject/1305387/" title="Last Exile">
-    <img src="https://img3.doubanio.com/view/movie_poster_cover/ipst/public/p2226020432.jpg" alt="Last Exile"></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 日本动画</p>
-        <p>备注: 准五星。二十六集足够用大故事描绘饱满群像了。一开始以为只是蒸汽朋克，科技大概一战左右水平，但好像又很现代化，后来则揭晓了是一种大移民后的倒退。诗的设定若是解释起来又很有趣。高科技的垄断组织占据如同教会位置的同构相当发人深省。ED良曲。剧情没有特意去解谜，世界观的揭幕却很自然。</p>
     </td></tr></table>
 ]]></content>
   </entry>
