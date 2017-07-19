@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 计算机技术 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/ji-suan-ji-ji-zhu/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2017-07-19T17:07:00+08:00</updated>
+  <updated>2017-07-19T18:13:47+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[使用 AutoHotkey 在 Windows 上实现 Goldendict 划词翻译]]></title>
+    <link href="https://elephantus.moe/blog/linux-style-popup-window-for-goldendict-by-clicking-a-button-using-autohotkey/"/>
+    <updated>2017-07-19T17:18:12+08:00</updated>
+    <id>https://elephantus.moe/blog/linux-style-popup-window-for-goldendict-by-clicking-a-button-using-autohotkey</id>
+    <content type="html"><![CDATA[<p>看到这个标题，可能很难理解这种需求，因此我还是搬出 Goldendict 文档中关于屏幕取词在不同操作系统中的实现相关说明吧。</p>
+
+<blockquote><p>If popup window is enabled it will be shown in next cases:
+- a) when hotkey was pressed;
+- b) (under Windows and MacOS only) when mouse cursor placed over target word and scanning is turned on (scanning turned on/off by [IMG] button on GoldenDict toolbar or via context menu of tray icon);
+  Note: in some applications scanning may don&rsquo;t work
+- c) (under Linux X11 only) when target word was selected and scanning is turned on;
+- d) when clipboard was changed and scanning is turned on. To use this mode under Windows and MacOS it needs to turn on it via config file.</p></blockquote>
+
+<p>由于我已经习惯了 Linux 那种先选中然后点一个按钮使窗口弹出的方式，在 Windows 上似乎无法如此使用，令我不悦，因此希望使用 AutoHotkey 来魔改一下逻辑。以下为脚本。</p>
+
+<pre><code>#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+; #Warn  ; Enable warnings to assist with detecting common errors.
+
+
+SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
+SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+
+Gui, New, +AlwaysOnTop -Resize -MaximizeBox -MinimizeBox +MinSize -Caption, Dict
+Gui, Add, Button, cBlue gSearch X20 Y0, Search
+Gui, Margin, 0, 0
+Gui, Show, NA AutoSize
+
+
+OnMessage(0x0201, "WM_LBUTTONDOWN")
+
+WM_LBUTTONDOWN()
+{
+  If (A_Gui)
+    PostMessage, 0xA1, 2
+}
+
+
+Search:
+Send, !{Tab}
+Sleep, 300
+Send, ^c
+Sleep, 50
+Send, ^c
+return
+</code></pre>
+
+<p>如此会出现一个永远置顶的小窗口，可以拖动至别处，每次选中词后点击即可。</p>
+
+<p>欢迎提出意见。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[导出 Goldendict 记录至 Anki Deck]]></title>
@@ -135,21 +188,6 @@ rm $bak_dir/*
 <p>有几个点需要注意。所谓 <code>bak_dir</code> 是一个专用的文件夹，每次用来备份后都会清空。<code>dropbox_uploader.sh</code> 是从前述项目中获取的，使用前需要单独运行一次，以做好设置。<code>backup_exclude_list</code> 是一个纯文本文件，其中每行为一个需要排除在压缩包外的文件的路径，之所以单独做一个列表是为了便于分开管理。在实际运行前最好先测试一下做出来的压缩包会不会太大，如果有大而不必要的东西最好事先排除，免得浪费空间和流量。</p>
 
 <p>最后祝您，服务器平安，再见！</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[出于某些原因移动了站点]]></title>
-    <link href="https://elephantus.moe/blog/moved-the-site-to-somewhere-else/"/>
-    <updated>2016-03-10T19:53:02+08:00</updated>
-    <id>https://elephantus.moe/blog/moved-the-site-to-somewhere-else</id>
-    <content type="html"><![CDATA[<p>之前提到过，作为静态页面的本站是由 GitHub Pages 提供托管服务的。这样做的好处很明显，可以节省自己维护的成本，但劣势也同样存在。</p>
-
-<p>今天偶然发现，百度无论如何都无法收录我的新版站点，经调查，乃是 GitHub 阻止百度爬虫之故。为了避免访问量的损失，以及获得自己个性化配置站点功能的条件，我决定把网站放到自己一台独立的机器上。虽然会加速消耗一定的流量，但好在基本都是静态页面，而且有 CDN 的帮助，应该能减少相当一部分负担。此外，由于换了 DNS 服务，原来的提供的奇怪 SSL 干脆放弃，直接申请一个独立的安在服务器上，目前感觉还不错。<!--more--></p>
-
-<p>自然，我们要使用优雅的方式（虽然还是很蠢），Github Webhooks 的功能得以使用。除了 Github 的一个奇怪之处（或许以后有机会再介绍），基本上整个流程写下来还是顺利的。唯独困扰我许久的问题竟然是一个权限问题，暂且在此记录下来。</p>
-
-<p>我喜欢 Python，所以用它来写 CGI，中间打算调用一下 <code>git pull</code>，然而每次都报错。通过 <code>os.system()</code> 得到的退出码是 256。一般情况，退出码的范围是 0~255，这个 256 就很奇怪，后来发现这是由 Python 特别转换过得到的，对应的实际退出码是 1。这样便明确了错误原因是没有权限。我们（我当时不）知道，网页服务器的权限是很低的，所以要把相应要处理的文件的组设置为 <code>www-data</code> 并给足权限才可以使用。</p>
 ]]></content>
   </entry>
   
