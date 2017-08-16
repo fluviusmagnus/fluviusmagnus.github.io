@@ -9,7 +9,13 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="我不过是下一个游戏罢了，用得着给这种速度吗？ [caption id="attachment_194" align="aligncenter" width="300" caption="下载0ad时的速度，sf不给力"][/caption] Sourceforge每次都自动跳转到那个镜像。慢啊 &hellip;">
+  <meta name="description" content="//本来是可以用动规做的，但是也提供另一种方法
+#include &lt;stdio.h&gt;
+long int n,m;
+int i,v[30],p[30];
+long int maxget(int free,int now)
+{
+     if(now==-1) return 0 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +92,519 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-2-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/">RQNOJ 2 开心的金明</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+           | <a href="/blog/rqnoj-2-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-2-%E5%BC%80%E5%BF%83%E7%9A%84%E9%87%91%E6%98%8E/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//本来是可以用动规做的，但是也提供另一种方法
+#include &lt;stdio.h&gt;
+long int n,m;
+int i,v[30],p[30];
+long int maxget(int free,int now)
+{
+     if(now==-1) return 0;
+     if(free-p[now]&lt;0) return maxget(free,now-1);
+     long int max1,max2;
+     max1=maxget(free,now-1);
+     max2=maxget(free-p[now],now-1)+v[now]*p[now];
+     if(max1&gt;max2)
+     return max1;
+     else
+     return max2;
+}
+int main()
+{
+    scanf("%d %d",&amp;n,&amp;m);
+    for(i=0;i&lt;m;i++) scanf("%d %d",&amp;p[i],&amp;v[i]);
+    printf("%d",maxget(n,m-1));
+    return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-147-%E8%A3%85%E7%AE%B1%E9%97%AE%E9%A2%98/">RQNOJ 147 装箱问题</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+           | <a href="/blog/rqnoj-147-%E8%A3%85%E7%AE%B1%E9%97%AE%E9%A2%98/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-147-%E8%A3%85%E7%AE%B1%E9%97%AE%E9%A2%98/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//简单的01背包，可以参考饮食问题。（几乎一样，汗==）
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+        if(a&gt;b) return a;
+        else return b;
+}
+int main()
+{
+        int ca[31]={0};
+        int f[31][20001];
+        int i,r;
+        int b;
+        int up;
+        scanf("%d%d",&amp;up,&amp;b);
+        for(i=1;i&lt;=b;i++) scanf("%d",&amp;ca[i]);
+        for(r=0;r&lt;=up;r++)
+                if(r&lt;ca[1]) f[1][r]=0;
+                else f[1][r]=ca[1];
+        for(i=2;i&lt;=b;i++)
+                for(r=0;r&lt;=up;r++)
+                {
+                        if(r&lt;ca[i]) f[i][r]=f[i-1][r];
+                        else f[i][r]=max(f[i-1][r],f[i-1][r-ca[i]]+ca[i]);
+                }
+        printf("%d",up-f[b][up]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-138-%E7%9B%91%E8%80%83%E8%80%81%E5%B8%88/">RQNOJ 138 监考老师</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-08T00:00:00+08:00" pubdate data-updated="true">Nov 8th, 2011</time>
+        
+           | <a href="/blog/rqnoj-138-%E7%9B%91%E8%80%83%E8%80%81%E5%B8%88/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-138-%E7%9B%91%E8%80%83%E8%80%81%E5%B8%88/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//规模不大，搜吧搜吧。
+#include &lt;stdio.h&gt;
+int n,m;
+int map[101][101]={0};
+int ans[101][101]={0};
+int get(int x,int y)
+{
+        int sum,i;
+        sum=0;
+        for(i=1;i&lt;=m;i++) sum+=map[x][i];
+        for(i=1;i&lt;=n;i++) sum+=map[i][y];
+        return sum;
+}
+int main()
+{
+        int i,r;
+        scanf("%d%d",&amp;n,&amp;m);
+        for(i=1;i&lt;=n;i++)
+                for(r=1;r&lt;=m;r++)
+                        scanf("%d",&amp;map[i][r]);
+        int max=0;
+        for(i=1;i&lt;=n;i++)
+                for(r=1;r&lt;=m;r++)
+                        if(get(i,r)&gt;max) max=get(i,r);
+        printf("%d",max);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E6%88%91%E7%9A%84-vimrc/">我的.vimrc</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-06T00:00:00+08:00" pubdate data-updated="true">Nov 6th, 2011</time>
+        
+           | <a href="/blog/%E6%88%91%E7%9A%84-vimrc/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E6%88%91%E7%9A%84-vimrc/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>留个档案，以备不时之需。
+<blockquote>syntax on<br />
+set cindent<br />
+set number<br />
+set smartindent<br />
+set autoindent<br />
+set showmatch<br />
+set langmenu=zh_CN.UTF-8<br />
+set helplang=cn<br />
+set ruler<br />
+set shortmess=atI<br />
+set fileencodings=utf-8,chinese<br />
+colorscheme evening<br />
+source $VIMRUNTIME/delmenu.vim<br />
+source $VIMRUNTIME/menu.vim</blockquote></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">神奇的Brainf*ck</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
+        
+           | <a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
+
+<p>八个图灵机状态：
+<blockquote>
+<table width="464">
+<tbody>
+<tr>
+<td width="100">字符</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>指针加一</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>指针减一</td>
+</tr>
+<tr>
+<td>+</td>
+<td>指针指向的字节的值加一</td>
+</tr>
+<tr>
+<td>-</td>
+<td>指针指向的字节的值减一</td>
+</tr>
+<tr>
+<td>.</td>
+<td>输出指针指向的单元内容（ASCII码）</td>
+</tr>
+<tr>
+<td>,</td>
+<td>输入内容到指针指向的单元（ASCII码）</td>
+</tr>
+<tr>
+<td>[</td>
+<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
+</tr>
+<tr>
+<td>]</td>
+<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">Prolog语言一瞥</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-04T00:00:00+08:00" pubdate data-updated="true">Nov 4th, 2011</time>
+        
+           | <a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
+<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
+
+<p>&nbsp;</p>
+
+<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
+
+<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
+
+<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
+
+<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
+
+<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
+
+<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
+
+<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
+
+<p>ordered([]). /* 表empty list視為排序好的list */</p>
+
+<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
+
+<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
+
+<p>:- initialization(q). /* 啟動q處goals */
+排序居然可以如此简单。还有如下：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">俄罗斯方块可以永无止境地玩下去吗？</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-10-30T00:00:00+08:00" pubdate data-updated="true">Oct 30th, 2011</time>
+        
+           | <a href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>近日，看到一同学玩俄罗斯方块持久不死，便与其讨论，得出只要程序不耍人就可以无限玩下去的结论。现在看来，貌似是被证实了。</p>
+
+<p>原文《俄罗斯方块可以永无止境地玩下去吗？》<a href="http://www.cnbeta.com/articles/160207.htm">http://www.cnbeta.com/articles/160207.htm</a>
+<blockquote>大家在玩俄罗斯方块的时候有没有想过这样一个问题：如果玩家足够牛B的话，是不是永远也不可能玩死？换句话说，假设你是万恶的游戏机，你打算害死你面前的玩家；你知道任意时刻游戏的状态，并可以有针对性地给出一些明显不合适的方块，尽量迫使玩家面对最坏情况。那么，你有没有一种算法能保证害死玩家，或者玩家无论如何都存在一种必胜策略呢？</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/">Cygwin中上人人</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-10-01T00:00:00+08:00" pubdate data-updated="true">Oct 1st, 2011</time>
+        
+           | <a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>由于工作需要，最近要使用Windows机器。但是有割舍不了*nix风格操作方式，于是使用了大名鼎鼎的cygwin，另外还装了w3m。</p>
+
+<p>想想就知道，人人是几乎不可能会有cygwin的客户端的，要用就得自己做！因为我常常是看帖不回的（除了无聊时），所以设想通过开关w3m的方式来实现定时刷新。写出如下bash脚本：
+<blockquote>while [ "d" = "d" ]<br />
+do<br />
+w3m -cookie wap.renren.com&amp;<br />
+sleep 60<br />
+pkill w3m<br />
+done</blockquote>
+本人bash属于现学，所以写得不好请见谅（确实不太好= =）。通过这样的方式便能实现人人的自动刷新。</p>
+
+<p>其中sleep定为60秒，你可以自己改。当然如果你想在linux上用这个，理论上应该也可以。</p>
+
+<p>ps：cygwin需要安装非默认的procps软件包。</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -193,397 +712,6 @@ int main()<br />
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">关于multilib的补充说明</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14th, 2011</time>
-        
-           | <a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>我的上一篇文章（《<a title="艰难曲折的wine经历" href="http://koccn.net/wordpress/%e8%89%b0%e9%9a%be%e6%9b%b2%e6%8a%98%e7%9a%84wine%e7%bb%8f%e5%8e%86/" target="_blank">艰难曲折的wine经历</a>》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
-<blockquote>[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib<br />
-1 multilib/gcc-multilib 4.6.1-4 (multilib-devel)<br />
-The GNU Compiler Collection – C and C++ frontends for multilib<br />
-==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)<br />
-==&gt; ——————————————————-<br />
-==&gt; 1</blockquote></p>
-
-<p>密码：<br />
-正在解决依赖关系…<br />
-正在查找内部冲突…<br />
-:: gcc-libs-multilib 与 gcc-libs 有冲突。删除 gcc-libs 吗？ [y/N] y<br />
-:: binutils-multilib 与 binutils 有冲突。删除 binutils 吗？ [y/N] y<br />
-:: gcc-multilib 与 gcc 有冲突。删除 gcc 吗？ [y/N] y<br />
-（后面省略）
-最后我的做法是分别使用gcc-libs-multilib，binutils-multilib，gcc-multilib替换gcc-libs，binutils，gcc。确实，我当时犹豫了很久，经过一番臆测之后，得出这样的结论：</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">艰难曲折的wine经历</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-12T00:00:00+08:00" pubdate data-updated="true">Sep 12th, 2011</time>
-        
-           | <a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。</p>
-
-<p>从winehq下载最近版本，解压。直接./configure，因为默认会编译成32位的版本。此时遇到错误：
-<blockquote>checking whether gcc -m32 works... no<br />
-configure: error: Cannot build a 32-bit program, you need to install 32-bit development libraries.</blockquote>
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E8%AF%95%E7%94%A8openbox/">试用openbox</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-09-03T00:00:00+08:00" pubdate data-updated="true">Sep 3rd, 2011</time>
-        
-           | <a href="/blog/%E8%AF%95%E7%94%A8openbox/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E8%AF%95%E7%94%A8openbox/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>一直都比较喜欢简洁快速干净的东西。在使用了一段时间的gnome3之后，渐渐觉得它还是有点臃肿的感觉。听说openbox还不错，于是就试用了一下。</p>
-
-<p>openbox的配置还算简单，但是功能却不简单。我比较懒，不想手工修改配置，于是装了obconf（总体感觉的配置），obmenu（菜单编辑），obtheme（主题编辑）。这三个图形化配置工具非常容易使用，很适合新手。另外还装了tint2和conky，这样就像一个桌面的样子了。</p>
-
-<p>实际上，我在.xinitrc中写exec openbox还是exec openbox-session斟酌了很久，因为我需要在openbox启动时运行一段脚本。我看过网上的autostart.sh的方法，但是这就需要openbox-session。然而，这样就会将gnome的daemon（也许？）运行起来，这不是我想要的。所以目前采用的方法是直接启动openbox，然后将一个快捷键绑定到那个脚本即可。</p>
-
-<p>To be honest，本人也有使用过fvwm和awesome的经历。fvwm的配置太难理解，awesome的瓦片式也不习惯。经过比较，我觉得还是openbox方便，它更适合我。</p>
-
-<p>你找到了适合你的窗口管理器吗？</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/">善恶之分</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-26T00:00:00+08:00" pubdate data-updated="true">Aug 26th, 2011</time>
-        
-           | <a href="/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>读过《巴黎圣母院》的一定会被其凄美悲壮的结局所震撼。这种感觉，就像是看到了美好的事物在自己眼前毁灭，简直或是本来就是个悲剧。从看客的角度来说，无非就是受了冲击。而这冲击的主要内容，就是善恶观念的颠覆。</p>
-
-<p>故事的开始给出了这么两个人物：貌美的吉普赛女艾斯梅达拉和奇丑的加西莫多。两人对比形成剧烈反差自不必说，难免会给出“原来丑也可以没个底线”之类的惊叹。对善于以貌取人的人类来说，其善恶也基本上因其美丑而早已有了定论。之后发 生的一切，都是基于我们所臆想的这一事实之上的。而遗憾的是，故事显然欺骗了我们。随着剧情的推进，我们渐渐发现加西莫多也有善的一面，甚至与那少女一样 善良。在这种情况下，他的丑似乎再也不是我们所关注的了。善恶之分似乎被淡化。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">《围城》中之“围城”</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-26T00:00:00+08:00" pubdate data-updated="true">Aug 26th, 2011</time>
-        
-           | <a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>初读此书，看到“围城”一词就觉得奇怪，故事中丝毫没有提到什么与“城”有关的事，这个标题的意义更是无从考据。直到故事中好友几人亲口提到“围城”一词才有所理解。他们说：“结而离，离而结，没有了局”，又说“城外的人想冲进去，城里的人想逃出来”。于是便想到这城可能与婚姻有关。</p>
-
-<p>这故事的主角方鸿渐的爱情故事可谓是颇为曲折。一开始他苦心地追求苏小姐，可不 久他又远离苏小姐而去，去追求唐小姐。可惜他又没能把握住这段爱情。后来他又爱上孙小姐，还与她结婚。可是他们之间关系并不好。好不容易得来的爱情就这样 又远去了，实在是一个令人绝望的无止尽的循环。也许这就是“围城”，没有爱情就追求爱情，拥有了爱情却又想抛弃它，就像是人在城内城外出来进去一样。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">为什么《聊斋》如此受人欢迎</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-24T00:00:00+08:00" pubdate data-updated="true">Aug 24th, 2011</time>
-        
-           | <a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>距清人蒲松龄录《聊斋》成书已有二百多年了，可《聊斋》却仍为人所津津乐道，说它是文学史上一大作也不为过。我们知道，一部作品要能打动人，一方面可以是反映现实，另一方面则可以是表达愿望。由此看来，《聊斋》之所以受人欢迎，无非是在上述两方面有所长，与受众亲近。</p>
-
-<p>从内容上来说，《聊斋》故事主要可分为爱情、友情、社会、道德几大类，其核心基本都与人有关。爱情、友情，人之常情，一个正常人绝对是可以理解且无法拒绝的。社会、道德，众人之常情，是社会性的人类所必需的。这样的题材贴近生活，有血有肉，而不像是高高在上的“作文”。从这个角度来写，便是良好的基础，在这基础之上，人们可以广泛地接受，正如接受现实一样。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">《呐喊》的几处意象与其感情色彩</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-22T00:00:00+08:00" pubdate data-updated="true">Aug 22nd, 2011</time>
-        
-           | <a href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>众所周知，《呐喊》是一部小说集。小说不同于诗歌、散文等，它展现的不是一幅画，而是一种类似于电影的美，能较好地表达，创造出氛围，感情而不失冲击力。在《呐喊》的几篇小说中，我们常常能看到这些东西：黑夜、黑暗，无论是在未庄还是古轩亭口；人肉、人血，无论是老栓弄来的还是赵贵翁想吃的；辫子，无论是七斤剪了的还是阿Q所难取舍的。这些意象的频繁使用，无疑是让这些故事更加沉重，像不可抗拒的大山压下来，令人喘不过气来。</p>
-
-<p>然而，这一切都是真实的。黑暗下的动作是真实，吃人是真实，辫子所缚的人心也是真实。用这些意象堆砌而成的坚不可摧的大山也是真实。这大山的压力，不过是这真实所致，而这真实是什么？</p>
-
-<p>《呐喊》毕竟是部集子，是由一篇篇小说组成的。这些小说从结构上来讲确实是独立的，但是，既然被收同一部集子中，它们的意义，难道还是独立的吗？分析各篇，不难看出它们之中有许多共同之处。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">审美的变化</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-21T00:00:00+08:00" pubdate data-updated="true">Aug 21st, 2011</time>
-        
-           | <a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>《美的历程》读后感</p>
-
-<p>中国历史源远流长，以至于人的审美也可以如历史一般有自己的历程。这一点在读完全书之后是深有体会的。但对此，也有一些疑问。</p>
-
-<p>可以看出，历史上人们的审美情绪是发生过很大的变化的。比如说在初唐诗中，经常可以发现一些抒发建功立业壮志的题材。而在宋词中却较多的看到一些咏叹个人命运的一些内容，且感情色彩也大不相同。究竟是什么使人的审美发生这样的变化呢？难道是唐代的大漠孤烟全都变成了宋代的落花流水吗？虽然说生活环境可以决定一个人的审美，但是像这样夸张的环境变化显然是不可能的。那么就要从人的内心寻找原因。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-29">&larr; 旧文</a>
@@ -616,30 +744,30 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/linux-style-popup-window-for-goldendict-by-clicking-a-button-using-autohotkey/">使用 AutoHotkey 在 Windows 上实现 Goldendict 划词翻译</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B3%BD%E4%BC%BD%E4%BD%A9%E5%9B%A0/">看过泽伽佩因</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E4%BA%BA%E7%B1%BB%E8%A1%B0%E9%80%80%E4%BB%A5%E5%90%8E/">看过人类衰退以后</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E8%BF%BD%E8%B8%AA1789%E6%B3%95%E5%9B%BD%E5%A4%A7%E9%9D%A9%E5%91%BD/">读过追踪1789法国大革命</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E4%BA%BA%E6%B8%A3%E7%9A%84%E6%9C%AC%E6%84%BF/">看过人渣的本愿</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%B8%89%E5%AD%A3/">看过黑镜 第三季</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%8E%A9%E8%BF%87%E6%B0%B8%E6%81%92%E4%B9%8B%E5%A4%8F-%D0%B1%D0%B5%D1%81%D0%BA%D0%BE%D0%BD%D0%B5%D1%87%D0%BD%D0%BE%D0%B5-%D0%BB%D0%B5%D1%82%D0%BE/">玩过永恒之夏 Бесконечное лето</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%93%B6%E6%B2%B3%E7%B3%BB%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/">看过银河系漫游指南</a>
       </li>
     
       <li class="post">
-        <a href="/blog/export-goldendict-history-into-anki-deck/">导出 Goldendict 记录至 Anki Deck</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%BA%8C%E5%AD%A3/">看过黑镜 第二季</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (105)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (113)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

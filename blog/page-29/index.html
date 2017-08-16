@@ -9,7 +9,9 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="在使用GNOME Character Map 3.0.1（Based on the Unicode Character Database 6.0.0）查询字符时，会给出字符的含义等信息。比如“市”一字，它就给出了“market, fair; city, town; trade”这些解释。 &hellip;">
+  <meta name="description" content="我的上一篇文章（《艰难曲折的wine经历》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
+[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib
+1 multilib/gcc-multilib 4.6.1-4 ( &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +88,397 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">关于multilib的补充说明</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-14T00:00:00+08:00" pubdate data-updated="true">Sep 14th, 2011</time>
+        
+           | <a href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我的上一篇文章（《<a title="艰难曲折的wine经历" href="http://koccn.net/wordpress/%e8%89%b0%e9%9a%be%e6%9b%b2%e6%8a%98%e7%9a%84wine%e7%bb%8f%e5%8e%86/" target="_blank">艰难曲折的wine经历</a>》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
+<blockquote>[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib<br />
+1 multilib/gcc-multilib 4.6.1-4 (multilib-devel)<br />
+The GNU Compiler Collection – C and C++ frontends for multilib<br />
+==&gt; Enter n° of packages to be installed (ex: 1 2 3 or 1-3)<br />
+==&gt; ——————————————————-<br />
+==&gt; 1</blockquote></p>
+
+<p>密码：<br />
+正在解决依赖关系…<br />
+正在查找内部冲突…<br />
+:: gcc-libs-multilib 与 gcc-libs 有冲突。删除 gcc-libs 吗？ [y/N] y<br />
+:: binutils-multilib 与 binutils 有冲突。删除 binutils 吗？ [y/N] y<br />
+:: gcc-multilib 与 gcc 有冲突。删除 gcc 吗？ [y/N] y<br />
+（后面省略）
+最后我的做法是分别使用gcc-libs-multilib，binutils-multilib，gcc-multilib替换gcc-libs，binutils，gcc。确实，我当时犹豫了很久，经过一番臆测之后，得出这样的结论：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%85%B3%E4%BA%8Emultilib%E7%9A%84%E8%A1%A5%E5%85%85%E8%AF%B4%E6%98%8E/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">艰难曲折的wine经历</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-12T00:00:00+08:00" pubdate data-updated="true">Sep 12th, 2011</time>
+        
+           | <a href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>话说自从使用arch以来就没有用过wine了。不过因为好奇，还是用用看。官方源中用pacman下载的wine是64位版本（我是64位机器），许多软件运行不正常，无奈之下，想到自己编译成32位的。可是一路曲折，困难多多。</p>
+
+<p>从winehq下载最近版本，解压。直接./configure，因为默认会编译成32位的版本。此时遇到错误：
+<blockquote>checking whether gcc -m32 works... no<br />
+configure: error: Cannot build a 32-bit program, you need to install 32-bit development libraries.</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E8%89%B0%E9%9A%BE%E6%9B%B2%E6%8A%98%E7%9A%84wine%E7%BB%8F%E5%8E%86/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%AF%95%E7%94%A8openbox/">试用openbox</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-03T00:00:00+08:00" pubdate data-updated="true">Sep 3rd, 2011</time>
+        
+           | <a href="/blog/%E8%AF%95%E7%94%A8openbox/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E8%AF%95%E7%94%A8openbox/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>一直都比较喜欢简洁快速干净的东西。在使用了一段时间的gnome3之后，渐渐觉得它还是有点臃肿的感觉。听说openbox还不错，于是就试用了一下。</p>
+
+<p>openbox的配置还算简单，但是功能却不简单。我比较懒，不想手工修改配置，于是装了obconf（总体感觉的配置），obmenu（菜单编辑），obtheme（主题编辑）。这三个图形化配置工具非常容易使用，很适合新手。另外还装了tint2和conky，这样就像一个桌面的样子了。</p>
+
+<p>实际上，我在.xinitrc中写exec openbox还是exec openbox-session斟酌了很久，因为我需要在openbox启动时运行一段脚本。我看过网上的autostart.sh的方法，但是这就需要openbox-session。然而，这样就会将gnome的daemon（也许？）运行起来，这不是我想要的。所以目前采用的方法是直接启动openbox，然后将一个快捷键绑定到那个脚本即可。</p>
+
+<p>To be honest，本人也有使用过fvwm和awesome的经历。fvwm的配置太难理解，awesome的瓦片式也不习惯。经过比较，我觉得还是openbox方便，它更适合我。</p>
+
+<p>你找到了适合你的窗口管理器吗？</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/">善恶之分</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-26T00:00:00+08:00" pubdate data-updated="true">Aug 26th, 2011</time>
+        
+           | <a href="/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>读过《巴黎圣母院》的一定会被其凄美悲壮的结局所震撼。这种感觉，就像是看到了美好的事物在自己眼前毁灭，简直或是本来就是个悲剧。从看客的角度来说，无非就是受了冲击。而这冲击的主要内容，就是善恶观念的颠覆。</p>
+
+<p>故事的开始给出了这么两个人物：貌美的吉普赛女艾斯梅达拉和奇丑的加西莫多。两人对比形成剧烈反差自不必说，难免会给出“原来丑也可以没个底线”之类的惊叹。对善于以貌取人的人类来说，其善恶也基本上因其美丑而早已有了定论。之后发 生的一切，都是基于我们所臆想的这一事实之上的。而遗憾的是，故事显然欺骗了我们。随着剧情的推进，我们渐渐发现加西莫多也有善的一面，甚至与那少女一样 善良。在这种情况下，他的丑似乎再也不是我们所关注的了。善恶之分似乎被淡化。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%96%84%E6%81%B6%E4%B9%8B%E5%88%86/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">《围城》中之“围城”</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-26T00:00:00+08:00" pubdate data-updated="true">Aug 26th, 2011</time>
+        
+           | <a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>初读此书，看到“围城”一词就觉得奇怪，故事中丝毫没有提到什么与“城”有关的事，这个标题的意义更是无从考据。直到故事中好友几人亲口提到“围城”一词才有所理解。他们说：“结而离，离而结，没有了局”，又说“城外的人想冲进去，城里的人想逃出来”。于是便想到这城可能与婚姻有关。</p>
+
+<p>这故事的主角方鸿渐的爱情故事可谓是颇为曲折。一开始他苦心地追求苏小姐，可不 久他又远离苏小姐而去，去追求唐小姐。可惜他又没能把握住这段爱情。后来他又爱上孙小姐，还与她结婚。可是他们之间关系并不好。好不容易得来的爱情就这样 又远去了，实在是一个令人绝望的无止尽的循环。也许这就是“围城”，没有爱情就追求爱情，拥有了爱情却又想抛弃它，就像是人在城内城外出来进去一样。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">为什么《聊斋》如此受人欢迎</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-24T00:00:00+08:00" pubdate data-updated="true">Aug 24th, 2011</time>
+        
+           | <a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>距清人蒲松龄录《聊斋》成书已有二百多年了，可《聊斋》却仍为人所津津乐道，说它是文学史上一大作也不为过。我们知道，一部作品要能打动人，一方面可以是反映现实，另一方面则可以是表达愿望。由此看来，《聊斋》之所以受人欢迎，无非是在上述两方面有所长，与受众亲近。</p>
+
+<p>从内容上来说，《聊斋》故事主要可分为爱情、友情、社会、道德几大类，其核心基本都与人有关。爱情、友情，人之常情，一个正常人绝对是可以理解且无法拒绝的。社会、道德，众人之常情，是社会性的人类所必需的。这样的题材贴近生活，有血有肉，而不像是高高在上的“作文”。从这个角度来写，便是良好的基础，在这基础之上，人们可以广泛地接受，正如接受现实一样。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">《呐喊》的几处意象与其感情色彩</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-22T00:00:00+08:00" pubdate data-updated="true">Aug 22nd, 2011</time>
+        
+           | <a href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>众所周知，《呐喊》是一部小说集。小说不同于诗歌、散文等，它展现的不是一幅画，而是一种类似于电影的美，能较好地表达，创造出氛围，感情而不失冲击力。在《呐喊》的几篇小说中，我们常常能看到这些东西：黑夜、黑暗，无论是在未庄还是古轩亭口；人肉、人血，无论是老栓弄来的还是赵贵翁想吃的；辫子，无论是七斤剪了的还是阿Q所难取舍的。这些意象的频繁使用，无疑是让这些故事更加沉重，像不可抗拒的大山压下来，令人喘不过气来。</p>
+
+<p>然而，这一切都是真实的。黑暗下的动作是真实，吃人是真实，辫子所缚的人心也是真实。用这些意象堆砌而成的坚不可摧的大山也是真实。这大山的压力，不过是这真实所致，而这真实是什么？</p>
+
+<p>《呐喊》毕竟是部集子，是由一篇篇小说组成的。这些小说从结构上来讲确实是独立的，但是，既然被收同一部集子中，它们的意义，难道还是独立的吗？分析各篇，不难看出它们之中有许多共同之处。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">审美的变化</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-08-21T00:00:00+08:00" pubdate data-updated="true">Aug 21st, 2011</time>
+        
+           | <a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>《美的历程》读后感</p>
+
+<p>中国历史源远流长，以至于人的审美也可以如历史一般有自己的历程。这一点在读完全书之后是深有体会的。但对此，也有一些疑问。</p>
+
+<p>可以看出，历史上人们的审美情绪是发生过很大的变化的。比如说在初唐诗中，经常可以发现一些抒发建功立业壮志的题材。而在宋词中却较多的看到一些咏叹个人命运的一些内容，且感情色彩也大不相同。究竟是什么使人的审美发生这样的变化呢？难道是唐代的大漠孤烟全都变成了宋代的落花流水吗？虽然说生活环境可以决定一个人的审美，但是像这样夸张的环境变化显然是不可能的。那么就要从人的内心寻找原因。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -184,387 +577,6 @@
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/">你是Geek吗</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-01T00:00:00+08:00" pubdate data-updated="true">Aug 1st, 2011</time>
-        
-           | <a href="/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E4%BD%A0%E6%98%AFgeek%E5%90%97/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>NerdTests.com是一个Geek文化站，顾名思义提供了一些有趣的测试。比如说我刚刚参加的名为“Are you a Computer Geek?”的测试，结果为</p>
-
-<p><a href="http://www.nerdtests.com/ft_cg.php?im"><img src="http://www.nerdtests.com/images/ft/cg.php?val=7764" alt="My computer geek score is greater than 79% of all people in the world! How do you compare? Click here to find out!" /> </a>这是一个极高的分数。（也许吧==）</p>
-
-<p>想知道你是Geek吗，试试看吧。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/">测试用其它客户端发布</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-30T00:00:00+08:00" pubdate data-updated="true">Jul 30th, 2011</time>
-        
-           | <a href="/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E6%B5%8B%E8%AF%95%E7%94%A8%E5%85%B6%E5%AE%83%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%91%E5%B8%83/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>大名鼎鼎的wordpress自然有许多第三方客户端，在后台开启支持后，就可使用。这篇文章从android发布，用以测试。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/">Wine出来的人人桌面</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-25T00:00:00+08:00" pubdate data-updated="true">Jul 25th, 2011</time>
-        
-           | <a href="/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/wine%E5%87%BA%E6%9D%A5%E7%9A%84%E4%BA%BA%E4%BA%BA%E6%A1%8C%E9%9D%A2/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>基本功能正常，外观有点难看，不过不要紧。</p>
-
-<p>有意思的是，它会躲避鼠标到其它工作区。</p>
-
-<p>有视频有真相！</p>
-
-<p><a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv">人人桌面躲避鼠标</a></p>
-
-<p>http://www.koccn.net/wordpress/wp-content/uploads/2011/07/out.flv</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%82%B2%E5%89%A7%E7%9A%84%E5%86%85%E6%A0%B8/">悲剧的内核</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-13T00:00:00+08:00" pubdate data-updated="true">Jul 13th, 2011</time>
-        
-           | <a href="/blog/%E6%82%B2%E5%89%A7%E7%9A%84%E5%86%85%E6%A0%B8/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E6%82%B2%E5%89%A7%E7%9A%84%E5%86%85%E6%A0%B8/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>前几天手痒，放着好好的ubuntu 10.04 lts不用，升级到了10.10，又升级到了11.04，结果却令人很失望。<br />
-默认软件更换一大堆，有一点不适应。特别是unity，要说爱它真的很难啊。另外以前配置好的prism也不能用了，真是很郁闷。<br />
-最大的问题还是不能关机！每次无论用图形界面关还是输入各种命令都关不掉，卡在某处，于是只好直接按电源。我怕数据丢失，每次都先输入sync命令三四遍才按掉。可是，依然时有磁盘检查的事。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E6%82%B2%E5%89%A7%E7%9A%84%E5%86%85%E6%A0%B8/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%8A%80%E6%9C%AF%E8%B0%9C%E9%A2%98/">技术谜题</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-11T00:00:00+08:00" pubdate data-updated="true">Jul 11th, 2011</time>
-        
-           | <a href="/blog/%E6%8A%80%E6%9C%AF%E8%B0%9C%E9%A2%98/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E6%8A%80%E6%9C%AF%E8%B0%9C%E9%A2%98/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>有兴趣的可以来猜谜。本次题目是这样一段音频：</p>
-
-<p><a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/07/uoleuqnauggned.mp3">uoleuqnauggned</a></p>
-
-<p>请说出里面的内容（放心，我说的是普通话）。（提示：看文件名，与内容可能有关联吗？）</p>
-
-<p>知道的告诉我！</p>
-
-<p>题目有效期，一个暑假。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%81%B6%E5%B0%94%E6%9C%89%E6%84%9F/">偶尔有感</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-07T00:00:00+08:00" pubdate data-updated="true">Jul 7th, 2011</time>
-        
-           | <a href="/blog/%E5%81%B6%E5%B0%94%E6%9C%89%E6%84%9F/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E5%81%B6%E5%B0%94%E6%9C%89%E6%84%9F/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>这是清华TH-OCR 2000千禧专业版运行前显示的画面，看了很有感触。</p>
-
-<p>[caption id="attachment_99" align="aligncenter" width="300"]<img class="size-medium wp-image-99" title="TH-OCR 2000启动画面" src="http://koccn.net/wordpress/wp-content/uploads/2011/07/p_large_cMIA_715d000000e85c16-300x189.jpg" alt="TH-OCR 2000启动画面" width="300" height="189" /> TH-OCR 2000启动画面[/caption]</p>
-
-<p>炎黄创人伦，仓颉造文字。<br />
-上下五千载，文明冠当世。<br />
-西人创电脑，风行罗马体。<br />
-反观方块字，识别难已矣。<br />
-幸有众才俊，技精壮志大。<br />
-孜孜十春秋，功能夺造化。<br />
-电脑赋神眼，识字解版面。<br />
-汉字显优势，前程广且远。</p>
-
-<p>不知道大家想到了什么。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/solvequad-v0-2-%E5%8F%91%E5%B8%83/">Solvequad v0.2 发布</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-07-01T00:00:00+08:00" pubdate data-updated="true">Jul 1st, 2011</time>
-        
-           | <a href="/blog/solvequad-v0-2-%E5%8F%91%E5%B8%83/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/solvequad-v0-2-%E5%8F%91%E5%B8%83/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>增加了有理数计算功能。</p>
-
-<p>代码可用。这里就不贴出了。</p>
-
-<p>http://code.google.com/p/solvequad/<br />
-和
-http://www.koccn.net/work/<br />
-均可用。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E9%99%8D%E4%BD%8E%E6%88%90%E6%9C%AC%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/">降低成本的头文件</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-06-30T00:00:00+08:00" pubdate data-updated="true">Jun 30th, 2011</time>
-        
-           | <a href="/blog/%E9%99%8D%E4%BD%8E%E6%88%90%E6%9C%AC%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E9%99%8D%E4%BD%8E%E6%88%90%E6%9C%AC%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>对于那个高精度计算觉得太复杂了，于是在下一版本不会使用。</p>
-
-<p>于是直接开始写基本运算库了。虽然写的不太好，但也能用。</p>
-
-<p>#ifndef __CALC_H__<br />
-#define __CALC_H__</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E9%99%8D%E4%BD%8E%E6%88%90%E6%9C%AC%E7%9A%84%E5%A4%B4%E6%96%87%E4%BB%B6/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-30">&larr; 旧文</a>
@@ -597,30 +609,30 @@ http://www.koccn.net/work/<br />
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/linux-style-popup-window-for-goldendict-by-clicking-a-button-using-autohotkey/">使用 AutoHotkey 在 Windows 上实现 Goldendict 划词翻译</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B3%BD%E4%BC%BD%E4%BD%A9%E5%9B%A0/">看过泽伽佩因</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E4%BA%BA%E7%B1%BB%E8%A1%B0%E9%80%80%E4%BB%A5%E5%90%8E/">看过人类衰退以后</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E8%BF%BD%E8%B8%AA1789%E6%B3%95%E5%9B%BD%E5%A4%A7%E9%9D%A9%E5%91%BD/">读过追踪1789法国大革命</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E4%BA%BA%E6%B8%A3%E7%9A%84%E6%9C%AC%E6%84%BF/">看过人渣的本愿</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%B8%89%E5%AD%A3/">看过黑镜 第三季</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%8E%A9%E8%BF%87%E6%B0%B8%E6%81%92%E4%B9%8B%E5%A4%8F-%D0%B1%D0%B5%D1%81%D0%BA%D0%BE%D0%BD%D0%B5%D1%87%D0%BD%D0%BE%D0%B5-%D0%BB%D0%B5%D1%82%D0%BE/">玩过永恒之夏 Бесконечное лето</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%93%B6%E6%B2%B3%E7%B3%BB%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/">看过银河系漫游指南</a>
       </li>
     
       <li class="post">
-        <a href="/blog/export-goldendict-history-into-anki-deck/">导出 Goldendict 记录至 Anki Deck</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%BA%8C%E5%AD%A3/">看过黑镜 第二季</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (105)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (113)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

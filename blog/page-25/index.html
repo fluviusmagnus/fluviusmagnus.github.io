@@ -9,15 +9,9 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//本次将讨论0/1背包的空间优化问题。
-//这是未优化的。显然数组开不大。
-#include &lt;stdio.h&gt;
-int max(int a,int b)
-{
-    if(a&gt;b) return a;
-    else return b;
-}
-int main &hellip;">
+  <meta name="description" content="对应http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/ #include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+// &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -94,6 +88,521 @@ int main &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/gtk-03-icon/">GTK+ 03 Icon</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
+        
+           | <a href="/blog/gtk-03-icon/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/gtk-03-icon/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解</pre></p>
+
+<p>//实现对图片的访问。目前不甚理解。大概是读入缓冲。<br />
+GdkPixbuf *create_pixbuf(const gchar * filename)<br />
+{
+	GdkPixbuf *pixbuf;<br />
+	GError *error=NULL;<br />
+	pixbuf=gdk_pixbuf_new_from_file(filename,&amp;error);<br />
+	if(!pixbuf)<br />
+	{<br />
+		fprintf(stderr,&quot;%s\n&quot;,error-&gt;message);<br />
+		g_error_free(error);<br />
+	}<br />
+	return pixbuf;<br />
+}
+int main( int argc, char *argv[])<br />
+{
+	GtkWidget *window;<br />
+	gtk_init(&amp;argc, &amp;argv);<br />
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);<br />
+	gtk_window_set_title(GTK_WINDOW(window),&quot;This is the TITLE&quot;);<br />
+	gtk_window_set_default_size(GTK_WINDOW(window),400,300);<br />
+	gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);<br />
+	//设置图标<br />
+	gtk_window_set_icon(GTK_WINDOW(window),create_pixbuf(&quot;ra3.jpg&quot;));<br />
+	gtk_widget_show(window);<br />
+	g_signal_connect_swapped(G_OBJECT(window),&quot;destroy&quot;,G_CALLBACK(gtk_main_quit),NULL);<br />
+	gtk_main();<br />
+	return 0;<br />
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/gtk-02-window-widget/">GTK+ 02 Window Widget</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
+        
+           | <a href="/blog/gtk-02-window-widget/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/gtk-02-window-widget/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解
+int main( int argc, char *argv[])
+{
+	GtkWidget *window;
+	gtk_init(&amp;argc, &amp;argv);
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);</pre></p>
+
+<p>	//本次的窗口构建内容<br />
+		<br />
+	//设置标题<br />
+	gtk_window_set_title(GTK_WINDOW(window),&quot;This is the TITLE&quot;);<br />
+	//设置大小<br />
+	gtk_window_set_default_size(GTK_WINDOW(window),400,300);<br />
+	//设置位置，又有一个常数<br />
+	gtk_window_set_position(GTK_WINDOW(window),GTK_WIN_POS_CENTER);</p>
+
+<p>	gtk_widget_show(window);</p>
+
+<p>	//处理关闭的信号，此法方能正常退出<br />
+	g_signal_connect_swapped(G_OBJECT(window),&quot;destroy&quot;,G_CALLBACK(gtk_main_quit),NULL);</p>
+
+<p>	gtk_main();<br />
+	return 0;<br />
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/gtk-01-first/">GTK+ 01 First</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-09T00:00:00+08:00" pubdate data-updated="true">Dec 9th, 2011</time>
+        
+           | <a href="/blog/gtk-01-first/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/gtk-01-first/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>本人要学GTK+啦！（囧）所以把各种感悟都写在这里。</p>
+
+<p>以<a title="GTK+程序设计教程" href="http://zetcode.com/tutorials/gtktutorial/chinese/" target="_blank">《GTK+程序设计教程》</a>为材料来学习。在此感谢zetcode.com和翻译卢名扬。（这话以后就不说了。。。）</p>
+
+<p>本篇对应<a title="firstprograms" href="http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/" target="_blank">http://zetcode.com/tutorials/gtktutorial/chinese/firstprograms/</a></p>
+
+<p><pre class="brush:c">#include &lt;gtk/gtk.h&gt;
+//编译使用：gcc 文件名 `pkg-config --libs --cflags gtk+-2.0`
+//所有注释仅为我的理解
+int main( int argc, char *argv[])
+{
+	//建立一个窗口对象
+	GtkWidget *window;
+	//初始化gtk，必须有
+	gtk_init(&amp;argc, &amp;argv);
+	//初始化window对象
+	window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+	//显示window
+	gtk_widget_show(window);
+	//启动gtk，必须有，从此进入主循环
+	gtk_main();
+	//事实上本程序不会结束
+	return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/usaco%E8%AE%AD%E7%BB%83%E6%B5%8B%E8%AF%84%E5%88%9D%E4%BD%93%E9%AA%8C/">USACO训练测评初体验</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-03T00:00:00+08:00" pubdate data-updated="true">Dec 3rd, 2011</time>
+        
+           | <a href="/blog/usaco%E8%AE%AD%E7%BB%83%E6%B5%8B%E8%AF%84%E5%88%9D%E4%BD%93%E9%AA%8C/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/usaco%E8%AE%AD%E7%BB%83%E6%B5%8B%E8%AF%84%E5%88%9D%E4%BD%93%E9%AA%8C/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>USACO确实是一个不错的OJ，它提供了一张TODO表指引学习。但由于是初体验，走了不少弯路。比如出现这样的错误：
+<blockquote>&gt; Run 1: Execution error: Your program had this runtime error:<br />
+Illegal file open (/dev/tty). The program ran for 0.000 CPU seconds before the error. It used 1808 KB of memory.</blockquote>
+解决方法是把数组开大一点。（囧）</p>
+
+<p>还有：
+<blockquote>Note that your output did not end in a newline! This is an error and must be repaired.</blockquote>
+这种情况也比较容易出现。输出加上一个换行吧。</p>
+
+<p>USACO的测评有点奇葩，提交时还需要“Header comments”，不过习惯了就好了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-162-%E5%A5%96%E9%87%91/">RQNOJ 162 奖金</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-25T00:00:00+08:00" pubdate data-updated="true">Nov 25th, 2011</time>
+        
+           | <a href="/blog/rqnoj-162-%E5%A5%96%E9%87%91/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-162-%E5%A5%96%E9%87%91/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//这是一道完全背包。与0/1背包不同，空间优化后不必逆序，
+//以实现多次选取。
+//此外本题要求装满，所以f[j](j!=0)初始化为负无限大。
+//关于“装满”，参见jake1036的<a title="01背包问题总结（一）" href="http://www.cppblog.com/jake1036/archive/2011/06/27/149566.html" target="_blank">《01背包问题总结（一）》</a>。
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+int main()
+{
+	long int n,m,p[10001],v[10002],f[10001];
+	scanf("%ld%ld",&amp;n,&amp;m);
+	int i,j;
+	for(i=1;i&lt;=n;i++) scanf("%ld%ld",&amp;p[i],&amp;v[i]);
+	for(j=1;j&lt;=m;j++) f[j]=LONG_MIN;
+	for(i=1;i&lt;=n;i++)
+		for(j=p[i];j&lt;=m;j++)
+			if(f[j-p[i]]+v[i]&gt;f[j]) f[j]=f[j-p[i]]+v[i];
+	printf("%ld",f[m]);
+	return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">苦逼的NOIP复赛</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-18T00:00:00+08:00" pubdate data-updated="true">Nov 18th, 2011</time>
+        
+           | <a href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>事先声明，鄙人OI水平确实不高。各位切勿吐槽。</p>
+
+<p>我是浙江的高一，初赛68.5分（？），用的是C，本来是刚好被分数线掐死，进不了复赛的。后来使用了杭州一个推荐名额（分数线以下可以多6人），进了。我记得这是我第一次进复赛，总共参赛两次。上次是初二，37分。初三那么空居然没被学校通知到参加培训。大大的遗憾。</p>
+
+<p>停课一周集训之后，就去了余姚。话说我一开始还拿不出报名费，问老师借了几百块，直到今天才还上。还的时候老师居然对我说谢谢，我顿时无语了。周五下午，急急忙忙上完那一周去上的唯一一节课后（去政治演讲，仅五分钟，貌似讲得不错），坐宁波的校车走了。到了余姚，6点左右，直奔余姚中学。实际上报到时间已经过了，我们万能的拥有瞬移技能的老师给组委会那边打了个电话以后，最终被允许迟到几分钟。领了证件，领了饭票（周五晚，六、日午），去吃饭。余姚中学的饭确实好吃，比余姚实验学校的好吃多了。可惜我是应去余姚实验学校比赛，这饭是没的吃了。吃完，便去银河宾馆。躺在床上看《骗分导论》。《骗分导论》是个好东西，具体不解释，嘿嘿。后悔没带电脑去，空闲时间真无聊。有人带了，玩了两天。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/">RQNOJ 589 N皇后加强版</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-11T00:00:00+08:00" pubdate data-updated="true">Nov 11th, 2011</time>
+        
+           | <a href="/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//递归法。所幸规模小。
+#include &lt;stdio.h&gt;
+int n;
+int sum=0;
+int lie[14]={0};
+int zh[14]={0};
+int zzx[30]={0};
+int zfx[30]={0};
+void try(int i)
+{
+        if(i&gt;n)
+        {
+                if(sum&lt;3)
+                {
+                        int s;
+                        for(s=1;s&lt;n;s++) printf("%d ",lie[s]);
+                        printf("%d\n",lie[s]);
+                }
+                sum++;
+        }
+        else
+        {
+                int r;
+                for(r=1;r&lt;=n;r++)
+                        if(zh[r]==0&amp;&amp;zzx[i+r]==0&amp;&amp;zfx[i-r+n]==0)
+                        {
+                                lie[i]=r;
+                                zh[r]=1;
+                                zzx[i+r]=1;
+                                zfx[i-r+n]=1;
+                                try(i+1);
+                                zh[r]=0;
+                                zzx[i+r]=0;
+                                zfx[i-r+n]=0;
+                        }
+        }
+}</pre></p>
+
+<p>int main()<br />
+{
+        scanf("%d",&amp;n);<br />
+        try(1);<br />
+        printf("%d",sum);<br />
+        return 0;<br />
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-62-noip2002%E5%9D%87%E5%88%86%E7%BA%B8%E7%89%8C/">RQNOJ 62 [NOIP2002]均分纸牌</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
+        
+           | <a href="/blog/rqnoj-62-noip2002%E5%9D%87%E5%88%86%E7%BA%B8%E7%89%8C/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-62-noip2002%E5%9D%87%E5%88%86%E7%BA%B8%E7%89%8C/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//其实就是最笨的办法。想太多就死了。
+#include &lt;stdio.h&gt;
+int main()
+{
+        int n;
+        int f[101];
+        scanf("%d",&amp;n);
+        int i,sum=0;
+        for(i=1;i&lt;=n;i++)
+        {
+                scanf("%d",&amp;f[i]);
+                sum+=f[i];
+        }
+        sum/=n;
+        int count=0;
+        for(i=1;i&lt;n;i++)
+        {
+                if(f[i]!=sum)
+                {
+                        f[i+1]+=f[i]-sum;
+                        f[i]=sum;
+                        count++;
+                }
+        }
+        printf("%d",count);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -298,611 +807,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-399-noip2008%E7%AC%A8%E5%B0%8F%E7%8C%B4/">RQNOJ 399 [NOIP2008]笨小猴</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
-        
-           | <a href="/blog/rqnoj-399-noip2008%E7%AC%A8%E5%B0%8F%E7%8C%B4/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-399-noip2008%E7%AC%A8%E5%B0%8F%E7%8C%B4/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//有时候多写几个函数有助于调试。
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int stat[26];
-char word[101];
-int len;
-void cls()
-{
-        int i;
-        for(i=0;i&lt;26;i++) stat[i]=0;
-}
-void tj()
-{
-        cls();
-        int i;
-        for(i=0;i&lt;len;i++) stat[word[i]-'a']++;
-}
-int getmax()
-{
-        int max=0;
-        int i;
-        for(i=0;i&lt;26;i++)
-        {
-                if(stat[i]&gt;max)
-                {
-                        max=stat[i];
-                }
-        }
-        return max;
-}
-int getmin()
-{
-        int min=100;
-        int i;
-        for(i=0;i&lt;26;i++)
-        {
-                if(stat[i]&lt;min&amp;&amp;stat[i]!=0)
-                {
-                        min=stat[i];
-                }
-        }
-        return min;
-}
-int isprime(int num)
-{
-        int prime[25]={2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97};
-        int i;
-        for(i=0;i&lt;25;i++) if(num==prime[i]) return 1;
-        return 0;
-}
-int main()
-{
-        gets(word);
-        len=strlen(word);
-        int a;
-        tj();
-        a=getmax()-getmin();
-        if(isprime(a))
-        {
-                printf("Lucky Word\n");
-                printf("%d",a);
-        }
-        else
-        {
-                printf("No Answer\n");
-                printf("0");
-        }
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-394-noip2008%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/">RQNOJ 394 [NOIP2008]火柴棒等式</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
-        
-           | <a href="/blog/rqnoj-394-noip2008%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-394-noip2008%E7%81%AB%E6%9F%B4%E6%A3%92%E7%AD%89%E5%BC%8F/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//很忐忑地把1000以内的爆搜交上去了。结果万幸。
-#include &lt;stdio.h&gt;
-int stick[10]={6,2,5,5,4,5,6,3,7,6};
-int tj(int num)
-{
-        if(num&lt;10) return stick[num];
-        else return stick[num%10]+tj(num/10);
-}
-int main()
-{
-        int i,r;
-        int n;
-        scanf("%d",&amp;n);
-        int count=0;
-        for(i=0;i&lt;=1000;i++)
-                for(r=0;r&lt;=1000;r++)
-                        if(tj(i)+tj(r)+tj(i+r)==n-4) count++;
-        printf("%d",count);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-114-%E5%A4%A7%E5%90%88%E6%95%B0%E5%88%86%E8%A7%A3/">RQNOJ 114 大合数分解</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
-        
-           | <a href="/blog/rqnoj-114-%E5%A4%A7%E5%90%88%E6%95%B0%E5%88%86%E8%A7%A3/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-114-%E5%A4%A7%E5%90%88%E6%95%B0%E5%88%86%E8%A7%A3/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//怕数字开的不够大。也怕超时。两难啊。只好猜范围了。
-#include &lt;stdio.h&gt;
-int main()
-{
-        char list[100001]={0};
-        unsigned long int i=2;
-        unsigned long int r;
-        unsigned long int n;
-        scanf("%d",&amp;n);
-        // 0 is prime;
-        while(i&lt;=100000)
-        {
-                if(list[i]==0)
-                {
-                        for(r=2*i;r&lt;=100000;r+=i)
-                                list[r]=1;
-                }
-                i++;
-        }
-        for(i=2;i&lt;=100000;i++)
-        {
-                if(list[i]==0)
-                {
-                        while(n%i==0)
-                        {
-                                printf("%d ",i);
-                                n/=i;
-                        }
-                }
-        }
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-518-noip09%E6%BD%9C%E4%BC%8F%E8%80%85/">RQNOJ 518 [NOIP09]潜伏者</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-518-noip09%E6%BD%9C%E4%BC%8F%E8%80%85/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-518-noip09%E6%BD%9C%E4%BC%8F%E8%80%85/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//此题坑人之处在于，明文密文必须“互相”对应，既不重复，也不遗漏。
-//从rq的测试数据来看，如果没有考虑这一点，就有一个点通不过。
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int main()
-{
-    char f[100],s[100];
-    scanf("%s",f);
-    scanf("%s",s);
-    char dy[26];  //保存对应表 
-    int i;
-    for(i=0;i&lt;26;i++) dy[i]=0;
-    int sta=1;   //保存退出状态 
-    for(i=0;i&lt;strlen(f);i++)
-    {
-        if(dy[f[i]-'A']==0)
-        {
-            dy[f[i]-'A']=s[i];
-        }
-        else
-        {
-            if(dy[f[i]-'A']!=s[i]) {sta=3;break;}
-        }
-    }
-    int stat[26]={0};
-    for(i=0;i&lt;strlen(f);i++) stat[dy[i]-'A']++;
-    for(i=0;i&lt;26;i++) if(stat[i]==0) sta=3;
-    for(i=0;i&lt;26;i++) if(dy[i]==0) sta=2;
-    char c[100];
-    scanf("%s",c);
-    if(sta!=1)
-    {
-        printf("Failed");
-    }
-    else
-    {
-        for(i=0;i&lt;strlen(c);i++) printf("%c",dy[c[i]-'A']);
-    }
-    return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/">RQNOJ 479 [NOIP2001]一元三次方程求解</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//扫一遍好了。规模不大。如果很大就要换种方法了。
-#include &lt;stdio.h&gt;
-float a,b,c,d;
-float f(float x)
-{
-        return a*x*x*x+b*x*x+c*x+d;
-}
-int main()
-{
-        float x;
-        int sum=0;
-        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
-        x=-100;
-        while(sum!=3)
-        {
-                if(f(x)*f(x+0.01)&lt;=0)
-                {
-                        printf("%0.2f ",x+0.01);
-                        sum++;</pre></p>
-
-<p>                }<br />
-                x+=0.01;<br />
-        }<br />
-        return 0;<br />
-}</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-292-cantor%E8%A1%A8/">RQNOJ 292 Cantor表</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-292-cantor%E8%A1%A8/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-292-cantor%E8%A1%A8/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//做着做着发现分子分母反了。所以输出时反一下。
-#include &lt;stdio.h&gt;
-int main()
-{
-        int n;
-        int c=1;
-        int zi=1,mu=1;
-        int i=1;
-        int pos;
-        scanf("%d",&amp;n);
-        for(c=1;c&lt;=n;c++)
-                if((c+1)*c/2&gt;=n&amp;&amp;c*(c-1)/2&lt;n) break;
-        if(c%2==1)
-        {
-                pos=(c-1)*c/2;
-                zi=n-pos;
-                mu=c+1-zi;
-        }
-        else
-        {
-                pos=(c-1)*c/2;
-                zi=n-pos+c-1;
-                mu=c+1-zi;
-        }
-        printf("%d/%d",mu,zi);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-289-%E9%AA%8C%E8%AF%81%E6%95%B0%E7%8B%AC/">RQNOJ 289 验证数独</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-289-%E9%AA%8C%E8%AF%81%E6%95%B0%E7%8B%AC/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-289-%E9%AA%8C%E8%AF%81%E6%95%B0%E7%8B%AC/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//小心一点就好了。悲剧最近经常在小地方出错。做题三思！
-#include &lt;stdio.h&gt;
-int map[10][10];
-int tjx(int y)
-{
-        int stat[10]={0};
-        int i;
-        for(i=1;i&lt;=9;i++)
-                stat[map[i][y]]++;
-        for(i=1;i&lt;=9;i++)
-                if(stat[i]!=1) return 0;
-        return 1;
-}
-int tjy(int x)
-{
-        int stat[10]={0};
-        int i;
-        for(i=1;i&lt;=9;i++)
-                stat[map[x][i]]++;
-        for(i=1;i&lt;=9;i++)
-                if(stat[i]!=1) return 0;
-        return 1;
-}
-int tjn(int x,int y)
-{
-        int stat[10]={0};
-        int i,r;
-        for(i=x;i&lt;=x+2;i++)
-                for(r=y;r&lt;=y+2;r++)
-                        stat[map[i][r]]++;
-        for(i=1;i&lt;=9;i++)
-                if(stat[i]!=1) return 0;
-        return 1;
-}
-int main()
-{
-        int i,r;
-        for(i=1;i&lt;=9;i++)
-                for(r=1;r&lt;=9;r++)
-                        scanf("%d",&amp;map[i][r]);
-        int heng=0;
-        int shu=0;
-        int nine=0;
-        for(i=1;i&lt;=9;i++)
-        {
-                shu+=tjx(i);
-                heng+=tjy(i);
-        }
-        nine+=tjn(1,1);
-        nine+=tjn(1,4);
-        nine+=tjn(1,7);
-        nine+=tjn(4,1);
-        nine+=tjn(4,4);
-        nine+=tjn(4,7);
-        nine+=tjn(7,1);
-        nine+=tjn(7,4);
-        nine+=tjn(7,7);
-        if(heng+shu+nine==27) printf("1");
-        else printf("0");
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/">RQNOJ 238 火炬手之梦</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//此题需要一定的数学技巧。需要理解此函数的几何意义。
-//同时考察格式化输出。
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-int main()
-{
-        float a,b,c,d;
-        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
-        printf("%0.3f",sqrt((sqrt(b)+sqrt(d))*(sqrt(b)+sqrt(d))+(a-c)*(a-c)));
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-26">&larr; 旧文</a>
@@ -935,30 +839,30 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/linux-style-popup-window-for-goldendict-by-clicking-a-button-using-autohotkey/">使用 AutoHotkey 在 Windows 上实现 Goldendict 划词翻译</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B3%BD%E4%BC%BD%E4%BD%A9%E5%9B%A0/">看过泽伽佩因</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E4%BA%BA%E7%B1%BB%E8%A1%B0%E9%80%80%E4%BB%A5%E5%90%8E/">看过人类衰退以后</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87%E8%BF%BD%E8%B8%AA1789%E6%B3%95%E5%9B%BD%E5%A4%A7%E9%9D%A9%E5%91%BD/">读过追踪1789法国大革命</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E4%BA%BA%E6%B8%A3%E7%9A%84%E6%9C%AC%E6%84%BF/">看过人渣的本愿</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%B8%89%E5%AD%A3/">看过黑镜 第三季</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%8E%A9%E8%BF%87%E6%B0%B8%E6%81%92%E4%B9%8B%E5%A4%8F-%D0%B1%D0%B5%D1%81%D0%BA%D0%BE%D0%BD%D0%B5%D1%87%D0%BD%D0%BE%D0%B5-%D0%BB%D0%B5%D1%82%D0%BE/">玩过永恒之夏 Бесконечное лето</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%93%B6%E6%B2%B3%E7%B3%BB%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/">看过银河系漫游指南</a>
       </li>
     
       <li class="post">
-        <a href="/blog/export-goldendict-history-into-anki-deck/">导出 Goldendict 记录至 Anki Deck</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%BA%8C%E5%AD%A3/">看过黑镜 第二季</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (105)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (113)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
