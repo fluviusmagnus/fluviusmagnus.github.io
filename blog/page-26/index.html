@@ -9,16 +9,12 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="//有时候多写几个函数有助于调试。
+  <meta name="description" content="//这是一道完全背包。与0/1背包不同，空间优化后不必逆序，
+//以实现多次选取。
+//此外本题要求装满，所以f[j](j!=0)初始化为负无限大。
+//关于“装满”，参见jake1036的《01背包问题总结（一）》。
 #include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int stat[26];
-char word[101];
-int len;
-void cls()
-{
-        int i;
-        for(i &hellip;">
+#include &lt; &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -95,6 +91,468 @@ void cls()
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-162-%E5%A5%96%E9%87%91/">RQNOJ 162 奖金</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-25T00:00:00+08:00" pubdate data-updated="true">Nov 25th, 2011</time>
+        
+           | <a href="/blog/rqnoj-162-%E5%A5%96%E9%87%91/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-162-%E5%A5%96%E9%87%91/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//这是一道完全背包。与0/1背包不同，空间优化后不必逆序，
+//以实现多次选取。
+//此外本题要求装满，所以f[j](j!=0)初始化为负无限大。
+//关于“装满”，参见jake1036的<a title="01背包问题总结（一）" href="http://www.cppblog.com/jake1036/archive/2011/06/27/149566.html" target="_blank">《01背包问题总结（一）》</a>。
+#include &lt;stdio.h&gt;
+#include &lt;limits.h&gt;
+int main()
+{
+	long int n,m,p[10001],v[10002],f[10001];
+	scanf("%ld%ld",&amp;n,&amp;m);
+	int i,j;
+	for(i=1;i&lt;=n;i++) scanf("%ld%ld",&amp;p[i],&amp;v[i]);
+	for(j=1;j&lt;=m;j++) f[j]=LONG_MIN;
+	for(i=1;i&lt;=n;i++)
+		for(j=p[i];j&lt;=m;j++)
+			if(f[j-p[i]]+v[i]&gt;f[j]) f[j]=f[j-p[i]]+v[i];
+	printf("%ld",f[m]);
+	return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">苦逼的NOIP复赛</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-18T00:00:00+08:00" pubdate data-updated="true">Nov 18th, 2011</time>
+        
+           | <a href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>事先声明，鄙人OI水平确实不高。各位切勿吐槽。</p>
+
+<p>我是浙江的高一，初赛68.5分（？），用的是C，本来是刚好被分数线掐死，进不了复赛的。后来使用了杭州一个推荐名额（分数线以下可以多6人），进了。我记得这是我第一次进复赛，总共参赛两次。上次是初二，37分。初三那么空居然没被学校通知到参加培训。大大的遗憾。</p>
+
+<p>停课一周集训之后，就去了余姚。话说我一开始还拿不出报名费，问老师借了几百块，直到今天才还上。还的时候老师居然对我说谢谢，我顿时无语了。周五下午，急急忙忙上完那一周去上的唯一一节课后（去政治演讲，仅五分钟，貌似讲得不错），坐宁波的校车走了。到了余姚，6点左右，直奔余姚中学。实际上报到时间已经过了，我们万能的拥有瞬移技能的老师给组委会那边打了个电话以后，最终被允许迟到几分钟。领了证件，领了饭票（周五晚，六、日午），去吃饭。余姚中学的饭确实好吃，比余姚实验学校的好吃多了。可惜我是应去余姚实验学校比赛，这饭是没的吃了。吃完，便去银河宾馆。躺在床上看《骗分导论》。《骗分导论》是个好东西，具体不解释，嘿嘿。后悔没带电脑去，空闲时间真无聊。有人带了，玩了两天。</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E8%8B%A6%E9%80%BC%E7%9A%84noip%E5%A4%8D%E8%B5%9B/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/">RQNOJ 589 N皇后加强版</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-11T00:00:00+08:00" pubdate data-updated="true">Nov 11th, 2011</time>
+        
+           | <a href="/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-589-n%E7%9A%87%E5%90%8E%E5%8A%A0%E5%BC%BA%E7%89%88/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//递归法。所幸规模小。
+#include &lt;stdio.h&gt;
+int n;
+int sum=0;
+int lie[14]={0};
+int zh[14]={0};
+int zzx[30]={0};
+int zfx[30]={0};
+void try(int i)
+{
+        if(i&gt;n)
+        {
+                if(sum&lt;3)
+                {
+                        int s;
+                        for(s=1;s&lt;n;s++) printf("%d ",lie[s]);
+                        printf("%d\n",lie[s]);
+                }
+                sum++;
+        }
+        else
+        {
+                int r;
+                for(r=1;r&lt;=n;r++)
+                        if(zh[r]==0&amp;&amp;zzx[i+r]==0&amp;&amp;zfx[i-r+n]==0)
+                        {
+                                lie[i]=r;
+                                zh[r]=1;
+                                zzx[i+r]=1;
+                                zfx[i-r+n]=1;
+                                try(i+1);
+                                zh[r]=0;
+                                zzx[i+r]=0;
+                                zfx[i-r+n]=0;
+                        }
+        }
+}</pre></p>
+
+<p>int main()<br />
+{
+        scanf("%d",&amp;n);<br />
+        try(1);<br />
+        printf("%d",sum);<br />
+        return 0;<br />
+}</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-62-noip2002%E5%9D%87%E5%88%86%E7%BA%B8%E7%89%8C/">RQNOJ 62 [NOIP2002]均分纸牌</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
+        
+           | <a href="/blog/rqnoj-62-noip2002%E5%9D%87%E5%88%86%E7%BA%B8%E7%89%8C/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-62-noip2002%E5%9D%87%E5%88%86%E7%BA%B8%E7%89%8C/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//其实就是最笨的办法。想太多就死了。
+#include &lt;stdio.h&gt;
+int main()
+{
+        int n;
+        int f[101];
+        scanf("%d",&amp;n);
+        int i,sum=0;
+        for(i=1;i&lt;=n;i++)
+        {
+                scanf("%d",&amp;f[i]);
+                sum+=f[i];
+        }
+        sum/=n;
+        int count=0;
+        for(i=1;i&lt;n;i++)
+        {
+                if(f[i]!=sum)
+                {
+                        f[i+1]+=f[i]-sum;
+                        f[i]=sum;
+                        count++;
+                }
+        }
+        printf("%d",count);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-5-%E9%87%87%E8%8D%AF/">RQNOJ 5 采药</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
+        
+           | <a href="/blog/rqnoj-5-%E9%87%87%E8%8D%AF/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-5-%E9%87%87%E8%8D%AF/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//本次将讨论0/1背包的空间优化问题。
+//这是未优化的。显然数组开不大。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+    if(a&gt;b) return a;
+    else return b;
+}
+int main()
+{
+    int t,m;
+    int v[101],c[101],f[101][1001];
+    int i,r;
+    scanf("%d%d",&amp;t,&amp;m);
+    for(i=1;i&lt;=m;i++) scanf("%d%d",&amp;c[i],&amp;v[i]);
+    for(r=0;r&lt;=t;r++) if(r&lt;c[1]) f[1][r]=0; else f[1][r]=v[1];
+    for(i=2;i&lt;=m;i++)
+        for(r=0;r&lt;=t;r++) 
+            if(r&gt;=c[i])
+                f[i][r]=max(f[i-1][r],f[i-1][r-c[i]]+v[i]);
+            else
+                f[i][r]=f[i-1][r];
+    printf("%d",f[m][t]);
+    return 0;
+}
+/*------------------------华丽丽----------------------------*/
+//优化过的。
+//事实上f[i][r]一开始用的还是f[i-1][r]的值，因此实际上只需要一个数组。
+#include &lt;stdio.h&gt;
+int max(int a,int b)
+{
+	if(a&gt;b) return a;
+	else return b;
+}
+int main()
+{
+	int t,m;
+	int v[101],c[101],f[1001];
+	int i,r;
+	scanf("%d%d",&amp;t,&amp;m);
+	for(i=1;i&lt;=m;i++) scanf("%d%d",&amp;c[i],&amp;v[i]);
+	for(r=0;r&lt;=t;r++) if(r&lt;c[1]) f[r]=0; else f[r]=v[1];
+	for(i=2;i&lt;=m;i++)
+//关键！为保证本次所需要的未用数据不改变，令r递减。
+		for(r=t;r&gt;=0;r--) 
+			if(r&gt;=c[i])
+				f[r]=max(f[r],f[r-c[i]]+v[i]);
+			else
+				f[r]=f[r];
+	printf("%d",f[t]);
+	return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/rqnoj-486-%E6%8E%92%E5%BA%A7%E6%A4%85/">RQNOJ 486 排座椅</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-10T00:00:00+08:00" pubdate data-updated="true">Nov 10th, 2011</time>
+        
+           | <a href="/blog/rqnoj-486-%E6%8E%92%E5%BA%A7%E6%A4%85/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-486-%E6%8E%92%E5%BA%A7%E6%A4%85/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><pre>//统计每一排的对数，即拆散后可得对数。然后从大的开始取。（贪心一道）
+//注意输出排数时要从小到大。
+//同时注意输出时的格式。换行、空格之类的。
+#include &lt;stdio.h&gt;
+int map[2001][5];
+int hang[1001]={0};
+int lie[1001]={0};
+int m,n,k,l,d;
+int cmp(const void *a,const void *b)
+{
+        return *(int *)a-*(int *)b;
+}
+int maxhpos()
+{
+        int i;
+        int max=0;
+        int maxpos=0;
+        for(i=1;i&lt;=m;i++)
+                if(hang[i]&gt;max)
+                {
+                        max=hang[i];
+                        maxpos=i;
+                }
+        hang[maxpos]=0;
+        return maxpos;
+}
+int maxlpos()
+{
+        int i;
+        int max=0;
+        int maxpos=0;
+        for(i=1;i&lt;=n;i++)
+                if(lie[i]&gt;max)
+                {
+                        max=lie[i];
+                        maxpos=i;
+                }
+        lie[maxpos]=0;
+        return maxpos;
+}
+int min(int a,int b)
+{
+        if(a&lt;b) return a;
+        else return b;
+}
+int main()
+{
+        scanf("%d%d%d%d%d",&amp;m,&amp;n,&amp;k,&amp;l,&amp;d);
+        int i,r;
+        int chu1[1001],chu2[1001];
+        for(i=1;i&lt;=d;i++)
+        {
+                scanf("%d%d%d%d",&amp;map[i][1],&amp;map[i][2],&amp;map[i][3],&amp;map[i][4]);
+                if(map[i][1]==map[i][3]) lie[min(map[i][2],map[i][4])]++;
+                if(map[i][2]==map[i][4]) hang[min(map[i][1],map[i][3])]++;
+        }
+        for(i=1;i&lt;=k;i++)
+        {
+                chu1[i]=maxhpos();
+        }
+        for(i=1;i&lt;=l;i++)
+        {
+                chu2[i]=maxlpos();
+        }
+        qsort(&amp;chu1[1],k,sizeof(chu1[1]),cmp);
+        qsort(&amp;chu2[1],l,sizeof(chu2[1]),cmp);
+        for(i=1;i&lt;k;i++) printf("%d ",chu1[i]);printf("%d",chu1[i]);
+        printf("\n");
+        for(i=1;i&lt;l;i++) printf("%d ",chu2[i]);printf("%d",chu2[i]);
+        return 0;
+}</pre></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -417,434 +875,6 @@ int main()
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/">RQNOJ 479 [NOIP2001]一元三次方程求解</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-479-noip2001%E4%B8%80%E5%85%83%E4%B8%89%E6%AC%A1%E6%96%B9%E7%A8%8B%E6%B1%82%E8%A7%A3/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//扫一遍好了。规模不大。如果很大就要换种方法了。
-#include &lt;stdio.h&gt;
-float a,b,c,d;
-float f(float x)
-{
-        return a*x*x*x+b*x*x+c*x+d;
-}
-int main()
-{
-        float x;
-        int sum=0;
-        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
-        x=-100;
-        while(sum!=3)
-        {
-                if(f(x)*f(x+0.01)&lt;=0)
-                {
-                        printf("%0.2f ",x+0.01);
-                        sum++;</pre></p>
-
-<p>                }<br />
-                x+=0.01;<br />
-        }<br />
-        return 0;<br />
-}</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-292-cantor%E8%A1%A8/">RQNOJ 292 Cantor表</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-292-cantor%E8%A1%A8/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-292-cantor%E8%A1%A8/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//做着做着发现分子分母反了。所以输出时反一下。
-#include &lt;stdio.h&gt;
-int main()
-{
-        int n;
-        int c=1;
-        int zi=1,mu=1;
-        int i=1;
-        int pos;
-        scanf("%d",&amp;n);
-        for(c=1;c&lt;=n;c++)
-                if((c+1)*c/2&gt;=n&amp;&amp;c*(c-1)/2&lt;n) break;
-        if(c%2==1)
-        {
-                pos=(c-1)*c/2;
-                zi=n-pos;
-                mu=c+1-zi;
-        }
-        else
-        {
-                pos=(c-1)*c/2;
-                zi=n-pos+c-1;
-                mu=c+1-zi;
-        }
-        printf("%d/%d",mu,zi);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-289-%E9%AA%8C%E8%AF%81%E6%95%B0%E7%8B%AC/">RQNOJ 289 验证数独</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-289-%E9%AA%8C%E8%AF%81%E6%95%B0%E7%8B%AC/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-289-%E9%AA%8C%E8%AF%81%E6%95%B0%E7%8B%AC/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//小心一点就好了。悲剧最近经常在小地方出错。做题三思！
-#include &lt;stdio.h&gt;
-int map[10][10];
-int tjx(int y)
-{
-        int stat[10]={0};
-        int i;
-        for(i=1;i&lt;=9;i++)
-                stat[map[i][y]]++;
-        for(i=1;i&lt;=9;i++)
-                if(stat[i]!=1) return 0;
-        return 1;
-}
-int tjy(int x)
-{
-        int stat[10]={0};
-        int i;
-        for(i=1;i&lt;=9;i++)
-                stat[map[x][i]]++;
-        for(i=1;i&lt;=9;i++)
-                if(stat[i]!=1) return 0;
-        return 1;
-}
-int tjn(int x,int y)
-{
-        int stat[10]={0};
-        int i,r;
-        for(i=x;i&lt;=x+2;i++)
-                for(r=y;r&lt;=y+2;r++)
-                        stat[map[i][r]]++;
-        for(i=1;i&lt;=9;i++)
-                if(stat[i]!=1) return 0;
-        return 1;
-}
-int main()
-{
-        int i,r;
-        for(i=1;i&lt;=9;i++)
-                for(r=1;r&lt;=9;r++)
-                        scanf("%d",&amp;map[i][r]);
-        int heng=0;
-        int shu=0;
-        int nine=0;
-        for(i=1;i&lt;=9;i++)
-        {
-                shu+=tjx(i);
-                heng+=tjy(i);
-        }
-        nine+=tjn(1,1);
-        nine+=tjn(1,4);
-        nine+=tjn(1,7);
-        nine+=tjn(4,1);
-        nine+=tjn(4,4);
-        nine+=tjn(4,7);
-        nine+=tjn(7,1);
-        nine+=tjn(7,4);
-        nine+=tjn(7,7);
-        if(heng+shu+nine==27) printf("1");
-        else printf("0");
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/">RQNOJ 238 火炬手之梦</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-238-%E7%81%AB%E7%82%AC%E6%89%8B%E4%B9%8B%E6%A2%A6/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//此题需要一定的数学技巧。需要理解此函数的几何意义。
-//同时考察格式化输出。
-#include &lt;stdio.h&gt;
-#include &lt;math.h&gt;
-int main()
-{
-        float a,b,c,d;
-        scanf("%f%f%f%f",&amp;a,&amp;b,&amp;c,&amp;d);
-        printf("%0.3f",sqrt((sqrt(b)+sqrt(d))*(sqrt(b)+sqrt(d))+(a-c)*(a-c)));
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-224-jsoi2007%E6%89%8B%E6%9C%BA/">RQNOJ 224 [JSOI2007]手机</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-224-jsoi2007%E6%89%8B%E6%9C%BA/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-224-jsoi2007%E6%89%8B%E6%9C%BA/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//打个表。虽然我承认这个表并不太好。
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-int sum;
-void tj(char ch)
-{
-        if(ch=='a'||ch=='d'||ch=='g'||ch=='j'||ch=='m'||ch=='p'||ch=='t'||ch=='w'||ch==' ') sum++;
-        if(ch=='b'||ch=='e'||ch=='h'||ch=='k'||ch=='n'||ch=='q'||ch=='u'||ch=='x') sum+=2;
-        if(ch=='c'||ch=='f'||ch=='i'||ch=='l'||ch=='o'||ch=='r'||ch=='v'||ch=='y') sum+=3;
-        if(ch=='s'||ch=='z') sum+=4;
-}
-int main()
-{
-        sum=0;
-        char in[201]={0};
-        gets(in);
-        int i;
-        for(i=0;in[i]!=0;i++)
-                tj(in[i]);
-        printf("%d",sum);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/rqnoj-16-%E8%B0%81%E6%8B%BF%E4%BA%86%E6%9C%80%E5%A4%9A%E5%A5%96%E5%AD%A6%E9%87%91/">RQNOJ 16 谁拿了最多奖学金</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-11-09T00:00:00+08:00" pubdate data-updated="true">Nov 9th, 2011</time>
-        
-           | <a href="/blog/rqnoj-16-%E8%B0%81%E6%8B%BF%E4%BA%86%E6%9C%80%E5%A4%9A%E5%A5%96%E5%AD%A6%E9%87%91/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/rqnoj-16-%E8%B0%81%E6%8B%BF%E4%BA%86%E6%9C%80%E5%A4%9A%E5%A5%96%E5%AD%A6%E9%87%91/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><pre>//读取数据时要极度小心。
-#include &lt;stdio.h&gt;
-int main()
-{
-        struct Student {
-                char name[21];
-                int score;
-                int class;
-                char gb;
-                char west;
-                int art;
-                int money;
-        } stu[101];
-        int n;
-        int i;
-        scanf("%d",&amp;n);
-        for(i=1;i&lt;=n;i++) scanf("%s %d %d %c %c %d",stu[i].name,&amp;stu[i].score,&amp;stu[i].class,&amp;stu[i].gb,&amp;stu[i].west,&amp;stu[i].art);
-        for(i=1;i&lt;=n;i++)
-        {
-                stu[i].money=0;
-                if(stu[i].score&gt;80&amp;&amp;stu[i].art&gt;0) stu[i].money+=8000;
-                if(stu[i].score&gt;85&amp;&amp;stu[i].class&gt;80) stu[i].money+=4000;
-                if(stu[i].score&gt;90) stu[i].money+=2000;
-                if(stu[i].west=='Y'&amp;&amp;stu[i].score&gt;85) stu[i].money+=1000;
-                if(stu[i].gb=='Y'&amp;&amp;stu[i].class&gt;80) stu[i].money+=850;
-        }
-        int max=0;
-        int pos=0;
-        int sum=0;
-        for(i=1;i&lt;=n;i++)
-                if(stu[i].money&gt;max)
-                {
-                        max=stu[i].money;
-                        pos=i;
-                        sum+=stu[i].money;
-                }
-                else sum+=stu[i].money;
-        printf("%s\n",stu[pos].name);
-        printf("%d\n",stu[pos].money);
-        printf("%d",sum);
-        return 0;
-}</pre></p>
-</div>
-  
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-27">&larr; 旧文</a>
@@ -877,30 +907,30 @@ int main()
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B3%BD%E4%BC%BD%E4%BD%A9%E5%9B%A0/">看过泽伽佩因</a>
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E9%BB%91%E5%AE%A2%E7%BD%91%E7%BB%9C-hacknet/">玩过黑客网络 Hacknet</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E8%BF%BD%E8%B8%AA1789%E6%B3%95%E5%9B%BD%E5%A4%A7%E9%9D%A9%E5%91%BD/">读过追踪1789法国大革命</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%98%AD%E5%92%8C%E5%85%83%E7%A6%84%E8%90%BD%E8%AF%AD%E5%BF%83%E4%B8%AD-%E5%8A%A9%E5%85%AD%E5%86%8D%E4%B8%B4%E7%AF%87/">看过昭和元禄落语心中 助六再临篇</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%B8%89%E5%AD%A3/">看过黑镜 第三季</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87miss-sara-sampson/">读过Miss Sara Sampson</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%93%B6%E6%B2%B3%E7%B3%BB%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/">看过银河系漫游指南</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%A9%AC%E5%88%A9%E7%BA%B3/">看过马利纳</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%BA%8C%E5%AD%A3/">看过黑镜 第二季</a>
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%A6%BB%E5%BC%80%E7%9A%84%E4%BA%BA%E4%BB%AC-%E5%8E%BB%E4%BA%BA%E3%81%9F%E3%81%A1/">玩过离开的人们 去人たち</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (113)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (119)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>

@@ -9,9 +9,12 @@
   <meta name="author" content="人間夜行">
 
   
-  <meta name="description" content="我的上一篇文章（《艰难曲折的wine经历》）提到了multilib的问题。当时是以“冲突”的形式出现，现在回放一下：
-[koc@koc-desktop wine-1.3.28]$ yaourt gcc-multilib
-1 multilib/gcc-multilib 4.6.1-4 ( &hellip;">
+  <meta name="description" content="Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（Prolog语言一瞥）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。 八个图灵机状态： 字符
+含义 &gt;
+指针加一 &lt;
+指针减一 +
+指针指向的字节的值加一 -
+指针指向的字节的值减一 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +91,372 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">神奇的Brainf*ck</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-05T00:00:00+08:00" pubdate data-updated="true">Nov 5th, 2011</time>
+        
+           | <a href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Brainf*ck语言（简称BF）是一种超级神奇的语言。当然与我上一篇文章（<a title="Prolog语言一瞥" href="http://www.koccn.net/wordpress/2011/11/prolog%e8%af%ad%e8%a8%80%e4%b8%80%e7%9e%a5/" rel="bookmark">Prolog语言一瞥</a>）所介绍的不同，这个语言并不具有很多的实际应用价值，它只是一个图灵机的实现。</p>
+
+<p>八个图灵机状态：
+<blockquote>
+<table width="464">
+<tbody>
+<tr>
+<td width="100">字符</td>
+<td>含义</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>指针加一</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>指针减一</td>
+</tr>
+<tr>
+<td>+</td>
+<td>指针指向的字节的值加一</td>
+</tr>
+<tr>
+<td>-</td>
+<td>指针指向的字节的值减一</td>
+</tr>
+<tr>
+<td>.</td>
+<td>输出指针指向的单元内容（ASCII码）</td>
+</tr>
+<tr>
+<td>,</td>
+<td>输入内容到指针指向的单元（ASCII码）</td>
+</tr>
+<tr>
+<td>[</td>
+<td>如果指针指向的单元值为零，向后跳转到对应的]指令的次一指令处</td>
+</tr>
+<tr>
+<td>]</td>
+<td>如果指针指向的单元值不为零，向前跳转到对应的[指令的次一指令处</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E7%A5%9E%E5%A5%87%E7%9A%84brainfck/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">Prolog语言一瞥</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-11-04T00:00:00+08:00" pubdate data-updated="true">Nov 4th, 2011</time>
+        
+           | <a href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>曾经有一段时间接触过Prolog，对其有一点点兴趣，但仅仅停留在用“friend(X,Y):-likes(X,Y),likes(Y,X).”耍耍人的层面。现在又无意中看到了它，觉得它真了不起，基于逻辑，还人工智能！于是去维基百科查看它的资料，一看还真傻了眼：
+<blockquote>下面简洁的排序范例可以体会到为什么AI领域喜用Prolog：</blockquote></p>
+
+<p>&nbsp;</p>
+
+<p>/* sortcsj.pl 原始參考：Computer Science J. Glenn Brookshear */</p>
+
+<p>/* sortcsj()中的第二個引數帶有排序好的結果　*/</p>
+
+<p>/* 僅為示範，若為gprolog使用者則用內建sort等較佳 */</p>
+
+<p>/* 在gprolog下之編譯例：gplc --min-size sortcsj.pl　*/</p>
+
+<p>/* 執行 sortcsj 後會出現排序結果 [2,9,18,18,25,33,66,77] */</p>
+
+<p>q:- L=[33,18,2,77,18,66,9,25], (sortcsj(L,P), write(P), nl).</p>
+
+<p>sortcsj(L,S) :- permutation(L,S), ordered(S). /* L為原list, S為排序好的list, 此為permutation關係(built-in) */</p>
+
+<p>ordered([]). /* 表empty list視為排序好的list */</p>
+
+<p>ordered([_|[]]). /* 只有一元素之list視為排序好的list */</p>
+
+<p>ordered([A|[B|T]]) :- A =&lt; B, ordered([B|T]). /* 此rule約束所謂的排序好是指前項元素小於或等於後一項元素 */</p>
+
+<p>:- initialization(q). /* 啟動q處goals */
+排序居然可以如此简单。还有如下：</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/prolog%E8%AF%AD%E8%A8%80%E4%B8%80%E7%9E%A5/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">俄罗斯方块可以永无止境地玩下去吗？</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-10-30T00:00:00+08:00" pubdate data-updated="true">Oct 30th, 2011</time>
+        
+           | <a href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>近日，看到一同学玩俄罗斯方块持久不死，便与其讨论，得出只要程序不耍人就可以无限玩下去的结论。现在看来，貌似是被证实了。</p>
+
+<p>原文《俄罗斯方块可以永无止境地玩下去吗？》<a href="http://www.cnbeta.com/articles/160207.htm">http://www.cnbeta.com/articles/160207.htm</a>
+<blockquote>大家在玩俄罗斯方块的时候有没有想过这样一个问题：如果玩家足够牛B的话，是不是永远也不可能玩死？换句话说，假设你是万恶的游戏机，你打算害死你面前的玩家；你知道任意时刻游戏的状态，并可以有针对性地给出一些明显不合适的方块，尽量迫使玩家面对最坏情况。那么，你有没有一种算法能保证害死玩家，或者玩家无论如何都存在一种必胜策略呢？</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E4%BF%84%E7%BD%97%E6%96%AF%E6%96%B9%E5%9D%97%E5%8F%AF%E4%BB%A5%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E5%9C%B0%E7%8E%A9%E4%B8%8B%E5%8E%BB%E5%90%97%EF%BC%9F/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/">Cygwin中上人人</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-10-01T00:00:00+08:00" pubdate data-updated="true">Oct 1st, 2011</time>
+        
+           | <a href="/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/cygwin%E4%B8%AD%E4%B8%8A%E4%BA%BA%E4%BA%BA/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>由于工作需要，最近要使用Windows机器。但是有割舍不了*nix风格操作方式，于是使用了大名鼎鼎的cygwin，另外还装了w3m。</p>
+
+<p>想想就知道，人人是几乎不可能会有cygwin的客户端的，要用就得自己做！因为我常常是看帖不回的（除了无聊时），所以设想通过开关w3m的方式来实现定时刷新。写出如下bash脚本：
+<blockquote>while [ "d" = "d" ]<br />
+do<br />
+w3m -cookie wap.renren.com&amp;<br />
+sleep 60<br />
+pkill w3m<br />
+done</blockquote>
+本人bash属于现学，所以写得不好请见谅（确实不太好= =）。通过这样的方式便能实现人人的自动刷新。</p>
+
+<p>其中sleep定为60秒，你可以自己改。当然如果你想在linux上用这个，理论上应该也可以。</p>
+
+<p>ps：cygwin需要安装非默认的procps软件包。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/">小小地吐一个</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-24T00:00:00+08:00" pubdate data-updated="true">Sep 24th, 2011</time>
+        
+           | <a href="/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E5%B0%8F%E5%B0%8F%E5%9C%B0%E5%90%90%E4%B8%80%E4%B8%AA/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>我不过是下一个游戏罢了，用得着给这种速度吗？</p>
+
+<p>[caption id="attachment_194" align="aligncenter" width="300" caption="下载0ad时的速度，sf不给力"]<a href="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1.png"><img class="size-medium wp-image-194" title="下载0ad时的速度" src="http://www.koccn.net/wordpress/wp-content/uploads/2011/09/Screenshot-1-300x209.png" alt="下载0ad时的速度，sf不给力" width="300" height="209" /></a>[/caption]</p>
+
+<p>Sourceforge每次都自动跳转到那个镜像。慢啊。:-(也许下次该设法配置一下了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">当数值超出范围</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-09-15T00:00:00+08:00" pubdate data-updated="true">Sep 15th, 2011</time>
+        
+           | <a href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/#disqus_thread"
+             data-disqus-identifier="https://elephantus.moe/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">评论</a>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>这两天在学校的Windows机器上捣鼓C语言的程序，无意中编了这样一个程序。要命的是，它的运行结果是出人意料的。
+<blockquote>#include &lt;stdio.h&gt;<br />
+int main()<br />
+{
+    int a=1;<br />
+    for(;;)<br />
+    {<br />
+           a*=2;<br />
+           printf("%d\n",a);<br />
+           if(a==0)<br />
+           {<br />
+                   printf("Top reached.\n");<br />
+                   getchar();<br />
+           }<br />
+    }<br />
+    return 0;<br />
+}</blockquote>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/%E5%BD%93%E6%95%B0%E5%80%BC%E8%B6%85%E5%87%BA%E8%8C%83%E5%9B%B4/">继续阅读 &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -292,291 +661,6 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
 
     </article>
   
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">《围城》中之“围城”</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-26T00:00:00+08:00" pubdate data-updated="true">Aug 26th, 2011</time>
-        
-           | <a href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>初读此书，看到“围城”一词就觉得奇怪，故事中丝毫没有提到什么与“城”有关的事，这个标题的意义更是无从考据。直到故事中好友几人亲口提到“围城”一词才有所理解。他们说：“结而离，离而结，没有了局”，又说“城外的人想冲进去，城里的人想逃出来”。于是便想到这城可能与婚姻有关。</p>
-
-<p>这故事的主角方鸿渐的爱情故事可谓是颇为曲折。一开始他苦心地追求苏小姐，可不 久他又远离苏小姐而去，去追求唐小姐。可惜他又没能把握住这段爱情。后来他又爱上孙小姐，还与她结婚。可是他们之间关系并不好。好不容易得来的爱情就这样 又远去了，实在是一个令人绝望的无止尽的循环。也许这就是“围城”，没有爱情就追求爱情，拥有了爱情却又想抛弃它，就像是人在城内城外出来进去一样。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E3%80%8A%E5%9B%B4%E5%9F%8E%E3%80%8B%E4%B8%AD%E4%B9%8B%E2%80%9C%E5%9B%B4%E5%9F%8E%E2%80%9D/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">为什么《聊斋》如此受人欢迎</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-24T00:00:00+08:00" pubdate data-updated="true">Aug 24th, 2011</time>
-        
-           | <a href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>距清人蒲松龄录《聊斋》成书已有二百多年了，可《聊斋》却仍为人所津津乐道，说它是文学史上一大作也不为过。我们知道，一部作品要能打动人，一方面可以是反映现实，另一方面则可以是表达愿望。由此看来，《聊斋》之所以受人欢迎，无非是在上述两方面有所长，与受众亲近。</p>
-
-<p>从内容上来说，《聊斋》故事主要可分为爱情、友情、社会、道德几大类，其核心基本都与人有关。爱情、友情，人之常情，一个正常人绝对是可以理解且无法拒绝的。社会、道德，众人之常情，是社会性的人类所必需的。这样的题材贴近生活，有血有肉，而不像是高高在上的“作文”。从这个角度来写，便是良好的基础，在这基础之上，人们可以广泛地接受，正如接受现实一样。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E4%B8%BA%E4%BB%80%E4%B9%88%E3%80%8A%E8%81%8A%E6%96%8B%E3%80%8B%E5%A6%82%E6%AD%A4%E5%8F%97%E4%BA%BA%E6%AC%A2%E8%BF%8E/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">《呐喊》的几处意象与其感情色彩</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-22T00:00:00+08:00" pubdate data-updated="true">Aug 22nd, 2011</time>
-        
-           | <a href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>众所周知，《呐喊》是一部小说集。小说不同于诗歌、散文等，它展现的不是一幅画，而是一种类似于电影的美，能较好地表达，创造出氛围，感情而不失冲击力。在《呐喊》的几篇小说中，我们常常能看到这些东西：黑夜、黑暗，无论是在未庄还是古轩亭口；人肉、人血，无论是老栓弄来的还是赵贵翁想吃的；辫子，无论是七斤剪了的还是阿Q所难取舍的。这些意象的频繁使用，无疑是让这些故事更加沉重，像不可抗拒的大山压下来，令人喘不过气来。</p>
-
-<p>然而，这一切都是真实的。黑暗下的动作是真实，吃人是真实，辫子所缚的人心也是真实。用这些意象堆砌而成的坚不可摧的大山也是真实。这大山的压力，不过是这真实所致，而这真实是什么？</p>
-
-<p>《呐喊》毕竟是部集子，是由一篇篇小说组成的。这些小说从结构上来讲确实是独立的，但是，既然被收同一部集子中，它们的意义，难道还是独立的吗？分析各篇，不难看出它们之中有许多共同之处。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E3%80%8A%E5%91%90%E5%96%8A%E3%80%8B%E7%9A%84%E5%87%A0%E5%A4%84%E6%84%8F%E8%B1%A1%E4%B8%8E%E5%85%B6%E6%84%9F%E6%83%85%E8%89%B2%E5%BD%A9/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">审美的变化</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-21T00:00:00+08:00" pubdate data-updated="true">Aug 21st, 2011</time>
-        
-           | <a href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>《美的历程》读后感</p>
-
-<p>中国历史源远流长，以至于人的审美也可以如历史一般有自己的历程。这一点在读完全书之后是深有体会的。但对此，也有一些疑问。</p>
-
-<p>可以看出，历史上人们的审美情绪是发生过很大的变化的。比如说在初唐诗中，经常可以发现一些抒发建功立业壮志的题材。而在宋词中却较多的看到一些咏叹个人命运的一些内容，且感情色彩也大不相同。究竟是什么使人的审美发生这样的变化呢？难道是唐代的大漠孤烟全都变成了宋代的落花流水吗？虽然说生活环境可以决定一个人的审美，但是像这样夸张的环境变化显然是不可能的。那么就要从人的内心寻找原因。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%AE%A1%E7%BE%8E%E7%9A%84%E5%8F%98%E5%8C%96/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E6%97%A0%E8%AF%AD%E7%9A%84unicode%E5%AD%97%E7%AC%A6%E4%BB%8B%E7%BB%8D/">无语的Unicode字符介绍</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-19T00:00:00+08:00" pubdate data-updated="true">Aug 19th, 2011</time>
-        
-           | <a href="/blog/%E6%97%A0%E8%AF%AD%E7%9A%84unicode%E5%AD%97%E7%AC%A6%E4%BB%8B%E7%BB%8D/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E6%97%A0%E8%AF%AD%E7%9A%84unicode%E5%AD%97%E7%AC%A6%E4%BB%8B%E7%BB%8D/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>在使用GNOME Character Map 3.0.1（Based on the Unicode Character Database 6.0.0）查询字符时，会给出字符的含义等信息。比如“市”一字，它就给出了“market, fair; city, town; trade”这些解释。再比如这种生僻字“甂”都能NB地给出“(Cant.) 打甂爐, to instant-boil thin slices of meat and vegetables in a chafing dish at a dining table“这样漂亮的解释。</p>
-
-<p>令人哭笑不得的是，连六十四卦都有。<br />
-䷀䷁䷂䷃䷄䷅䷆䷇䷈䷉䷊䷋䷌䷍䷎䷏䷐䷑䷒䷓䷔䷕䷖䷗䷘䷙䷚䷛䷜䷝䷞䷟䷠䷡䷢䷣䷤䷥䷦䷧䷨䷩䷪䷫䷬䷭䷮䷯䷰䷱䷲䷳䷴䷵䷶䷷䷸䷹䷺䷻䷼䷽䷾䷿<br />
-如果你看不到，请确认你的Unicode支持是否完整。</p>
-
-<p>其中“乾”解释为HEXAGRAM FOR THE CREATIVE HEAVEN，“坤”则是HEXAGRAM FOR THE RECEPTIVE EARTH。话说翻译的人简直就是。。。（说不出来了）。。。</p>
-
-<p>想看更多的，使用charmap自己看吧。所有字符都有分类，查询十分方便。</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/">安装Archlinux小记</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2011-08-17T00:00:00+08:00" pubdate data-updated="true">Aug 17th, 2011</time>
-        
-           | <a href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/#disqus_thread"
-             data-disqus-identifier="https://elephantus.moe/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/">评论</a>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>正如之前的某一篇文章所说，我的Ubuntu已经不堪重负了，所以我作了一个艰难的决定，就是放弃Ubuntu，叛逃至Archlinux。原因是这个发行版具有高度定制性，坚持KISS原则，后期的使用十分省心。于是我就开始装了。</p>
-
-<p>从163的镜像站上下载了201005的本地安装版本。为什么要用这个版本而不选择netinstall呢？事实上我之前在虚拟机上试装过一遍，网络安装常常出错。毕竟安装程序是旧的，而软件包是新的，而要纠正错误得花很大的力气。</p>
-
-<p>刻盘，安装。原来/home内容已经备份，所以挂载时问(re)create filesystem就选yes，也就是格式化。安装过程还算是顺利，只要一步一步按照官方文档来就可以了。Archlinux的官方文档制作得还算是不错的。但是，毕竟每个人的具体情况不一样，所以baidu、google永远是我们的好朋友。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/%E5%AE%89%E8%A3%85archlinux%E5%B0%8F%E8%AE%B0/">继续阅读 &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
   <div class="pagination">
     
       <a class="prev" href="/blog/page-30">&larr; 旧文</a>
@@ -609,30 +693,30 @@ configure: error: Cannot build a 32-bit program, you need to install 32-bit deve
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%B3%BD%E4%BC%BD%E4%BD%A9%E5%9B%A0/">看过泽伽佩因</a>
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E9%BB%91%E5%AE%A2%E7%BD%91%E7%BB%9C-hacknet/">玩过黑客网络 Hacknet</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E8%AF%BB%E8%BF%87%E8%BF%BD%E8%B8%AA1789%E6%B3%95%E5%9B%BD%E5%A4%A7%E9%9D%A9%E5%91%BD/">读过追踪1789法国大革命</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E6%98%AD%E5%92%8C%E5%85%83%E7%A6%84%E8%90%BD%E8%AF%AD%E5%BF%83%E4%B8%AD-%E5%8A%A9%E5%85%AD%E5%86%8D%E4%B8%B4%E7%AF%87/">看过昭和元禄落语心中 助六再临篇</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%B8%89%E5%AD%A3/">看过黑镜 第三季</a>
+        <a href="/blog/%E8%AF%BB%E8%BF%87miss-sara-sampson/">读过Miss Sara Sampson</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%93%B6%E6%B2%B3%E7%B3%BB%E6%BC%AB%E6%B8%B8%E6%8C%87%E5%8D%97/">看过银河系漫游指南</a>
+        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%A9%AC%E5%88%A9%E7%BA%B3/">看过马利纳</a>
       </li>
     
       <li class="post">
-        <a href="/blog/%E7%9C%8B%E8%BF%87%E9%BB%91%E9%95%9C-%E7%AC%AC%E4%BA%8C%E5%AD%A3/">看过黑镜 第二季</a>
+        <a href="/blog/%E7%8E%A9%E8%BF%87%E7%A6%BB%E5%BC%80%E7%9A%84%E4%BA%BA%E4%BB%AC-%E5%8E%BB%E4%BA%BA%E3%81%9F%E3%81%A1/">玩过离开的人们 去人たち</a>
       </li>
     
   </ul>
 </section>
 <section>
   <h1>文章分类</h1>
-    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (113)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
+    <ul id="category-list"><li><a href='/blog/categories/acdai-ma/'>ac代码 (35)</a></li><li><a href='/blog/categories/ge-ren-ri-ji/'>个人日记 (76)</a></li><li><a href='/blog/categories/huan-xiang/'>幻想 (3)</a></li><li><a href='/blog/categories/wei-fen-lei/'>未分类 (9)</a></li><li><a href='/blog/categories/ji-suan-ji-ji-zhu/'>计算机技术 (54)</a></li><li><a href='/blog/categories/du-hou-gan/'>读后感 (24)</a></li><li><a href='/blog/categories/dou-ban-shou-cang/'>豆瓣收藏 (119)</a></li><li><a href='/blog/categories/zhuan-fa-ji-bei-wang/'>转发及备忘 (3)</a></li><li><a href='/blog/categories/bian-xue-bian-jiang/'>边学边讲 (8)</a></li></ul>
 </section>
 <section>
     <h1>推荐</h1>
