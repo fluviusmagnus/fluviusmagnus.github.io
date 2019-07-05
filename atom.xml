@@ -4,7 +4,7 @@
   <title><![CDATA[人間夜行]]></title>
   <link href="https://elephantus.moe/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2017-10-04T09:01:48+08:00</updated>
+  <updated>2019-07-05T21:26:09+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ich Lebe Noch!]]></title>
+    <link href="https://elephantus.moe/blog/ich-lebe-noch/"/>
+    <updated>2019-07-05T21:05:39+08:00</updated>
+    <id>https://elephantus.moe/blog/ich-lebe-noch</id>
+    <content type="html"><![CDATA[<p>由于换了电脑和系统，整套工作流程长期未能重建，导致两年未能更新网站，实在遗憾。另一方面，新的兴趣点转移至微信公众号上，因为风格和内容的差异，网站也就无暇顾及。</p>
+
+<p>即使新的策略需要考虑，这里的前景并不乐观。但我的持续输出是可以期望的。希望各位继续支持。</p>
+
+<p>网站目前可能还有一些问题，慢慢修吧。</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[玩过黑客网络 Hacknet]]></title>
@@ -425,22 +438,6 @@
 
 
 <p>编写过程中被那个 BOM 阻碍，很久查不出错误，非常感谢微软。</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[玩过深圳 I/O SHENZHEN I/O]]></title>
-    <link href="https://elephantus.moe/blog/%E7%8E%A9%E8%BF%87%E6%B7%B1%E5%9C%B3-i-o-shenzhen-i-o/"/>
-    <updated>2017-06-23T00:00:00+08:00</updated>
-    <id>https://elephantus.moe/blog/玩过深圳-i-o-shenzhen-i-o</id>
-    <content type="html"><![CDATA[    <table><tr>
-    <td width="80px"><a href="https://www.douban.com/game/26889898/" title="深圳 I/O SHENZHEN I/O">
-    <img src="https://img1.doubanio.com/mpic/s29087908.jpg" alt="深圳 I/O SHENZHEN I/O"></a></td>
-    <td>
-        <p>推荐: 力荐</p>
-        <p>标签: 解谜</p>
-        <p>备注: 这家公司应该是存在的，并且根据玩家在这个游戏中的创作来优化他们的设计。</p>
-    </td></tr></table>
 ]]></content>
   </entry>
   
