@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Ac代码 | 人間夜行]]></title>
+  <title><![CDATA[Category: ac代码 | 人間夜行]]></title>
   <link href="https://elephantus.moe/blog/categories/acdai-ma/atom.xml" rel="self"/>
   <link href="https://elephantus.moe/"/>
-  <updated>2019-07-05T21:26:09+08:00</updated>
+  <updated>2019-07-05T21:57:38+08:00</updated>
   <id>https://elephantus.moe/</id>
   <author>
     <name><![CDATA[人間夜行]]></name>
@@ -101,7 +101,7 @@ int main()
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[RQNOJ 143 巨型整数]]></title>
+    <title type="html"><![CDATA[RQNOJ 143  巨型整数]]></title>
     <link href="https://elephantus.moe/blog/rqnoj-143-%E5%B7%A8%E5%9E%8B%E6%95%B4%E6%95%B0/"/>
     <updated>2012-02-06T00:00:00+08:00</updated>
     <id>https://elephantus.moe/blog/rqnoj-143-巨型整数</id>
