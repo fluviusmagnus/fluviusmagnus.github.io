@@ -1,4 +1,4 @@
 User-agent: *
-Disallow: 
+Disallow: /supera/
 
-Sitemap: https://elephantus.moe/sitemap.xml 
+Sitemap: https://elephantus.moe/sitemap.xml
